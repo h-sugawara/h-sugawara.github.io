@@ -8,6 +8,7 @@ tags:
   - ゆずソフト
 category: ゲームレビュー
 toc: true
+thumbnail: /2023/11/08/riddle-joker-review/riddle_joker_thumbnail.png
 cover: /2023/11/08/riddle-joker-review/riddle_joker_title.jpg
 ---
 
@@ -192,5 +193,5 @@ cover: /2023/11/08/riddle-joker-review/riddle_joker_title.jpg
 
 * DMM
   * [R18 ダウンロード版](https://dlsoft.dmm.co.jp/detail/yuzu_0001/)
-* Stream
+* Steam
   * [一般 ダウンロード版](https://store.steampowered.com/app/1277930/Riddle_Joker/)
