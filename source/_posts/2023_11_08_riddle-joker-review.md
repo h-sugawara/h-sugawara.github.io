@@ -1,6 +1,7 @@
 ---
 title: RIDDLE JOKER レビュー
 date: 2023-11-08 19:30:00
+updated: 2023-11-08 19:30:00
 tags:
   - PCゲーム
   - 美少女ゲーム
