@@ -61,7 +61,7 @@ head:
         # You should leave this blank for most of the time
         description: 
         # Twitter card type (twitter:card)
-        twitter_card: 
+        twitter_card: summary_large_image
         # Twitter ID (twitter:creator)
         twitter_id: 
         # Twitter Site (twitter:site)
