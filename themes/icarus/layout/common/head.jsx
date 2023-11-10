@@ -70,6 +70,8 @@ module.exports = class extends Component {
             images = [page.og_image];
         } else if (typeof page.cover === 'string') {
             images = [url_for(page.cover)];
+        } else if (page.cover && typeof page.cover.src === 'string') {
+            images = [url_for(page.cover.src)];
         } else if (typeof page.thumbnail === 'string') {
             images = [url_for(page.thumbnail)];
         } else if (article && typeof article.og_image === 'string') {
