@@ -26,7 +26,8 @@ module.exports = class extends Component {
 
         const indexLaunguage = toMomentLocale(config.language || 'en');
         const language = toMomentLocale(page.lang || page.language || config.language || 'en');
-        const cover = page.cover ? url_for(page.cover) : null;
+        const coverSource = page.cover ? (page.cover.src ? url_for(page.cover.src) :  url_for(page.cover)) : null;
+        const coverLayout = page.cover ? (page.cover.layout ? page.cover.layout : 'fill') : '';
         const updateTime = article && article.update_time !== undefined ? article.update_time : true;
         const isUpdated = page.updated && !moment(page.date).isSame(moment(page.updated));
         const shouldShowUpdated = page.updated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
@@ -35,11 +36,11 @@ module.exports = class extends Component {
             {/* Main content */}
             <div class="card">
                 {/* Thumbnail */}
-                {cover ? <div class="card-image">
+                {coverSource ? <div class="card-image">
                     {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
-                        <img class="cover" src={cover} alt={page.title || cover} />
+                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
                     </a> : <span class="image is-7by3">
-                        <img class="cover" src={cover} alt={page.title || cover} />
+                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
                     </span>}
                 </div> : null}
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
