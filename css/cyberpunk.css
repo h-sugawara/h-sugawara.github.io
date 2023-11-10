@@ -10754,9 +10754,9 @@ body > .section {
   width: 100% !important;
   height: 100% !important;
 }
-.image .cover {
+.image .left-top-fill-width {
   object-fit: cover;
-  object-position: left;
+  object-position: left top;
   width: 100% !important;
 }
 .button.is-transparent {
