@@ -4,4 +4,15 @@ updates:
   directory: "/"
   schedule:
     interval: daily
+    time: "09:00"
+    timezone: "Asia/Tokyo"
+  versioning-strategy: auto
+  groups:
+    dependencies:
+      patterns:
+        - "*"
+  ignore:
+    - dependency-name: "*"
+      update-types:
+        - "version-update:semver-major"
   open-pull-requests-limit: 20
