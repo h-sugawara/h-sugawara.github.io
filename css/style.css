@@ -10824,8 +10824,9 @@ article.article .content h1 {
   font-size: 1.75em;
 }
 article.article .content h2 {
+  font-size: 1.5rem;
   position: relative;
-  margin: 1rem 0 1rem -10px;
+  margin: 1rem 0 1rem -32px;
   padding: 1rem;
   color: #3273dc;
   border-radius: 0 100vh 100vh 0;
@@ -10833,12 +10834,23 @@ article.article .content h2 {
   -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
   box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
 }
+article.article .content h2:before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 10px solid #6c9bfc;
+  border-left: 10px solid transparent;
+}
 article.article .content h3 {
+  font-size: 1.25rem;
   position: relative;
   display: inline-block;
-  margin-left: 30px;
-  padding: 1rem 2rem 1rem 2rem;
-  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  margin-left: 0.75rem;
+  padding: 1rem 2rem 1rem 1rem;
   color: #00947a;
   background: #e8ece9;
 }
