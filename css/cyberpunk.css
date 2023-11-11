@@ -10825,10 +10825,42 @@ article.article .content h1 {
   font-size: 1.75em;
 }
 article.article .content h2 {
-  font-size: 1.5em;
+  position: relative;
+  margin: 1rem 0 1rem -10px;
+  padding: 1rem;
+  color: #3273dc;
+  border-radius: 0 100vh 100vh 0;
+  background: #eef3fc;
+  -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
 }
 article.article .content h3 {
-  font-size: 1.25em;
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.25rem;
+  color: #00947a;
+  background: #e8ece9;
+}
+article.article .content h3:before {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  content: '';
+  border-width: 1.75rem 30px 1.75rem 0;
+  border-style: solid;
+  border-color: transparent #e8ece9 transparent transparent;
+}
+article.article .content h3:after {
+  position: absolute;
+  top: calc(50% - 5px);
+  left: -10px;
+  width: 10px;
+  height: 10px;
+  content: '';
+  border-radius: 50%;
+  background: #00947a;
 }
 article.article .content h4 {
   font-size: 1.125em;
