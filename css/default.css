@@ -10849,8 +10849,8 @@ article.article .content h3 {
   position: relative;
   margin-top: 0.5rem;
   margin-left: 0.75rem;
-  margin-right: 3rem;
-  padding: 1rem 2rem 1rem 1rem;
+  margin-right: 1.5rem;
+  padding: 1rem 0 1rem 1rem;
   color: #00947a;
   background: #e8ece9;
 }
@@ -10874,11 +10874,7 @@ article.article .content h3:after {
   background: #00947a;
 }
 article.article .content h4 {
-  font-size: 1.125rem;
-}
-article.article .content h4:first-letter {
-  font-size: 150%;
-  color: #f39800;
+  font-size: 1.125em;
 }
 article.article .content h5 {
   font-size: 1em;
