@@ -10875,7 +10875,11 @@ article.article .content h3:after {
   background: #00947a;
 }
 article.article .content h4 {
-  font-size: 1.125em;
+  font-size: 1.125rem;
+}
+article.article .content h4:first-letter {
+  font-size: 1.25rem;
+  color: #eb6100;
 }
 article.article .content h5 {
   font-size: 1em;
