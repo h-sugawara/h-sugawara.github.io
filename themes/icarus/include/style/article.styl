@@ -58,10 +58,54 @@ article
                 font-size: 1.75em
 
             h2
-                font-size: 1.5em
+                font-size: 1.5rem
+                position: relative
+                margin: 1rem 0 1rem -32px
+                padding: 1rem
+                color: #3273dc
+                border-radius: 0 100vh 100vh 0
+                background: #eef3fc
+                -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, .2)
+                box-shadow: 3px 3px 5px rgba(0, 0, 0, .2)
+
+            h2:before
+                position: absolute
+                bottom: -10px
+                left: 0
+                width: 0
+                height: 0
+                content: ''
+                border-top: 10px solid #6c9bfc
+                border-left: 10px solid transparent
 
             h3
-                font-size: 1.25em
+                font-size: 1.25rem
+                position: relative
+                margin-top: 0.5rem
+                margin-left: 0.75rem
+                margin-right: 1.5rem
+                padding: 1rem 0 1rem 1rem
+                color: #00947a
+                background: #e8ece9
+
+            h3:before
+                position: absolute
+                top: 0
+                left: -30px
+                content: ''
+                border-width: 1.75rem 30px 1.75rem 0
+                border-style: solid
+                border-color: transparent #e8ece9 transparent transparent
+
+            h3:after
+                position: absolute
+                top: calc(50% - 5px)
+                left: -10px
+                width: 10px
+                height: 10px
+                content: ''
+                border-radius: 50%
+                background: #00947a
 
             h4
                 font-size: 1.125em
