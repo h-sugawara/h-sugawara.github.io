@@ -10848,9 +10848,9 @@ article.article .content h2:before {
 article.article .content h3 {
   font-size: 1.25rem;
   position: relative;
-  display: inline-block;
   margin-top: 0.5rem;
   margin-left: 0.75rem;
+  margin-right: 3rem;
   padding: 1rem 2rem 1rem 1rem;
   color: #00947a;
   background: #e8ece9;
@@ -10879,7 +10879,7 @@ article.article .content h4 {
 }
 article.article .content h4:first-letter {
   font-size: 150%;
-  color: #eb6100;
+  color: #f39800;
 }
 article.article .content h5 {
   font-size: 1em;
