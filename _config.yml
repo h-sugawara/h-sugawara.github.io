@@ -105,3 +105,8 @@ deploy:
   type: git
   repo: https://github.com/h-sugawara/h-sugawara.github.io
   branch: gh-pages
+
+# Link Preview
+link_preview:
+  class_name: link-muted link-preview
+  description_length: 140
