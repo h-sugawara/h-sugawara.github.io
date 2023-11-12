@@ -227,9 +227,14 @@ cover:
 どこかの要素が極端に偏重しておらず、バランス感覚に非常に優れた作品に仕上がっている。
 本作もゆずソフトの前評判通りに、全評価項目が平均点以上の優作であると言えよう。
 
-## 作品の購入リンク
+## 本作の購入リンク
 
-* DMM
-  * [R18 ダウンロード版](https://dlsoft.dmm.co.jp/detail/yuzu_0001/)
-* Steam
-  * [一般 ダウンロード版](https://store.steampowered.com/app/1277930/Riddle_Joker/)
+レビューを見て本作が気になったら、DMMまたはSteamから購入してプレイしてみてください。
+
+### DMM R18版
+
+{% link_preview https://dlsoft.dmm.co.jp/detail/yuzu_0001/ "R18 ダウンロード版@DMM" %}
+
+### Steam 全年齢版
+
+{% link_preview https://store.steampowered.com/app/1277930/Riddle_Joker/ "全年齢 ダウンロード版@Steam" %}
