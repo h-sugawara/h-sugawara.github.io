@@ -10903,6 +10903,29 @@ article.article .content .message.message-immersive {
 article.article .content .message.message-immersive .message-body {
   border: none;
 }
+article.article .content .link-area {
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+  margin: 1rem 0 1rem 0;
+  font-size: 0.825rem;
+  border-radius: 8px;
+}
+article.article .content .link-area .og-image img {
+  overflow: hidden;
+  max-height: 270px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  width: 100% !important;
+  height: 100% !important;
+}
+article.article .content .link-area .descriptions {
+  padding: 0.25rem 1rem 0.5rem 1rem;
+}
+article.article .content .link-area .descriptions .og-title {
+  font-size: 1.375rem;
+  margin-bottom: 0.25rem;
+}
 article.article .article-tags {
   display: flex;
   flex-wrap: wrap;
