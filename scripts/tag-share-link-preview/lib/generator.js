@@ -1,48 +1,88 @@
 'use strict';
 
 const util = require('hexo-util');
-const escapeHTML = require('escape-html');
 const ogs = require('open-graph-scraper');
+
+function getOgTitle(ogp) {
+    let valid = false;
+    let title = ''
+
+    if (ogp.hasOwnProperty('ogTitle')) {
+        const escapedTitle = util.escapeHTML(ogp.ogTitle);
+
+        if (typeof escapedTitle === 'string' && escapedTitle !== '') {
+            valid = true;
+            title = escapedTitle;
+        }
+    }
+
+    return {valid, title};
+}
+
+function getOgDescription(ogp, config) {
+    let valid = false;
+    let description = ''
+
+    if (ogp.hasOwnProperty('ogDescription')) {
+        const escapedDescription = util.escapeHTML(ogp.ogDescription);
+        const descriptionText = (escapedDescription && escapedDescription > config.descriptionLength) ?
+            escapedDescription.slice(0, config.descriptionLength) + '...' : escapedDescription;
+
+        if (typeof descriptionText === 'string' && descriptionText !== '') {
+            valid = true;
+            description = descriptionText;
+        }
+    }
+
+    return {valid, description};
+}
+
+function createHtmlDivTag(className, content) {
+    return util.htmlTag('div', {class: className}, content, false);
+}
+
+function createHtmlAnchorTag(url, config, content) {
+    let tagAttrs = {href: url, target: config.target, rel: config.rel};
+    let tagContent = content;
+    let escape = true;
+
+    if (typeof content === 'string' && content !== '') {
+        tagAttrs.class = config.className;
+        escape = false;
+    } else if (config.hasOwnProperty('fallbackTitle') && typeof config.fallbackTitle === 'string' && config.fallbackTitle !== '') {
+        tagContent = config.fallbackTitle;
+    }
+    return util.htmlTag('a', tagAttrs, tagContent, escape);
+}
+
+function createHtmlImgTag(url) {
+    return util.htmlTag('img', {src: url, class: 'not-gallery-item'}, '');
+}
 
 module.exports = async function (options, config) {
     return ogs(options)
         .then(function (data) {
             const ogp = data.result;
 
-            const isTitleValid = (ogp.hasOwnProperty('ogTitle') && ogp.ogTitle !== '');
-            const isDescriptionValid = (ogp.hasOwnProperty('ogDescription') && ogp.ogDescription !== '');
+            const {valid: isTitleValid, title: escapedTitle} = getOgTitle(ogp);
+            const {valid: isDescriptionValid, description: escapedDescription} = getOgDescription(ogp, config);
 
             if (isTitleValid && isDescriptionValid) {
-                const title = util.htmlTag('div', {class: 'og-title'}, escapeHTML(ogp.ogTitle), false);
-
-                const escapedDescription = escapeHTML(ogp.ogDescription)
-                const descriptionText = (escapedDescription && escapedDescription > config.descriptionLength) ?
-                    escapedDescription.slice(0, config.descriptionLength) + '...' : escapedDescription;
-                const description = util.htmlTag('div', {class: 'og-description'}, descriptionText, false);
-
-                const descriptions = util.htmlTag('div', {class: 'descriptions'}, title + description, false);
+                const title = createHtmlDivTag('og-title', escapedTitle);
+                const description = createHtmlDivTag('og-description', escapedDescription);
+                const descriptions = createHtmlDivTag('descriptions', title + description);
 
                 let image = '';
                 if (ogp.hasOwnProperty('ogImage') && ogp.ogImage.length > 0) {
-                    const imageUrl = ogp.ogImage[0].url;
-                    image = util.htmlTag('div', {class: 'og-image'}, util.htmlTag('img', {src: imageUrl}, ''), false);
+                    image = createHtmlDivTag('og-image', createHtmlImgTag(ogp.ogImage[0].url));
                 }
 
-                const link = util.htmlTag('a', {
-                    href: options.url,
-                    class: config.className,
-                    target: config.target,
-                    rel: config.rel
-                }, image + descriptions, false);
-
-                return util.htmlTag('div', {class: 'link-area'}, link, false);
+                return createHtmlDivTag(
+                    'link-area',
+                    createHtmlAnchorTag(options.url, config, image + descriptions)
+                );
             }
-
-            return util.htmlTag('a', {
-                href: options.url,
-                target: config.target,
-                rel: config.rel
-            }, config.fallbackTitle)
+            return createHtmlAnchorTag(options.url, config);
         })
         .catch(function (error) {
             console.log('error:', error);

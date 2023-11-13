@@ -140,28 +140,36 @@ article
                     border: none
 
             .link-area
-                box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2)
-                margin: 1rem 0 1rem 0
-                font-size: 0.825rem
+                display: flex
+                border: 1px solid #cbd0d3
                 border-radius: $link-card-radius
+                margin: 1rem 0 1rem 0
+                font-size: 1rem
+                background-color: #f2f3f5
 
                 .og-image
                     img
                         overflow: hidden
-                        max-height: 270px
                         border-top-left-radius: $link-card-radius
                         border-top-right-radius: $link-card-radius
+                        max-height: 270px
                         object-fit: cover
                         object-position: center;
                         width: 100% !important
                         height: 100% !important
 
                 .descriptions
-                    padding: 0.25rem 1rem 0.5rem 1rem
+                    padding: 0 1rem 0.5rem 1rem
+                    border-bottom-left-radius: $link-card-radius
+                    border-bottom-right-radius: $link-card-radius
 
                     .og-title
-                        font-size: 1.375rem
+                        font-size: 1.25rem
+                        font-weight: 600
                         margin-bottom: 0.25rem
+
+                    .og-description
+                        color: #757c83
 
         .article-tags
             display: flex
