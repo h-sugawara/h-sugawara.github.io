@@ -10905,27 +10905,35 @@ article.article .content .message.message-immersive .message-body {
   border: none;
 }
 article.article .content .link-area {
-  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
-  margin: 1rem 0 1rem 0;
-  font-size: 0.825rem;
+  display: flex;
+  border: 1px solid #cbd0d3;
   border-radius: 8px;
+  margin: 1rem 0 1rem 0;
+  font-size: 1rem;
+  background-color: #f2f3f5;
 }
 article.article .content .link-area .og-image img {
   overflow: hidden;
-  max-height: 270px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  max-height: 270px;
   object-fit: cover;
   object-position: center;
   width: 100% !important;
   height: 100% !important;
 }
 article.article .content .link-area .descriptions {
-  padding: 0.25rem 1rem 0.5rem 1rem;
+  padding: 0 1rem 0.5rem 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 article.article .content .link-area .descriptions .og-title {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 0.25rem;
+}
+article.article .content .link-area .descriptions .og-description {
+  color: #757c83;
 }
 article.article .article-tags {
   display: flex;
