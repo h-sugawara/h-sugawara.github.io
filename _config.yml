@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 不明瞭な存在意義
-subtitle: 'Chaotic Notes'
-description: 'ジャンル問わず何でも書き綴るブログ'
+title: Chaotic Notes
+subtitle: 不明瞭な存在意義
+description: ジャンル問わず何でも書き綴るブログ
 keywords:
 author: Hiroki Sugawara
 language: ja
-timezone: 'Japan'
+timezone: Japan
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
