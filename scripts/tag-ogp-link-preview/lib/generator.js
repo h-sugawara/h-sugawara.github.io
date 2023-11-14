@@ -59,13 +59,15 @@ function createHtmlImgTag(url) {
     return util.htmlTag('img', {src: url, class: 'not-gallery-item'}, '');
 }
 
-module.exports = async function (options, config) {
-    return ogs(options)
-        .then(function (data) {
+module.exports = params => {
+    return ogs(params.scrape)
+        .then((data) => {
             const ogp = data.result;
 
             const {valid: isTitleValid, title: escapedTitle} = getOgTitle(ogp);
-            const {valid: isDescriptionValid, description: escapedDescription} = getOgDescription(ogp, config);
+            const {valid: isDescriptionValid, description: escapedDescription} = getOgDescription(ogp, params.generate);
+
+            let content = '';
 
             if (isTitleValid && isDescriptionValid) {
                 const title = createHtmlDivTag('og-title', escapedTitle);
@@ -77,14 +79,12 @@ module.exports = async function (options, config) {
                     image = createHtmlDivTag('og-image', createHtmlImgTag(ogp.ogImage[0].url));
                 }
 
-                return createHtmlDivTag(
-                    'link-area',
-                    createHtmlAnchorTag(options.url, config, image + descriptions)
-                );
+                content = image + descriptions;
             }
-            return createHtmlAnchorTag(options.url, config);
+
+            return createHtmlAnchorTag(params.scrape.url, params.generate, content);
         })
-        .catch(function (error) {
+        .catch(error => {
             console.log('error:', error);
             return '';
         });
