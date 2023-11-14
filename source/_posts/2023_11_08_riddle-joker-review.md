@@ -233,8 +233,12 @@ cover:
 
 ### DMM R18版
 
-{% link_preview https://dlsoft.dmm.co.jp/detail/yuzu_0001/ "R18 ダウンロード版@DMM" %}
+{% link_preview https://dlsoft.dmm.co.jp/detail/yuzu_0001/ %}
+R18 ダウンロード版@DMM
+{% endlink_preview %}
 
 ### Steam 全年齢版
 
-{% link_preview https://store.steampowered.com/app/1277930/Riddle_Joker/ "全年齢 ダウンロード版@Steam" %}
+{% link_preview https://store.steampowered.com/app/1277930/Riddle_Joker/ %}
+全年齢 ダウンロード版@Steam
+{% endlink_preview %}
