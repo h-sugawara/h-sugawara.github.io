@@ -10903,15 +10903,15 @@ article.article .content .message.message-immersive {
 article.article .content .message.message-immersive .message-body {
   border: none;
 }
-article.article .content .link-area {
-  display: flex;
+article.article .content .link-preview {
+  display: block;
   border: 1px solid #cbd0d3;
   border-radius: 8px;
   margin: 1rem 0 1rem 0;
   font-size: 1rem;
   background-color: #f2f3f5;
 }
-article.article .content .link-area .og-image img {
+article.article .content .link-preview .og-image img {
   overflow: hidden;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -10921,17 +10921,17 @@ article.article .content .link-area .og-image img {
   width: 100% !important;
   height: 100% !important;
 }
-article.article .content .link-area .descriptions {
+article.article .content .link-preview .descriptions {
   padding: 0 1rem 0.5rem 1rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-article.article .content .link-area .descriptions .og-title {
+article.article .content .link-preview .descriptions .og-title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
-article.article .content .link-area .descriptions .og-description {
+article.article .content .link-preview .descriptions .og-description {
   color: #757c83;
 }
 article.article .article-tags {
