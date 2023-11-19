@@ -108,5 +108,6 @@ deploy:
 
 # Link Preview
 link_preview:
-  class_name: link-muted link-preview
-  description_length: 140
+  class_name:
+    anchor_link: link-muted link-preview
+    image: not-gallery-item
