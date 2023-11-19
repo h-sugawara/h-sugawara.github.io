@@ -3,10 +3,11 @@ title: RIDDLE JOKER レビュー
 date: 2023-11-08 19:30:00
 updated: 2023-11-08 19:30:00
 tags:
+  - レビュー
   - PCゲーム
   - 美少女ゲーム
   - ゆずソフト
-category: ゲームレビュー
+category: Game
 toc: true
 thumbnail: /2023/11/08/riddle-joker-review/riddle_joker_thumbnail.png
 cover:
