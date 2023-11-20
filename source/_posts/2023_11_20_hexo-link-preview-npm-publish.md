@@ -10,7 +10,8 @@ tags:
   - npm
 category: Technology
 toc: true
-cover: /images/technology-cover.png
+thumbnail: /images/npm_thumbnail.png
+cover: /images/technology_cover.png
 ---
 
 2023年11月19日（日）、自作したHexo用タグプラグイン`hexo-tag-ogp-link-preview v1.0.0`を、npmに公開しました。
@@ -39,20 +40,21 @@ FaceBookを始めX(Twitter)等のSNSで、リンク共有時に表示される�
 しかし、レビュー記事をプレビュー表示してみると、生成したページに問題が発生しています。
 なんと、`Fanza Games`版のリンクが、`undefined`になっているではありませんか。
 
-そこで、該当のプラグインはOSSなので、作者にBug issueを立てて修正してもらおうと考えます。
+そこで、該当のプラグインはOSSなので、Bug issueを立てて修正していただく考えに至りました。
 とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。
 加えて、作者のブログの[「hexo-tag-link-previewをnpmで公開しました。」](https://minamo173.com/blog/publish-hexo-tag-link-preview/)記事で、現在はHexoを使用していない、との記述を発見。 
-ゆえに、元のプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
+ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
 それから、数日で自作プラグインが完成し、無事にレビュー記事にも反映。
 作り始めた頃は公開しようとは思っていなかったのですが、もしかして同じ問題にぶち当たってリンクプレビューを諦めた人がいるのではないかと思いました。
-なので、しっかりとコードリファクタしてうえで、テストも整備して、プラグインを公開させていただきました。
+なので、しっかりとコードリファクタしたうえで、テストも整備して、プラグインを公開させていただきました。
 皆様に使っていただければ幸いです。
 
-## 参考にしたプラグインとの違い
+## 参考プラグインとの違い
 
-Hexoの設定ファイルは、`snake_case`で記載するのが一般的であるようです。
-そのため、`hexo-tag-link-preview`が`lowerCamelCase`表記であったところを、`hexo-tag-ogp-link-preview`では`snake case`に変更しています（例：`className`を`class_name`に変更）。
+Hexoは、`snake_case`で記載するのが一般的であるようです。
+そのため、`hexo-tag-link-preview`が`lowerCamelCase`表記であったところを、`hexo-tag-ogp-link-preview`では`snake_case`に変えています。
+これは、タグ名と設定項目の両方に適用されます（タグ名は`linkPreview`から`link_preview`に、設定項目は例えば、`className`が`class_name`へ変更）。
 この違いさえ忘れずに、正しく修正すれば、プラグインそのものを差し替えても、そのまま動作する仕様となっています。
 
 また、`hexo-tag-link-preview`と異なり、`hexo-tag-ogp-link-preview`では、タグのパラメータの記載順を入れ替えても正しく認識します。
@@ -60,7 +62,7 @@ Hexoの設定ファイルは、`snake_case`で記載するのが一般的であ�
 
 ## Icarusテーマ利用者向け
 
-ここからは、Icarusテーマ利用者向けに、[「RIDDLE JOKER」のレビュー](https://blog.chaotic-notes.com/2023/11/08/riddle-joker-review/)で表示しているFaceBook風なリンクプレビューデザインを設定するための解説をします。
+このセクションは、Icarusテーマ利用者向けに、[「RIDDLE JOKER」のレビュー](https://blog.chaotic-notes.com/2023/11/08/riddle-joker-review/)で表示しているFaceBook風なリンクプレビューデザインを設定するための解説をします。
 
 ### デザイン設定
 
@@ -125,12 +127,17 @@ article
 
 ### Hexo設定
 
-Hexo設定ファイルで`hexo-tag-ogp-link-preview`の設定を行う際に、デフォルト状態では気を付けるべき事項が二つあります。
+続いて、Hexo設定ファイルで、`hexo-tag-ogp-link-preview`の設定調整を行います。
+デフォルト設定状態では、FaceBook風なデザインの再現を阻む不都合が二つ発生します。
 それは、リンクの文字色が目立つということと、画像がギャラリーにアイテムとして追加されてしまうということです。
 一つ目は、`class_name.anchor_link`に`link-muted link-preview`を設定することで防ぎます。
 二つ目は、`class_name.image`に`not-gallery-item`を設定することで対策できます。
+設定ファイルは、以下のように記載してください。
 
 ```yaml _config.yml
+# ...
+# ファイルの上の部分は、省略
+# ...
 link_preview:
   class_name:
     anchor_link: link-muted link-preview
