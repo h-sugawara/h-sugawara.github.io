@@ -109,8 +109,12 @@ navbar:
         Archives: /archives
 #        Categories: /categories
         Tags: /tags
+#        About: /about
     # Links to be shown on the right of the navigation bar
     links:
+#        Download on GitHub:
+#            icon: fab fa-github
+#            url: https://github.com/ppoffice/hexo-theme-icarus
 # Page footer configurations
 footer:
     # Copyright text
@@ -248,6 +252,85 @@ widgets:
         amount: 10
         # Whether to show tags count, i.e. number of posts in the tag.
         show_count: true
+    # Profile widget configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: left
+#        type: profile
+#        # Author name
+#        author: Your name
+#        # Author title
+#        author_title: Your title
+#        # Author's current location
+#        location: Your location
+#        # URL or path to the avatar image
+#        avatar:
+#        # Whether show the rounded avatar image
+#        avatar_rounded: false
+#        # Email address for the Gravatar
+#        gravatar:
+#        # URL or path for the follow button
+#        follow_link: https://github.com/ppoffice
+#        # Links to be shown on the bottom of the profile widget
+#        social_links:
+#            Github:
+#                icon: fab fa-github
+#                url: https://github.com/ppoffice
+#            Facebook:
+#                icon: fab fa-facebook
+#                url: https://facebook.com
+#            Twitter:
+#                icon: fab fa-twitter
+#                url: https://twitter.com
+#            Dribbble:
+#                icon: fab fa-dribbble
+#                url: https://dribbble.com
+#            RSS:
+#                icon: fas fa-rss
+#                url: /
+    # Archives widget configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: right
+#        type: archives
+    # Recommendation links widget configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: right
+#        type: links
+#        # Names and URLs of the sites
+#        links:
+#            Hexo: https://hexo.io
+#            Bulma: https://bulma.io
+    # Google FeedBurner email subscription widget configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: right
+#        type: subscribe_email
+#        # Hint text under the email input
+#        description:
+#        # Feedburner ID
+#        feedburner_id: ''
+    # Google AdSense unit configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: right
+#        type: adsense
+#        # AdSense client ID
+#        client_id: ''
+#        # AdSense AD unit ID
+#        slot_id: ''
+    # Follow.it email subscription widget configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: right
+#        type: followit
+#        # Hint text under the email input
+#        description:
+#        # Subscription form action URL
+#        action_url: ''
+#        # Feed claiming verification code
+#        verification_code: ''
 # Plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/
 plugins:
