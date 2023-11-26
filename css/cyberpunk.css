@@ -10759,6 +10759,11 @@ body > .section {
   object-position: left top;
   width: 100% !important;
 }
+.image .left-bottom-fill-height {
+  object-fit: cover;
+  object-position: left bottom;
+  height: 100% !important;
+}
 .button.is-transparent {
   color: inherit;
   background: transparent;
