@@ -6,10 +6,10 @@ $spacers ?= 0, $spacer * .25, $spacer * .5, $spacer, $spacer * 1.5, $spacer * 3
 
 for n in (0 .. 5)
     .ml-{n}
-        margin-left: $spacers[n] !important
+        margin-left: $spacers[n]!important
 
     .mr-{n}
-        margin-right: $spacers[n] !important
+        margin-right: $spacers[n]!important
 
     .mx-{n}
         @extend .ml-{n}, .mr-{n}
@@ -24,10 +24,10 @@ for n in (0 .. 5)
         @extend .ml-n{n}, .mr-n{n}
 
     .mt-{n}
-        margin-top: $spacers[n] !important
+        margin-top: $spacers[n]!important
 
     .mb-{n}
-        margin-bottom: $spacers[n] !important
+        margin-bottom: $spacers[n]!important
 
     .my-{n}
         @extend .mt-{n}, .mb-{n}
@@ -42,10 +42,10 @@ for n in (0 .. 5)
         @extend .mt-n{n}, .mb-n{n}
 
     .pl-{n}
-        padding-left: $spacers[n] !important
+        padding-left: $spacers[n]!important
 
     .pr-{n}
-        padding-right: $spacers[n] !important
+        padding-right: $spacers[n]!important
 
     .px-{n}
         @extend .pl-{n}, .pr-{n}
@@ -60,10 +60,10 @@ for n in (0 .. 5)
         @extend .pl-n{n}, .pr-n{n}
 
     .pt-{n}
-        padding-top: $spacers[n] !important
+        padding-top: $spacers[n]!important
 
     .pb-{n}
-        padding-bottom: $spacers[n] !important
+        padding-bottom: $spacers[n]!important
 
     .py-{n}
         @extend .pt-{n}, .pb-{n}
@@ -165,3 +165,8 @@ for n in (0 .. 5)
         object-fit: cover
         object-position: left top
         width: 100% !important
+
+    .left-bottom-fill-height
+        object-fit: cover
+        object-position: left bottom
+        height: 100% !important
