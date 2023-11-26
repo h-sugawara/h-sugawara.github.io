@@ -14,7 +14,9 @@ function getWordCount(content) {
         return 0;
     }
     content = content.replace(/<\/?[a-z][^>]*>/gi, '');
+    content = content.replace(/[\/「」【】：:（）()、。,.？！?!・―＋+－\-＿_＃#＄$※ッャュョっゃゅょー©☆]/gi, '');
     content = content.trim();
+
     return content ? (content.match(/[\u00ff-\uffff]|[a-zA-Z]+/g) || []).length : 0;
 }
 
@@ -24,9 +26,9 @@ module.exports = class extends Component {
         const { article, plugins } = config;
         const { url_for, date, date_xml, __, _p } = helper;
 
-        const indexLaunguage = toMomentLocale(config.language || 'en');
+        const indexLanguage = toMomentLocale(config.language || 'en');
         const language = toMomentLocale(page.lang || page.language || config.language || 'en');
-        const coverSource = page.cover ? (page.cover.src ? url_for(page.cover.src) :  url_for(page.cover)) : null;
+        const coverSource = page.cover ? url_for(page.cover.src ? page.cover.src : page.cover) : null;
         const coverLayout = page.cover ? (page.cover.layout ? page.cover.layout : 'fill') : '';
         const updateTime = article && article.update_time !== undefined ? article.update_time : true;
         const isUpdated = page.updated && !moment(page.date).isSame(moment(page.updated));
@@ -75,7 +77,7 @@ module.exports = class extends Component {
                                 {(() => {
                                     const words = getWordCount(page._content);
                                     const time = moment.duration((words / 150.0) * 60, 'seconds');
-                                    return `${_p('article.read_time', time.locale(index ? indexLaunguage : language).humanize())} (${_p('article.word_count', words)})`;
+                                    return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())} (${_p('article.word_count', words)})`;
                                 })()}
                             </span> : null}
                             {/* Visitor counter */}
