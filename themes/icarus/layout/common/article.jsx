@@ -7,6 +7,23 @@ const Comment = require('./comment');
 const ArticleLicensing = require('hexo-component-inferno/lib/view/misc/article_licensing');
 
 /**
+ * Get the read time and the word count of text content.
+ */
+function getReadTimeAndWordCountOf(content) {
+    const { english, hiragana, katakana, others } = getWordCount(content);
+
+    const words = english + hiragana + katakana + others;
+
+    const englishTime = (english / 150.0) * 60;
+    const hiraganaTime = (hiragana / 300.0) * 60;
+    const katakanaTime = (katakana / 300.0) * 60;
+    const othersTime = (others / 150.0) * 60;
+    const time = moment.duration(englishTime + hiraganaTime + katakanaTime + othersTime, 'seconds');
+
+    return { words, time }
+}
+
+/**
  * Get the word count of text.
  */
 function getWordCount(content) {
@@ -14,10 +31,22 @@ function getWordCount(content) {
         return 0;
     }
     content = content.replace(/<\/?[a-z][^>]*>/gi, '');
-    content = content.replace(/[\/「」【】：:（）()、。,.？！?!・―＋+－\-＿_＃#＄$※ッャュョっゃゅょー©☆]/gi, '');
     content = content.trim();
+    const englishLength = content ? (content.match(/[a-zA-Z0-9]+/g) || []).length : 0;
 
-    return content ? (content.match(/[\u00ff-\uffff]|[a-zA-Z]+/g) || []).length : 0;
+    content = content.replace(/[ッャュョっゃゅょー]/gi, '');
+    const hiraganaLength = content ? (content.match(/[\u3041-\u3093]+/g) || []).length : 0;
+    const katakanaLength = content ? (content.match(/[\u30a0-\u30ff]+/g) || []).length : 0;
+
+    content = content.replace(/[※©☆]/gi, '');
+    const othersLength = content ? (content.match(/[^a-zA-Z0-9\u30a0-\u30ff\u3041-\u3093「」【】：:（）() 　、。,.-]+/g) || []).length : 0;
+
+    return {
+        english: englishLength,
+        hiragana: hiraganaLength,
+        katakana: katakanaLength,
+        others: othersLength,
+    };
 }
 
 module.exports = class extends Component {
@@ -75,8 +104,7 @@ module.exports = class extends Component {
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
-                                    const words = getWordCount(page._content);
-                                    const time = moment.duration((words / 150.0) * 60, 'seconds');
+                                    const { words, time } = getReadTimeAndWordCountOf(page._content);
                                     return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())} (${_p('article.word_count', words)})`;
                                 })()}
                             </span> : null}
