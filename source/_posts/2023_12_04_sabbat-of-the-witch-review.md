@@ -7,9 +7,9 @@ tags:
   - ゆずソフト
 category: Game
 toc: true
-thumbnail: /2023/12/04/sabbat-of-the-witch-review/sabbat_of_the_witch_thumbnail.jpg
+thumbnail: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_thumbnail.jpg
 cover:
-  src: /2023/12/04/sabbat-of-the-witch-review/sabbat_of_the_witch_title.jpg
+  src: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_title.jpg
   layout: left-bottom-fill-height
 date: 2023-12-04 19:30:00
 updated: 2023-12-04 19:30:00
@@ -98,7 +98,7 @@ updated: 2023-12-04 19:30:00
 しかし、彼女は、都合の良いそれが無くても、様々な艱難辛苦を自分の力で乗り越えて成長していくのである。
 彼女の個別ルートは、それだけで一つの作品として完成しているので、しっかりと時間をとって攻略してみて欲しい。
 
-![嫉妬する寧々ちゃんにマーキングされたい © YUZUSOFT / JUNOS INC. All Rights Reserved.](/2023/12/04/sabbat-of-the-witch-review/ayachi_nene.jpg)
+![嫉妬する寧々ちゃんにマーキングされたい © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/sabbat-of-the-witch-review/ayachi_nene.jpg)
 
 ### 因幡 めぐる
 
@@ -121,7 +121,7 @@ updated: 2023-12-04 19:30:00
 
 そして、彼女は、伝説のあいさつ「ちゃろー」を世に生み出した奇才であることを忘れてはいけない。
 
-![私も大好きです、めぐるさん © YUZUSOFT / JUNOS INC. All Rights Reserved.](/2023/12/04/sabbat-of-the-witch-review/inaba_meguru.jpg)
+![私も大好きです、めぐるさん © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/sabbat-of-the-witch-review/inaba_meguru.jpg)
 
 ### 椎葉 紬
 
@@ -140,7 +140,7 @@ updated: 2023-12-04 19:30:00
 彼女は、本作ヒロインの中で最も母性が強いキャラクターであるので、バブみを感じてみたい紳士は是非攻略してみてほしい。
 きっと大満足すること間違いないであろう。
 
-![紬ちゃん、女の子の恰好できて良かったね © YUZUSOFT / JUNOS INC. All Rights Reserved.](/2023/12/04/sabbat-of-the-witch-review/shiiba_tsumugi.jpg)
+![紬ちゃん、女の子の恰好できて良かったね © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/sabbat-of-the-witch-review/shiiba_tsumugi.jpg)
 
 ### 戸隠 憧子
 
@@ -162,7 +162,7 @@ updated: 2023-12-04 19:30:00
 なお、本作ヒロインから最も良い女性を選ぶなら誰かと問われた時、迷わず真っ先に彼女の名前を挙げるであろう。
 尻に敷かれていることを感じさせずに、手のひらの上で気持ちよく転がされたい、と思っている紳士には是非推したい。
 
-![憧子先輩に毎日料理を作って欲しいです © YUZUSOFT / JUNOS INC. All Rights Reserved.](/2023/12/04/sabbat-of-the-witch-review/togakushi_touko.jpg)
+![憧子先輩に毎日料理を作って欲しいです © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/sabbat-of-the-witch-review/togakushi_touko.jpg)
 
 ## 総合評価
 
