@@ -10,15 +10,14 @@ const ArticleLicensing = require('hexo-component-inferno/lib/view/misc/article_l
  * Get the read time and the word count of text content.
  */
 function getReadTimeAndWordCountOf(content) {
-    const { english, hiragana, katakana, others } = getWordCount(content);
+    const { alphaNum, kana, kanji } = getWordCount(content);
 
-    const words = english + hiragana + katakana + others;
+    const words = alphaNum + kana + kanji;
 
-    const englishTime = (english / 150.0) * 60;
-    const hiraganaTime = (hiragana / 300.0) * 60;
-    const katakanaTime = (katakana / 300.0) * 60;
-    const othersTime = (others / 150.0) * 60;
-    const time = moment.duration(englishTime + hiraganaTime + katakanaTime + othersTime, 'seconds');
+    const alphaNumTime = (alphaNum / 150.0) * 60;
+    const kanaTime = (kana / 400.0) * 60;
+    const kanjiTime = (kanji / 160.0) * 60;
+    const time = moment.duration(alphaNumTime + kanaTime + kanjiTime, 'seconds');
 
     return { words, time }
 }
@@ -30,22 +29,22 @@ function getWordCount(content) {
     if (typeof content === 'undefined') {
         return 0;
     }
-    content = content.replace(/<\/?[a-z][^>]*>/gi, '');
+    content = content.replace(/(<\/?[a-z][^>]*>|<!--[^-]*-->|{%[^%]+%}|#+ )/gi, '');
+    content = content.replace(/!?\[(.+)]\(.+\)/gi, '$1');
     content = content.trim();
-    const englishLength = content ? (content.match(/[a-zA-Z0-9]+/g) || []).length : 0;
+    const alphaNumLength = content ? (content.match(/[a-zA-Z0-9]+/g) || []).length : 0;
 
-    content = content.replace(/[ッャュョっゃゅょー]/gi, '');
-    const hiraganaLength = content ? (content.match(/[\u3041-\u3093]+/g) || []).length : 0;
-    const katakanaLength = content ? (content.match(/[\u30a0-\u30ff]+/g) || []).length : 0;
-
-    content = content.replace(/[※©☆]/gi, '');
-    const othersLength = content ? (content.match(/[^a-zA-Z0-9\u30a0-\u30ff\u3041-\u3093「」【】：:（）() 　、。,.-]+/g) || []).length : 0;
+    const segmentation = new Intl.Segmenter('ja', { granularity: 'grapheme' });
+    content = content.replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォッャュョヮヵヶー]/gi, '');
+    const kanaContent = content ? (content.match(/([\u3041-\u3094]|[\u30a1-\u30fa])+/g) || []).join('') : '';
+    const kanaLength = [...segmentation.segment(kanaContent)].length;
+    const kanjiContent = content ? (content.match(/([\u3400-\u9fff\uf900-\ufaff]|[\ud840-\ud87f]|[\udc00-\udfff])+/g) || []).join('') : '';
+    const kanjiLength = [...segmentation.segment(kanjiContent)].length;
 
     return {
-        english: englishLength,
-        hiragana: hiraganaLength,
-        katakana: katakanaLength,
-        others: othersLength,
+        alphaNum: alphaNumLength,
+        kana: kanaLength,
+        kanji: kanjiLength,
     };
 }
 
