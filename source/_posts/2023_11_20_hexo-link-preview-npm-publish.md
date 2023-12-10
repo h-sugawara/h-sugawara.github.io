@@ -10,8 +10,9 @@ tags:
   - npm
 category: Technology
 toc: true
-thumbnail: /images/npm_thumbnail.png
-cover: /images/technology_cover.png
+og_image: /images/technology_programming_title.webp
+thumbnail: /images/npm_thumbnail.webp
+cover: /images/technology_programming_cover.webp
 ---
 
 2023年11月19日（日）、自作したHexo用タグプラグイン`hexo-tag-ogp-link-preview v1.0.0`を、npmに公開しました。
