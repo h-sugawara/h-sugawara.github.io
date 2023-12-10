@@ -118,3 +118,8 @@ sitemap:
     - sitemap.xml
   tags: false
   categories: false
+
+# CSS minify
+clean_css:
+  exclude:
+    - '*.min.css'
