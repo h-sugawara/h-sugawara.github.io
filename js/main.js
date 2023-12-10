@@ -1,5 +1,9 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
 (function ($, moment, ClipboardJS, config) {
+    $('.media img').each(function () {
+        $(this).prop('loading', 'lazy');
+    });
+
     $('.article img:not(".not-gallery-item")').each(function () {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
@@ -7,7 +11,7 @@
             if (this.alt) {
                 $(this).after('<p class="has-text-centered is-size-6 caption">' + this.alt + '</p>');
             }
-            $(this).prop('loading', 'lazy')
+            $(this).prop('loading', 'lazy');
         }
     });
 
