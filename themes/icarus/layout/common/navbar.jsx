@@ -33,7 +33,7 @@ class Navbar extends Component {
             if (logo.text) {
                 navbarLogo = logo.text;
             } else {
-                navbarLogo = <img src={logoUrl} alt={siteTitle} height="28" />;
+                navbarLogo = <img src={logoUrl} alt={siteTitle} width="140" height="28" />;
             }
         } else {
             navbarLogo = siteTitle;
