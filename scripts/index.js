@@ -11,3 +11,9 @@ hexo.extend.tag.register(
     require('./tag-ruby-annotation').getBlockRuby(hexo),
     {async: false, ends: true}
 );
+
+hexo.extend.tag.register(
+    'gallery_img',
+    require('./tag-gallery-image').galleryImage(hexo),
+    {async: false, ends: true}
+);
