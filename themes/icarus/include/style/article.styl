@@ -62,7 +62,7 @@ article
                 position: relative
                 margin: 1rem -8px 1rem -32px
                 padding: 1rem
-                color: #3273dc
+                color: #184ea0
                 border-radius: 0 100vh 100vh 0
                 background: #eef3fc
                 -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, .2)
@@ -84,8 +84,8 @@ article
                 margin-top: 0.5rem
                 margin-left: 0.75rem
                 padding: 1rem 0 1rem 1rem
-                color: #00947a
-                background: #e8ece9
+                color: #005748
+                background: #e1eed8
 
             h3:before
                 position: absolute
@@ -94,7 +94,7 @@ article
                 content: ''
                 border-width: 1.75rem 30px 1.75rem 0
                 border-style: solid
-                border-color: transparent #e8ece9 transparent transparent
+                border-color: transparent #e1eed8 transparent transparent
 
             h3:after
                 position: absolute
@@ -104,7 +104,7 @@ article
                 height: 10px
                 content: ''
                 border-radius: 50%
-                background: #00947a
+                background: #005748
 
             h4
                 font-size: 1.125em
@@ -116,8 +116,12 @@ article
                 font-size: .85em
 
             code
-                padding: 0
-                background: transparent
+                padding: 0 0.25rem
+                background: #f3f2f2
+                color: #a40e2c
+                font-weight: 500
+                border: 1px solid #dddddd
+                border-radius: 0.25rem
                 overflow-wrap: break-word
 
             blockquote
@@ -168,7 +172,7 @@ article
                         margin-bottom: 0.25rem
 
                     .og-description
-                        color: #757c83
+                        color: #525252
 
         .article-tags
             display: flex
@@ -237,7 +241,8 @@ article
             @extend .mb-1
 
         a
-            @extend .is-size-7, .has-text-grey
+            @extend .is-size-7
+            color: #525252
 
     .licensing-meta
         .level-item
