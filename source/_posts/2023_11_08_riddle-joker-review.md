@@ -34,16 +34,13 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 
 ### 登場キャラクター
 
-#### メインヒロイン
-
-* {% ruby 三司|みつかさ あやせ %}（CV：{% ruby 沢澤|さわさわ 砂羽|さわ %}）
-* {% ruby 在原|ありはら 七海|ななみ %}（CV：くすはらゆい）
-* {% ruby 式部|しきべ 茉優|まゆ %}（CV：{% ruby 西園|にしぞの 純夏|すみか %}）
-* {% ruby 二条院|にじょういん 羽月|はづき %}（CV：{% ruby 遥|はるか そら %}）
-
-#### サブヒロイン
-
-* {% ruby 壬生|みぶ 千咲|ちさき %}（CV：{% ruby 夏和小|かなこ %}）
+* メインヒロイン
+  * {% ruby 三司|みつかさ あやせ %}（CV：{% ruby 沢澤|さわさわ 砂羽|さわ %}）
+  * {% ruby 在原|ありはら 七海|ななみ %}（CV：くすはらゆい）
+  * {% ruby 式部|しきべ 茉優|まゆ %}（CV：{% ruby 西園|にしぞの 純夏|すみか %}）
+  * {% ruby 二条院|にじょういん 羽月|はづき %}（CV：{% ruby 遥|はるか そら %}）
+* サブヒロイン
+  * {% ruby 壬生|みぶ 千咲|ちさき %}（CV：{% ruby 夏和小|かなこ %}）
 
 ## シナリオ総評
 
@@ -90,7 +87,9 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 
 ちなみに、彼女は本作の根幹となる秘密を抱えているので、そこも意識しながら攻略してみると良いだろう。
 
-![猫耳を装着した激カワあやせさん © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/riddle-joker-review/mitsukasa_ayase.webp)
+{% gallery_img /articles/riddle-joker-review/{mitsukasa_ayase_preview.webp,mitsukasa_ayase.webp} '三司 あやせ' 719x404 %}
+猫耳を装着した激カワあやせさん © YUZUSOFT / JUNOS INC. All Rights Reserved.
+{% endgallery_img %}
 
 ### 在原 七海
 
@@ -112,7 +111,9 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 
 あと、個別ルートにて、彼女が作る餃子の話は、面白くて可愛くてほっこりするので必見。
 
-![七海ちゃんに頼られて拒否できる兄など居ない © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/riddle-joker-review/arihara_nanami.webp)
+{% gallery_img /articles/riddle-joker-review/{arihara_nanami_preview.webp,arihara_nanami.webp} '在原 七海' 719x404 %}
+七海ちゃんに頼られて拒否できる兄など居ない © YUZUSOFT / JUNOS INC. All Rights Reserved.
+{% endgallery_img %}
 
 ### 式部 茉優
 
@@ -132,7 +133,9 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 彼女はとても優秀であるにも関わらず、なぜ二度も留年したのか。
 三司あやせ同様に本作の根幹をなす理由が存在するため、是非攻略してみてほしい。
 
-![茉優先輩にヨシヨシされたい人生であった © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/riddle-joker-review/shikibe_mayu.webp)
+{% gallery_img /articles/riddle-joker-review/{shikibe_mayu_preview.webp,shikibe_mayu.webp} '式部 茉優' 719x404 %}
+茉優先輩にヨシヨシされたい人生であった © YUZUSOFT / JUNOS INC. All Rights Reserved.
+{% endgallery_img %}
 
 ### 二条院 羽月
 
@@ -154,7 +157,9 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 このシーンで、彼女のあまりの可愛さに紳士淑女諸君らが、ハートを撃ち抜かれることは想像に難くない。
 異能力モノには興味ないが、ラブコメは好きという方に、攻略を推したいヒロインである。
 
-![ショッピングモールで犬真似を晒す羽月さん © YUZUSOFT / JUNOS INC. All Rights Reserved.](/articles/riddle-joker-review/nijouin_hazuki.webp)
+{% gallery_img /articles/riddle-joker-review/{nijouin_hazuki_preview.webp,nijouin_hazuki.webp} '二条院 羽月' 719x404 %}
+ショッピングモールで犬真似を晒す羽月さん © YUZUSOFT / JUNOS INC. All Rights Reserved.
+{% endgallery_img %}
 
 ## 総合評価
 
@@ -224,7 +229,7 @@ cover: /articles/riddle-joker-review/riddle_joker_cover.webp
 
 ## 本作の購入リンク
 
-レビューを見て本作が気になったら、DMMまたはSteamから購入してプレイしてみてください。
+レビューを見て本作が気になったら、`DMM`または`Steam`から購入してプレイしてみてください。
 
 ### DMM R18版
 
