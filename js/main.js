@@ -16,7 +16,6 @@
             $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
             if (this.alt) {
                 $(this).after('<p class="has-text-centered is-size-6 caption">' + this.alt + '</p>');
-                $(this).removeAttr('alt');
             }
             $(this).prop('loading', 'lazy');
         }
