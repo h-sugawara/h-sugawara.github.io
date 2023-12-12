@@ -74,11 +74,8 @@ module.exports = class extends Component {
                     </span>}
                 </div> : null}
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
-                    {/* Title */}
-                    {page.title !== '' && index ? <p class="title is-3 is-size-4-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
-                    {page.title !== '' && !index ? <h1 class="title is-3 is-size-4-mobile">{page.title}</h1> : null}
                     {/* Metadata */}
-                    {page.layout !== 'page' ? <div class="article-meta is-size-7 is-uppercase level is-mobile">
+                    {page.layout !== 'page' ? <div class="article-meta is-size-7 level is-mobile">
                         <div class="level-left">
                             {/* Creation Date */}
                             {page.date && <span class="level-item" dangerouslySetInnerHTML={{
@@ -90,19 +87,6 @@ module.exports = class extends Component {
                             }}></span>}
                             {/* author */}
                             {page.author ? <span class="level-item"> {page.author} </span> : null}
-                            {/* Categories */}
-                            {page.categories && page.categories.length ? <span class="level-item">
-                                {(() => {
-                                    const categories = [];
-                                    page.categories.forEach((category, i) => {
-                                        categories.push(<a class="link-muted" href={url_for(category.path)}>{category.name}</a>);
-                                        if (i < page.categories.length - 1) {
-                                            categories.push(<span>&nbsp;/&nbsp;</span>);
-                                        }
-                                    });
-                                    return categories;
-                                })()}
-                            </span> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
@@ -115,6 +99,23 @@ module.exports = class extends Component {
                                 __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>')
                             }}></span> : null}
                         </div>
+                    </div> : null}
+                    {/* Title */}
+                    {page.title !== '' && index ? <p class="title is-3 is-size-4-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
+                    {page.title !== '' && !index ? <h1 class="title is-3 is-size-4-mobile">{page.title}</h1> : null}
+                    {/* Categories */}
+                    {page.categories && page.categories.length ? <div class="article-categories is-size-7 mb-4">
+                        <span className="mr-2">Category:</span>
+                        {(() => {
+                            const categories = [];
+                            page.categories.forEach((category, i) => {
+                                categories.push(<a class="link-muted is-uppercase" href={url_for(category.path)}>{category.name}</a>);
+                                if (i < page.categories.length - 1) {
+                                    categories.push(<span>&nbsp;/&nbsp;</span>);
+                                }
+                            });
+                            return categories;
+                        })()}
                     </div> : null}
                     {/* Content/Excerpt */}
                     <div class="content" dangerouslySetInnerHTML={{
