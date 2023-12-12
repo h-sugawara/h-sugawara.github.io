@@ -6,8 +6,9 @@
     });
 
     $('.og-image img').each(function () {
-        // 記事のリンクプレビュー画像のイメージエレメントに、遅延ロードさせるプロパティを付与（プラグインアップデート後に削除）
+        // 記事のリンクプレビュー画像のイメージエレメントに、遅延ロード属性と代替テキスト属性を付与（プラグインアップデート後に削除）
         $(this).prop('loading', 'lazy');
+        $(this).attr('alt', $('.og-title').text());
     });
 
     $('.article img:not(".not-gallery-item")').each(function () {
