@@ -2,7 +2,7 @@ const moment = require('moment');
 const { Component, Fragment } = require('inferno');
 const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
 const Paginator = require('hexo-component-inferno/lib/view/misc/paginator');
-const ArticleMedia = require('hexo-component-inferno/lib/view/common/article_media');
+const ArticleMedia = require('./common/article_media');
 
 module.exports = class extends Component {
     render() {
@@ -19,16 +19,12 @@ module.exports = class extends Component {
                     <h3 class="tag is-primary">{month === null ? year : time.locale(language).format('MMMM YYYY')}</h3>
                     <div class="timeline">
                         {posts.map(post => {
-                            const categories = post.categories.map(category => ({
-                                url: url_for(category.path),
-                                name: category.name
-                            }));
                             return <ArticleMedia
                                 url={url_for(post.link || post.path)}
                                 title={post.title}
                                 date={date(post.date)}
                                 dateXml={date_xml(post.date)}
-                                categories={categories}
+                                categories={post.categories.map(category => category.name)}
                                 thumbnail={post.thumbnail ? url_for(post.thumbnail) : null} />;
                         })}
                     </div>
