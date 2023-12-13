@@ -1,10 +1,5 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
 (function ($, moment, ClipboardJS, config) {
-    $('.media > figure > a > img').each(function () {
-        // 記事のサムネイル画像のイメージエレメントに、遅延ロードさせるプロパティを付与
-        $(this).prop('loading', 'lazy');
-    });
-
     $('.og-image img').each(function () {
         // 記事のリンクプレビュー画像のイメージエレメントに、遅延ロード属性と代替テキスト属性を付与（プラグインアップデート後に削除）
         $(this).prop('loading', 'lazy');
