@@ -17,8 +17,8 @@ $searchbox-bg-input ?= $white
 $searchbox-bg-close-hover ?= $searchbox-bg-container
 $searchbox-bg-close-active ?= $grey-lighter
 // body styles
-$searchbox-fg-result-header ?= $grey-light
-$searchbox-fg-result-item-secondary ?= $grey-light
+$searchbox-fg-result-header ?= #525252
+$searchbox-fg-result-item-secondary ?= #525252
 $searchbox-bg-result-item-hover ?= $searchbox-bg-input
 $searchbox-fg-result-item-active ?= findColorInvert($primary)
 $searchbox-bg-result-item-active ?= $primary
@@ -49,7 +49,7 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
         text-decoration: none
 
     input
-        font-size: 1rem
+        font-size: 1.15rem
         border: none
         outline: none
         box-shadow: none
@@ -93,13 +93,13 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
         flex-grow: 1
         color: inherit
         box-sizing: border-box
-        padding: .75em 0 .75em 1.25em
+        padding: 0.5em 0 0.5em 0.75em
         background: $searchbox-bg-input
 
     .searchbox-close
         display: inline-block
-        font-size: 1.5em
-        padding: .5em .75em
+        font-size: 1.75em
+        padding: 0.4em 0.5em
         cursor: pointer
 
         &:hover
@@ -154,6 +154,7 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
 
     .searchbox-result-preview
         margin-top: .25em
+        font-size: 0.875rem
 
     .searchbox-result-item:not(:active):not(.active)
         .searchbox-result-preview
