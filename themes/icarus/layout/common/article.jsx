@@ -4,7 +4,7 @@ const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
 const Share = require('./share');
 const Donates = require('./donates');
 const Comment = require('./comment');
-const ArticleLicensing = require('hexo-component-inferno/lib/view/misc/article_licensing');
+const ArticleLicensing = require('../misc/article_licensing');
 
 /**
  * Get the read time and the word count of text content.
