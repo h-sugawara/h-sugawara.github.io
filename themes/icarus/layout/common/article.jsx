@@ -101,8 +101,8 @@ module.exports = class extends Component {
                         </div>
                     </div> : null}
                     {/* Title */}
-                    {page.title !== '' && index ? <p class="title is-3 is-size-4-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
-                    {page.title !== '' && !index ? <h1 class="title is-3 is-size-4-mobile">{page.title}</h1> : null}
+                    {page.title !== '' && index ? <p class="title is-size-2 is-size-3-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
+                    {page.title !== '' && !index ? <h1 class="title is-size-2 is-size-3-mobile">{page.title}</h1> : null}
                     {/* Categories */}
                     {page.categories && page.categories.length ? <div class="article-categories is-size-7 mb-4">
                         <span className="mr-2">Category:</span>
