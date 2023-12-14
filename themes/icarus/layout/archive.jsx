@@ -7,16 +7,17 @@ const ArticleMedia = require('./common/article_media');
 module.exports = class extends Component {
     render() {
         const { config, page, helper } = this.props;
-        const { url_for, __, date_xml, date } = helper;
+        const { url_for, __, date_xml, date, _p } = helper;
 
         const language = toMomentLocale(page.lang || page.language || config.language);
+        moment.locale(language);
 
         function renderArticleList(posts, year, month = null) {
-            const time = moment([page.year, page.month ? page.month - 1 : null].filter(i => i !== null));
+            const time = moment([year, month ? month - 1 : null].filter(i => i !== null));
 
             return <div class="card">
                 <div class="card-content">
-                    <h3 class="tag is-primary">{month === null ? year : time.locale(language).format('MMMM YYYY')}</h3>
+                    <h3 class="tag is-primary is-size-6">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
                     <div class="timeline">
                         {posts.map(post => {
                             return <ArticleMedia
