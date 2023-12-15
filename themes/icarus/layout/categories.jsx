@@ -3,8 +3,12 @@ const Categories = require('hexo-component-inferno/lib/view/widget/categories');
 
 module.exports = class extends Component {
     render() {
-        const { site, page, helper } = this.props;
+        const { site, page, config, helper } = this.props;
 
-        return <Categories.Cacheable site={site} page={page} helper={helper} />;
+        const widget = (config.widgets || []).filter(widget => widget.type === 'categories')
+            .map(widget => { return { orderBy: widget.orderBy, order: widget.order }; })
+            .shift() || {};
+
+        return <Categories.Cacheable site={site} page={page} helper={helper} widget={widget} />;
     }
 };
