@@ -143,14 +143,14 @@ module.exports = class extends Component {
             {!index && (page.prev || page.next) ? <nav class="post-navigation mt-4 level is-mobile">
                 {page.prev ? <div class="level-start">
                     <a class={`article-nav-prev level level-item${!page.prev ? ' is-hidden-mobile' : ''} link-muted`} href={url_for(page.prev.path)}>
-                        <i class="level-item fas fa-chevron-left"></i>
-                        <span class="level-item">{page.prev.title}</span>
+                        <i class="fas fa-chevron-left"></i>
+                        <span>{page.prev.title}</span>
                     </a>
                 </div> : null}
                 {page.next ? <div class="level-end">
                     <a class={`article-nav-next level level-item${!page.next ? ' is-hidden-mobile' : ''} link-muted`} href={url_for(page.next.path)}>
-                        <span class="level-item">{page.next.title}</span>
-                        <i class="level-item fas fa-chevron-right"></i>
+                        <span>{page.next.title}</span>
+                        <i class="fas fa-chevron-right"></i>
                     </a>
                 </div> : null}
             </nav> : null}

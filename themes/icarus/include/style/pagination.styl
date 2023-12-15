@@ -31,5 +31,20 @@ $post-navigation-fg ?= #545454
     flex-wrap: wrap
     justify-content: space-around
 
-    .level-item
-        margin-bottom: 0
+    .level-start, .level-end
+        display: flex
+        flex-basis: 50%
+
+        .article-nav-prev, .article-nav-next
+            flex-grow: 1
+            flex-shrink: 1
+
+            span
+                margin-bottom: 0
+                line-break: strict
+
+            i
+                margin-right: 0.5rem
+                margin-left: 0.5rem
+                margin-bottom: 0
+
