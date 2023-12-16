@@ -9,6 +9,9 @@ tags:
   - ゆずソフト
 category: Game
 toc: true
+has_gallery: true
+has_code: false
+has_icon: false
 og_image: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_title.webp
 thumbnail: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_thumbnail.webp
 cover: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover.webp

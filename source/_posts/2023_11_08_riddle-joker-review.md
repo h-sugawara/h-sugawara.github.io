@@ -9,6 +9,9 @@ tags:
   - ゆずソフト
 category: Game
 toc: true
+has_gallery: true
+has_code: false
+has_icon: false
 og_image: /articles/riddle-joker-review/riddle_joker_title.webp
 thumbnail: /articles/riddle-joker-review/riddle_joker_thumbnail.webp
 cover: /articles/riddle-joker-review/riddle_joker_cover.webp
