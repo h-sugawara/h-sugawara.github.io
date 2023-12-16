@@ -1,4 +1,4 @@
-const { Component, Fragment } = require('inferno');
+const { Component, Fragment, linkEvent } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Gallery extends Component {
@@ -7,8 +7,12 @@ class Gallery extends Component {
 
         if (head) {
             return <Fragment>
-                <link rel="stylesheet" href={lightGallery.cssUrl}/>
-                <link rel="stylesheet" href={justifiedGallery.cssUrl}/>
+                <link rel="preload" href={lightGallery.cssUrl} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                <link rel="preload" href={justifiedGallery.cssUrl} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                <noscript>
+                    <link rel="stylesheet" href={lightGallery.cssUrl} />
+                    <link rel="stylesheet" href={justifiedGallery.cssUrl} />
+                </noscript>
             </Fragment>;
         }
 
