@@ -6,7 +6,7 @@
         $(this).attr('alt', $('.og-title').text());
     });
 
-    $('.article img:not(".not-gallery-item")').each(function () {
+    /*$('.article img:not(".not-gallery-item")').each(function () {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
             $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
@@ -15,7 +15,7 @@
             }
             $(this).prop('loading', 'lazy');
         }
-    });
+    });*/
 
     if (typeof $.fn.lightGallery === 'function') {
         $('.article').lightGallery({selector: '.gallery-item'});
