@@ -395,7 +395,7 @@ plugins:
     # http://outdatedbrowser.com/
     outdated_browser: false
     # Show a progress bar at top of the page on page loading
-    progressbar: true
+#    progressbar: true
     # Statcounter statistics
     # https://statcounter.com/
 #    statcounter:
