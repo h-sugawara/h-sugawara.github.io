@@ -1,4 +1,4 @@
-const { Component } = require('inferno');
+const { Component, Fragment } = require('inferno');
 const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
 const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
@@ -53,21 +53,24 @@ module.exports = class extends Component {
 
         const language = page.lang || page.language || config.language;
         const fontCssUrl = {
-            default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
-            cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono', 'css2')
+            default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro&display=swap', 'css2'),
+            cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
         };
 
-        let hlTheme, images;
+        let hlTheme;
         if (page.has_code || config.has_code) {
+            let hlThemeName;
             if (highlight && highlight.enable === false) {
-                hlTheme = null;
+                hlThemeName = null;
             } else if (article && article.highlight && article.highlight.theme) {
-                hlTheme = article.highlight.theme;
+                hlThemeName = article.highlight.theme;
             } else {
-                hlTheme = 'atom-one-light';
+                hlThemeName = 'atom-one-light';
             }
+            hlTheme = hlThemeName ? cdn('highlight.js', '11.7.0', 'styles/' + hlThemeName + '.css') : null;
         }
 
+        let images;
         if (typeof page.og_image === 'string') {
             images = [page.og_image];
         } else if (typeof page.cover === 'string') {
@@ -170,8 +173,13 @@ module.exports = class extends Component {
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             {page.has_icon || config.has_icon ? <link rel="stylesheet" href={iconcdn()} /> : null}
-            {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '11.7.0', 'styles/' + hlTheme + '.css')} /> : null}
-            <link rel="stylesheet" href={fontCssUrl[variant]} />
+            {hlTheme ? <Fragment>
+                <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                <noscript>
+                    <link rel="stylesheet" href={hlTheme}/>
+                </noscript>
+            </Fragment> : null}
+            <link rel="stylesheet" href={fontCssUrl[variant]}/>
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
 
