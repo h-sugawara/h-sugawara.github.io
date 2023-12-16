@@ -36,15 +36,20 @@ $post-navigation-fg ?= #545454
         flex-basis: 50%
 
         .article-nav-prev, .article-nav-next
+            fill: $post-navigation-fg
             flex-grow: 1
             flex-shrink: 1
+
+            &:hover
+                fill: $primary
 
             span
                 margin-bottom: 0
                 line-break: strict
 
-            i
+            .nav-arrow-icon
                 margin-right: 0.5rem
                 margin-left: 0.5rem
                 margin-bottom: 0
-
+                width: 1rem
+                height: 1rem

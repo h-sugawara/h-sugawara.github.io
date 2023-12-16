@@ -1,6 +1,7 @@
 const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const classname = require('hexo-component-inferno/lib/util/classname');
+const FontAwesomeIcon = require('../misc/font_awesome_icon')
 
 function isSameLink(a, b) {
     function santize(url) {
@@ -63,10 +64,10 @@ class Navbar extends Component {
                             })}
                         </Fragment> : null}
                         {showToc ? <a class="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
-                            <i class="fas fa-list-ul"></i>
+                            <FontAwesomeIcon type="fa-list-ul" className="nav-toc-icon" />
                         </a> : null}
                         {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
-                            <i class="fas fa-search"></i>
+                            <FontAwesomeIcon type="fa-search" className="nav-search-icon" />
                         </a> : null}
                     </div>
                 </div>

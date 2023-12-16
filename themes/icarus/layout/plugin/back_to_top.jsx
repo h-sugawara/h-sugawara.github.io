@@ -1,5 +1,6 @@
 const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
+const FontAwesomeIcon = require('../misc/font_awesome_icon');
 
 class BackToTop extends Component {
     render() {
@@ -7,7 +8,7 @@ class BackToTop extends Component {
 
         return <Fragment>
             <a id="back-to-top" title={title} href="javascript:;">
-                <i class="fas fa-chevron-up"></i>
+                <FontAwesomeIcon type="fa-chevron-up" />
             </a>
             <script src={jsUrl} defer></script>
         </Fragment>;

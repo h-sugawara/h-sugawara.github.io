@@ -6,7 +6,6 @@
     opacity: 0
     outline: none
     padding: 8px 0
-    line-height: 24px
     border-radius: $card-radius
     transform: translateY(120px)
     transition: .4s ease opacity, .4s ease width, .4s ease transform, .4s ease border-radius
@@ -19,6 +18,12 @@
 
     &.rise-up
         transform: translateY(0)
+
+    svg
+        vertical-align: middle
+        width: $body-size
+        height: 24px
+        fill: $card-color
 
 /* ---------------------------------
  *          Gallery Plugin

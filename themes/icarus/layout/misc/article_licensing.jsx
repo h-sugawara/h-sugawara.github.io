@@ -1,5 +1,6 @@
 const {Component} = require('inferno');
 const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const FontAwesomeIcon = require('./font_awesome_icon')
 
 class ArticleLicensing extends Component {
     render() {
@@ -41,13 +42,13 @@ class ArticleLicensing extends Component {
                             if (license.icon) {
                                 iconList = Array.isArray(license.icon) ? license.icon : [license.icon];
                             }
-                            return <a className={className}
+                            return <a class={className}
                                       rel="noopener"
                                       target="_blank"
                                       title={name}
                                       href={license.url}>
                                 {iconList.length ? iconList.map(icon => {
-                                    return <i className={"icon ".concat(icon)}></i>
+                                    return <FontAwesomeIcon type={icon} className="icon" />
                                 }) : name}
                             </a>
                         })}</p>

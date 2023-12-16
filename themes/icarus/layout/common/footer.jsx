@@ -1,5 +1,6 @@
 const { Component } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
+const FontAwesomeIcon = require('../misc/font_awesome_icon')
 
 class Footer extends Component {
     render() {
@@ -50,7 +51,7 @@ class Footer extends Component {
                                 const link = links[name];
                                 return <p class="control">
                                     <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={link.url}>
-                                        {link.icon ? <i class={link.icon}></i> : name}
+                                        {link.icon ? <FontAwesomeIcon type={link.icon} /> : name}
                                     </a>
                                 </p>;
                             })}

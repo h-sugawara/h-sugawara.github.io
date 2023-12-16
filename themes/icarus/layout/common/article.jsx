@@ -5,6 +5,7 @@ const Share = require('./share');
 const Donates = require('./donates');
 const Comment = require('./comment');
 const ArticleLicensing = require('../misc/article_licensing');
+const FontAwesomeIcon = require('../misc/font_awesome_icon')
 
 /**
  * Get the read time and the word count of text content.
@@ -143,19 +144,19 @@ module.exports = class extends Component {
             {!index && (page.prev || page.next) ? <nav class="post-navigation mt-4 level is-mobile">
                 {page.prev ? <div class="level-start">
                     <a class={`article-nav-prev level level-item${!page.prev ? ' is-hidden-mobile' : ''} link-muted`} href={url_for(page.prev.path)}>
-                        <i class="fas fa-chevron-left"></i>
+                        <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
                         <span>{page.prev.title}</span>
                     </a>
                 </div> : null}
                 {page.next ? <div class="level-end">
                     <a class={`article-nav-next level level-item${!page.next ? ' is-hidden-mobile' : ''} link-muted`} href={url_for(page.next.path)}>
                         <span>{page.next.title}</span>
-                        <i class="fas fa-chevron-right"></i>
+                        <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
                     </a>
                 </div> : null}
             </nav> : null}
             {/* Comment */}
-            {!index ? <Comment config={config} page={page} helper={helper} /> : null}
+            {!index ? <Comment config={config} page={page} helper={helper}/> : null}
         </Fragment>;
     }
 };

@@ -224,11 +224,16 @@ article
         position: absolute
         z-index: -1
         right: -50px
-        top: -87.87px
-        content: '\f25e'
-        font-size: 200px
-        font-family: 'Font Awesome 5 Brands'
+        top: -37.87px
+        content: ''
         opacity: .1
+        width: 200px
+        height: 200px
+        background-color: $text
+        -webkit-mask: url('/img/creative-commons.svg')
+        mask: url('/img/creative-commons.svg')
+        -webkit-mask-size: contain
+        mask-size: contain
 
     .level-left
         flex-wrap: wrap
@@ -262,6 +267,7 @@ article
 
         a
             color: inherit
+            fill: #525252
 
 a
     &.article-nav-prev
