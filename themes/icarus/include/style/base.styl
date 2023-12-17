@@ -68,8 +68,6 @@ $card-radius ?= $radius
 $card-media-margin ?= 0.75rem
 $card-shadow ?= $shadow, 0 0 1px rgba(0, 0, 0, 0.1)
 
-$link-card-radius ?= 8px
-
 $menu-label-font-size ?= $size-small
 $menu-label-color ?= $text-light
 
@@ -93,20 +91,20 @@ $colors = merge($colors, $custom-colors)
 @import bulma-stylus-root + '/utilities/controls'
 @import bulma-stylus-root + '/base/_all'
 @import bulma-stylus-root + '/components/breadcrumb'
-@import bulma-stylus-root + '/components/card'
+//@import bulma-stylus-root + '/components/card'
 @import bulma-stylus-root + '/components/level'
 @import bulma-stylus-root + '/components/list'
 @import bulma-stylus-root + '/components/media'
 @import bulma-stylus-root + '/components/menu'
 @import bulma-stylus-root + '/components/message'
 @import bulma-stylus-root + '/components/modal'
-@import bulma-stylus-root + '/components/navbar'
-@import bulma-stylus-root + '/components/pagination'
+//@import bulma-stylus-root + '/components/navbar'
+//@import bulma-stylus-root + '/components/pagination'
 @import bulma-stylus-root + '/elements/_all'
 @import bulma-stylus-root + '/form/tools'
 @import bulma-stylus-root + '/grid/columns'
 @import bulma-stylus-root + '/layout/section'
-@import bulma-stylus-root + '/layout/footer'
+//@import bulma-stylus-root + '/layout/footer'
 
 html
     height: 100%
@@ -141,5 +139,3 @@ body > .section
     ::-webkit-scrollbar-thumb:hover
         background: rgba(0, 0, 0, 0.24)
 
-a.underline
-    text-decoration: underline solid
