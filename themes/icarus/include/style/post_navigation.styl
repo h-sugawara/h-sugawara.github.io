@@ -1,0 +1,42 @@
+/* ---------------------------------
+ *  Post Navigation
+ * --------------------------------- */
+$post-navigation-fg ?= #545454
+
+.post-navigation
+    color: $post-navigation-fg
+    flex-wrap: wrap
+    justify-content: space-around
+
+    .level-start,
+    .level-end
+        display: flex
+        flex-basis: 50%
+
+        .article-nav-prev,
+        .article-nav-next
+            fill: $post-navigation-fg
+            flex-grow: 1
+            flex-shrink: 1
+
+            span
+                margin-bottom: 0
+                line-break: strict
+                flex-shrink: 1
+                word-wrap: break-word
+                white-space: normal
+
+            .nav-arrow-icon
+                margin-right: 0.5rem
+                margin-left: 0.5rem
+                margin-bottom: 0
+                width: 1rem
+                height: 1rem
+
+        .article-nav-prev
+            span
+                text-align: left
+
+        .article-nav-next
+            span
+                text-align: right

@@ -1,9 +1,10 @@
+@import bulma-stylus-root + '/components/pagination'
+
 /* ---------------------------------
- *  Pagination and Post Navigation
+ *  Pagination
  * --------------------------------- */
 $pagination-box-shadow ?= $card-shadow
 $pagination-background-color ?= $button-background-color
-$post-navigation-fg ?= #545454
 
 .pagination
     @extend .pagination.is-centered
@@ -25,31 +26,3 @@ $post-navigation-fg ?= #545454
 
     .pagination-link.is-current
         background: $pagination-current-background-color
-
-.post-navigation
-    color: $post-navigation-fg
-    flex-wrap: wrap
-    justify-content: space-around
-
-    .level-start, .level-end
-        display: flex
-        flex-basis: 50%
-
-        .article-nav-prev, .article-nav-next
-            fill: $post-navigation-fg
-            flex-grow: 1
-            flex-shrink: 1
-
-            &:hover
-                fill: $primary
-
-            span
-                margin-bottom: 0
-                line-break: strict
-
-            .nav-arrow-icon
-                margin-right: 0.5rem
-                margin-left: 0.5rem
-                margin-bottom: 0
-                width: 1rem
-                height: 1rem
