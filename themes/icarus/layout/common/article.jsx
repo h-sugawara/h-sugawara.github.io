@@ -69,7 +69,7 @@ module.exports = class extends Component {
                 {/* Thumbnail */}
                 {coverSource ? <div class="card-image">
                     {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
-                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} loading="lazy" />
+                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
                     </a> : <span class="image is-7by3">
                         <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
                     </span>}
