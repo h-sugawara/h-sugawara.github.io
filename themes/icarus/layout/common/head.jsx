@@ -174,11 +174,17 @@ module.exports = class extends Component {
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             {hasIcon ? <link rel="preload" href={iconcdn()} as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> : null}
-            {hlTheme ? <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> : null}
+            {hlTheme ? <Fragment>
+                <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                <link rel="preload" href={url_for('/css/' + variant + '-codeblock.css')} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+            </Fragment> : null}
             <link rel="preload" href={fontCssUrl[variant]} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
             <noscript>
                 {hasIcon ? <link rel="stylesheet" href={iconcdn()} /> : null}
-                {hlTheme ? <link rel="stylesheet" href={hlTheme} /> : null}
+                {hlTheme ? <Fragment>
+                    <link rel="stylesheet" href={hlTheme} />
+                    <link rel="stylesheet" href={url_for('/css/' + variant + '-codeblock.css')} />
+                </Fragment> : null}
                 <link rel="stylesheet" href={fontCssUrl[variant]} />
             </noscript>
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
