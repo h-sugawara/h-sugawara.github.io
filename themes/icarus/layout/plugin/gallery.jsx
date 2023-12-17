@@ -13,15 +13,13 @@ class Gallery extends Component {
                     <link rel="stylesheet" href={lightGallery.cssUrl} />
                     <link rel="stylesheet" href={justifiedGallery.cssUrl} />
                 </noscript>
+                <script src={lightGallery.jsUrl} defer />
+                <script src={justifiedGallery.jsUrl} defer />
             </Fragment>;
         }
 
         const js = "window.addEventListener(\"load\",()=>{if(typeof $.fn.lightGallery==='function'){$('.article').lightGallery({selector:'.gallery-item'});} if(typeof $.fn.justifiedGallery==='function'){if($('.justified-gallery>p>.gallery-item').length){$('.justified-gallery > p > .gallery-item').unwrap();}$('.justified-gallery').justifiedGallery();}});";
-        return <Fragment>
-            <script src={lightGallery.jsUrl} defer />
-            <script src={justifiedGallery.jsUrl} defer />
-            <script dangerouslySetInnerHTML={{__html: js}} />
-        </Fragment>;
+        return <script dangerouslySetInnerHTML={{__html: js}} />;
     }
 }
 

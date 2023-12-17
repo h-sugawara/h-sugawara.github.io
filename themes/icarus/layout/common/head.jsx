@@ -56,6 +56,7 @@ module.exports = class extends Component {
             default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro&display=swap', 'css2'),
             cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
         };
+        const hasIcon = page.has_icon || config.has_icon;
 
         let hlTheme;
         if (page.has_code || config.has_code) {
@@ -172,20 +173,19 @@ module.exports = class extends Component {
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
-            {page.has_icon || config.has_icon ? <link rel="stylesheet" href={iconcdn()} /> : null}
-            {hlTheme ? <Fragment>
-                <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-                <noscript>
-                    <link rel="stylesheet" href={hlTheme}/>
-                </noscript>
-            </Fragment> : null}
-            <link rel="stylesheet" href={fontCssUrl[variant]}/>
+            {hasIcon ? <link rel="preload" href={iconcdn()} as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> : null}
+            {hlTheme ? <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> : null}
+            <link rel="preload" href={fontCssUrl[variant]} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+            <noscript>
+                {hasIcon ? <link rel="stylesheet" href={iconcdn()} /> : null}
+                {hlTheme ? <link rel="stylesheet" href={hlTheme} /> : null}
+                <link rel="stylesheet" href={fontCssUrl[variant]} />
+            </noscript>
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
+            <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')} defer></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-
-            {adsenseClientId ? <script data-ad-client={adsenseClientId}
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
-
+            <script src={url_for('/js/main.js')} defer></script>
+            {adsenseClientId ? <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
             {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
         </head>;
     }
