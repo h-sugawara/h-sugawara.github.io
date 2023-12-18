@@ -25,32 +25,32 @@ cover: /images/technology_programming_cover.webp
 
 ## 何のためのプラグインか
 
-`hexo-tag-ogp-link-preview`は、OpenGraphプロトコル対応のページから取得したデータを用いてリンクプレビューを生成し、Hexoのブログ記事に埋め込むためのプラグインです。
+`hexo-tag-ogp-link-preview`は、`OpenGraphプロトコル`対応のページから取得したデータを用いてリンクプレビューを生成し、`Hexo`のブログ記事に埋め込むためのプラグインです。
 
 {% link_preview https://www.npmjs.com/package/hexo-tag-ogp-link-preview %}
 hexo-tag-ogp-link-preview@npm
 {% endlink_preview %}
 
-FaceBookを始めX(Twitter)等のSNSで、リンク共有時に表示されるようなカードを、Hexoでも上記のような感じで再現することができます。
+`FaceBook`を始め`X(Twitter)`等の`SNS`でリンク共有時に表示されるようなカードを、`Hexo`でも上記のような感じで再現することができます。
 
 ## 開発に至った経緯
 
-元々は、書いた[「RIDDLE JOKER」のレビュー](https://blog.chaotic-notes.com/2023/11/08/riddle-joker-review/)に、`Fanza Games`や`Steam`へのビジュアルリッチなリンクを欲したことが発端です。
+元々は、書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}に、`Fanza Games`や`Steam`へのビジュアルリッチなリンクを欲したことが発端です。
 
-レビューを投稿するにあたり、作中のスクショを張りたかったことと、ゲームそのものがR18指定だったこともあり、AmebaやFC2等のブログサービスを使用せず、ホスティングしようと考えました。
+レビューを投稿するにあたり、作中のスクショを張りたかったことと、ゲームそのものがR18指定だったこともあり、`Ameba`や`FC2`等のブログサービスを使用せず、ホスティングしようと考えました。
 結果、`GitHub Pages`+`Hexo.js`+`Icarus`の組み合わせで、ブログの作成と相成りました。
 
-ですが、Hexo並びにIcarusにはデフォルトでリンクプレビュー機能が存在しません。
+ですが、`Hexo`並びに`Icarus`にはデフォルトでリンクプレビュー機能が存在しません。
 まずは、どうすれば実現できるのかをググりました。
-すると、「[Hexo + Icarus リンクカードを設定する](https://circleken.net/2020/10/post32/)」という、まさに正鵠を射る記事を発見。
+すると、{% anchor "「Hexo+Icarus リンクカードを設定する」" https://circleken.net/2020/10/post32/ true "Hexo + Icarus リンクカードを設定する" %}という、まさに正鵠を射る記事を発見。
 そこに書かれていた`hexo-tag-link-preview`を`npm install`して使うことにしました。
 
 しかし、レビュー記事をプレビュー表示してみると、生成したページに問題が発生しています。
 なんと、`Fanza Games`版のリンクが、`undefined`になっているではありませんか。
 
-そこで、該当のプラグインはOSSなので、Bug issueを立てて修正していただく考えに至りました。
+そこで、該当のプラグインは`OSS`なので、`Bug issue`を立てて修正していただく考えに至りました。
 とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。
-加えて、作者のブログの[「hexo-tag-link-previewをnpmで公開しました。」](https://minamo173.com/blog/publish-hexo-tag-link-preview/)記事で、現在はHexoを使用していない、との記述を発見。 
+加えて、作者のブログの{% anchor "「hexo-tag-link-previewをnpmで公開しました。」" https://circleken.net/2020/10/post32/ true "hexo-tag-link-previewをnpmで公開しました。" %}記事で、現在は`Hexo`を使用していない、との記述を発見。 
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
 それから、数日で自作プラグインが完成し、無事にレビュー記事にも反映。
@@ -60,7 +60,7 @@ FaceBookを始めX(Twitter)等のSNSで、リンク共有時に表示される�
 
 ## 参考プラグインとの違い
 
-Hexoは、`snake_case`で記載するのが一般的であるようです。
+`Hexo`は、`snake_case`で記載するのが一般的であるようです。
 そのため、`hexo-tag-link-preview`が`lowerCamelCase`表記であったところを、`hexo-tag-ogp-link-preview`では`snake_case`に変えています。
 これは、タグ名と設定項目の両方に適用されます（タグ名は`linkPreview`から`link_preview`に、設定項目は例えば、`className`が`class_name`へ変更）。
 この違いさえ忘れずに、正しく修正すれば、プラグインそのものを差し替えても、そのまま動作する仕様となっています。
@@ -70,7 +70,7 @@ Hexoは、`snake_case`で記載するのが一般的であるようです。
 
 ## Icarusテーマ利用者向け
 
-このセクションは、Icarusテーマ利用者向けに、[「RIDDLE JOKER」のレビュー](https://blog.chaotic-notes.com/2023/11/08/riddle-joker-review/)で表示しているFaceBook風なリンクプレビューデザインを設定するための解説をします。
+このセクションは、`Icarus`テーマ利用者向けに{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}で表示している`FaceBook`風なリンクプレビューデザインを設定するための解説をします。
 
 ### デザイン設定
 
@@ -135,8 +135,8 @@ article
 
 ### Hexo設定
 
-続いて、Hexo設定ファイルで、`hexo-tag-ogp-link-preview`の設定調整を行います。
-デフォルト設定状態では、FaceBook風なデザインの再現を阻む不都合が二つ発生します。
+続いて、`Hexo`設定ファイルで、`hexo-tag-ogp-link-preview`の設定調整を行います。
+デフォルト設定状態では、`FaceBook`風なデザインの再現を阻む不都合が二つ発生します。
 それは、リンクの文字色が目立つということと、画像がギャラリーにアイテムとして追加されてしまうということです。
 一つ目は、`class_name.anchor_link`に`link-muted link-preview`を設定することで防ぎます。
 二つ目は、`class_name.image`に`not-gallery-item`を設定することで対策できます。
