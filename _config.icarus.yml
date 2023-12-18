@@ -98,7 +98,7 @@ head:
     meta:
         # Meta tag specified in <attribute>=<value> style
         # E.g., name=theme-color;content=#123456 => <meta name="theme-color" content="#123456">
-#        - ''
+        - 'name="google-site-verification";content="b_zdKwaU8LwSsKciBy8qWPemm_p7EbEvxprI4PiNois"'
     # URL or path to the website's RSS atom.xml
     rss:
 # Page top navigation bar configurations
@@ -377,9 +377,9 @@ plugins:
     gallery: true
     # Google Analytics plugin settings
     # https://analytics.google.com
-    google_analytics:
+#    google_analytics:
         # Google Analytics tracking ID
-        tracking_id: G-Y6JC5TBHLG
+#        tracking_id: G-Y6JC5TBHLG
     # Hotjar user feedback plugin
     # https://www.hotjar.com/
 #    hotjar:
