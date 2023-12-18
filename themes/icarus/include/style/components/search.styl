@@ -46,10 +46,11 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
 
     a, a:hover
         color: inherit
+        fill: inherit
         text-decoration: none
 
     input
-        font-size: 1.15rem
+        font-size: $size-5
         border: none
         outline: none
         box-shadow: none
@@ -98,8 +99,8 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
 
     .searchbox-close
         display: inline-block
-        font-size: 1.75em
-        padding: 0.4em 0.5em
+        font-size: $size-3
+        padding: 0.5em
         cursor: pointer
 
         &:hover
@@ -132,6 +133,7 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
         &:active, &.active
             color: $searchbox-fg-result-item-active
             background-color: $searchbox-bg-result-item-active
+            fill: $searchbox-fg-result-item-active
 
         em
             font-style: normal

@@ -71,6 +71,11 @@ module.exports = class extends Component {
             hlTheme = hlThemeName ? cdn('highlight.js', '11.7.0', 'styles/' + hlThemeName + '.css') : null;
         }
 
+        let searchJs;
+        if (typeof config.search.type === 'string' && config.search.type !== '') {
+            searchJs = url_for(`/js/${config.search.type}.js`);
+        }
+
         let images;
         if (typeof page.og_image === 'string') {
             images = [page.og_image];
@@ -192,6 +197,7 @@ module.exports = class extends Component {
             </noscript>
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')} defer></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
+            {searchJs ? <script src={searchJs} defer></script> : null}
             <script src={url_for('/js/main.js')} defer></script>
             {adsenseClientId ? <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
             {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
