@@ -53,7 +53,7 @@ module.exports = class extends Component {
 
         const language = page.lang || page.language || config.language;
         const fontCssUrl = {
-            default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro&display=swap', 'css2'),
+            default: fontcdn('Source+Code+Pro&display=swap', 'css2'),
             cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
         };
         const hasIcon = page.has_icon || config.has_icon;
