@@ -25,9 +25,9 @@ class Gallery extends Component {
 
 Gallery.Cacheable = cacheComponent(Gallery, 'plugin.gallery', props => {
     const { page, helper, head } = props;
-    const hasGallery = typeof page.has_gallery === 'boolean' ? page.has_gallery : true;
+    const { has_gallery = false } = page;
 
-    if (!hasGallery) {
+    if (!has_gallery) {
         return null;
     }
 
