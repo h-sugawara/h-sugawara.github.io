@@ -12,7 +12,7 @@ category: Technology
 toc: true
 has_gallery: false
 has_code: true
-has_icon: false
+has_icon: true
 og_image: /images/technology_programming_title.webp
 thumbnail: /images/npm_thumbnail.webp
 cover: /images/technology_programming_cover.webp
@@ -50,7 +50,7 @@ hexo-tag-ogp-link-preview@npm
 
 そこで、該当のプラグインは`OSS`なので、`Bug issue`を立てて修正していただく考えに至りました。
 とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。
-加えて、作者のブログの{% anchor "「hexo-tag-link-previewをnpmで公開しました。」" https://circleken.net/2020/10/post32/ true "hexo-tag-link-previewをnpmで公開しました。" %}記事で、現在は`Hexo`を使用していない、との記述を発見。 
+加えて、作者のブログ記事の{% anchor "「hexo-tag-link-previewをnpmで公開しました。」" https://minamo173.com/blog/publish-hexo-tag-link-preview/ true "hexo-tag-link-previewをnpmで公開しました。" %}で、現在は`Hexo`を使用していない、との記述を発見。 
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
 それから、数日で自作プラグインが完成し、無事にレビュー記事にも反映。
