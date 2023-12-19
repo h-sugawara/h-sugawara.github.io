@@ -3,7 +3,7 @@ const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
 const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
 const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_data');
-const Plugins = require('./plugins');
+const Assets = require('./assets');
 
 function getPageTitle(page, siteTitle, helper) {
     let title = page.title;
@@ -28,17 +28,34 @@ function getPageTitle(page, siteTitle, helper) {
     return [title, siteTitle].filter(str => typeof str !== 'undefined' && str.trim() !== '').join(' - ');
 }
 
+function getImages(helper, page, article) {
+    const { url_for } = helper;
+
+    if (typeof page.og_image === 'string') {
+        return [page.og_image];
+    } else if (typeof page.cover === 'string') {
+        return [url_for(page.cover)];
+    } else if (typeof page.thumbnail === 'string') {
+        return [url_for(page.thumbnail)];
+    } else if (article && typeof article.og_image === 'string') {
+        return [article.og_image];
+    } else if (page.content && page.content.includes('<img')) {
+        let images = [];
+        let img;
+        const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;
+        while ((img = imgPattern.exec(page.content)) !== null) {
+            images.push(img[1]);
+        }
+        return images;
+    }
+    return [url_for('/img/og_image.png')];
+}
+
 module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
-        const { url_for, cdn, fontcdn, iconcdn, is_post } = helper;
-        const {
-            url,
-            head = {},
-            article,
-            highlight,
-            variant = 'default'
-        } = config;
+        const { url_for, is_post } = helper;
+        const { url, head = {}, article } = config;
         const {
             meta = [],
             manifest = {},
@@ -52,51 +69,8 @@ module.exports = class extends Component {
         const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();
 
         const language = page.lang || page.language || config.language;
-        const fontCssUrl = {
-            default: fontcdn('Source+Code+Pro&display=swap', 'css2'),
-            cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
-        };
-        const hasIcon = page.has_icon || config.has_icon;
 
-        let hlTheme;
-        if (page.has_code || config.has_code) {
-            let hlThemeName;
-            if (highlight && highlight.enable === false) {
-                hlThemeName = null;
-            } else if (article && article.highlight && article.highlight.theme) {
-                hlThemeName = article.highlight.theme;
-            } else {
-                hlThemeName = 'atom-one-light';
-            }
-            hlTheme = hlThemeName ? cdn('highlight.js', '11.7.0', 'styles/' + hlThemeName + '.css') : null;
-        }
-
-        let searchJs;
-        if (typeof config.search.type === 'string' && config.search.type !== '') {
-            searchJs = url_for(`/js/${config.search.type}.js`);
-        }
-
-        let images;
-        if (typeof page.og_image === 'string') {
-            images = [page.og_image];
-        } else if (typeof page.cover === 'string') {
-            images = [url_for(page.cover)];
-        } else if (page.cover && typeof page.cover.src === 'string') {
-            images = [url_for(page.cover.src)];
-        } else if (typeof page.thumbnail === 'string') {
-            images = [url_for(page.thumbnail)];
-        } else if (article && typeof article.og_image === 'string') {
-            images = [article.og_image];
-        } else if (page.content && page.content.includes('<img')) {
-            let img;
-            images = [];
-            const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;
-            while ((img = imgPattern.exec(page.content)) !== null) {
-                images.push(img[1]);
-            }
-        } else {
-            images = [url_for('/img/og_image.png')];
-        }
+        const images = getImages(helper, page, article);
 
         let adsenseClientId = null;
         if (Array.isArray(config.widgets)) {
@@ -178,27 +152,7 @@ module.exports = class extends Component {
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
-            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
-            <link rel="preload" href={url_for('/css/' + variant + '-secondary.css')} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-            {hasIcon ? <link rel="preload" href={iconcdn()} as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> : null}
-            {hlTheme ? <Fragment>
-                <link rel="preload" href={hlTheme} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-                <link rel="preload" href={url_for('/css/' + variant + '-codeblock.css')} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-            </Fragment> : null}
-            <link rel="preload" href={fontCssUrl[variant]} as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-            <noscript>
-                <link rel="stylesheet" href={url_for('/css/' + variant + '-secondary.css')} />
-                {hasIcon ? <link rel="stylesheet" href={iconcdn()} /> : null}
-                {hlTheme ? <Fragment>
-                    <link rel="stylesheet" href={hlTheme} />
-                    <link rel="stylesheet" href={url_for('/css/' + variant + '-codeblock.css')} />
-                </Fragment> : null}
-                <link rel="stylesheet" href={fontCssUrl[variant]} />
-            </noscript>
-            <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')} defer></script>
-            <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-            {searchJs ? <script src={searchJs} defer></script> : null}
-            <script src={url_for('/js/main.js')} defer></script>
+            <Assets site={site} config={config} helper={helper} page={page} head={true} />
             {adsenseClientId ? <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
             {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
         </head>;

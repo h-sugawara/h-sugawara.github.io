@@ -4,7 +4,7 @@ const Head = require('./common/head');
 const Navbar = require('./common/navbar');
 const Widgets = require('./common/widgets');
 const Footer = require('./common/footer');
-const Scripts = require('./common/scripts');
+const Assets = require("./common/assets");
 const Search = require('./common/search');
 
 module.exports = class extends Component {
@@ -35,7 +35,7 @@ module.exports = class extends Component {
                     </div>
                 </section>
                 <Footer config={config} helper={helper} />
-                <Scripts site={site} config={config} helper={helper} page={page} />
+                <Assets site={site} config={config} helper={helper} page={page} head={false} />
                 <Search config={config} helper={helper} />
             </body>
         </html>;
