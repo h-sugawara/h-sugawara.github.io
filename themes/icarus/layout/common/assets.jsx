@@ -50,9 +50,10 @@ function getScriptUrl(helper, config) {
     const clipboard = cdn('clipboard', '2.0.4', 'dist/clipboard.min.js');
     const jQuery = cdn('jquery', '3.3.1', 'dist/jquery.min.js');
     const moment = cdn('moment', '2.22.2', 'min/moment-with-locales.min.js');
+    const toc = url_for('/js/toc.js');
     const searchJs = url_for(`/js/${search.type}.js`);
 
-    return { clipboard, main, jQuery, moment, searchJs };
+    return { clipboard, main, jQuery, moment, toc, searchJs };
 }
 
 module.exports = class extends Component {
@@ -65,6 +66,7 @@ module.exports = class extends Component {
         const hasCode = page.has_code || config.has_code;
         const searchEnabled = typeof config.search.type === 'string' && config.search.type !== '';
         const { moment: momentEnabled = false } = config;
+        const showToc = (config.toc === true) && ['page', 'post'].includes(page.layout);
 
         if (!head) {
             return <Fragment>
@@ -87,6 +89,7 @@ module.exports = class extends Component {
             clipboard: clipboardJsUrl,
             jQuery: jQueryScriptUrl,
             moment: momentJsUrl,
+            toc: tocJsUrl,
             searchJs: searchJsUrl,
         } = getScriptUrl(helper, config)
 
@@ -115,6 +118,7 @@ module.exports = class extends Component {
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
             {momentEnabled && <script src={momentJsUrl} defer></script>}
             {searchEnabled && <script src={searchJsUrl} defer></script>}
+            {showToc && <script src={tocJsUrl} defer></script>}
             <script src={mainJsUrl} defer></script>
         </Fragment>;
     }

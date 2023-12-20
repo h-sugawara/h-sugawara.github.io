@@ -29,6 +29,15 @@
 .level.is-multiline
     flex-wrap: wrap
 
+#toc
+    .menu-list
+        li
+            a.collapsed.is-active + .menu-list
+                display: block
+
+            a.collapsed + .menu-list
+                display: none
+
 /* ---------------------------------
  *      Table of Content Widget
  * --------------------------------- */
@@ -36,7 +45,7 @@
     .widget.card#toc
         display: none
         position: fixed
-        margin: 1rem
+        margin: 2rem 1rem
         left: 0
         right: 0
         bottom: 0
