@@ -91,8 +91,8 @@ figure.highlight
         border-radius: inherit
 
 figure.highlight.foldable
-  div.level-left
-    cursor: pointer  // clicking the codeblock filename can toggle folding 
+    div.level-left
+        cursor: pointer
 
 /* ---------------------------------
  *        Fix Gist Snippet
@@ -107,3 +107,24 @@ figure.highlight.foldable
 
     .file
         all: initial
+
+svg_icon(w, h, bgc, name)
+    display: inline-block
+    content: ''
+    background-color: bgc
+    width: w
+    height: h
+    -webkit-mask: name
+    mask: name
+    -webkit-mask-size: cover
+    mask-size: cover
+    vertical-align: sub
+
+.svg-angle-down:before
+    svg_icon(calc(0.8em * 1.5 * 0.875), calc(0.8em * 1.5), rgb(220, 220, 220), url('/img/angle-down.svg'))
+
+.svg-angle-right:before
+    svg_icon(calc(0.8em * 1.5 * 0.625), calc(0.8em * 1.5), rgb(220, 220, 220), url('/img/angle-right.svg'))
+
+.svg-copy:before
+    svg_icon(calc(0.8em * 1.5 * 0.875), calc(0.8em * 1.5), rgb(220, 220, 220), url('/img/copy.svg'))

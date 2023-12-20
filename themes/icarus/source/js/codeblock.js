@@ -3,12 +3,12 @@
     function toggleFold(codeBlock, isFolded) {
         const $toggle = $(codeBlock).find('.fold i');
         !isFolded ? $(codeBlock).removeClass('folded') : $(codeBlock).addClass('folded');
-        !isFolded ? $toggle.removeClass('fa-angle-right') : $toggle.removeClass('fa-angle-down');
-        !isFolded ? $toggle.addClass('fa-angle-down') : $toggle.addClass('fa-angle-right');
+        !isFolded ? $toggle.removeClass('svg-angle-right') : $toggle.removeClass('svg-angle-down');
+        !isFolded ? $toggle.addClass('svg-angle-down') : $toggle.addClass('svg-angle-right');
     }
 
     function createFoldButton(fold) {
-        return '<span class="fold">' + (fold === 'unfolded' ? '<i class="fas fa-angle-down"></i>' : '<i class="fas fa-angle-right"></i>') + '</span>';
+        return '<span class="fold">' + (fold === 'unfolded' ? '<i class="svg-angle-down"></i>' : '<i class="svg-angle-right"></i>') + '</span>';
     }
 
     $('figure.highlight table').wrap('<div class="highlight-body">');
@@ -46,7 +46,7 @@
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
             $('figure.highlight').each(function () {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
-                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-copy"></i></a>';
+                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="svg-copy"></i></a>';
                 $(this).attr('id', id);
                 $(this).find('figcaption div.level-right').append(button);
             });
