@@ -1,7 +1,9 @@
 /* ---------------------------------
  *    Article Summary and Content
  * --------------------------------- */
-$link-card-radius ?= 8px
+$link-preview-card-radius ?= 8px
+$link-preview-card-border-width ?= 1px
+$link-preview-card-contents-radius ?= $link-preview-card-radius - $link-preview-card-border-width
 
 article
     &.media
@@ -147,30 +149,31 @@ article
 
             .link-preview
                 display: block
-                border: 1px solid #cbd0d3
-                border-radius: $link-card-radius
+                border-width: $link-preview-card-border-width
+                border-style: solid
+                border-color: #cbd0d3
+                border-radius: $link-preview-card-radius
                 margin: 1rem 0 1rem 0
-                font-size: 1rem
+                font-size: $size-normal
                 background-color: #f2f3f5
 
                 .og-image
                     img
-                        overflow: hidden
-                        border-top-left-radius: $link-card-radius
-                        border-top-right-radius: $link-card-radius
-                        max-height: 270px
+                        border-top-left-radius: $link-preview-card-contents-radius
+                        border-top-right-radius: $link-preview-card-contents-radius
                         object-fit: cover
-                        object-position: center;
+                        object-position: center
                         width: 100% !important
                         height: 100% !important
+                        aspect-ratio: 40 / 21
 
                 .descriptions
                     padding: 0 1rem 0.5rem 1rem
-                    border-bottom-left-radius: $link-card-radius
-                    border-bottom-right-radius: $link-card-radius
+                    border-bottom-left-radius: $link-preview-card-contents-radius
+                    border-bottom-right-radius: $link-preview-card-contents-radius
 
                     .og-title
-                        font-size: 1.25rem
+                        font-size: $size-4
                         font-weight: 600
                         margin-bottom: 0.25rem
 
