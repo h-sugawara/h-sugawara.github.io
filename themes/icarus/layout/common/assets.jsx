@@ -30,30 +30,37 @@ function getCssUrl(helper, config) {
     const { url_for, cdn, fontcdn, iconcdn } = helper;
     const { article, highlight, variant = 'default' } = config;
 
-    const main = url_for(`/css/${variant}.css`);
-    const sub = url_for(`/css/${variant}-secondary.css`);
-    const codeBlock = url_for(`/css/${variant}-codeblock.css`);
-    const hlTheme = cdn('highlight.js', '11.7.0', `styles/${getHighlightThemeName(highlight, article)}.css`);
     const fonts = {
         default: fontcdn('Source+Code+Pro&display=swap', 'css2'),
         cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
     };
 
-    return { main, sub, codeBlock, hlTheme, font: fonts[variant], icon: iconcdn() };
+    return {
+        main: url_for(`/css/${variant}.css`),
+        sub: url_for(`/css/${variant}-secondary.css`),
+        font: fonts[variant],
+        icon: iconcdn(),
+        codeBlock: url_for(`/css/${variant}-codeblock.css`),
+        hlTheme: cdn('highlight.js', '11.7.0', `styles/${getHighlightThemeName(highlight, article)}.css`),
+    };
 }
 
 function getScriptUrl(helper, config) {
     const { url_for, cdn } = helper;
     const { search = { type: 'insights' } } = config;
 
-    const main = url_for('/js/main.js');
-    const clipboard = cdn('clipboard', '2.0.4', 'dist/clipboard.min.js');
-    const jQuery = cdn('jquery', '3.3.1', 'dist/jquery.min.js');
-    const moment = cdn('moment', '2.22.2', 'min/moment-with-locales.min.js');
-    const toc = url_for('/js/toc.js');
-    const searchJs = url_for(`/js/${search.type}.js`);
-
-    return { clipboard, main, jQuery, moment, toc, searchJs };
+    return {
+        main: url_for('/js/main.js'),
+        jQuery: cdn('jquery', '3.3.1', 'dist/jquery.min.js'),
+        moment: cdn('moment', '2.22.2', 'min/moment-with-locales.min.js'),
+        relativeDateTime: url_for('/js/relative_datetime.js'),
+        searchJs: url_for(`/js/${search.type}.js`),
+        toc: url_for('/js/toc.js'),
+        toggleToc: url_for('/js/toggle_toc.js'),
+        clipboard: cdn('clipboard', '2.0.4', 'dist/clipboard.min.js'),
+        codeBlock: url_for(`/js/codeblock.js`),
+        gallery: url_for('/js/gallery.js'),
+    };
 }
 
 module.exports = class extends Component {
@@ -67,6 +74,7 @@ module.exports = class extends Component {
         const searchEnabled = typeof config.search.type === 'string' && config.search.type !== '';
         const { moment: momentEnabled = false } = config;
         const showToc = (config.toc === true) && ['page', 'post'].includes(page.layout);
+        const { has_gallery: hasGallery = false } = page;
 
         if (!head) {
             return <Fragment>
@@ -79,18 +87,22 @@ module.exports = class extends Component {
         const {
             main: mainCssUrl,
             sub: subCssUrl,
-            codeBlock: codeBlockCssUrl,
-            hlTheme: hlThemeCssUrl,
             font: fontCssUrl,
             icon: iconCssUrl,
+            codeBlock: codeBlockCssUrl,
+            hlTheme: hlThemeCssUrl,
         } = getCssUrl(helper, config);
         const {
             main: mainJsUrl,
-            clipboard: clipboardJsUrl,
             jQuery: jQueryScriptUrl,
             moment: momentJsUrl,
-            toc: tocJsUrl,
+            relativeDateTime: relativeDateTimeJsUrl,
             searchJs: searchJsUrl,
+            toc: tocJsUrl,
+            toggleToc: toggleTocJsUrl,
+            clipboard: clipboardJsUrl,
+            codeBlock: codeBlockJsUrl,
+            gallery: galleryJsUrl,
         } = getScriptUrl(helper, config)
 
         const onLoadForPreloadCss = "this.onload=null;this.rel='stylesheet'";
@@ -116,9 +128,17 @@ module.exports = class extends Component {
             </noscript>
             <script src={jQueryScriptUrl} defer></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-            {momentEnabled && <script src={momentJsUrl} defer></script>}
+            {momentEnabled ? <Fragment>
+                <script src={momentJsUrl} defer></script>
+                <script src={relativeDateTimeJsUrl} defer></script>
+            </Fragment> : null}
             {searchEnabled && <script src={searchJsUrl} defer></script>}
-            {showToc && <script src={tocJsUrl} defer></script>}
+            {showToc ? <Fragment>
+                <script src={tocJsUrl} defer></script>
+                <script src={toggleTocJsUrl} defer></script>
+            </Fragment> : null}
+            {hasCode && <script src={codeBlockJsUrl} defer></script>}
+            {hasGallery && <script src={galleryJsUrl} defer></script>}
             <script src={mainJsUrl} defer></script>
         </Fragment>;
     }
