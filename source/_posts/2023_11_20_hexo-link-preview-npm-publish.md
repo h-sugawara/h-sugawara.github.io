@@ -12,7 +12,7 @@ category: Technology
 toc: true
 has_gallery: false
 has_code: true
-has_icon: true
+has_icon: false
 og_image: /images/technology_programming_title.webp
 thumbnail: /images/npm_thumbnail.webp
 cover: /images/technology_programming_cover.webp
