@@ -91,8 +91,9 @@ module.exports = class extends Component {
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
-                                    const { words, time } = getReadTimeAndWordCountOf(page._content);
-                                    return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())} (${_p('article.word_count', words)})`;
+                                    const { time } = getReadTimeAndWordCountOf(page._content);
+                                    //return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())} (${_p('article.word_count', words)})`;
+                                    return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())}`;
                                 })()}
                             </span> : null}
                             {/* Visitor counter */}
