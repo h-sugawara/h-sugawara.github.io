@@ -12,7 +12,7 @@ category: Technology
 toc: true
 has_gallery: false
 has_code: true
-has_icon: false
+has_icon: true
 og_image: /images/technology_blog_title.webp
 thumbnail: /images/hexo_thumbnail.webp
 cover: /images/technology_blog_cover.webp
@@ -51,7 +51,7 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 
 書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}を投稿する場所と方法を探していたことがきっかけです。
 
-作中のスクショを張りたかったことと、R18指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
+作中のスクショを張りたかったことと、R18 指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
 `GitHub Pages`で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
 
 あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。
@@ -70,22 +70,22 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 ### ローカル環境整備
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> `Node.js`のバージョン管理ツールをインストールしておくと楽です。
-　Windows => `nvm-windows`をインストール。
+<i class="fa-solid fa-circle-info"></i> Node.js のバージョン管理ツールをインストールしておくと楽です。
+　Windows => nvm-windows をインストール。
 　Mac または Linux => お好きなツールをインストール。
 {% endmessage %}
 {% message color:info %}
 <i class="fa-solid fa-circle-info"></i> Git はインストール必須です。
 　Windows => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
 　Mac => HomeBrew 等でインストール。
-　Linux => `apt-get`や yum でインストール。
+　Linux => apt-get や yum でインストール。
 {% endmessage %}
 
-1. `Node.js`のバージョン管理ツールから最新版をインストールします。
+1. Node.js のバージョン管理ツールから最新版をインストールします。
 大抵のツールは、インストール後にバージョン切り替えをしないので、自分でインストールしたバージョンに変更するコマンドを実行してください。
 その後、`node -v`コマンドで、最新バージョンに切り替わっていることを確認してください。
 2. npm を最新バージョンに更新します。
-3. npm 経由で、`hexo-cli`をインストールします。
+3. npm 経由で、hexo-cli をインストールします。
 ```shell terminal
 npm install -g hexo-cli
 ```
@@ -109,11 +109,11 @@ npm install
 では、下記のコマンドを実行してセットアップしたブログを表示してみましょう！
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
+<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。
 それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> コマンド実行時にログにも出ますが、`Ctrl+C`で`Hexo`サーバーを止められます。
+<i class="fa-solid fa-circle-info"></i> コマンド実行時にログにも出ますが、Ctrl+C で`Hexo`サーバーを止められます。
 {% endmessage %}
 
 ```shell terminal
@@ -131,11 +131,11 @@ npm run clean && npm run server
 
 {% message color:warning %}
 <i class="fas fa-circle-exclamation"></i> `npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
-`git clone`する方法、または、GitHub から`Download zip`する方法で導入することを推奨します。
+`git clone`する方法、または、GitHub から Download zip する方法で導入することを推奨します。
 {% endmessage %}
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> `Icarus`テーマの最新版の`v5.x`は、`Hexo v6.x`ベースで作成されています。
-そのため、ブログ側の`Hexo`を最新版の`v7.x`ではなく`v6.x`にすると、互換性に関わる問題が発生しにくいでしょう。
+<i class="fa-solid fa-circle-info"></i> `Icarus`テーマの最新版 v5.x は、`Hexo v6.x`ベースで作成されています。
+そのため、ブログ側の`Hexo`を最新版の v7.x ではなく v6.x にすると、互換性に関わる問題が発生しにくいでしょう。
 私は念のため、`Hexo v7.x`を`npm uninstall`した後に、`Hexo v6.x`を`npm install`しました。
 {% endmessage %}
 
@@ -147,16 +147,15 @@ npm run clean && npm run server
 
 ```yaml _config.yml
 # Site
-title: タイトル #タイトル
-subtitle: '' #サブタイトル（使われないテーマでは設定不要）
-description: '説明文 は、こんな　感じで書けます。' #サイト説明文
-keywords: 'Key,word' #キーワード（カンマ区切り）
-author:  #作者名
+title: ブログタイトル
+subtitle: '' # 使われないテーマでは設定不要
+description: 'サイトの説明文 は、こんな　感じで書けます。'
+keywords: 'Key,word'
+author: author
 language: ja
 timezone: Japan # Asia/Tokyo 表記でも可
 
 # URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://username.github.io/ # usernameは、GitHubのユーザー名に書き換える
 permalink: articles/:title/ # デフォルトでも良い方は変更不要
 
@@ -181,7 +180,7 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 hexo new post "article-name"
 ```
 
-記事は、`source/_posts`ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、`2023_12_22_article-name.md`）が生成されます。
+記事は、`source/_posts`ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、"2023_12_22_article-name.md"）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
 
 ```markdown source/_posts/2023_12_22_article-name.md
@@ -267,24 +266,18 @@ category: Technology
 
 ```yaml _config.yml
 # Include / Exclude file(s)
-## include:/exclude: options only apply to the 'source/' folder
 include:
-    - '.nojekyll' # sourceディレクトリの「.nojekyll」をビルドに含める
+    - '.nojekyll'
 exclude:
 ignore:
-
-# ------
-# 途中省略...
-# -----
-
+# ... 途中省略...
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
   repo: https://github.com/octocat/octocat.github.io # 「octocat」（2ヶ所）は、ご自身のアカウントIDに変更してください。
   branch: gh-pages
   ignore_hidden:
-      public: false # ビルドに含まれる「.nojekyll」をデプロイに含める
+      public: false
 ```
 
 書き換えた後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に`.nojekyll`ファイルを作成しておいてください。
@@ -337,7 +330,7 @@ hexo publish "article-name"
 デプロイは下記のコマンドを実行するだけで終わります。
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
+<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。
 それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
@@ -364,7 +357,7 @@ npm run clean && npm run deploy
 <i class="fa-solid fa-circle-info"></i> 所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
 {% endmessage %}
 
-お外に公開したブログのアクセス解析と、`Google Search Console`（以下、GSC）の所有者確認のために、`Google Analytics`（以下、GA）にアカウントを作成します。
+お外に公開したブログのアクセス解析と、Google Search Console（以下、GSC）の所有者確認のために、Google Analytics（以下、GA）にアカウントを作成します。
 
 アカウント作成は、{% anchor "GoogleのAnalyticsページ" http://www.google.com/analytics true "Google Analytics" %}から行ってください。
 単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。

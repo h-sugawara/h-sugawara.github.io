@@ -1,7 +1,7 @@
 ---
 title: hexo-tag-ogp-link-previewの公開に纏わる閑話
 date: 2023-11-20 21:00:00
-updated: 2023-11-20 21:00:00
+updated: 2023-12-21 12:00:00
 tags:
   - フロントエンド
   - Hexo
@@ -25,20 +25,20 @@ cover: /images/technology_programming_cover.webp
 
 ## 何のためのプラグインか
 
-`hexo-tag-ogp-link-preview`は、`OpenGraphプロトコル`対応のページから取得したデータを用いてリンクプレビューを生成し、`Hexo`のブログ記事に埋め込むためのプラグインです。
+`hexo-tag-ogp-link-preview`は、OpenGraph プロトコル対応のページから取得したデータを用いてリンクプレビューを生成し、`Hexo`のブログ記事に埋め込むためのプラグインです。
 
 {% link_preview https://www.npmjs.com/package/hexo-tag-ogp-link-preview %}
 hexo-tag-ogp-link-preview@npm
 {% endlink_preview %}
 
-`FaceBook`を始め`X(Twitter)`等の`SNS`でリンク共有時に表示されるようなカードを、`Hexo`でも上記のような感じで再現することができます。
+FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示されるようなカードを、`Hexo`でも上記のような感じで再現することができます。
 
 ## 開発に至った経緯
 
-元々は、書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}に、`Fanza Games`や`Steam`へのビジュアルリッチなリンクを欲したことが発端です。
+元々は、書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}に、Fanza Games や Steam へのビジュアルリッチなリンクを欲したことが発端です。
 
-レビューを投稿するにあたり、作中のスクショを張りたかったことと、ゲームそのものがR18指定だったこともあり、`Ameba`や`FC2`等のブログサービスを使用せず、ホスティングしようと考えました。
-結果、`GitHub Pages`+`Hexo.js`+`Icarus`の組み合わせで、ブログの作成と相成りました。
+レビューを投稿するにあたり、作中のスクショを張りたかったことと、ゲームそのものが R18 指定だったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
+結果、`GitHub Pages` + `Hexo.js` + `Icarus`の組み合わせで、ブログの作成と相成りました。
 
 ですが、`Hexo`並びに`Icarus`にはデフォルトでリンクプレビュー機能が存在しません。
 まずは、どうすれば実現できるのかをググりました。
@@ -46,9 +46,9 @@ hexo-tag-ogp-link-preview@npm
 そこに書かれていた`hexo-tag-link-preview`を`npm install`して使うことにしました。
 
 しかし、レビュー記事をプレビュー表示してみると、生成したページに問題が発生しています。
-なんと、`Fanza Games`版のリンクが、`undefined`になっているではありませんか。
+なんと、Fanza Games 版のリンクが、`undefined`になっているではありませんか。
 
-そこで、該当のプラグインは`OSS`なので、`Bug issue`を立てて修正していただく考えに至りました。
+そこで、該当のプラグインは OSS なので、Bug issue を立てて修正していただく考えに至りました。
 とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。
 加えて、作者のブログ記事の{% anchor "「hexo-tag-link-previewをnpmで公開しました。」" https://minamo173.com/blog/publish-hexo-tag-link-preview/ true "hexo-tag-link-previewをnpmで公開しました。" %}で、現在は`Hexo`を使用していない、との記述を発見。 
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
@@ -70,57 +70,49 @@ hexo-tag-ogp-link-preview@npm
 
 ## Icarusテーマ利用者向け
 
-このセクションは、`Icarus`テーマ利用者向けに{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}で表示している`FaceBook`風なリンクプレビューデザインを設定するための解説をします。
+このセクションは、`Icarus`テーマ利用者向けに{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}で表示している FaceBook 風なリンクプレビューデザインを設定するための解説をします。
 
 ### デザイン設定
 
-まずは、ベース設定ファイルに、リンクプレビューのレイアウトで共通使用する変数を定義します。
+記事のスタイル定義があるファイルに、リンクプレビューで使用する変数定義と各種classを追加します。
 
-```stylus themes/icarus/include/style/base.styl
-// 上から50行目あたりまでの間の変数がずらっと並んでいるところのどこかに足す
-$link-card-radius ?= 8px
-```
-
-次に、記事のスタイル定義があるファイルに、リンクプレビューで使用する各種classを追加します。
+> 2023年12月21日更新
+> (1) 変数の記載場所を一か所に集約
+> (2) 1.91:1のアスペクト比でリンクプレビュー画像を表示できるように修正
+> (3) 画像及び説明文の角半径を親要素とピッタリ合うように修正
 
 ```stylus themes/icarus/include/style/article.styl
-// 省略
+$link-preview-card-radius ?= 8px
+$link-preview-card-border-width ?= 1px
+$link-preview-card-contents-radius ?= $link-preview-card-radius - $link-preview-card-border-width
+
 article
-    // ...
-    // 省略
-    // ...
+    /* ... 省略 ... */
     &.article
-        // ...
-        // 省略
-        // ...
+        /* ... 省略 ... */
         .content
-            // ...
-            // 省略
-            // ...
-            // ------ ここからコピペ ------
+            /* ... 省略 ... */
             .link-preview
-                display: block
-                border: 1px solid #cbd0d3
-                border-radius: $link-card-radius
+                border: $link-preview-card-border-width solid #cbd0d3
+                border-radius: $link-preview-card-radius
                 margin: 1rem 0 1rem 0
                 font-size: 1rem
                 background-color: #f2f3f5
 
                 .og-image
                     img
-                        overflow: hidden
-                        border-top-left-radius: $link-card-radius
-                        border-top-right-radius: $link-card-radius
-                        max-height: 270px
+                        border-top-left-radius: $link-preview-card-contents-radius
+                        border-top-right-radius: $link-preview-card-contents-radius
                         object-fit: cover
-                        object-position: center;
+                        object-position: center
                         width: 100% !important
                         height: 100% !important
+                        aspect-ratio: 40 / 21
 
                 .descriptions
                     padding: 0 1rem 0.5rem 1rem
-                    border-bottom-left-radius: $link-card-radius
-                    border-bottom-right-radius: $link-card-radius
+                    border-bottom-left-radius: $link-preview-card-contents-radius
+                    border-bottom-right-radius: $link-preview-card-contents-radius
 
                     .og-title
                         font-size: 1.25rem
@@ -129,7 +121,6 @@ article
 
                     .og-description
                         color: #757c83
-                // ------ ここまでコピペ ------
 ```
 以上で、デザインの設定は完了です。
 
@@ -143,9 +134,7 @@ article
 設定ファイルは、以下のように記載してください。
 
 ```yaml _config.yml
-# ...
-# ファイルの上の部分は、省略
-# ...
+# ... ファイルの上の部分は、省略 ...
 link_preview:
   class_name:
     anchor_link: link-muted link-preview
