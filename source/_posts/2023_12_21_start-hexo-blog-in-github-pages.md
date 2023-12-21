@@ -19,7 +19,7 @@ cover: /images/technology_blog_cover.webp
 ---
 
 ちゃろー☆今年もアドベントカレンダーの時期がやってきました！
-今回は、例年通りの`GitHub Actions`ネタではなく、`GitHub Pages`ネタを提供します。
+今回は、例年通りのGitHub Actionsネタではなく、GitHub Pagesネタを提供します。
 
 <!-- more -->
 
@@ -29,14 +29,14 @@ cover: /images/technology_blog_cover.webp
 
 ### この記事を書いている人
 
-`KDDI`の子会社である`mediba`でテックリードをしている雑食系雑用エンジニア。
+KDDI の子会社である mediba でテックリードをしている雑食系雑用エンジニア。
 インフラ、フロントエンド、バックエンド、SRE、CI/CDなどプロダクトに必要な役割は、何でもやる人です（注：バックエンドが本職）。
 
 この記事が投稿される頃は、忙しすぎて死にそうになっているでしょう。誰か私を救ってくれ。
 
 ### この記事の存在意義
 
-読者様が、この記事をひと通り読んだ後に`Hexo.js`+`GitHub Pages`のブログを作成できるようになっていること。
+読者様が、この記事をひと通り読んだ後に`Hexo.js` + `GitHub Pages`のブログを作成できるようになっていること。
 もしくは、この記事を読みながらブログを作成できること。
 
 ### この記事を推したい読者様
@@ -44,20 +44,20 @@ cover: /images/technology_blog_cover.webp
 この記事を読んで嬉しくなる読者様は、以下のような方を想定しています。
 
 -  一般的なブログサービスを使わずに、自分の力だけでブログを開設したい人
-- メンテナンスやセキュリティ等の宗教上の理由で、`WordPress`を採用したくない人
+- メンテナンスやセキュリティ等の宗教上の理由で、WordPress を採用したくない人
 - カスタムドメインを使ったり、ブログを自由自在にカスタマイズしたり等、やりこみたい人
 
 ### この記事が生まれたきっかけ
 
 書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}を投稿する場所と方法を探していたことがきっかけです。
 
-作中のスクショを張りたかったことと、R18指定のゲームだったこともあり、`Ameba`や`FC2`等のブログサービスを使用せず、ホスティングしようと考えました。
+作中のスクショを張りたかったことと、R18指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
 `GitHub Pages`で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
 
 あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。
 紆余曲折あって、`Hexo.js`に辿り着き、これを使うことにしました。
 
-こうして、このブログが`Hexo.js`+`GitHub Pages`で爆誕し、さらにこの記事が生み出されることとなったのです。
+こうして、このブログが`Hexo.js` + `GitHub Pages`で爆誕し、さらにこの記事が生み出されることとなったのです。
 
 なお、`Hexo`と書かれていると、`ヘクソ`と読みがちですが、`ヘキソ`の読みが正しいようです。
 ぶっちゃけ、どっちでも伝わるとは思うので、どっちの呼び方でも良いと思います。
@@ -71,21 +71,21 @@ cover: /images/technology_blog_cover.webp
 
 {% message color:info %}
 <i class="fa-solid fa-circle-info"></i> `Node.js`のバージョン管理ツールをインストールしておくと楽です。
-　`Windows` => `nvm-windows`をインストール。
-　`Mac`または`Linux` => お好きなツールをインストール。
+　Windows => `nvm-windows`をインストール。
+　Mac または Linux => お好きなツールをインストール。
 {% endmessage %}
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> `Git`はインストール必須です。
-　`Windows` => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
-　`Mac` => `HomeBrew`等でインストール。
-　`Linux` => `apt-get`や`yum`でインストール。
+<i class="fa-solid fa-circle-info"></i> Git はインストール必須です。
+　Windows => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
+　Mac => HomeBrew 等でインストール。
+　Linux => `apt-get`や yum でインストール。
 {% endmessage %}
 
 1. `Node.js`のバージョン管理ツールから最新版をインストールします。
 大抵のツールは、インストール後にバージョン切り替えをしないので、自分でインストールしたバージョンに変更するコマンドを実行してください。
 その後、`node -v`コマンドで、最新バージョンに切り替わっていることを確認してください。
-2. `npm`を最新バージョンに更新します。
-3. `npm`経由で、`hexo-cli`をインストールします。
+2. npm を最新バージョンに更新します。
+3. npm 経由で、`hexo-cli`をインストールします。
 ```shell terminal
 npm install -g hexo-cli
 ```
@@ -109,7 +109,7 @@ npm install
 では、下記のコマンドを実行してセットアップしたブログを表示してみましょう！
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> `Windows`で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
+<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
 それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 {% message color:info %}
@@ -122,24 +122,22 @@ npm run clean && npm run server
 
 ### カスタムテーマ導入
 
-初回セットアップ時のデフォルトテーマは、`landscape`テーマというものです。
+初回セットアップ時のデフォルトテーマは、landscape テーマというものです。
 最低限のことはできるのですが、見た通りデザインがイケてません。オシャレ感が足りません。
 そんな人のために、{% anchor "Hexo公式から有志が作成したテーマを検索" https://hexo.io/themes/ true "Hexo themes" %}できるようになっています。
 
 検索してみるとたくさんあって悩みますが、私の一番のおすすめは`Icarus`テーマです。
-下記のリンクプレビュー先のページで、手順を見てインストールしてみてください。
+`Icarus`テーマの{% anchor "ドキュメントからインストール手順" https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/ true "Getting started with icarus" %}が見れるので、導入してみてください。
 
 {% message color:warning %}
 <i class="fas fa-circle-exclamation"></i> `npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
-`git clone`する方法、または、`GitHub`から`Download zip`する方法で導入することを推奨します。
+`git clone`する方法、または、GitHub から`Download zip`する方法で導入することを推奨します。
 {% endmessage %}
 {% message color:info %}
 <i class="fa-solid fa-circle-info"></i> `Icarus`テーマの最新版の`v5.x`は、`Hexo v6.x`ベースで作成されています。
 そのため、ブログ側の`Hexo`を最新版の`v7.x`ではなく`v6.x`にすると、互換性に関わる問題が発生しにくいでしょう。
 私は念のため、`Hexo v7.x`を`npm uninstall`した後に、`Hexo v6.x`を`npm install`しました。
 {% endmessage %}
-
-{% link_preview https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/ %}Icarus テーマ{% endlink_preview %}
 
 ### ブログ設定を整える
 
@@ -176,14 +174,14 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 `Hexo`で記事を作成するには、以下のコマンドを実行します。
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> 記事名（コマンド中の`article-name`部分）は、自由に入力してかまいません。
+<i class="fa-solid fa-circle-info"></i> 記事名（コマンド中の article-name 部分）は、自由に入力してかまいません。
 {% endmessage %}
 
 ```shell terminal
 hexo new post "article-name"
 ```
 
-記事は、`source/_posts`ディレクトリ直下に、`MarkDown`形式のファイル（コマンド通りに実行した時は、`2023_12_22_article-name.md`）が生成されます。
+記事は、`source/_posts`ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、`2023_12_22_article-name.md`）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
 
 ```markdown source/_posts/2023_12_22_article-name.md
@@ -194,13 +192,13 @@ tags:
 ---
 ```
 
-`---`で囲まれた部分を`Front Matter`と呼び、`Hexo`では記事のメタ情報を記載する場所です。
-`title`は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
-他にも、テーマによっては、カスタムフィールドがあります（例：`Icarus`テーマなら、`thumbnail`や`cover`等）ので、お好みで設定してください。
+`---`で囲まれた部分を Front Matter と呼び、`Hexo`では記事のメタ情報を記載する場所です。
+title は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
+他にも、テーマによっては、カスタムフィールドがあります（例：`Icarus`テーマなら、thumbnail や cover 等）ので、お好みで設定してください。
 
-そして、ブログの本文は、`Front Matter`の後に記述します。
+そして、ブログの本文は、Front Matter の後に記述します。
 
-実際の記事の執筆は、下記のように、`Front Matter`に色々と設定したり、本文を書いたりします。
+実際の記事の執筆は、下記のように Front Matter に色々と設定したり、本文を書いたりします。
 なお、本文中に`<!-- more -->`を入れると、この位置に「続きを読む」ボタンを差し込むことができます。
 
 ```markdown source/_posts/2023_12_22_article-name.md
@@ -217,7 +215,7 @@ category: Technology
 ---
 
 ちゃろー☆今年もアドベントカレンダーの時期がやってきました！
-今年は、例年通りの`GitHub Actions`ネタではなく、`GitHub Pages`ネタで提供させていただきます。
+今年は、例年通りのGitHub Actionsネタではなく、GitHub Pagesネタで提供させていただきます。
 
 <!-- more -->
 
@@ -228,7 +226,7 @@ category: Technology
 
 ここまでの手順で、ブログとしてはほぼ完成しています。
 
-`Icarus`テーマを導入した方は、日本語の表示時フォントが`Microsoft YaHei`になっています。
+`Icarus`テーマを導入した方は、日本語の表示時フォントが Microsoft YaHei になっています。
 見慣れているフォントに変えたいなら、フォント設定に関する処理を書き換えると変更できます（※前項「カスタムテーマ導入」の注意事項を読んでください）。
 やり方については、{% anchor "「Hexoのicarusテーマのフォントの変え方」" https://omathin.com/icarus-theme-change/ true "Hexoのicarusテーマのフォントの変え方" %}や{% anchor "「HEXO の表示フォントを変更」" https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/ true "HEXO の表示フォントを変更" %}をまねてみると良いでしょう。
 
@@ -245,7 +243,7 @@ category: Technology
 ### 公開用レポジトリ作成
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> `GitHub`のアカウントはあらかじめ作成してください。
+<i class="fa-solid fa-circle-info"></i> GitHub のアカウントはあらかじめ作成してください。
 {% endmessage %}
 {% message color:warning %}
 <i class="fas fa-circle-exclamation"></i> 無料で使いたい場合は、パブリックレポジトリにする必要があります。
@@ -254,7 +252,7 @@ category: Technology
 自分のアカウントを使って、`GitHub Pages`用のレポジトリを作成します。
 画像付きの作成手順が{% anchor "GitHub公式ドキュメントにまとめられています" https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site true "サイト用にリポジトリを作成する" %}ので、ご確認ください。
 
-作成後に、`Git`コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
+作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
 それから、構築実践編で作成した`blog`ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
 (※) `hexo init`コマンド実行時に、任意の名前で作成した場合、`blog`をそれに読み替えてください。
 
@@ -289,7 +287,7 @@ deploy:
       public: false # ビルドに含まれる「.nojekyll」をデプロイに含める
 ```
 
-書き換えた後は、チェックアウトした公開レポジトリのルートディレクトリ配下の`source`ディレクトリ直下に`.nojekyll`ファイルを作成しておいてください。
+書き換えた後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に`.nojekyll`ファイルを作成しておいてください。
 
 これでデプロイの設定は完了です。
 デプロイする前に、次のセクションの「下書き記事を使いこなす」をよく読んでください。
@@ -298,7 +296,7 @@ deploy:
 
 `hexo new post`コマンドで作った記事は、公開状態の投稿記事になります。
 ということは、ブログをお外に公開すると、今後は「書きかけの記事が投稿されちゃった」事故が起こりえます。
-非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防ぐことができます。
+非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防げます。
 
 次のコマンドで、下書き記事を作成します。
 
@@ -339,7 +337,7 @@ hexo publish "article-name"
 デプロイは下記のコマンドを実行するだけで終わります。
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> `Windows`で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
+<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、`PowerShell 7.x`が必要です。
 それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
@@ -349,7 +347,7 @@ npm run clean && npm run deploy
 
 ### カスタムドメイン登録
 
-GitHub Pagesのデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
+`GitHub Pages`のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
 もちろん、カスタムドメインを無料で登録することもできます。
 詳細については、{% anchor "GitHub公式ドキュメントの説明" https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site true "カスタムドメイン管理" %}にお任せします。
 
@@ -366,7 +364,7 @@ GitHub Pagesのデフォルトドメインは、`アカウントID.github.io`と
 <i class="fa-solid fa-circle-info"></i> 所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
 {% endmessage %}
 
-お外に公開したブログのアクセス解析と、`Google Search Console`（以下、`GSC`）の所有者確認のために、`Google Analytics`（以下、`GA`）にアカウントを作成します。
+お外に公開したブログのアクセス解析と、`Google Search Console`（以下、GSC）の所有者確認のために、`Google Analytics`（以下、GA）にアカウントを作成します。
 
 アカウント作成は、{% anchor "GoogleのAnalyticsページ" http://www.google.com/analytics true "Google Analytics" %}から行ってください。
 単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。
@@ -374,7 +372,7 @@ Google検索すると、{% anchor "詳しく説明してくれている方たち
 
 ### サイトマップ作成
 
-ブログに書いた記事を、`GSC`に認知してもらうためにサイトマップを作成します。
+ブログに書いた記事を、GSC に認知してもらうためにサイトマップを作成します。
 もちろん手作業で作る必要はなく、`Hexo`公式が`hexo-generator-sitemap`プラグインを用意しているので、それをインストールしましょう。
 
 ```shell terminal
@@ -397,12 +395,12 @@ sitemap:
 
 ### Google Search Console 登録
 
-`GSC`に{% anchor "ブログの登録（または、プロパティ追加）" https://search.google.com/search-console/about?hl=ja true "Google Search Console" %}を行います。
-登録を行うことで、Google検索結果にインデックスが作成することができます。
+GSCに{% anchor "ブログの登録（または、プロパティ追加）" https://search.google.com/search-console/about?hl=ja true "Google Search Console" %}を行います。
+登録を行うことで、Google 検索結果にインデックスが作成することができます。
 
-はじめに所有者確認を行う必要がありますので、`GA`・`HTML`ファイル・`HTML`タグ・`Google`タグマネージャー・ドメインの5つの中から確認方法を選んでください。
-前述の手順で`GA`登録を行っている方は、`GA`を選ぶと良いでしょう。それ以外の方は、`HTML`タグか、ドメインのどちらかで確認を行うのがオススメです。
-なお、`HTML`ファイルでの確認方法は、`Hexo`が自動でテンプレートを適用して表示してしまい、`Google`が確認できないため、使用不可能です。
+はじめに所有者確認を行う必要がありますので、GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの5つの中から確認方法を選んでください。
+前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML タグか、ドメインのどちらかで確認を行うのがオススメです。
+なお、HTML ファイルでの確認方法は、`Hexo`が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
 
 所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません（※私はされなかった）。
 ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見れますので、一つずつインデックス登録してあげましょう。
@@ -410,7 +408,7 @@ sitemap:
 ## おわりに
 
 とても楽にブログを作れるし、カスタマイズも簡単だし、さらに無料でホスティングできるとは、便利な世の中になったものだなぁ（小並感）。
-私は、十数年前の学生時代に`さくらインターネット`+`WordPress`でブログを作っていましたが、このようになるとは露程も思っていませんでした。
+私は、十数年前の学生時代に、さくらインターネット + WordPress でブログを作っていましたが、このようになるとは露程も思っていませんでした。
 イマどきホスティングでブログを作ろうなんて酔狂な人は少ないかもしれませんが、機会があれば是非参考にしてみてください。
 
 あぁ、早く仕事片付かないかなぁ。千恋万花プレイしたいなぁ。
