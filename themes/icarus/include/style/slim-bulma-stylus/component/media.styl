@@ -1,0 +1,29 @@
+$media-border-color ?= rgba($border, 0.5)
+
+.media
+    align-items: flex-start
+    display: flex
+    text-align: left
+
+    & + .media
+        border-top: 1px solid $media-border-color
+        margin-top: 1rem
+        padding-top: 1rem
+
+.media-left, .media-right
+    flex-basis: auto
+    flex-grow: 0
+    flex-shrink: 0
+
+.media-left
+    margin-right: 1rem
+
+.media-content
+    flex-basis: auto
+    flex-grow: 1
+    flex-shrink: 1
+    text-align: left
+
++mobile()
+    .media-content
+        overflow-x: auto

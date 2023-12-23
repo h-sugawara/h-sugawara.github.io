@@ -1,0 +1,116 @@
+$navbar-background-color ?= $scheme-main
+$navbar-height ?= 3.25rem
+$navbar-z ?= 30
+
+$navbar-item-color ?= $text
+$navbar-item-hover-color ?= $link
+$navbar-item-hover-background-color ?= $scheme-main-bis
+$navbar-item-active-color ?= $scheme-invert
+$navbar-item-active-background-color ?= transparent
+$navbar-item-img-max-height ?= 1.75rem
+
+$navbar-breakpoint ?= $desktop
+
+.navbar
+    background-color: $navbar-background-color
+    min-height: $navbar-height
+    position: relative
+    z-index: $navbar-z
+
+    & > .container
+        align-items: stretch
+        display: flex
+        min-height: $navbar-height
+        width: 100%
+
+.navbar-brand
+    align-items: stretch
+    display: flex
+    flex-shrink: 0
+    min-height: $navbar-height
+
+.navbar-brand
+    a.navbar-item
+        &:focus, &:hover
+            background-color: transparent
+
+.navbar-menu
+    display: none
+
+.navbar-item
+    color: $navbar-item-color
+    display: block
+    line-height: 1.5
+    padding: 0.5rem 0.75rem
+    position: relative
+
+a.navbar-item
+    cursor: pointer
+
+    &:focus, &:focus-within, &:hover, &.is-active
+        background-color: $navbar-item-hover-background-color
+        color: $navbar-item-hover-color
+
+.navbar-item
+    display: block
+    flex-grow: 0
+    flex-shrink: 0
+
+    img
+        max-height: $navbar-item-img-max-height
+
++until($navbar-breakpoint)
+    .navbar > .container
+        display: block
+
+    .navbar-brand
+        .navbar-item
+            align-items: center
+            display: flex
+
+    .navbar-menu
+        background-color: $navbar-background-color
+        box-shadow: 0 8px 16px rgba($scheme-invert, 0.1)
+        padding: 0.5rem 0
+
+        &.is-active
+            display: block
+
++from($navbar-breakpoint)
+    .navbar, .navbar-menu, .navbar-start, .navbar-end
+        align-items: stretch
+        display: flex
+
+    .navbar
+        min-height: $navbar-height
+
+    .navbar-item
+        align-items: center
+        display: flex
+
+    .navbar-menu
+        flex-grow: 1
+        flex-shrink: 0
+
+    .navbar-start
+        justify-content: flex-start
+        margin-right: auto
+
+    .navbar-end
+        justify-content: flex-end
+        margin-left: auto
+
+    .navbar > .container, .container > .navbar
+        .navbar-brand
+            margin-left: -.75rem
+
+        .navbar-menu
+            margin-right: -.75rem
+
+    // Hover/Active states
+    a.navbar-item
+        &.is-active
+            color: $navbar-item-active-color
+
+        &.is-active:not(:focus):not(:hover)
+            background-color: $navbar-item-active-background-color

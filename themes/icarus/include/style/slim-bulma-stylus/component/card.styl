@@ -1,0 +1,28 @@
+$card-color ?= $text
+$card-background-color ?= $scheme-main
+$card-shadow ?= 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+
+$card-content-background-color ?= transparent
+$card-content-padding ?= 1.5rem
+
+$card-media-margin ?= $block-spacing
+
+.card
+    background-color: $card-background-color
+    box-shadow: $card-shadow
+    color: $card-color
+    max-width: 100%
+    position: relative
+
+.card-content
+    background-color: $card-content-background-color
+    padding: $card-content-padding
+
+.card-image
+    display: block
+    position: relative
+
+// Combinations
+.card
+    .media:not(:last-child)
+        margin-bottom: $card-media-margin

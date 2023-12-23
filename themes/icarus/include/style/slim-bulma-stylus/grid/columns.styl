@@ -1,0 +1,29 @@
+$column-gap ?= 0.75rem
+
+$column-sizes = 4 8
+
+.column
+    display: block
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 1
+    padding: $column-gap
+
+    +from($tablet)
+        for $i in $column-sizes
+            &.is-{$i}, &.is-{$i}-tablet, &.is-{$i}-desktop, &.is-{$i}-widescreen, &.is-{$i}-fullhd
+                flex: none
+                width: percentage($i / 12)
+
+.columns
+    margin-left: ($column-gap * -1)
+    margin-right: ($column-gap * -1)
+    margin-top: ($column-gap * -1)
+
+    &:last-child
+        margin-bottom: ($column-gap * -1)
+
+    // Responsiveness
+    +from($tablet)
+        &:not(.is-desktop)
+            display: flex

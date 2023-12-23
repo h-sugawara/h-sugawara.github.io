@@ -1,0 +1,82 @@
+@import 'generic-vars'
+
+html
+    background-color: $body-background-color
+    font-size: $body-size
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    min-width: $body-min-width
+    overflow-x: $body-overflow-x
+    overflow-y: $body-overflow-y
+    text-rendering: $body-rendering
+    text-size-adjust: 100%
+
+article, figure, footer, header, section
+    display: block
+
+body, button
+    font-family: $body-family
+
+code, pre
+    -moz-osx-font-smoothing: auto
+    -webkit-font-smoothing: auto
+    font-family: $code-family
+
+body
+    color: $body-color
+    font-size: $body-font-size
+    font-weight: $body-weight
+    line-height: $body-line-height
+
+a
+    color: $link
+    cursor: pointer
+    text-decoration: none
+
+    &:hover
+        color: $link-hover
+
+code
+    background-color: $code-background
+    color: $code
+    font-size: $code-size
+    font-weight: $code-weight
+    padding: $code-padding
+
+img
+    height: auto
+    max-width: 100%
+
+span
+    font-style: inherit
+    font-weight: inherit
+
+strong
+    color: $strong-color
+    font-weight: $strong-weight
+
+pre
+    overflow-touch()
+    background-color: $pre-background
+    color: $pre
+    font-size: $pre-font-size
+    overflow-x: auto
+    padding: $pre-padding
+    white-space: pre
+    word-wrap: normal
+
+    code
+        background-color: transparent
+        color: currentColor
+        font-size: $pre-code-font-size
+        padding: 0
+
+table
+    td, th
+        vertical-align: top
+
+        &:not([align])
+            text-align: left
+
+    th
+        color: $text-strong

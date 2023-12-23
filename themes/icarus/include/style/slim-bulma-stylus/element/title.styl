@@ -1,0 +1,19 @@
+$title-color ?= $text-strong
+$title-family ?= false
+$title-size ?= $size-3
+$title-weight ?= $weight-semibold
+$title-line-height ?= 1.125
+$title-strong-color ?= inherit
+$title-strong-weight ?= inherit
+$title-sub-size ?= 0.75em
+$title-sup-size ?= 0.75em
+
+.title
+    @extend $block
+    word-break: break-word
+    color: $title-color
+    if $title-family
+        font-family: $title-family
+    font-size: $title-size
+    font-weight: $title-weight
+    line-height: $title-line-height

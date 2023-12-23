@@ -1,0 +1,56 @@
+@import 'level-vars'
+
+.level
+    @extend $block
+    align-items: center
+    justify-content: space-between
+
+    &.is-mobile
+        display: flex
+
+        .level-left
+            display: flex
+
+        .level-item
+            &:not(:last-child)
+                margin-bottom: 0
+                margin-right: $level-item-spacing
+
+            &:not(.is-narrow)
+                flex-grow: 1
+
+    // Responsiveness
+    +tablet()
+        display: flex
+
+.level-item
+    align-items: center
+    display: flex
+    flex-basis: auto
+    flex-grow: 0
+    flex-shrink: 0
+    justify-content: center
+
+    // Responsiveness
+    +mobile()
+        &:not(:last-child)
+            margin-bottom: $level-item-spacing
+
+.level-left
+    flex-basis: auto
+    flex-grow: 0
+    flex-shrink: 0
+
+    .level-item
+        // Responsiveness
+        +tablet()
+            &:not(:last-child)
+                margin-right: $level-item-spacing
+
+.level-left
+    align-items: center
+    justify-content: flex-start
+
+    // Responsiveness
+    +tablet()
+        display: flex

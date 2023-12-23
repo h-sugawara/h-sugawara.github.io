@@ -1,0 +1,46 @@
+$tag-background-color ?= $background
+$tag-color ?= $text
+$tag-radius ?= $radius
+$tag-delete-margin ?= 1px
+
+.tags
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+
+    .tag
+        margin-bottom: 0.5rem
+
+        &:not(:last-child)
+            margin-right: 0.5rem
+
+    &:last-child
+        margin-bottom: -0.5rem
+
+    &.has-addons
+        .tag
+            margin-right: 0
+
+            &:not(:first-child)
+                margin-left: 0
+                border-bottom-left-radius: 0
+                border-top-left-radius: 0
+
+            &:not(:last-child)
+                border-bottom-right-radius: 0
+                border-top-right-radius: 0
+
+.tag:not(body)
+    align-items: center
+    background-color: $tag-background-color
+    border-radius: $tag-radius
+    color: $tag-color
+    display: inline-flex
+    font-size: $size-small
+    height: 2em
+    justify-content: center
+    line-height: 1.5
+    padding-left: 0.75em
+    padding-right: 0.75em
+    white-space: nowrap
