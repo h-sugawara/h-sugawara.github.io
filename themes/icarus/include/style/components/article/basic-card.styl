@@ -1,0 +1,47 @@
+@import '../../slim-bulma-stylus/element/title'
+@import '../../slim-bulma-stylus/element/image'
+
+article.article
+    .article-meta, .article-tags, .article-categories
+        color: $text-light
+
+    .article-categories, .article-tags
+        span
+            margin-right: 0.5rem
+
+    .article-meta
+        overflow-x: auto
+        margin-bottom: .5rem
+
+    .article-categories
+        overflow-x: auto
+        margin-bottom: 1.5rem
+
+    .content
+        word-wrap: break-word
+        font-size: $size-5_5
+
+    .article-tags
+        display: flex
+        flex-wrap: wrap
+        margin-bottom: 0.25rem
+
+        a
+            margin-right: 0.5rem
+            margin-bottom: 1rem
+
+.image
+    &.is-7by3
+        padding-top: 42.8%
+
+        img
+            bottom: 0
+            left: 0
+            position: absolute
+            right: 0
+            top: 0
+
+    .fill
+        object-fit: cover
+        width: 100% !important
+        height: 100% !important

@@ -1,0 +1,57 @@
+@import '../../slim-bulma-stylus/component/menu-basic'
+@import '../../slim-bulma-stylus/component/media'
+@import '../../slim-bulma-stylus/form-tool/field-grouped'
+
+article.media
+    a
+        color: inherit
+
+        &:hover
+            color: $primary
+
+    .image
+        width: 64px
+        height: 64px
+
+        img
+            object-fit: cover
+            width: 100%
+            height: 100%
+
+    .title
+        @extend .is-size-6
+        margin-bottom: .25em
+
+    .date, .categories
+        @extend .is-size-7
+
+    .categories
+        @extend .is-capitalized
+
+    .media-content
+        color: $text-light
+
+        .title
+            margin: 0
+            line-height: inherit
+
+.widget
+    .menu-list
+        .level
+            margin-bottom: 0
+
+            .level-left, .level-right, .level-item
+                flex-shrink: 1
+
+        .tag
+            background: $light-grey
+            color: $whites-invert
+
+    .tags
+        .tag:first-child
+            background: $primary
+            color: $primary-invert
+
+        .tag:last-child
+            background: $light-grey
+            color: $white-invert

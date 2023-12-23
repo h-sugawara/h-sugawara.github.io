@@ -1,46 +1,20 @@
-.widget
+@import '../../slim-bulma-stylus/component/menu-list'
+
+/* ---------------------------------
+ *      Table of Content Widget
+ * --------------------------------- */
+.widget.card#toc
     .menu-list
         li
             ul
                 margin-right: 0
 
-        .level
-            margin-bottom: 0
-
-            .level-left, .level-right, .level-item
-                flex-shrink: 1
-
-            .level-left, .level-right
-                align-items: flex-start
-
-        .tag
-            background: $light-grey
-            color: $white-invert
-
-    .tags
-        .tag:first-child
-            background: $primary
-            color: $primary-invert
-
-        .tag:last-child
-            background: $light-grey
-            color: $white-invert
-
-.level.is-multiline
-    flex-wrap: wrap
-
-#toc
-    .menu-list
-        li
             a.collapsed.is-active + .menu-list
                 display: block
 
             a.collapsed + .menu-list
                 display: none
 
-/* ---------------------------------
- *      Table of Content Widget
- * --------------------------------- */
 +mobile()
     .widget.card#toc
         display: none
