@@ -1,4 +1,5 @@
-@import bulma-stylus-root + '/components/pagination'
+@import '../slim-bulma-stylus/element/button-vars'
+@import '../slim-bulma-stylus/component/pagination'
 
 /* ---------------------------------
  *  Pagination
@@ -10,16 +11,11 @@ $pagination-background-color ?= $button-background-color
     @extend .pagination.is-centered
     margin-top: 1.5rem
 
-    .pagination-link,
-    .pagination-ellipsis,
-    .pagination-previous,
-    .pagination-next
+    .pagination-link, .pagination-ellipsis, .pagination-previous, .pagination-next
         a
             color: $pagination-color
 
-    .pagination-link,
-    .pagination-previous,
-    .pagination-next
+    .pagination-link, .pagination-previous, .pagination-next
         border: none
         background: $pagination-background-color
         box-shadow: $pagination-box-shadow

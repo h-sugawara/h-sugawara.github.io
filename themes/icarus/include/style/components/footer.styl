@@ -1,4 +1,6 @@
-@import bulma-stylus-root + '/layout/footer'
+@import '../slim-bulma-stylus/layout/footer'
+@import '../slim-bulma-stylus/component/level-image'
+@import '../slim-bulma-stylus/form-tool/field-addons'
 
 /* ---------------------------------
  *            Page Footer
@@ -26,6 +28,8 @@ footer.footer
     .underline
         text-decoration: underline solid
 
-.footer-logo
-    img
-        max-height: $logo-height
+    .footer-logo
+        margin-bottom: 0.5rem
+
+        img
+            max-height: $logo-height

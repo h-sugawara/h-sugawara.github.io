@@ -2,7 +2,12 @@
  *          Archive Timeline
  * --------------------------------- */
 $timeline-fg-line ?= $grey-lighter
+$timeline-fg-circle ?= $primary
 $timeline-bg-line ?= $card-background-color
+
+.tag.is-primary
+    background: $primary
+    color: $primary-invert
 
 .timeline
     margin-left: 1rem
@@ -22,7 +27,7 @@ $timeline-bg-line ?= $card-background-color
             width: .75rem
             height: .75rem
             top: calc(1rem + 1.5 * .85rem / 2 - .75rem / 2)
-            background: $timeline-fg-line
+            background: $timeline-fg-circle
             border-radius: 50%
 
         &:first-child:before
