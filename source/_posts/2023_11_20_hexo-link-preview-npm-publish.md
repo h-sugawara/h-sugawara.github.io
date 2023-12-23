@@ -18,7 +18,7 @@ thumbnail: /images/npm_thumbnail.webp
 cover: /images/technology_programming_cover.webp
 ---
 
-2023年11月19日（日）、自作したHexo用タグプラグイン`hexo-tag-ogp-link-preview v1.0.0`を、npmに公開しました。
+2023年11月19日（日）、自作したHexo用タグプラグイン hexo-tag-ogp-link-preview v1.0.0 を、npmに公開しました。
 本記事では、プラグインの開発に至った経緯やIcarusテーマでの設定例等、プラグインのREADMEに書いていないような他愛もない話題を中心に書き綴ります。
 
 <!-- more -->
