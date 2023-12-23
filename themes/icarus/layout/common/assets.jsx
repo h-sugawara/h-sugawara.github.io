@@ -1,5 +1,6 @@
 const { Component, Fragment } = require('inferno');
 const Plugins = require("./plugins");
+const Constants = require("../constants");
 
 function getHighlightThemeName(highlight, article) {
     if (highlight && highlight.enable === false) {
@@ -26,7 +27,24 @@ function getHighlightConfig(article) {
     return { clipboard, embeddedConfig };
 }
 
-function getCssUrl(helper, config) {
+function getMainCssUrl(url_for, type, variant) {
+    switch (type) {
+        case Constants.PAGE_TYPE_ARCHIVE:
+        case Constants.PAGE_TYPE_CATEGORIES:
+        case Constants.PAGE_TYPE_TAGS:
+            return `/css/${type}/${variant}.css`;
+        case Constants.PAGE_TYPE_CATEGORY:
+            return `/css/${Constants.PAGE_TYPE_CATEGORIES}/${variant}-articles.css`;
+        case Constants.PAGE_TYPE_TAG:
+            return `/css/${Constants.PAGE_TYPE_TAGS}/${variant}-articles.css`;
+        case Constants.PAGE_TYPE_PAGE:
+        case Constants.PAGE_TYPE_POST:
+            return `/css/posts/${variant}.css`;
+    }
+    return url_for(`/css/${variant}.css`);
+}
+
+function getCssUrl(helper, config, type) {
     const { url_for, cdn, fontcdn, iconcdn } = helper;
     const { article, highlight, variant = 'default' } = config;
 
@@ -36,7 +54,7 @@ function getCssUrl(helper, config) {
     };
 
     return {
-        main: url_for(`/css/${variant}.css`),
+        main: getMainCssUrl(url_for, type, variant),
         sub: url_for(`/css/${variant}-secondary.css`),
         font: fonts[variant],
         icon: iconcdn(),
@@ -65,7 +83,7 @@ function getScriptUrl(helper, config) {
 
 module.exports = class extends Component {
     render() {
-        const { site, config, page, helper, head } = this.props;
+        const { site, config, page, helper, head, type } = this.props;
         const { clipboard, embeddedConfig } = getHighlightConfig(config.article);
         const language = page.lang || page.language || config.language;
 
@@ -91,7 +109,7 @@ module.exports = class extends Component {
             icon: iconCssUrl,
             codeBlock: codeBlockCssUrl,
             hlTheme: hlThemeCssUrl,
-        } = getCssUrl(helper, config);
+        } = getCssUrl(helper, config, type);
         const {
             main: mainJsUrl,
             jQuery: jQueryScriptUrl,

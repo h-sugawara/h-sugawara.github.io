@@ -4,25 +4,32 @@ const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
 const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_data');
 const Assets = require('./assets');
+const Constants = require("../constants");
 
-function getPageTitle(page, siteTitle, helper) {
+function getPageTitle(page, siteTitle, helper, type) {
     let title = page.title;
 
-    if (helper.is_archive()) {
-        title = helper._p('common.archive', Infinity);
-        if (helper.is_month()) {
-            title += ': ' + page.year + '/' + page.month;
-        } else if (helper.is_year()) {
-            title += ': ' + page.year;
-        }
-    } else if (helper.is_category()) {
-        title = helper._p('common.category', 1) + ': ' + page.category;
-    } else if (helper.is_tag()) {
-        title = helper._p('common.tag', 1) + ': ' + page.tag;
-    } else if (helper.is_categories()) {
-        title = helper._p('common.category', Infinity);
-    } else if (helper.is_tags()) {
-        title = helper._p('common.tag', Infinity);
+    switch (type) {
+        case Constants.PAGE_TYPE_ARCHIVE:
+            title = helper._p('common.archive', Infinity);
+            if (helper.is_month()) {
+                title += ': ' + page.year + '/' + page.month;
+            } else if (helper.is_year()) {
+                title += ': ' + page.year;
+            }
+            break
+        case Constants.PAGE_TYPE_CATEGORIES:
+            title = helper._p('common.category', Infinity);
+            break
+        case Constants.PAGE_TYPE_CATEGORY:
+            title = helper._p('common.category', 1) + ': ' + page.category;
+            break
+        case Constants.PAGE_TYPE_TAGS:
+            title = helper._p('common.tag', Infinity);
+            break
+        case Constants.PAGE_TYPE_TAG:
+            title = helper._p('common.tag', 1) + ': ' + page.tag;
+            break
     }
 
     return [title, siteTitle].filter(str => typeof str !== 'undefined' && str.trim() !== '').join(' - ');
@@ -104,13 +111,15 @@ module.exports = class extends Component {
             }
         }
 
+        const pageType = Constants.getPageType(helper);
+
         return <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
             {noIndex ? <meta name="robots" content="noindex" /> : null}
             {meta && meta.length ? <MetaTags meta={meta} /> : null}
 
-            <title>{getPageTitle(page, config.title, helper)}</title>
+            <title>{getPageTitle(page, config.title, helper, pageType)}</title>
 
             <WebApp.Cacheable
                 helper={helper}
@@ -152,7 +161,7 @@ module.exports = class extends Component {
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
-            <Assets site={site} config={config} helper={helper} page={page} head={true} />
+            <Assets site={site} config={config} helper={helper} page={page} head={true} type={pageType} />
             {adsenseClientId ? <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
             {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
         </head>;
