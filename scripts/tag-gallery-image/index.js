@@ -2,8 +2,8 @@
 
 const util = require('hexo-util');
 
-function newHtmlParagraphElement(text) {
-    return util.htmlTag('p', {class: 'has-text-centered is-size-6 caption'}, text);
+function newHtmlFigureCaptionElement(text) {
+    return util.htmlTag('figcaption', {class: 'has-text-centered is-size-6 caption'}, text);
 }
 
 function newHtmlImageElement(src, alt, width, height) {
@@ -20,6 +20,13 @@ function newHtmlAnchorElement(href, content) {
         throw new Error('failed to generate a new anchor tag.');
     }
     return util.htmlTag('a', {href: href, class: 'gallery-item'}, content, false);
+}
+
+function newHtmlFigureElement(content) {
+    if (typeof content !== 'string' || content === '') {
+        throw new Error('failed to generate a new figure tag.');
+    }
+    return util.htmlTag('figure', {}, content, false);
 }
 
 function getImageSourcePaths(inputs) {
@@ -52,9 +59,11 @@ function galleryImage(hexo) {
         const alt = args[1];
         const {width, height} = getImageSize(args[2]);
 
-        return newHtmlAnchorElement(
-            gallery,
-            newHtmlImageElement(preview, alt, width, height) + newHtmlParagraphElement(content),
+        return newHtmlFigureElement(
+            newHtmlAnchorElement(
+                gallery,
+                newHtmlImageElement(preview, alt, width, height) + newHtmlFigureCaptionElement(content),
+            ),
         );
     };
 }
