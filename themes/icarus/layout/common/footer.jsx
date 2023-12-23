@@ -32,7 +32,7 @@ class Footer extends Component {
             <div class="container">
                 <div class="level">
                     <div class="level-start">
-                        <a class="footer-logo is-block mb-2" href={siteUrl}>
+                        <a class="footer-logo is-block" href={siteUrl}>
                             {footerLogo}
                         </a>
                         <p class="is-size-7">

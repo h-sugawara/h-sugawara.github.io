@@ -106,12 +106,12 @@ module.exports = class extends Component {
                     {page.title !== '' && index ? <p class="title is-size-2 is-size-3-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
                     {page.title !== '' && !index ? <h1 class="title is-size-2 is-size-3-mobile">{page.title}</h1> : null}
                     {/* Categories */}
-                    {page.categories && page.categories.length ? <div class="article-categories is-size-7 mb-4">
-                        <span className="mr-2">Category:</span>
+                    {page.categories && page.categories.length ? <div class="article-categories is-size-7">
+                        <span>Category:</span>
                         {(() => {
                             const categories = [];
                             page.categories.forEach((category, i) => {
-                                categories.push(<a class="link-muted is-uppercase" href={url_for(category.path)}>{category.name}</a>);
+                                categories.push(<a class="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
                                 if (i < page.categories.length - 1) {
                                     categories.push(<span>&nbsp;/&nbsp;</span>);
                                 }
@@ -127,10 +127,10 @@ module.exports = class extends Component {
                     {!index && article && article.licenses && Object.keys(article.licenses)
                         ? <ArticleLicensing.Cacheable page={page} config={config} helper={helper} /> : null}
                     {/* Tags */}
-                    {page.tags && page.tags.length ? <div class="article-tags is-size-7 mb-1">
-                        <span class="mr-2">#</span>
+                    {page.tags && page.tags.length ? <div class="article-tags is-size-7">
+                        <span>#</span>
                         {page.tags.map(tag => {
-                            return <a class="link-muted mr-2 mb-3" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
+                            return <a class="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
                         })}
                     </div> : null}
                     {/* "Read more" button */}
@@ -142,15 +142,15 @@ module.exports = class extends Component {
             {/* Donate button */}
             {!index ? <Donates config={config} helper={helper} /> : null}
             {/* Post navigation */}
-            {!index && (page.prev || page.next) ? <nav class="post-navigation mt-4 level is-mobile">
+            {!index && (page.prev || page.next) ? <nav class="post-navigation level is-mobile">
                 <div className={`level-start${page.prev ? '' : ' is-invisible'}`}>
-                    {page.prev ? <a class={`article-nav-prev level level-item link-muted`} href={url_for(page.prev.path)}>
+                    {page.prev ? <a class={`article-nav-prev level-item link-muted`} href={url_for(page.prev.path)}>
                         <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
                         <span>{page.prev.title}</span>
                     </a> : null}
                 </div>
                 <div className={`level-end${page.next ? '' : ' is-invisible'}`}>
-                    {page.next ? <a class={`article-nav-next level level-item link-muted`} href={url_for(page.next.path)}>
+                    {page.next ? <a class={`article-nav-next level-item link-muted`} href={url_for(page.next.path)}>
                         <span>{page.next.title}</span>
                         <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
                     </a> : null}
