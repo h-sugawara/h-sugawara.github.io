@@ -2,6 +2,7 @@ const logger = require('hexo-log')();
 const { Component } = require('inferno');
 const view = require('hexo-component-inferno/lib/core/view');
 const classname = require('hexo-component-inferno/lib/util/classname');
+const Constants = require('../constants')
 
 function formatWidgets(widgets) {
     const result = {};
@@ -73,6 +74,12 @@ class Widgets extends Component {
             return null;
         }
 
+        const pageType = Constants.getPageType(helper);
+        const skipWidgetMap = {
+            'categories': [ Constants.PAGE_TYPE_CATEGORIES ],
+            'tags': [ Constants.PAGE_TYPE_TAGS ],
+        };
+
         return <div class={classname({
             'column': true,
             ['column-' + position]: true,
@@ -84,6 +91,9 @@ class Widgets extends Component {
             {widgets.map(widget => {
                 // widget type is not defined
                 if (!widget.type) {
+                    return null;
+                }
+                if ((skipWidgetMap[widget.type] || []).includes(pageType)) {
                     return null;
                 }
                 try {
