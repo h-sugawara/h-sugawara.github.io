@@ -14,7 +14,12 @@ has_code: false
 has_icon: false
 og_image: /articles/riddle-joker-review/riddle_joker_title.webp
 thumbnail: /articles/riddle-joker-review/riddle_joker_thumbnail.webp
-cover: /articles/riddle-joker-review/riddle_joker_cover.webp
+cover:
+  image: /articles/riddle-joker-review/riddle_joker_cover.webp
+  sources:
+    small: /articles/riddle-joker-review/riddle_joker_cover_small.webp
+    medium: /articles/riddle-joker-review/riddle_joker_cover_medium.webp
+    large: /articles/riddle-joker-review/riddle_joker_cover_large.webp
 ---
 
 みなさん、ちゃろー☆
