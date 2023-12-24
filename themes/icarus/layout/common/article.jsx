@@ -50,89 +50,145 @@ function getWordCount(content) {
 }
 
 module.exports = class extends Component {
+    renderCoverImage(index, url_for, cover, title, pageUrl) {
+        const coverSource = url_for(cover.src ? cover.src : cover);
+        const coverLayout = cover.layout ? cover.layout : 'fill';
+
+        const Image = <img className={coverLayout} src={coverSource} alt={title || coverSource} />;
+
+        return <div className="card-image">
+            {index ? <a href={pageUrl} className="image is-7by3">{Image}</a>
+                : <span className="image is-7by3">{Image}</span>}
+        </div>;
+    }
+
+    renderMetadata(config, helper, page, index) {
+        const { article, plugins } = config;
+        const { date, date_xml, _p } = helper;
+        const { language: cfgLanguage = 'en' } = config;
+        const { date: pageDate, updated: pageUpdated, author: pageAuthor, lang: pageLang, language: pageLanguage } = page;
+        const { update_time: updateTime = true, readtime: hasReadTime = false } = article;
+        const { busuanzi = false } = plugins;
+
+        const language = toMomentLocale(index ? cfgLanguage : (pageLang || pageLanguage || cfgLanguage));
+        const isUpdated = pageUpdated && !moment(pageDate).isSame(moment(pageUpdated));
+        const shouldShowUpdated = pageUpdated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
+        const hasVisitorCounter = !index && busuanzi === true;
+
+        return <div className="article-meta is-size-7 level is-mobile">
+            <div className="level-left">
+                {/* Creation Date */}
+                {pageDate && <span className="level-item" dangerouslySetInnerHTML={{
+                    __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`)
+                }}></span>}
+                {/* Last Update Date */}
+                {shouldShowUpdated && <span className="level-item" dangerouslySetInnerHTML={{
+                    __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`)
+                }}></span>}
+                {/* author */}
+                {pageAuthor ? <span className="level-item"> {pageAuthor} </span> : null}
+                {/* Read time */}
+                {hasReadTime ? <span className="level-item">
+                    {(() => {
+                        const { time } = getReadTimeAndWordCountOf(page._content);
+                        //return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
+                        return `${_p('article.read_time', time.locale(language).humanize())}`;
+                    })()}
+                </span> : null}
+                {/* Visitor counter */}
+                {hasVisitorCounter ? <span className="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
+                    __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>')
+                }}></span> : null}
+            </div>
+        </div>;
+    }
+
+    renderTitle(index, title, pageUrl) {
+        if (index) {
+            return <p className="title is-size-2 is-size-3-mobile"><a className="link-muted" href={pageUrl}>{title}</a></p>;
+        }
+        return <h1 className="title is-size-2 is-size-3-mobile">{title}</h1>;
+    }
+
+    renderCategories(pageCategories, url_for) {
+        return <div className="article-categories is-size-7">
+            <span>Category:</span>
+            {(() => {
+                const categories = [];
+                pageCategories.forEach((category, i) => {
+                    categories.push(<a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
+                    if (i < pageCategories.length - 1) {
+                        categories.push(<span>&nbsp;/&nbsp;</span>);
+                    }
+                });
+                return categories;
+            })()}
+        </div>;
+    }
+
+    renderTags(pageTags, url_for) {
+        return <div className="article-tags is-size-7">
+            <span>#</span>
+            {pageTags.map(tag => <a className="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>)}
+        </div>;
+    }
+
+    renderPageNavigation(pagePrev, pageNext, url_for) {
+        return <nav className="post-navigation level is-mobile">
+            <div className={`level-start${pagePrev ? '' : ' is-invisible'}`}>
+                {pagePrev ? <a className={`article-nav-prev level-item link-muted`} href={url_for(pagePrev.path)}>
+                    <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
+                    <span>{pagePrev.title}</span>
+                </a> : null}
+            </div>
+            <div className={`level-end${pageNext ? '' : ' is-invisible'}`}>
+                {pageNext ? <a className={`article-nav-next level-item link-muted`} href={url_for(pageNext.path)}>
+                    <span>{pageNext.title}</span>
+                    <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
+                </a> : null}
+            </div>
+        </nav>;
+    }
+
     render() {
         const { config, helper, page, index } = this.props;
-        const { article, plugins } = config;
-        const { url_for, date, date_xml, __, _p } = helper;
-
-        const indexLanguage = toMomentLocale(config.language || 'en');
-        const language = toMomentLocale(page.lang || page.language || config.language || 'en');
-        const coverSource = page.cover ? url_for(page.cover.src ? page.cover.src : page.cover) : null;
-        const coverLayout = page.cover ? (page.cover.layout ? page.cover.layout : 'fill') : '';
-        const updateTime = article && article.update_time !== undefined ? article.update_time : true;
-        const isUpdated = page.updated && !moment(page.date).isSame(moment(page.updated));
-        const shouldShowUpdated = page.updated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
+        const { article } = config;
+        const { url_for } = helper;
+        const {
+            title = '',
+            categories = [],
+            excerpt = false,
+            tags = [],
+            cover,
+            link,
+            path,
+            prev: pagePrev,
+            next: pageNext,
+        } = page;
+        const pageUrl = url_for(link || path);
+        const showLicenseBlock = !index && article && article.licenses && Object.keys(article.licenses);
+        const showPostNavigation = !index && (pagePrev || pageNext);
 
         return <Fragment>
             {/* Main content */}
-            <div class="card">
+            <div className="card">
                 {/* Thumbnail */}
-                {coverSource ? <div class="card-image">
-                    {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
-                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
-                    </a> : <span class="image is-7by3">
-                        <img class={coverLayout} src={coverSource} alt={page.title || coverSource} />
-                    </span>}
-                </div> : null}
-                <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
+                {cover && this.renderCoverImage(index, url_for, cover, title, pageUrl)}
+                <article className={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
                     {/* Metadata */}
-                    {page.layout !== 'page' ? <div class="article-meta is-size-7 level is-mobile">
-                        <div class="level-left">
-                            {/* Creation Date */}
-                            {page.date && <span class="level-item" dangerouslySetInnerHTML={{
-                                __html: _p('article.created_at', `<time dateTime="${date_xml(page.date)}" title="${new Date(page.date).toLocaleString()}">${date(page.date)}</time>`)
-                            }}></span>}
-                            {/* Last Update Date */}
-                            {shouldShowUpdated && <span class="level-item" dangerouslySetInnerHTML={{
-                                __html: _p('article.updated_at', `<time dateTime="${date_xml(page.updated)}" title="${new Date(page.updated).toLocaleString()}">${date(page.updated)}</time>`)
-                            }}></span>}
-                            {/* author */}
-                            {page.author ? <span class="level-item"> {page.author} </span> : null}
-                            {/* Read time */}
-                            {article && article.readtime && article.readtime === true ? <span class="level-item">
-                                {(() => {
-                                    const { time } = getReadTimeAndWordCountOf(page._content);
-                                    //return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())} (${_p('article.word_count', words)})`;
-                                    return `${_p('article.read_time', time.locale(index ? indexLanguage : language).humanize())}`;
-                                })()}
-                            </span> : null}
-                            {/* Visitor counter */}
-                            {!index && plugins && plugins.busuanzi === true ? <span class="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
-                                __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>')
-                            }}></span> : null}
-                        </div>
-                    </div> : null}
+                    {page.layout !== 'page' && this.renderMetadata(config, helper, page, index)}
                     {/* Title */}
-                    {page.title !== '' && index ? <p class="title is-size-2 is-size-3-mobile"><a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a></p> : null}
-                    {page.title !== '' && !index ? <h1 class="title is-size-2 is-size-3-mobile">{page.title}</h1> : null}
+                    {title !== '' && this.renderTitle(index, title, pageUrl)}
                     {/* Categories */}
-                    {page.categories && page.categories.length ? <div class="article-categories is-size-7">
-                        <span>Category:</span>
-                        {(() => {
-                            const categories = [];
-                            page.categories.forEach((category, i) => {
-                                categories.push(<a class="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
-                                if (i < page.categories.length - 1) {
-                                    categories.push(<span>&nbsp;/&nbsp;</span>);
-                                }
-                            });
-                            return categories;
-                        })()}
-                    </div> : null}
+                    {categories && categories.length ? this.renderCategories(categories, url_for) : null}
                     {/* Content/Excerpt */}
-                    <div class="content" dangerouslySetInnerHTML={{
-                        __html: index && page.excerpt ? `<a class="link-muted" href="${url_for(page.link || page.path)}">${page.excerpt}</a>` : page.content
+                    <div className="content" dangerouslySetInnerHTML={{
+                        __html: index && excerpt ? `<a class="link-muted" href="${pageUrl}">${excerpt}</a>` : page.content
                     }}></div>
                     {/* Licensing block */}
-                    {!index && article && article.licenses && Object.keys(article.licenses)
-                        ? <ArticleLicensing.Cacheable page={page} config={config} helper={helper} /> : null}
+                    {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}
                     {/* Tags */}
-                    {page.tags && page.tags.length ? <div class="article-tags is-size-7">
-                        <span>#</span>
-                        {page.tags.map(tag => {
-                            return <a class="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
-                        })}
-                    </div> : null}
+                    {tags && tags.length ? this.renderTags(tags, url_for) : null}
                     {/* "Read more" button */}
                     {/* index && page.excerpt ? <a class="article-more button is-small is-size-7" href={`${url_for(page.link || page.path)}#more`}>{__('article.more')}</a> : null */}
                     {/* Share button */}
@@ -142,20 +198,7 @@ module.exports = class extends Component {
             {/* Donate button */}
             {!index ? <Donates config={config} helper={helper} /> : null}
             {/* Post navigation */}
-            {!index && (page.prev || page.next) ? <nav class="post-navigation level is-mobile">
-                <div className={`level-start${page.prev ? '' : ' is-invisible'}`}>
-                    {page.prev ? <a class={`article-nav-prev level-item link-muted`} href={url_for(page.prev.path)}>
-                        <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
-                        <span>{page.prev.title}</span>
-                    </a> : null}
-                </div>
-                <div className={`level-end${page.next ? '' : ' is-invisible'}`}>
-                    {page.next ? <a class={`article-nav-next level-item link-muted`} href={url_for(page.next.path)}>
-                        <span>{page.next.title}</span>
-                        <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
-                    </a> : null}
-                </div>
-            </nav> : null}
+            {showPostNavigation && this.renderPageNavigation(pagePrev, pageNext, url_for)}
             {/* Comment */}
             {!index ? <Comment config={config} page={page} helper={helper}/> : null}
         </Fragment>;
