@@ -152,7 +152,7 @@ cover:
 きっと大満足すること間違いないであろう。
 
 {% gallery_img /articles/sabbat-of-the-witch-review/{shiiba_tsumugi_preview.webp,shiiba_tsumugi.webp} '椎葉 紬' 719x404 %}
-紬ちゃん、女の子の恰好できて良かったね © YUZUSOFT / JUNOS INC. All Rights Reserved.
+紬ちゃんに看病されたいです © YUZUSOFT / JUNOS INC. All Rights Reserved.
 {% endgallery_img %}
 
 ### 戸隠 憧子
