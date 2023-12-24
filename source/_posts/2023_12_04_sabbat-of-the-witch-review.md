@@ -14,7 +14,12 @@ has_code: false
 has_icon: false
 og_image: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_title.webp
 thumbnail: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_thumbnail.webp
-cover: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover.webp
+cover:
+  image: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover.webp
+  sources:
+    small: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_small.webp
+    medium: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_medium.webp
+    large: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_large.webp
 ---
 
 みなさん、ちゃろー☆
