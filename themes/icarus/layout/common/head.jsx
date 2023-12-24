@@ -40,13 +40,20 @@ function getImages(helper, page, article) {
 
     if (typeof page.og_image === 'string') {
         return [page.og_image];
-    } else if (typeof page.cover === 'string') {
+    }
+    if (typeof page.cover === 'string') {
         return [url_for(page.cover)];
-    } else if (typeof page.thumbnail === 'string') {
+    }
+    if (page.cover && typeof page.cover.image === 'string') {
+        return [url_for(page.cover.image)];
+    }
+    if (typeof page.thumbnail === 'string') {
         return [url_for(page.thumbnail)];
-    } else if (article && typeof article.og_image === 'string') {
+    }
+    if (article && typeof article.og_image === 'string') {
         return [article.og_image];
-    } else if (page.content && page.content.includes('<img')) {
+    }
+    if (page.content && page.content.includes('<img')) {
         let images = [];
         let img;
         const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;

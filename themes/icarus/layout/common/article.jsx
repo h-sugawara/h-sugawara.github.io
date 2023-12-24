@@ -51,10 +51,51 @@ function getWordCount(content) {
 
 module.exports = class extends Component {
     renderCoverImage(index, url_for, cover, title, pageUrl) {
-        const coverSource = url_for(cover.src ? cover.src : cover);
-        const coverLayout = cover.layout ? cover.layout : 'fill';
+        let coverImage = '', coverSources = null;
+        if (typeof cover === 'object') {
+            const { sources = {}, image } = cover;
 
-        const Image = <img className={coverLayout} src={coverSource} alt={title || coverSource} />;
+            if (!image) {
+                return null;
+            }
+            coverImage = url_for(image);
+
+            /*
+             * smartphone layout:
+             *   ~552px=small, 553px-624px=medium, 625px-696px=large, 697px-768px=default
+             * tablet layout:
+             *   769px-875px=small, 876px-981px=medium, 982px-1087px=large
+             * desktop layout:
+             *   1088px-1471px=large, 1472px~=default
+             */
+            const sourceMap = {
+                small: [
+                    '(max-width:552px)',
+                    '(min-width:769px) and (max-width:875px)',
+                ],
+                medium: [
+                    '(min-width:553px) and (max-width:624px)',
+                    '(min-width:876px) and (max-width:981px)',
+                ],
+                large: [
+                    '(min-width:625px) and (max-width:696px)',
+                    '(min-width:982px) and (max-width:1471px)',
+                ],
+            }
+            Object.keys(sources).forEach(name => {
+                coverSources = <Fragment>
+                    {coverSources}
+                    {(sourceMap[name] || []).map(value => <source srcSet={sources[name]} media={value} />)}
+                </Fragment>;
+            });
+        } else {
+            coverImage = url_for(cover);
+        }
+
+        let Image = <img className="fill" src={coverImage} alt={title || coverImage} />;
+        if (coverSources) {
+            Image = <picture>{coverSources}{Image}</picture>;
+        }
 
         return <div className="card-image">
             {index ? <a href={pageUrl} className="image is-7by3">{Image}</a>
