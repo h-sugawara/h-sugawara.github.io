@@ -153,7 +153,7 @@ module.exports = class extends Component {
 
     renderCategories(pageCategories, url_for) {
         return <div className="article-categories is-size-7">
-            <span>Category:</span>
+            <span>@</span>
             {(() => {
                 const categories = [];
                 pageCategories.forEach((category, i) => {
