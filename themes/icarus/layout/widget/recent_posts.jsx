@@ -5,42 +5,42 @@ const ArticleMedia = require('../common/article_media');
 class RecentPosts extends Component {
     render() {
         const { title, posts } = this.props;
-        return <div class="card widget" data-type="recent-posts">
-            <div class="card-content">
-                <h3 class="menu-label">{title}</h3>
-                {posts.map(post => {
-                    return <ArticleMedia
-                        url={post.url}
-                        title={post.title}
-                        date={post.date}
-                        dateXml={post.dateXml}
-                        categories={post.categories}
-                        thumbnail={post.thumbnail}/>;
-                })}
+
+        return <div className="card widget" datatype="recent-posts">
+            <div className="card-content">
+                <h3 className="menu-label">{title}</h3>
+                {posts.map(post => <ArticleMedia
+                    url={post.url}
+                    title={post.title}
+                    date={post.date}
+                    dateXml={post.dateXml}
+                    categories={post.categories}
+                    thumbnail={post.thumbnail} />)}
             </div>
-        </div>
+        </div>;
     }
 }
 
 RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recent_posts', props => {
     const { site, helper, widget } = props;
-    const limit = widget.limit || 5;
+    const { limit = 5 } = widget;
     const { url_for, __, date_xml, date } = helper;
 
     if (!site.posts.length) {
         return null;
     }
 
-    const posts = site.posts.sort('date', -1).limit(limit).map(post => {
-        return {
-            url: url_for(post.link || post.path),
-            title: post.title,
-            date: date(post.date),
-            dateXml: date_xml(post.date),
-            thumbnail: post.thumbnail ? url_for(post.thumbnail) : null,
-            categories: post.categories.map(category => category.name),
-        };
-    });
+    const posts = site.posts.sort('date', -1).limit(limit)
+        .map(({ link, path, title, date: postDate, thumbnail, categories = [] }) => {
+            return {
+                url: url_for(link || path),
+                title: title,
+                date: date(postDate),
+                dateXml: date_xml(postDate),
+                thumbnail: thumbnail ? url_for(thumbnail) : null,
+                categories: categories.map(category => category.name),
+            };
+        });
 
     return {
         title: __('widget.recents'),
