@@ -97,10 +97,10 @@ module.exports = class extends Component {
             Image = <picture>{coverSources}{Image}</picture>;
         }
 
-        return <div className="card-image">
-            {index ? <a href={pageUrl} className="image is-7by3">{Image}</a>
-                : <span className="image is-7by3">{Image}</span>}
-        </div>;
+        if (index) {
+            return <a href={pageUrl} className="card-image image is-7by3">{Image}</a>;
+        }
+        return <span className="card-image image is-7by3">{Image}</span>;
     }
 
     renderMetadata(config, helper, page, index) {
@@ -146,7 +146,7 @@ module.exports = class extends Component {
 
     renderTitle(index, title, pageUrl) {
         if (index) {
-            return <p className="title is-size-2 is-size-3-mobile"><a className="link-muted" href={pageUrl}>{title}</a></p>;
+            return <a className="is-block title is-size-2 is-size-3-mobile link-muted" href={pageUrl}>{title}</a>;
         }
         return <h1 className="title is-size-2 is-size-3-mobile">{title}</h1>;
     }
