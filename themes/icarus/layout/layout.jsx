@@ -16,12 +16,12 @@ module.exports = class extends Component {
 
         return <html lang={language ? language.substr(0, 2) : ''}>
             <Head site={site} config={config} helper={helper} page={page} />
-            <body class={`is-${columnCount}-column`}>
+            <body className={`is-${columnCount}-column`}>
                 <Navbar config={config} helper={helper} page={page} />
-                <section class="section">
-                    <div class="container">
-                        <div class="columns">
-                            <div class={classname({
+                <section className="section">
+                    <div className="container">
+                        <div className="columns">
+                            <div className={classname({
                                 column: true,
                                 'order-2': true,
                                 'column-main': true,

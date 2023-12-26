@@ -15,10 +15,10 @@ module.exports = class extends Component {
         function renderArticleList(posts, year, month = null) {
             const time = moment([year, month ? month - 1 : null].filter(i => i !== null));
 
-            return <div class="card">
-                <div class="card-content">
-                    <h3 class="tag is-primary is-size-6">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
-                    <div class="timeline">
+            return <div className="card">
+                <div className="card-content">
+                    <h3 className="tag is-primary is-size-6">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
+                    <div className="timeline">
                         {posts.map(post => {
                             return <ArticleMedia
                                 url={url_for(post.link || post.path)}

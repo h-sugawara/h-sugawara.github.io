@@ -40,33 +40,31 @@ class Navbar extends Component {
             navbarLogo = siteTitle;
         }
 
-        return <nav class="navbar navbar-main">
-            <div class="container navbar-container">
-                <div class="navbar-brand justify-content-center">
-                    <a class="navbar-item navbar-logo" href={siteUrl}>
-                        {navbarLogo}
-                    </a>
+        return <nav className="navbar navbar-main">
+            <div className="container navbar-container">
+                <div className="navbar-brand justify-content-center">
+                    <a className="navbar-item navbar-logo" href={siteUrl}>{navbarLogo}</a>
                 </div>
-                <div class="navbar-menu">
-                    {Object.keys(menu).length ? <div class="navbar-start">
+                <div className="navbar-menu">
+                    {Object.keys(menu).length ? <div className="navbar-start">
                         {Object.keys(menu).map(name => {
-                            const item = menu[name];
-                            return <a class={classname({ 'navbar-item': true, 'is-active': item.active })} href={item.url}>{name}</a>;
+                            const { active, url } = menu[name];
+                            return <a className={classname({ 'navbar-item': true, 'is-active': active })} href={url}>{name}</a>;
                         })}
                     </div> : null}
-                    <div class="navbar-end">
+                    <div className="navbar-end">
                         {Object.keys(links).length ? <Fragment>
                             {Object.keys(links).map(name => {
-                                const link = links[name];
-                                return <a class="navbar-item" target="_blank" rel="noopener" title={name} href={link.url}>
-                                    {link.icon ? <i class={link.icon}></i> : name}
+                                const { url, icon } = links[name];
+                                return <a className="navbar-item" target="_blank" rel="noopener" title={name} href={url}>
+                                    {icon ? <i className={icon}></i> : name}
                                 </a>;
                             })}
                         </Fragment> : null}
-                        {showToc ? <a class="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
+                        {showToc ? <a className="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
                             <FontAwesomeIcon type="fa-list-ul" className="nav-toc-icon" />
                         </a> : null}
-                        {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
+                        {showSearch ? <a className="navbar-item search" title={searchTitle} href="javascript:;">
                             <FontAwesomeIcon type="fa-search" className="nav-search-icon" />
                         </a> : null}
                     </div>

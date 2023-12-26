@@ -9,15 +9,15 @@ class Insight extends Component {
             .concat(JSON.stringify({contentUrl: contentUrl}), ", ")
             .concat(JSON.stringify(translation), ");});");
 
-        return <div class="searchbox">
-            <div class="searchbox-container">
-                <div class="searchbox-header">
-                    <div class="searchbox-input-container">
-                        <input class="searchbox-input" type="text" placeholder={translation.hint} />
+        return <div className="searchbox">
+            <div className="searchbox-container">
+                <div className="searchbox-header">
+                    <div className="searchbox-input-container">
+                        <input className="searchbox-input" type="text" placeholder={translation.hint} />
                     </div>
-                    <a class="searchbox-close" href="javascript:;">&#xD7;</a>
+                    <a className="searchbox-close" href="javascript:;">&#xD7;</a>
                 </div>
-                <div class="searchbox-body"></div>
+                <div className="searchbox-body"></div>
                 <script dangerouslySetInnerHTML={{__html: js}}></script>
             </div>
         </div>;

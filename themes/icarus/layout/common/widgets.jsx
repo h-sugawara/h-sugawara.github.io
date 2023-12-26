@@ -80,7 +80,7 @@ class Widgets extends Component {
             'tags': [ Constants.PAGE_TYPE_TAGS ],
         };
 
-        return <div class={classname({
+        return <div className={classname({
             'column': true,
             ['column-' + position]: true,
             [getColumnSizeClass(columnCount)]: true,
@@ -105,7 +105,7 @@ class Widgets extends Component {
                 }
                 return null;
             })}
-            {position === 'left' && hasColumn(config.widgets, 'right', config, page) ? <div class={classname({
+            {position === 'left' && hasColumn(config.widgets, 'right', config, page) ? <div className={classname({
                 'column-right-shadow': true,
                 'is-hidden-widescreen': true,
                 'is-sticky': isColumnSticky(config, 'right')
