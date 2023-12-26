@@ -16,19 +16,22 @@ article.media
         color: $text-light
 
         .date
-            @extend .is-size-7, .is-block
+            @extend .is-block
+            font-size: $size-7
 
         .title
-            @extend .is-block, .is-size-6
+            @extend .is-block
             margin: 0
             line-height: inherit
+            font-size: $size-6
             color: $title-color
 
             &:hover
                 color: $primary
 
         .categories
-            @extend .is-size-7, .is-capitalized
+            @extend .is-capitalized
+            font-size: $size-7
 
 .widget
     .menu-list
