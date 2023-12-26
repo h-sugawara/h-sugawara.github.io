@@ -3,12 +3,6 @@
 @import '../../slim-bulma-stylus/form-tool/field-grouped'
 
 article.media
-    a
-        color: inherit
-
-        &:hover
-            color: $primary
-
     .image
         width: 64px
         height: 64px
@@ -18,22 +12,23 @@ article.media
             width: 100%
             height: 100%
 
-    .title
-        @extend .is-size-6
-        margin-bottom: .25em
-
-    .date, .categories
-        @extend .is-size-7
-
-    .categories
-        @extend .is-capitalized
-
     .media-content
         color: $text-light
 
+        .date
+            @extend .is-size-7, .is-block
+
         .title
+            @extend .is-block, .is-size-6
             margin: 0
             line-height: inherit
+            color: $title-color
+
+            &:hover
+                color: $primary
+
+        .categories
+            @extend .is-size-7, .is-capitalized
 
 .widget
     .menu-list
