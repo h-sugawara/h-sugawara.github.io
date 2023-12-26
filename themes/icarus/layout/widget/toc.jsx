@@ -52,14 +52,14 @@ class Toc extends Component {
         let result;
 
         if (keys.length > 0) {
-            result = <ul class="menu-list">
+            result = <ul className="menu-list">
                 {keys.map(i => this.renderToc(toc[i], collapsed, showIndex))}
             </ul>;
         }
 
         if ('id' in toc && 'index' in toc && 'text' in toc) {
             result = <li>
-                <a class={`level is-mobile${collapsed ? ' collapsed' + (toc.index === '1' ? ' is-active' : '') : ''}`} href={`#${toc.id}`}>
+                <a className={`level is-mobile${collapsed ? ' collapsed' + (toc.index === '1' ? ' is-active' : '') : ''}`} href={`#${toc.id}`}>
                     <span className="level-left">
                         {showIndex && <span className="level-item">{toc.index}</span>}
                         <span className="level-item">{unescapeHTML(toc.text)}</span>
@@ -79,12 +79,10 @@ class Toc extends Component {
             return null;
         }
 
-        return <div id="toc" class="card widget" data-type="toc">
-            <div class="card-content">
-                <div class="menu">
-                    <h3 class="menu-label">{title}</h3>
-                    {this.renderToc(toc, collapsed, showIndex)}
-                </div>
+        return <div id="toc" className="card widget" datatype="toc">
+            <div className="card-content menu">
+                <h3 className="menu-label">{title}</h3>
+                {this.renderToc(toc, collapsed, showIndex)}
             </div>
         </div>;
     }

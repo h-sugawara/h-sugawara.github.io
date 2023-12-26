@@ -1,4 +1,4 @@
-const { Component } = require('inferno');
+const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const FontAwesomeIcon = require('../misc/font_awesome_icon')
 
@@ -28,35 +28,30 @@ class Footer extends Component {
             footerLogo = siteTitle;
         }
 
-        return <footer class="footer">
-            <div class="container">
-                <div class="level">
-                    <div class="level-start">
-                        <a class="footer-logo is-block" href={siteUrl}>
-                            {footerLogo}
-                        </a>
-                        <p class="is-size-7">
-                            <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
-                            &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener" class="underline">Hexo</a>&nbsp;and&nbsp;
-                            <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener" class="underline">Icarus</a>
-                            {showVisitorCounter ? <br /> : null}
-                            {showVisitorCounter ? <span id="busuanzi_container_site_uv"
-                                dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
-                        </p>
-                        {copyright ? <p class="is-size-7" dangerouslySetInnerHTML={{ __html: copyright }}></p> : null}
-                    </div>
-                    <div class="level-end">
-                        {Object.keys(links).length ? <div class="field has-addons">
-                            {Object.keys(links).map(name => {
-                                const link = links[name];
-                                return <p class="control">
-                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={link.url}>
-                                        {link.icon ? <FontAwesomeIcon type={link.icon} /> : name}
-                                    </a>
-                                </p>;
-                            })}
-                        </div> : null}
-                    </div>
+        return <footer className="footer">
+            <div className="container level">
+                <div className="level-start">
+                    <a className="footer-logo is-block" href={siteUrl}>{footerLogo}</a>
+                    <p className="is-size-7">
+                        <span dangerouslySetInnerHTML={{__html: `&copy; ${siteYear} ${author || siteTitle}`}}></span>
+                        &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener" className="underline">Hexo</a>&nbsp;and&nbsp;
+                        <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener" className="underline">Icarus</a>
+                        {showVisitorCounter ? <Fragment>
+                            <br />
+                            <span id="busuanzi_container_site_uv" dangerouslySetInnerHTML={{__html: visitorCounterTitle}}></span>
+                        </Fragment> : null}
+                    </p>
+                    {copyright ? <p className="is-size-7" dangerouslySetInnerHTML={{__html: copyright}}></p> : null}
+                </div>
+                <div className="level-end">
+                    {Object.keys(links).length ? <div className="field has-addons">
+                        {Object.keys(links).map(name => {
+                            const { icon, url } = links[name];
+                            return <a className={`control button is-transparent ${icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={url}>
+                                {icon ? <FontAwesomeIcon type={icon} /> : name}
+                            </a>;
+                        })}
+                    </div> : null}
                 </div>
             </div>
         </footer>;
@@ -64,9 +59,9 @@ class Footer extends Component {
 }
 
 module.exports = cacheComponent(Footer, 'common.footer', props => {
-    const { config, helper } = props;
-    const { url_for, _p, date } = helper;
-    const { logo, title, author, footer, plugins } = config;
+    const {config, helper} = props;
+    const {url_for, _p, date} = helper;
+    const {logo, title, author, footer, plugins} = config;
 
     const links = {};
     if (footer && footer.links) {

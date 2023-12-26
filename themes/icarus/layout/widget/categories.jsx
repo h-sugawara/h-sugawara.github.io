@@ -6,14 +6,10 @@ class Categories extends Component {
         return categories.map(category => {
             return <li>
                 <a className={`level is-mobile${(category.isCurrent ? ' is-active' : '')}`} href={category.url}>
-                    <span className="level-start">
-                        <span className="level-item">{category.name}</span>
-                    </span>
-                    {showCount ? <span className="level-end">
-                        <span className="level-item tag">{category.count}</span>
-                    </span> : null}
+                    <span className="level-left">{category.name}</span>
+                    {showCount && <span className="tag">{category.count}</span>}
                 </a>
-                {!category.children.length && <ul>{this.renderList(category.children, showCount)}</ul>}
+                {category.children.length > 0 && <ul>{this.renderList(category.children, showCount)}</ul>}
             </li>;
         });
     }
@@ -22,18 +18,16 @@ class Categories extends Component {
         const { showCount, categories, title } = this.props;
 
         return <div className="card widget" datatype="categories">
-            <div className="card-content">
-                <div className="menu">
-                    <h3 className="menu-label">{title}</h3>
-                    <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
-                </div>
+            <div className="card-content menu">
+                <h3 className="menu-label">{title}</h3>
+                <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
             </div>
         </div>;
     }
 }
 
 Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => {
-    const { page, helper, widget = {}, site } = props;
+    const {page, helper, widget = {}, site} = props;
     const { url_for, _p } = helper;
     const {
         categories = site.categories,
