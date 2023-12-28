@@ -12,7 +12,7 @@ category: Technology
 toc: true
 has_gallery: false
 has_code: true
-has_icon: true
+has_icon: false
 og_image: /images/technology_blog_title.webp
 thumbnail: /images/thumbnails/hexo_thumbnail.webp
 cover:
@@ -58,7 +58,6 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 
 作中のスクショを張りたかったことと、R18 指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
 `GitHub Pages`で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
-
 あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。
 紆余曲折あって、`Hexo.js`に辿り着き、これを使うことにしました。
 
@@ -75,15 +74,14 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 ### ローカル環境整備
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> Node.js のバージョン管理ツールをインストールしておくと楽です。
-　Windows => nvm-windows をインストール。
-　Mac または Linux => お好きなツールをインストール。
-{% endmessage %}
-{% message color:info %}
-<i class="fa-solid fa-circle-info"></i> Git はインストール必須です。
-　Windows => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
-　Mac => HomeBrew 等でインストール。
-　Linux => apt-get や yum でインストール。
+Node.js のバージョン管理ツールをインストールしておくと楽です。
+・Windows => nvm-windows をインストール。
+・Mac または Linux => お好きなツールをインストール。
+
+Git はインストール必須です。
+・Windows => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
+・Mac => HomeBrew 等でインストール。
+・Linux => apt-get や yum でインストール。
 {% endmessage %}
 
 1. Node.js のバージョン管理ツールから最新版をインストールします。
@@ -98,32 +96,30 @@ npm install -g hexo-cli
 ### ブログセットアップ
 
 1. ブログ一式を作成するコマンドを実行します。
-以下のコマンドは、`blog`という名前のディレクトリでブログ一式が作成されます。任意の名前に変えて実行しても大丈夫です。
+以下のコマンドは、"blog"という名前のディレクトリでブログ一式が作成されます。任意の名前に変えて実行しても大丈夫です。
 ```shell terminal
 hexo init blog
 ```
-2. `blog`ディレクトリ(※)に移動し、`npm install`コマンドを実行します。
-(※) 手順1で、任意の名前で作成した場合、`blog`を読み替えてください。
+2. "blog"ディレクトリ(※)に移動し、`npm install`コマンドを実行します。
+(※) 手順1で、任意の名前で作成した場合、"blog"を読み替えてください。
 ```shell terminal
 cd ./blog
 npm install
 ```
 
 これだけでブログのセットアップは完了です。ね？簡単でしょ？
-
 では、下記のコマンドを実行してセットアップしたブログを表示してみましょう！
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。
-それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
-{% endmessage %}
-{% message color:info %}
-<i class="fa-solid fa-circle-info"></i> コマンド実行時にログにも出ますが、Ctrl+C で`Hexo`サーバーを止められます。
+Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必要です。
+それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
 ```shell terminal
 npm run clean && npm run server
 ```
+
+コマンド実行時にログにも出ますが、Ctrl+C で`Hexo`サーバーを止められます。
 
 ### カスタムテーマ導入
 
@@ -135,20 +131,20 @@ npm run clean && npm run server
 `Icarus`テーマの{% anchor "ドキュメントからインストール手順" https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/ true "Getting started with icarus" %}が見れるので、導入してみてください。
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> `npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
+`npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
 `git clone`する方法、または、GitHub から Download zip する方法で導入することを推奨します。
 {% endmessage %}
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> `Icarus`テーマの最新版 v5.x は、`Hexo v6.x`ベースで作成されています。
+`Icarus`テーマの最新版 v5.x は、Hexo v6.x ベースで作成されています。
 そのため、ブログ側の`Hexo`を最新版の v7.x ではなく v6.x にすると、互換性に関わる問題が発生しにくいでしょう。
-私は念のため、`Hexo v7.x`を`npm uninstall`した後に、`Hexo v6.x`を`npm install`しました。
+私は念のため、Hexo v7.x を`npm uninstall`した後に、Hexo v6.x を`npm install`しました。
 {% endmessage %}
 
 ### ブログ設定を整える
 
 手元で確認した時に「ブログのタイトルを変えてぇなぁ」等、思った方はいらっしゃると思います。
-`blog`ディレクトリ(※)直下に、ブログの設定ファイル`_config.yml`があるので、その中身を良い感じに書き換えていきましょう。
-(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、`blog`をそれに読み替えてください。
+"blog"ディレクトリ(※)直下に、ブログの設定ファイルがあるので、その中身を良い感じに書き換えていきましょう。
+(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、"blog"をそれに読み替えてください。
 
 ```yaml _config.yml
 # Site
@@ -178,7 +174,7 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 `Hexo`で記事を作成するには、以下のコマンドを実行します。
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> 記事名（コマンド中の article-name 部分）は、自由に入力してかまいません。
+記事名（コマンド中の article-name 部分）は、自由に入力してかまいません。
 {% endmessage %}
 
 ```shell terminal
@@ -196,14 +192,14 @@ tags:
 ---
 ```
 
-`---`で囲まれた部分を Front Matter と呼び、`Hexo`では記事のメタ情報を記載する場所です。
-title は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
-他にも、テーマによっては、カスタムフィールドがあります（例：`Icarus`テーマなら、thumbnail や cover 等）ので、お好みで設定してください。
+`---`で囲まれた部分を"Front Matter"と呼び、`Hexo`では記事のメタ情報を記載する場所です。
+"title"は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
+他にも、テーマによってはカスタムフィールドがあります（例：`Icarus`テーマなら、"thumbnail"や"cover"等）ので、お好みで設定してください。
 
-そして、ブログの本文は、Front Matter の後に記述します。
+そして、ブログの本文は、"Front Matter"の後に記述します。
 
-実際の記事の執筆は、下記のように Front Matter に色々と設定したり、本文を書いたりします。
-なお、本文中に`<!-- more -->`を入れると、この位置に「続きを読む」ボタンを差し込むことができます。
+実際の記事の執筆は、下記のように"Front Matter"に色々と設定したり、本文を書いたりします。
+なお、本文中に`<!-- more -->`を入れると、その位置に「続きを読む」ボタンを差し込めます。
 
 ```markdown source/_posts/2023_12_22_article-name.md
 ---
@@ -230,7 +226,7 @@ category: Technology
 
 ここまでの手順で、ブログとしてはほぼ完成しています。
 
-`Icarus`テーマを導入した方は、日本語の表示時フォントが Microsoft YaHei になっています。
+`Icarus`テーマを導入した方は、日本語の表示時フォントが"Microsoft YaHei"になっています。
 見慣れているフォントに変えたいなら、フォント設定に関する処理を書き換えると変更できます（※前項「カスタムテーマ導入」の注意事項を読んでください）。
 やり方については、{% anchor "「Hexoのicarusテーマのフォントの変え方」" https://omathin.com/icarus-theme-change/ true "Hexoのicarusテーマのフォントの変え方" %}や{% anchor "「HEXO の表示フォントを変更」" https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/ true "HEXO の表示フォントを変更" %}をまねてみると良いでしょう。
 
@@ -247,27 +243,24 @@ category: Technology
 ### 公開用レポジトリ作成
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> GitHub のアカウントはあらかじめ作成してください。
+GitHub のアカウントはあらかじめ作成してください。
 {% endmessage %}
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> 無料で使いたい場合は、パブリックレポジトリにする必要があります。
+無料で使いたい場合は、パブリックレポジトリにする必要があります。
 {% endmessage %}
 
 自分のアカウントを使って、`GitHub Pages`用のレポジトリを作成します。
 画像付きの作成手順が{% anchor "GitHub公式ドキュメントにまとめられています" https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site true "サイト用にリポジトリを作成する" %}ので、ご確認ください。
 
 作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
-それから、構築実践編で作成した`blog`ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
-(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、`blog`をそれに読み替えてください。
+それから、構築実践編で作成した"blog"ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
+(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、"blog"をそれに読み替えてください。
 
-{% message color:info %}
-<i class="fa-solid fa-circle-info"></i> ちなみに、この手順を行ってから、構築手順を行うこともできます。
-{% endmessage %}
+ちなみに、この手順を行ってから、構築手順を行うこともできます。
 
 ### デプロイ設定
 
-デプロイの設定は、ブログの設定ファイル`_config.yml`にあります。
-下記のように書き換えましょう。
+デプロイの設定は、ブログの設定ファイルにあります。下記のように書き換えましょう。
 
 ```yaml _config.yml
 # Include / Exclude file(s)
@@ -285,17 +278,14 @@ deploy:
       public: false
 ```
 
-書き換えた後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に`.nojekyll`ファイルを作成しておいてください。
-
-これでデプロイの設定は完了です。
-デプロイする前に、次のセクションの「下書き記事を使いこなす」をよく読んでください。
+その後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に`.nojekyll`ファイルを作成しましょう。
+これでデプロイの設定は完了です。デプロイする前に、次のセクションの「下書き記事を使いこなす」をよく読んでください。
 
 ### 下書き記事を使いこなす
 
 `hexo new post`コマンドで作った記事は、公開状態の投稿記事になります。
 ということは、ブログをお外に公開すると、今後は「書きかけの記事が投稿されちゃった」事故が起こりえます。
 非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防げます。
-
 次のコマンドで、下書き記事を作成します。
 
 ```shell terminal
@@ -322,7 +312,6 @@ npm run clean && npm run server
 
 さて、上記の手順は、あくまで手元で表示できるようにしただけであって、お外では依然として下書き記事が非公開状態として扱われます。
 前述の通り、投稿記事は公開状態として扱われるので、下書き記事を投稿記事に変換しましょう。
-
 下記のコマンドを実行することで実現できます。
 
 ```shell terminal
@@ -335,8 +324,8 @@ hexo publish "article-name"
 デプロイは下記のコマンドを実行するだけで終わります。
 
 {% message color:warning %}
-<i class="fas fa-circle-exclamation"></i> Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。
-それ以下のバージョンしか使えないなど制約がある環境の場合は、二つのコマンドを順番に実行してください。
+Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必要です。
+それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
 ```shell terminal
@@ -359,14 +348,14 @@ npm run clean && npm run deploy
 ### Google Analytics 登録
 
 {% message color:info %}
-<i class="fa-solid fa-circle-info"></i> 所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
+所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
 {% endmessage %}
 
-お外に公開したブログのアクセス解析と、Google Search Console（以下、GSC）の所有者確認のために、Google Analytics（以下、GA）にアカウントを作成します。
+お外に公開したブログのアクセス解析と、"Google Search Console"（以下、GSC）の所有者確認のために、"Google Analytics"（以下、GA）にアカウントを作成します。
 
 アカウント作成は、{% anchor "GoogleのAnalyticsページ" http://www.google.com/analytics true "Google Analytics" %}から行ってください。
 単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。
-Google検索すると、{% anchor "詳しく説明してくれている方たち" https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2 true "Google検索結果" %}がいますので、彼らのページを見ることをオススメします。
+Google 検索すると、{% anchor "詳しく説明してくれている方たち" https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2 true "Google検索結果" %}がいますので、彼らのページを見ることをオススメします。
 
 ### サイトマップ作成
 
@@ -388,8 +377,7 @@ sitemap:
   categories: false
 ```
 
-設定はこれだけでOKです。
-デプロイコマンドを実行する度に、`Hexo`がブログのサイトマップを作って、`GitHub Pages`にデプロイしてくれるようになります。
+設定はこれだけでOKです。デプロイコマンドを実行する度に、`Hexo`がブログのサイトマップを作って、`GitHub Pages`にデプロイしてくれるようになります。
 
 ### Google Search Console 登録
 
