@@ -14,13 +14,13 @@ has_gallery: false
 has_code: true
 has_icon: true
 og_image: /images/technology_blog_title.webp
-thumbnail: /images/hexo_thumbnail.webp
+thumbnail: /images/thumbnails/hexo_thumbnail.webp
 cover:
-  image: /images/technology_blog_cover.webp
+  image: /images/technology/blog_cover.webp
   sources:
-    small: /images/technology_blog_cover_small.webp
-    medium: /images/technology_blog_cover_medium.webp
-    large: /images/technology_blog_cover_large.webp
+    small: /images/technology/blog_cover_small.webp
+    medium: /images/technology/blog_cover_medium.webp
+    large: /images/technology/blog_cover_large.webp
 ---
 
 ちゃろー☆今年もアドベントカレンダーの時期がやってきました！

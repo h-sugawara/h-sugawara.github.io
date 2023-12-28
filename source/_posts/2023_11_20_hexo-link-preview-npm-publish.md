@@ -14,13 +14,13 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology_programming_title.webp
-thumbnail: /images/npm_thumbnail.webp
+thumbnail: /images/thumbnails/npm_thumbnail.webp
 cover: 
-  image: /images/technology_programming_cover.webp
+  image: /images/technology/programming_cover.webp
   sources:
-    small: /images/technology_programming_cover_small.webp
-    medium: /images/technology_programming_cover_medium.webp
-    large: /images/technology_programming_cover_large.webp
+    small: /images/technology/programming_cover_small.webp
+    medium: /images/technology/programming_cover_medium.webp
+    large: /images/technology/programming_cover_large.webp
 ---
 
 2023年11月19日（日）、自作したHexo用タグプラグイン hexo-tag-ogp-link-preview v1.0.0 を、npmに公開しました。
