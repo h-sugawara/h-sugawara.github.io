@@ -235,7 +235,7 @@ OP「恋せよ乙女！」は、攻略前でも素晴らしい曲であるが、
 
 ### 作品への総評
 
-{% message title:総合評価 color:primary icon:"fa-solid fa-pen" %}
+{% message title:総合評価 color:primary %}
 90点（秀/AA-ランク）
 {% endmessage %}
 

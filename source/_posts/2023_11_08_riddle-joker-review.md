@@ -228,7 +228,7 @@ cover:
 
 ### 作品への総評
 
-{% message title:総合評価 color:info icon:"fa-solid fa-pen" %}
+{% message title:総合評価 color:info %}
 85点（優/Aランク）
 {% endmessage %}
 
