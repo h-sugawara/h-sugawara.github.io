@@ -35,6 +35,23 @@
         "SwitchCase": 1
       }
     ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "never",
+      {
+        "singleValue": true
+      }
+    ],
     "react/no-unknown-property": [
       "error",
       {
@@ -43,7 +60,8 @@
           "onclick",
           "onload",
           "onsubmit",
-          "crossorigin"
+          "crossorigin",
+          "datatype"
         ]
       }
     ],
