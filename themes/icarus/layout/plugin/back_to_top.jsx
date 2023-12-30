@@ -22,7 +22,7 @@ BackToTop.Cacheable = cacheComponent(BackToTop, 'plugin.backtotop', props => {
     return {
         head: head,
         title: helper.__('plugin.backtotop'),
-        jsUrl: helper.url_for('/js/back_to_top.js')
+        jsUrl: helper.url_for('/js/back_to_top.js'),
     };
 });
 

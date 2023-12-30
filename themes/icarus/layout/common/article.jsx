@@ -5,7 +5,7 @@ const Share = require('./share');
 const Donates = require('./donates');
 const Comment = require('./comment');
 const ArticleLicensing = require('../misc/article_licensing');
-const FontAwesomeIcon = require('../misc/font_awesome_icon')
+const FontAwesomeIcon = require('../misc/font_awesome_icon');
 
 /**
  * Get the read time and the word count of text content.
@@ -20,7 +20,7 @@ function getReadTimeAndWordCountOf(content) {
     const kanjiTime = (kanji / 160.0) * 60;
     const time = moment.duration(alphaNumTime + kanaTime + kanjiTime, 'seconds');
 
-    return { words, time }
+    return { words, time };
 }
 
 /**
@@ -51,7 +51,9 @@ function getWordCount(content) {
 
 module.exports = class extends Component {
     renderCoverImage(index, url_for, cover, title, pageUrl) {
-        let coverImage = '', coverSources = null;
+        let coverImage = '';
+        let coverSources = null;
+
         if (typeof cover === 'object') {
             const { sources = {}, image } = cover;
 
@@ -81,7 +83,7 @@ module.exports = class extends Component {
                     '(min-width:625px) and (max-width:696px)',
                     '(min-width:982px) and (max-width:1471px)',
                 ],
-            }
+            };
             Object.keys(sources).forEach(name => {
                 coverSources = <Fragment>
                     {coverSources}
@@ -111,7 +113,7 @@ module.exports = class extends Component {
         const { update_time: updateTime = true, readtime: hasReadTime = false } = article;
         const { busuanzi = false } = plugins;
 
-        const language = toMomentLocale(index ? cfgLanguage : (pageLang || pageLanguage || cfgLanguage));
+        const language = toMomentLocale(index ? cfgLanguage : pageLang || pageLanguage || cfgLanguage);
         const isUpdated = pageUpdated && !moment(pageDate).isSame(moment(pageUpdated));
         const shouldShowUpdated = pageUpdated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
         const hasVisitorCounter = !index && busuanzi === true;
@@ -120,11 +122,11 @@ module.exports = class extends Component {
             <div className="level-left">
                 {/* Creation Date */}
                 {pageDate && <span className="level-item" dangerouslySetInnerHTML={{
-                    __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`)
+                    __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`),
                 }}></span>}
                 {/* Last Update Date */}
                 {shouldShowUpdated && <span className="level-item" dangerouslySetInnerHTML={{
-                    __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`)
+                    __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`),
                 }}></span>}
                 {/* author */}
                 {pageAuthor ? <span className="level-item"> {pageAuthor} </span> : null}
@@ -132,13 +134,13 @@ module.exports = class extends Component {
                 {hasReadTime ? <span className="level-item">
                     {(() => {
                         const { time } = getReadTimeAndWordCountOf(page._content);
-                        //return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
+                        // return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
                         return `${_p('article.read_time', time.locale(language).humanize())}`;
                     })()}
                 </span> : null}
                 {/* Visitor counter */}
                 {hasVisitorCounter ? <span className="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
-                    __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>')
+                    __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>'),
                 }}></span> : null}
             </div>
         </div>;
@@ -177,13 +179,13 @@ module.exports = class extends Component {
     renderPageNavigation(pagePrev, pageNext, url_for) {
         return <nav className="post-navigation level is-mobile">
             <div className={`level-start${pagePrev ? '' : ' is-invisible'}`}>
-                {pagePrev ? <a className={`article-nav-prev level-item link-muted`} href={url_for(pagePrev.path)}>
+                {pagePrev ? <a className={'article-nav-prev level-item link-muted'} href={url_for(pagePrev.path)}>
                     <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
                     <span>{pagePrev.title}</span>
                 </a> : null}
             </div>
             <div className={`level-end${pageNext ? '' : ' is-invisible'}`}>
-                {pageNext ? <a className={`article-nav-next level-item link-muted`} href={url_for(pageNext.path)}>
+                {pageNext ? <a className={'article-nav-next level-item link-muted'} href={url_for(pageNext.path)}>
                     <span>{pageNext.title}</span>
                     <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
                 </a> : null}
@@ -224,7 +226,7 @@ module.exports = class extends Component {
                     {categories && categories.length ? this.renderCategories(categories, url_for) : null}
                     {/* Content/Excerpt */}
                     <div className="content" dangerouslySetInnerHTML={{
-                        __html: index && excerpt ? `<a class="link-muted" href="${pageUrl}">${excerpt}</a>` : page.content
+                        __html: index && excerpt ? `<a class="link-muted" href="${pageUrl}">${excerpt}</a>` : page.content,
                     }}></div>
                     {/* Licensing block */}
                     {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}

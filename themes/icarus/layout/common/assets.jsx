@@ -1,6 +1,6 @@
 const { Component, Fragment } = require('inferno');
-const Plugins = require("./plugins");
-const Constants = require("../constants");
+const Plugins = require('./plugins');
+const Constants = require('../constants');
 
 function getHighlightThemeName(highlight, article) {
     if (highlight && highlight.enable === false) {
@@ -50,7 +50,7 @@ function getCssUrl(helper, config, type) {
 
     const fonts = {
         default: fontcdn('Source+Code+Pro&display=swap', 'css2'),
-        cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2')
+        cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2'),
     };
 
     return {
@@ -76,7 +76,7 @@ function getScriptUrl(helper, config) {
         toc: url_for('/js/toc.js'),
         toggleToc: url_for('/js/toggle_toc.js'),
         clipboard: cdn('clipboard', '2.0.4', 'dist/clipboard.min.js'),
-        codeBlock: url_for(`/js/codeblock.js`),
+        codeBlock: url_for('/js/codeblock.js'),
         gallery: url_for('/js/gallery.js'),
     };
 }
@@ -121,9 +121,9 @@ module.exports = class extends Component {
             clipboard: clipboardJsUrl,
             codeBlock: codeBlockJsUrl,
             gallery: galleryJsUrl,
-        } = getScriptUrl(helper, config)
+        } = getScriptUrl(helper, config);
 
-        const onLoadForPreloadCss = "this.onload=null;this.rel='stylesheet'";
+        const onLoadForPreloadCss = 'this.onload=null;this.rel=\'stylesheet\'';
 
         return <Fragment>
             <link rel="stylesheet" href={mainCssUrl} />

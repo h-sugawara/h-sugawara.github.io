@@ -46,7 +46,7 @@ function getToc(content, maxDepth) {
 class Toc extends Component {
     renderToc(toc, collapsed, showIndex = true) {
         const keys = Object.keys(toc)
-            .filter((key) => !['id', 'index', 'text'].includes(key))
+            .filter(key => !['id', 'index', 'text'].includes(key))
             .map(key => parseInt(key, 10))
             .sort((a, b) => a - b);
         let result;
@@ -102,7 +102,7 @@ Toc.Cacheable = cacheComponent(Toc, 'widget.toc', props => {
         collapsed: collapsed,
         maxDepth: depth,
         showIndex: index,
-        content: encrypt ? origin : content
+        content: encrypt ? origin : content,
     };
 });
 

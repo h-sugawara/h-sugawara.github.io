@@ -7,7 +7,7 @@ const ArticleMedia = require('./common/article_media');
 module.exports = class extends Component {
     render() {
         const { config, page, helper } = this.props;
-        const { url_for, __, date_xml, date, _p } = helper;
+        const { url_for, __, date_xml, date } = helper;
 
         const language = toMomentLocale(page.lang || page.language || config.language);
         moment.locale(language);

@@ -1,6 +1,6 @@
 const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
-const FontAwesomeIcon = require('../misc/font_awesome_icon')
+const FontAwesomeIcon = require('../misc/font_awesome_icon');
 
 class Footer extends Component {
     render() {
@@ -14,16 +14,12 @@ class Footer extends Component {
             links,
             copyright,
             showVisitorCounter,
-            visitorCounterTitle
+            visitorCounterTitle,
         } = this.props;
 
         let footerLogo = '';
         if (logo) {
-            if (logo.text) {
-                footerLogo = logo.text;
-            } else {
-                footerLogo = <img src={logoUrl} alt={siteTitle} width="140" height="28" />;
-            }
+            footerLogo = logo.text ? logo.text : <img src={logoUrl} alt={siteTitle} width="140" height="28" />;
         } else {
             footerLogo = siteTitle;
         }
@@ -69,7 +65,7 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
             const link = footer.links[name];
             links[name] = {
                 url: url_for(typeof link === 'string' ? link : link.url),
-                icon: link.icon
+                icon: link.icon,
             };
         });
     }
@@ -84,6 +80,6 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         links,
         copyright: footer?.copyright ?? '',
         showVisitorCounter: plugins && plugins.busuanzi === true,
-        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>')
+        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>'),
     };
 });

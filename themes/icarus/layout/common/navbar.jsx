@@ -1,7 +1,7 @@
 const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const classname = require('hexo-component-inferno/lib/util/classname');
-const FontAwesomeIcon = require('../misc/font_awesome_icon')
+const FontAwesomeIcon = require('../misc/font_awesome_icon');
 
 function isSameLink(a, b) {
     function santize(url) {
@@ -26,16 +26,12 @@ class Navbar extends Component {
             showToc,
             tocTitle,
             showSearch,
-            searchTitle
+            searchTitle,
         } = this.props;
 
         let navbarLogo = '';
         if (logo) {
-            if (logo.text) {
-                navbarLogo = logo.text;
-            } else {
-                navbarLogo = <img src={logoUrl} alt={siteTitle} width="140" height="28" />;
-            }
+            navbarLogo = logo.text ? logo.text : <img src={logoUrl} alt={siteTitle} width="140" height="28" />;
         } else {
             navbarLogo = siteTitle;
         }
@@ -98,7 +94,7 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
             const link = navbar.links[name];
             links[name] = {
                 url: url_for(typeof link === 'string' ? link : link.url),
-                icon: link.icon
+                icon: link.icon,
             };
         });
     }
@@ -113,6 +109,6 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
         showToc,
         tocTitle: _p('widget.catalogue', Infinity),
         showSearch: search && search.type,
-        searchTitle: __('search.search')
+        searchTitle: __('search.search'),
     };
 });

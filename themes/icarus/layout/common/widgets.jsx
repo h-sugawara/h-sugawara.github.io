@@ -2,21 +2,23 @@ const logger = require('hexo-log')();
 const { Component } = require('inferno');
 const view = require('hexo-component-inferno/lib/core/view');
 const classname = require('hexo-component-inferno/lib/util/classname');
-const Constants = require('../constants')
+const Constants = require('../constants');
 
 function formatWidgets(widgets) {
     const result = {};
+
     if (Array.isArray(widgets)) {
         widgets.filter(widget => typeof widget === 'object').forEach(widget => {
             if ('position' in widget && (widget.position === 'left' || widget.position === 'right')) {
                 if (!(widget.position in result)) {
-                    result[widget.position] = [widget];
+                    result[widget.position] = [ widget ];
                 } else {
                     result[widget.position].push(widget);
                 }
             }
         });
     }
+
     return result;
 }
 
@@ -24,12 +26,10 @@ function hasColumn(widgets, position, config, page) {
     const showToc = (config.toc === true) && ['page', 'post'].includes(page.layout);
     if (Array.isArray(widgets)) {
         return typeof widgets.find(widget => {
-            if (widget.type === 'toc' && !showToc) {
-                return false;
-            }
-            return widget.position === position;
+            return widget.type === 'toc' && !showToc ? false : widget.position === position;
         }) !== 'undefined';
     }
+
     return false;
 }
 
@@ -48,10 +48,7 @@ function getColumnSizeClass(columnCount) {
 }
 
 function getColumnVisibilityClass(columnCount, position) {
-    if (columnCount === 3 && position === 'right') {
-        return 'is-hidden-touch is-hidden-desktop-only';
-    }
-    return '';
+    return columnCount === 3 && position === 'right' ? 'is-hidden-touch is-hidden-desktop-only' : '';
 }
 
 function getColumnOrderClass(position) {
@@ -86,7 +83,7 @@ class Widgets extends Component {
             [getColumnSizeClass(columnCount)]: true,
             [getColumnVisibilityClass(columnCount, position)]: true,
             [getColumnOrderClass(position)]: true,
-            'is-sticky': isColumnSticky(config, position)
+            'is-sticky': isColumnSticky(config, position),
         })}>
             {widgets.map(widget => {
                 // widget type is not defined
@@ -108,7 +105,7 @@ class Widgets extends Component {
             {position === 'left' && hasColumn(config.widgets, 'right', config, page) ? <div className={classname({
                 'column-right-shadow': true,
                 'is-hidden-widescreen': true,
-                'is-sticky': isColumnSticky(config, 'right')
+                'is-sticky': isColumnSticky(config, 'right'),
             })}></div> : null}
         </div>;
     }

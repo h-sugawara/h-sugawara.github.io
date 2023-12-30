@@ -5,9 +5,9 @@ class Insight extends Component {
     render() {
         const { translation, contentUrl } = this.props;
 
-        const js = "document.addEventListener('DOMContentLoaded', function () {loadInsight("
-            .concat(JSON.stringify({contentUrl: contentUrl}), ", ")
-            .concat(JSON.stringify(translation), ");});");
+        const js = 'document.addEventListener(\'DOMContentLoaded\', function () {loadInsight('
+            .concat(JSON.stringify({contentUrl: contentUrl}), ', ')
+            .concat(JSON.stringify(translation), ');});');
 
         return <div className="searchbox">
             <div className="searchbox-container">
@@ -35,9 +35,9 @@ Insight.Cacheable = cacheComponent(Insight, 'search.insight', props => {
             posts: _p('common.post', Infinity),
             pages: _p('common.page', Infinity),
             categories: _p('common.category', Infinity),
-            tags: _p('common.tag', Infinity)
+            tags: _p('common.tag', Infinity),
         },
-        contentUrl: url_for('/content.json')
+        contentUrl: url_for('/content.json'),
     };
 });
 

@@ -1,10 +1,10 @@
-const { Component, Fragment } = require('inferno');
+const { Component } = require('inferno');
 const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
 const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
 const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_data');
 const Assets = require('./assets');
-const Constants = require("../constants");
+const Constants = require('../constants');
 
 function getPageTitle(page, siteTitle, helper, type) {
     let title = page.title;
@@ -17,19 +17,19 @@ function getPageTitle(page, siteTitle, helper, type) {
             } else if (helper.is_year()) {
                 title += ': ' + page.year;
             }
-            break
+            break;
         case Constants.PAGE_TYPE_CATEGORIES:
             title = helper._p('common.category', Infinity);
-            break
+            break;
         case Constants.PAGE_TYPE_CATEGORY:
             title = helper._p('common.category', 1) + ': ' + page.category;
-            break
+            break;
         case Constants.PAGE_TYPE_TAGS:
             title = helper._p('common.tag', Infinity);
-            break
+            break;
         case Constants.PAGE_TYPE_TAG:
             title = helper._p('common.tag', 1) + ': ' + page.tag;
-            break
+            break;
     }
 
     return [title, siteTitle].filter(str => typeof str !== 'undefined' && str.trim() !== '').join(' - ');
@@ -39,22 +39,22 @@ function getImages(helper, page, article) {
     const { url_for } = helper;
 
     if (typeof page.og_image === 'string') {
-        return [page.og_image];
+        return [ page.og_image ];
     }
     if (typeof page.cover === 'string') {
-        return [url_for(page.cover)];
+        return [ url_for(page.cover) ];
     }
     if (page.cover && typeof page.cover.image === 'string') {
-        return [url_for(page.cover.image)];
+        return [ url_for(page.cover.image) ];
     }
     if (typeof page.thumbnail === 'string') {
-        return [url_for(page.thumbnail)];
+        return [ url_for(page.thumbnail) ];
     }
     if (article && typeof article.og_image === 'string') {
-        return [article.og_image];
+        return [ article.og_image ];
     }
     if (page.content && page.content.includes('<img')) {
-        let images = [];
+        const images = [];
         let img;
         const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;
         while ((img = imgPattern.exec(page.content)) !== null) {
@@ -62,7 +62,7 @@ function getImages(helper, page, article) {
         }
         return images;
     }
-    return [url_for('/img/og_image.png')];
+    return [ url_for('/img/og_image.png') ];
 }
 
 module.exports = class extends Component {
@@ -77,7 +77,7 @@ module.exports = class extends Component {
             structured_data = {},
             canonical_url = page.permalink,
             rss,
-            favicon
+            favicon,
         } = head;
 
         const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();

@@ -1,4 +1,4 @@
-const { Component, Fragment, linkEvent } = require('inferno');
+const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Gallery extends Component {
@@ -18,7 +18,7 @@ class Gallery extends Component {
             </Fragment>;
         }
 
-        const js = "window.addEventListener(\"load\",()=>{if(typeof $.fn.lightGallery==='function'){$('.article').lightGallery({selector:'.gallery-item'});} if(typeof $.fn.justifiedGallery==='function'){if($('.justified-gallery>p>.gallery-item').length){$('.justified-gallery > p > .gallery-item').unwrap();}$('.justified-gallery').justifiedGallery();}});";
+        const js = 'window.addEventListener("load",()=>{if(typeof $.fn.lightGallery===\'function\'){$(\'.article\').lightGallery({selector:\'.gallery-item\'});} if(typeof $.fn.justifiedGallery===\'function\'){if($(\'.justified-gallery>p>.gallery-item\').length){$(\'.justified-gallery > p > .gallery-item\').unwrap();}$(\'.justified-gallery\').justifiedGallery();}});';
         return <script dangerouslySetInnerHTML={{__html: js}} />;
     }
 }
@@ -35,12 +35,12 @@ Gallery.Cacheable = cacheComponent(Gallery, 'plugin.gallery', props => {
         head: head,
         lightGallery: {
             jsUrl: helper.cdn('lightgallery', '1.10.0', 'dist/js/lightgallery.min.js'),
-            cssUrl: helper.cdn('lightgallery', '1.10.0', 'dist/css/lightgallery.min.css')
+            cssUrl: helper.cdn('lightgallery', '1.10.0', 'dist/css/lightgallery.min.css'),
         },
         justifiedGallery: {
             jsUrl: helper.cdn('justifiedGallery', '3.8.1', 'dist/js/jquery.justifiedGallery.min.js'),
-            cssUrl: helper.cdn('justifiedGallery', '3.8.1', 'dist/css/justifiedGallery.min.css')
-        }
+            cssUrl: helper.cdn('justifiedGallery', '3.8.1', 'dist/css/justifiedGallery.min.css'),
+        },
     };
 });
 
