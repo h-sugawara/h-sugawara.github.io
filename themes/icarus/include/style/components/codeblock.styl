@@ -3,7 +3,7 @@
  * --------------------------------- */
 $codeblock-caption-bg ?= rgba(200, 200, 200, .15)
 
-figure.highlight
+.highlight
     padding: 0
     width: 100%
     position: relative
@@ -40,10 +40,10 @@ figure.highlight
         .line, code .hljs
             line-height: 1.5rem
 
-    figcaption, .gutter
+    figcaption, .gutter, .caption
         background: $codeblock-caption-bg
 
-    figcaption
+    figcaption, .caption
         margin: 0 !important
         padding: .3em 0em .3em .75em
         font-style: normal
@@ -75,6 +75,13 @@ figure.highlight
     .highlight-body
         overflow: auto
 
+        code.hljs
+            border: 0
+            border-radius: 0
+            color: inherit
+            background-color: inherit
+            padding: 0.5em 0.75em
+
     .gutter
         text-align: right
 
@@ -90,7 +97,7 @@ figure.highlight
         min-width: inherit
         border-radius: inherit
 
-figure.highlight.foldable
+figure.highlight.foldable, div.highlight.foldable
     div.level-left
         cursor: pointer
 
