@@ -48,15 +48,14 @@ function getCssUrl(helper, config, type) {
     const { url_for, cdn, fontcdn, iconcdn } = helper;
     const { article, highlight, variant = 'default' } = config;
 
-    const fonts = {
+    const codeFonts = {
         default: fontcdn('Source+Code+Pro&display=swap', 'css2'),
-        cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono&display=swap', 'css2'),
     };
 
     return {
         main: getMainCssUrl(url_for, type, variant),
         sub: url_for(`/css/${variant}-secondary.css`),
-        font: fonts[variant],
+        codeFont: codeFonts[variant],
         icon: iconcdn(),
         codeBlock: url_for(`/css/${variant}-codeblock.css`),
         hlTheme: cdn('highlight.js', '11.7.0', `styles/${getHighlightThemeName(highlight, article)}.css`),
@@ -105,7 +104,7 @@ module.exports = class extends Component {
         const {
             main: mainCssUrl,
             sub: subCssUrl,
-            font: fontCssUrl,
+            codeFont: codeFontCssUrl,
             icon: iconCssUrl,
             codeBlock: codeBlockCssUrl,
             hlTheme: hlThemeCssUrl,
@@ -130,19 +129,19 @@ module.exports = class extends Component {
             <link rel="preload" href={subCssUrl} as="style" onLoad={onLoadForPreloadCss} />
             {hasIcon && <link rel="preload" href={iconCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
             {hasCode ? <Fragment>
-                <link rel="preload" href={hlThemeCssUrl} as="style" onLoad={onLoadForPreloadCss} />
-                <link rel="preload" href={codeBlockCssUrl} as="style" onLoad={onLoadForPreloadCss} />
+                <link rel="preload" href={codeFontCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
+                <link rel="preload" href={hlThemeCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
+                <link rel="preload" href={codeBlockCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
                 {clipboard && <script src={clipboardJsUrl} defer></script>}
             </Fragment> : null}
-            <link rel="preload" href={fontCssUrl} as="style" onLoad={onLoadForPreloadCss} />
             <noscript>
-                <link rel="stylesheet" href={subCssUrl} />
+                <link rel="stylesheet" href={subCssUrl}/>
                 {hasIcon && <link rel="stylesheet" href={iconCssUrl} />}
                 {hasCode ? <Fragment>
-                    <link rel="stylesheet" href={hlThemeCssUrl} />
-                    <link rel="stylesheet" href={codeBlockCssUrl} />
+                    <link rel="stylesheet" href={codeFontCssUrl}/>
+                    <link rel="stylesheet" href={hlThemeCssUrl}/>
+                    <link rel="stylesheet" href={codeBlockCssUrl}/>
                 </Fragment> : null}
-                <link rel="stylesheet" href={fontCssUrl} />
             </noscript>
             <script src={jQueryScriptUrl} defer></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
