@@ -1,7 +1,7 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2023-12-21 09:00:00
+updated: 2023-12-28 22:30:00
 tags:
   - フロントエンド
   - Hexo
