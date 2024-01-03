@@ -17,7 +17,7 @@ module.exports = class extends Component {
 
             return <div className="card">
                 <div className="card-content">
-                    <h3 className="tag is-primary is-size-6">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
+                    <h3 className="timeline-period">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
                     <div className="timeline">
                         {posts.map(post => {
                             return <ArticleMedia

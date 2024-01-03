@@ -27,8 +27,8 @@ class Footer extends Component {
         return <footer className="footer">
             <div className="container level">
                 <div className="level-start">
-                    <a className="footer-logo is-block" href={siteUrl}>{footerLogo}</a>
-                    <p className="is-size-7">
+                    <a className="footer-logo" href={siteUrl}>{footerLogo}</a>
+                    <p>
                         <span dangerouslySetInnerHTML={{__html: `&copy; ${siteYear} ${author || siteTitle}`}}></span>
                         &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener" className="underline">Hexo</a>&nbsp;and&nbsp;
                         <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener" className="underline">Icarus</a>
@@ -37,7 +37,7 @@ class Footer extends Component {
                             <span id="busuanzi_container_site_uv" dangerouslySetInnerHTML={{__html: visitorCounterTitle}}></span>
                         </Fragment> : null}
                     </p>
-                    {copyright ? <p className="is-size-7" dangerouslySetInnerHTML={{__html: copyright}}></p> : null}
+                    {copyright ? <p dangerouslySetInnerHTML={{__html: copyright}}></p> : null}
                 </div>
                 <div className="level-end">
                     {Object.keys(links).length ? <div className="field has-addons">

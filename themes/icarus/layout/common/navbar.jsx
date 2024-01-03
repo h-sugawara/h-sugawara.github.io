@@ -57,7 +57,7 @@ class Navbar extends Component {
                                 </a>;
                             })}
                         </Fragment> : null}
-                        {showToc ? <a className="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
+                        {showToc ? <a className="navbar-item catalogue" title={tocTitle} href="javascript:;">
                             <FontAwesomeIcon type="fa-list-ul" className="nav-toc-icon" />
                         </a> : null}
                         {showSearch ? <a className="navbar-item search" title={searchTitle} href="javascript:;">

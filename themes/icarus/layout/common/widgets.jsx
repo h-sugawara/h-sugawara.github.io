@@ -40,9 +40,9 @@ function getColumnCount(widgets, config, page) {
 function getColumnSizeClass(columnCount) {
     switch (columnCount) {
         case 2:
-            return 'is-4-tablet is-4-desktop is-4-widescreen';
+            return 'column-duo-widgets';
         case 3:
-            return 'is-4-tablet is-4-desktop is-3-widescreen';
+            return 'column-trio-widgets';
     }
     return '';
 }
@@ -51,14 +51,10 @@ function getColumnVisibilityClass(columnCount, position) {
     return columnCount === 3 && position === 'right' ? 'is-hidden-touch is-hidden-desktop-only' : '';
 }
 
-function getColumnOrderClass(position) {
-    return position === 'left' ? 'order-1' : 'order-3';
-}
-
 function isColumnSticky(config, position) {
-    return typeof config.sidebar === 'object'
-        && position in config.sidebar
-        && config.sidebar[position].sticky === true;
+    const { sidebar } = config;
+
+    return typeof sidebar === 'object' && position in sidebar && sidebar[position].sticky === true;
 }
 
 class Widgets extends Component {
@@ -77,12 +73,14 @@ class Widgets extends Component {
             'tags': [ Constants.PAGE_TYPE_TAGS ],
         };
 
+        const columnSize = getColumnSizeClass(columnCount);
+        const columnVisibility = getColumnVisibilityClass(columnCount, position);
+
         return <div className={classname({
             'column': true,
             ['column-' + position]: true,
-            [getColumnSizeClass(columnCount)]: true,
-            [getColumnVisibilityClass(columnCount, position)]: true,
-            [getColumnOrderClass(position)]: true,
+            [columnSize]: columnSize !== '',
+            [columnVisibility]: columnVisibility !== '',
             'is-sticky': isColumnSticky(config, position),
         })}>
             {widgets.map(widget => {

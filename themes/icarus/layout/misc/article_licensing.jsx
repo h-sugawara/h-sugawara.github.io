@@ -23,11 +23,11 @@ class ArticleLicensing extends Component {
                 <a href={link}>{link}</a>
             </div>
             <div className="licensing-meta level is-mobile level-left">
-                {author ? <div className="level-item is-narrow"><div><p className="is-size-7">{authorTitle}</p>{author}</div></div> : null}
-                {createdAt ? <div className="level-item is-narrow"><div><p className="is-size-7">{createdTitle}</p>{createdAt}</div></div> : null}
-                {updatedAt ? <div className="level-item is-narrow"><div><p className="is-size-7">{updatedTitle}</p>{updatedAt}</div></div> : null}
+                {author ? <div className="level-item is-narrow"><div><p>{authorTitle}</p>{author}</div></div> : null}
+                {createdAt ? <div className="level-item is-narrow"><div><p>{createdTitle}</p>{createdAt}</div></div> : null}
+                {updatedAt ? <div className="level-item is-narrow"><div><p>{updatedTitle}</p>{updatedAt}</div></div> : null}
                 {licenses && Object.keys(licenses).length ? <div className="level-item is-narrow"><div>
-                    <p className="is-size-7">{licensedTitle}</p>
+                    <p>{licensedTitle}</p>
                     {Object.keys(licenses).map(name => {
                         const license = licenses[name];
                         let iconList = [];

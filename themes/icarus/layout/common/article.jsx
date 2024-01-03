@@ -38,9 +38,9 @@ function getWordCount(content) {
     const segmentation = new Intl.Segmenter('ja', { granularity: 'grapheme' });
     content = content.replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォッャュョヮヵヶー]/gi, '');
     const kanaContent = content ? (content.match(/([\u3041-\u3094]|[\u30a1-\u30fa])+/g) || []).join('') : '';
-    const kanaLength = [...segmentation.segment(kanaContent)].length;
+    const kanaLength = [ ...segmentation.segment(kanaContent) ].length;
     const kanjiContent = content ? (content.match(/([\u3400-\u9fff\uf900-\ufaff]|[\ud840-\ud87f]|[\udc00-\udfff])+/g) || []).join('') : '';
-    const kanjiLength = [...segmentation.segment(kanjiContent)].length;
+    const kanjiLength = [ ...segmentation.segment(kanjiContent) ].length;
 
     return {
         alphaNum: alphaNumLength,
@@ -118,7 +118,7 @@ module.exports = class extends Component {
         const shouldShowUpdated = pageUpdated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
         const hasVisitorCounter = !index && busuanzi === true;
 
-        return <div className="article-meta is-size-7 level is-mobile">
+        return <div className="article-meta level is-mobile">
             <div className="level-left">
                 {/* Creation Date */}
                 {pageDate && <span className="level-item" dangerouslySetInnerHTML={{
@@ -148,13 +148,13 @@ module.exports = class extends Component {
 
     renderTitle(index, title, pageUrl) {
         if (index) {
-            return <a className="is-block title is-size-2 is-size-3-mobile link-muted" href={pageUrl}>{title}</a>;
+            return <a className="title link-muted" href={pageUrl}>{title}</a>;
         }
-        return <h1 className="title is-size-2 is-size-3-mobile">{title}</h1>;
+        return <h1 className="title">{title}</h1>;
     }
 
     renderCategories(pageCategories, url_for) {
-        return <div className="article-categories is-size-7">
+        return <div className="article-categories">
             <span>@</span>
             {(() => {
                 const categories = [];
@@ -170,7 +170,7 @@ module.exports = class extends Component {
     }
 
     renderTags(pageTags, url_for) {
-        return <div className="article-tags is-size-7">
+        return <div className="article-tags">
             <span>#</span>
             {pageTags.map(tag => <a className="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>)}
         </div>;
