@@ -13,7 +13,7 @@ class Insight extends Component {
             <div className="searchbox-container">
                 <div className="searchbox-header">
                     <div className="searchbox-input-container">
-                        <input className="searchbox-input" type="text" placeholder={translation.hint} />
+                        <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
                     </div>
                     <a className="searchbox-close" href="javascript:;">&#xD7;</a>
                 </div>
