@@ -61,6 +61,11 @@ $navbar-item-margin-h ?= 0
         .navbar-end
             margin-left: 0
 
+    +tablet()
+        .navbar-item
+            &.catalogue
+                display: none !important
+
 .navbar-logo
     img
         max-height: $logo-height

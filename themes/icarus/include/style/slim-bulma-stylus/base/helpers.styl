@@ -1,5 +1,5 @@
 // Typography
-typography-size($target = '')
+/*typography-size($target = '')
     for $size in $sizes
         $i = index($sizes, $size) + 1
         $target-suffix = $target == '' ? '':'-' + $target
@@ -24,7 +24,7 @@ typography-size()
     typography-size('widescreen')
 
 +fullhd()
-    typography-size('fullhd')
+    typography-size('fullhd')*/
 
 //$alignments = {'centered': center, 'justified': justify, 'left': left, 'right': right}
 $alignments = {'centered': center}
@@ -33,7 +33,7 @@ for $alignment, $text-align in $alignments
     .has-text-{$alignment}
         text-align: $text-align !important
 
-for $alignment, $text-align in $alignments
+/*for $alignment, $text-align in $alignments
     +mobile()
         .has-text-{$alignment}-mobile
             text-align: $text-align !important
@@ -60,17 +60,19 @@ for $alignment, $text-align in $alignments
             text-align: $text-align !important
     +fullhd()
         .has-text-{$alignment}-fullhd
-            text-align: $text-align !important
+            text-align: $text-align !important*/
 
 .is-capitalized
     text-transform: capitalize !important
 
 // Visibility
-$displays = block flex inline inline-block inline-flex
+/*$displays = block flex inline inline-block inline-flex
 
 for $display in $displays
     .is-{$display}
         display: $display !important
+
+for $display in $displays
     +mobile()
         .is-{$display}-mobile
             display: $display !important
@@ -97,12 +99,12 @@ for $display in $displays
             display: $display !important
     +fullhd()
         .is-{$display}-fullhd
-            display: $display !important
+            display: $display !important*/
 
 .is-hidden
     display none !important
 
-+mobile()
+/*+mobile()
     .is-hidden-mobile
         display none !important
 
@@ -112,15 +114,15 @@ for $display in $displays
 
 +tablet-only()
     .is-hidden-tablet-only
-        display none !important
+        display none !important*/
 
 +touch()
     .is-hidden-touch
         display none !important
 
-+desktop()
+/*+desktop()
     .is-hidden-desktop
-        display none !important
+        display none !important*/
 
 +desktop-only()
     .is-hidden-desktop-only
@@ -130,18 +132,18 @@ for $display in $displays
     .is-hidden-widescreen
         display none !important
 
-+widescreen-only()
+/*+widescreen-only()
     .is-hidden-widescreen-only
         display none !important
 
 +fullhd()
     .is-hidden-fullhd
-        display none !important
+        display none !important*/
 
 .is-invisible
     visibility hidden !important
 
-+mobile()
+/*+mobile()
     .is-invisible-mobile
         visibility hidden !important
 
@@ -175,7 +177,7 @@ for $display in $displays
 
 +fullhd()
     .is-invisible-fullhd
-        visibility hidden !important
+        visibility hidden !important*/
 
-.is-unselectable
-    @extend $unselectable
+/*.is-unselectable
+    @extend $unselectable*/

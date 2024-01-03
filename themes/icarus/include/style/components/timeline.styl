@@ -5,9 +5,11 @@ $timeline-fg-line ?= $grey-lighter
 $timeline-fg-circle ?= $primary
 $timeline-bg-line ?= $card-background-color
 
-.tag.is-primary
+.timeline-period
+    @extend .tag:not(body)
     background: $primary
     color: $primary-invert
+    font-size: $size-6
 
 .timeline
     margin-left: 1rem

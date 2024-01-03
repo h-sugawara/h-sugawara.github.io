@@ -1,0 +1,43 @@
+@import 'generic-vars'
+
+code, pre
+    -moz-osx-font-smoothing: auto
+    -webkit-font-smoothing: auto
+    font-family: $code-family
+
+code
+    background-color: $code-background
+    color: $code
+    font-size: $code-size
+    font-weight: $code-weight
+    padding: $code-padding
+
+strong
+    color: $strong-color
+    font-weight: $strong-weight
+
+pre
+    overflow-touch()
+    background-color: $pre-background
+    color: $pre
+    font-size: $pre-font-size
+    overflow-x: auto
+    padding: $pre-padding
+    white-space: pre
+    word-wrap: normal
+
+    code
+        background-color: transparent
+        color: currentColor
+        font-size: $pre-code-font-size
+        padding: 0
+
+table
+    td, th
+        vertical-align: top
+
+        &:not([align])
+            text-align: left
+
+    th
+        color: $text-strong

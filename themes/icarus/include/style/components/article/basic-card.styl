@@ -3,6 +3,7 @@
 article.article
     .article-meta, .article-tags, .article-categories
         color: $text-light
+        font-size: $size-7
 
     .article-categories, .article-tags
         span
@@ -11,6 +12,16 @@ article.article
     .article-meta
         overflow-x: auto
         margin-bottom: .5rem
+
+    a.title
+        display: block
+
+    .title
+        font-size: $size-2
+
+    +mobile()
+        .title
+            font-size: $size-3
 
     .article-categories
         overflow-x: auto

@@ -21,6 +21,34 @@ body
 body > .section
     flex-grow: 1
 
+.column-main
+    order: 2
+
+.column-solo
+    flex: none
+    width: percentage(12 / 12)
+
++from($tablet)
+    .column-duo-main, .column-trio-main
+        flex: none
+        width: percentage(8 / 12)
+
+    .column-duo-widgets, .column-trio-widgets
+        flex: none
+        width: percentage(4 / 12)
+
++from($widescreen)
+    .column-trio-main
+        flex: none
+        width: percentage(6 / 12)
+
+    .column-trio-widgets
+        flex: none
+        width: percentage(3 / 12)
+
+.column-right
+    order: 3
+
 +desktop()
     ::-webkit-scrollbar
         width: 8px
