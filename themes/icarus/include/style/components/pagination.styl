@@ -22,3 +22,7 @@ $pagination-background-color ?= $button-background-color
 
     .pagination-link.is-current
         background: $pagination-current-background-color
+
+    .pagination-list
+        +mobile()
+            display: none !important
