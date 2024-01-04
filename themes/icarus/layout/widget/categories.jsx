@@ -17,11 +17,9 @@ class Categories extends Component {
     render() {
         const { showCount, categories, title } = this.props;
 
-        return <div className="card widget" datatype="categories">
-            <div className="card-content menu">
-                <h3 className="menu-label">{title}</h3>
-                <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
-            </div>
+        return <div className="card widget card-content menu" datatype="categories">
+            <h3 className="menu-label">{title}</h3>
+            <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
         </div>;
     }
 }

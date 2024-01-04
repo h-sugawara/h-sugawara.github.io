@@ -79,11 +79,9 @@ class Toc extends Component {
             return null;
         }
 
-        return <div id="toc" className="card widget" datatype="toc">
-            <div className="card-content menu">
-                <h3 className="menu-label">{title}</h3>
-                {this.renderToc(toc, collapsed, showIndex)}
-            </div>
+        return <div id="toc" className="card widget card-content menu" datatype="toc">
+            <h3 className="menu-label">{title}</h3>
+            {this.renderToc(toc, collapsed, showIndex)}
         </div>;
     }
 }
