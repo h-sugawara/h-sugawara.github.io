@@ -18,7 +18,6 @@ $breadcrumb-item-separator-color ?= $border-hover
         color: $breadcrumb-item-color
         display: flex
         justify-content: center
-        padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
 
         &:hover
             color: $breadcrumb-item-hover-color
@@ -37,8 +36,9 @@ $breadcrumb-item-separator-color ?= $border-hover
                 pointer-events: none
 
         & + li::before
-            color $breadcrumb-item-separator-color
-            content "\0002f"
+            padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
+            color: $breadcrumb-item-separator-color
+            content: "\0002f"
 
     ul, ol
         align-items: flex-start
