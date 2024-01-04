@@ -39,16 +39,14 @@ class Footer extends Component {
                     </p>
                     {copyright ? <p dangerouslySetInnerHTML={{__html: copyright}}></p> : null}
                 </div>
-                <div className="level-end">
-                    {Object.keys(links).length ? <div className="field has-addons">
-                        {Object.keys(links).map(name => {
-                            const { icon, url } = links[name];
-                            return <a className={`control button${icon ? ' is-large' : ''}`} target="_blank" rel="noopener" title={name} href={url}>
-                                {icon ? <FontAwesomeIcon type={icon} /> : name}
-                            </a>;
-                        })}
-                    </div> : null}
-                </div>
+                {Object.keys(links).length ? <div className="level-end field has-addons">
+                    {Object.keys(links).map(name => {
+                        const { icon, url } = links[name];
+                        return <a className={`control button${icon ? ' is-large' : ''}`} target="_blank" rel="noopener" title={name} href={url}>
+                            {icon ? <FontAwesomeIcon type={icon} /> : name}
+                        </a>;
+                    })}
+                </div> : <div className="level-end"></div>}
             </div>
         </footer>;
     }
