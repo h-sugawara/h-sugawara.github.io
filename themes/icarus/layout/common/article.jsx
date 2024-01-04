@@ -118,31 +118,29 @@ module.exports = class extends Component {
         const shouldShowUpdated = pageUpdated && ((updateTime === 'auto' && isUpdated) || updateTime === true);
         const hasVisitorCounter = !index && busuanzi === true;
 
-        return <div className="article-meta level is-mobile">
-            <div className="level-left">
-                {/* Creation Date */}
-                {pageDate && <span className="level-item" dangerouslySetInnerHTML={{
-                    __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`),
-                }}></span>}
-                {/* Last Update Date */}
-                {shouldShowUpdated && <span className="level-item" dangerouslySetInnerHTML={{
-                    __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`),
-                }}></span>}
-                {/* author */}
-                {pageAuthor ? <span className="level-item"> {pageAuthor} </span> : null}
-                {/* Read time */}
-                {hasReadTime ? <span className="level-item">
-                    {(() => {
-                        const { time } = getReadTimeAndWordCountOf(page._content);
-                        // return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
-                        return `${_p('article.read_time', time.locale(language).humanize())}`;
-                    })()}
-                </span> : null}
-                {/* Visitor counter */}
-                {hasVisitorCounter ? <span className="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
-                    __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>'),
-                }}></span> : null}
-            </div>
+        return <div className="article-meta level is-mobile level-left">
+            {/* Creation Date */}
+            {pageDate && <span className="level-item is-narrow" dangerouslySetInnerHTML={{
+                __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`),
+            }}></span>}
+            {/* Last Update Date */}
+            {shouldShowUpdated && <span className="level-item is-narrow" dangerouslySetInnerHTML={{
+                __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`),
+            }}></span>}
+            {/* author */}
+            {pageAuthor ? <span className="level-item is-narrow"> {pageAuthor} </span> : null}
+            {/* Read time */}
+            {hasReadTime ? <span className="level-item is-narrow">
+                {(() => {
+                    const { time } = getReadTimeAndWordCountOf(page._content);
+                    // return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
+                    return `${_p('article.read_time', time.locale(language).humanize())}`;
+                })()}
+            </span> : null}
+            {/* Visitor counter */}
+            {hasVisitorCounter ? <span className="level-item is-narrow" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
+                __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>'),
+            }}></span> : null}
         </div>;
     }
 
@@ -225,9 +223,8 @@ module.exports = class extends Component {
                     {/* Categories */}
                     {categories && categories.length ? this.renderCategories(categories, url_for) : null}
                     {/* Content/Excerpt */}
-                    <div className="content" dangerouslySetInnerHTML={{
-                        __html: index && excerpt ? `<a class="link-muted" href="${pageUrl}">${excerpt}</a>` : page.content,
-                    }}></div>
+                    {index && excerpt ? <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{__html: excerpt}}></a>
+                        : <div className="content" dangerouslySetInnerHTML={{__html: page.content}}></div>}
                     {/* Licensing block */}
                     {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}
                     {/* Tags */}
