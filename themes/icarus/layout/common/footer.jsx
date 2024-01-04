@@ -43,7 +43,7 @@ class Footer extends Component {
                     {Object.keys(links).length ? <div className="field has-addons">
                         {Object.keys(links).map(name => {
                             const { icon, url } = links[name];
-                            return <a className={`control button is-transparent ${icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={url}>
+                            return <a className={`control button${icon ? ' is-large' : ''}`} target="_blank" rel="noopener" title={name} href={url}>
                                 {icon ? <FontAwesomeIcon type={icon} /> : name}
                             </a>;
                         })}

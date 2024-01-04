@@ -1,6 +1,7 @@
 @import '../slim-bulma-stylus/layout/footer'
 @import '../slim-bulma-stylus/component/level-image'
 @import '../slim-bulma-stylus/form-tool/field-addons'
+@import '../slim-bulma-stylus/element/button'
 
 /* ---------------------------------
  *            Page Footer
@@ -22,8 +23,12 @@ footer.footer
                 justify-content: center
                 margin-top: 1rem
 
-        .button.is-large
-            svg
+        .button
+            color: inherit
+            background: transparent
+            border-color: transparent
+
+            &.is-large svg
                 width: 2rem;
                 height: 2rem;
                 fill: $text
