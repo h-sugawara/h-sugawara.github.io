@@ -1,0 +1,111 @@
+$message-background-color ?= $background
+$message-radius ?= $radius
+
+$message-header-background-color ?= $text
+$message-header-color ?= $text-invert
+$message-header-weight ?= $weight-bold
+$message-header-padding ?= 0.75em 1em
+$message-header-radius ?= $radius
+
+$message-body-border-color ?= $border
+$message-body-border-width ?= 0 0 0 4px
+$message-body-color ?= $text
+$message-body-padding ?= 1.25em 1.5em
+$message-body-radius ?= $radius
+
+$message-body-pre-background-color ?= $scheme-main
+$message-body-pre-code-background-color ?= transparent
+
+$message-header-body-border-width ?= 0
+$message-colors ?= {
+  "primary": {
+    '1': $primary,
+    '2': $primary-invert,
+    '3': $primary-light,
+    '4': $primary-dark
+  },
+  "info": {
+    '1': $info,
+    '2': $info-invert,
+    '3': $info-light,
+    '4': $info-dark
+  },
+  "success": {
+    '1': $success,
+    '2': $success-invert,
+    '3': $success-light,
+    '4': $success-dark
+  },
+  "warning": {
+    '1': $warning,
+    '2': $warning-invert,
+    '3': $warning-light,
+    '4': $warning-dark
+  },
+  "danger": {
+    '1': $danger,
+    '2': $danger-invert,
+    '3': $danger-light,
+    '4': $danger-dark
+  }
+}
+
+.message
+    @extend $block
+    background-color: $message-background-color
+    border-radius: $message-radius
+    font-size: $size-normal
+
+    strong
+        color: currentColor
+
+    a:not(.button):not(.tag):not(.dropdown-item)
+        color: currentColor
+        text-decoration: underline
+
+    // Colors
+    for $name, $components in $message-colors
+        $color = $components['1']
+        $color-invert = $components['2']
+        $color-light = $components['3']
+        $color-dark = $components['4']
+
+        &.is-{$name}
+            background-color: $color-light
+
+            .message-header
+                background-color: $color
+                color: $color-invert
+
+            .message-body
+                border-color: $color
+                if $color-dark
+                    color: $color-dark
+
+.message-header
+    align-items: center
+    background-color: $message-header-background-color
+    border-radius: $message-header-radius $message-header-radius 0 0
+    color: $message-header-color
+    display: flex
+    font-weight: $message-header-weight
+    justify-content: space-between
+    line-height: 1.25
+    padding: $message-header-padding
+    position: relative
+
+    & + .message-body
+        border-width: $message-header-body-border-width
+        border-top-left-radius: 0
+        border-top-right-radius: 0
+
+.message-body
+    border-color: $message-body-border-color
+    border-radius: $message-body-radius
+    border-style: solid
+    border-width: $message-body-border-width
+    color: $message-body-color
+    padding: $message-body-padding
+
+    code, pre
+        background-color: $message-body-pre-background-color
