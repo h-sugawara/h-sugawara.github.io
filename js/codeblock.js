@@ -11,54 +11,40 @@
         return '<span class="fold">' + (fold === 'unfolded' ? '<i class="svg-angle-down"></i>' : '<i class="svg-angle-right"></i>') + '</span>';
     }
 
-    $('figure.highlight table').wrap('<div class="highlight-body">');
     if (typeof config !== 'undefined'
         && typeof config.article !== 'undefined'
         && typeof config.article.highlight !== 'undefined') {
 
-        $('figure.highlight').addClass('hljs');
-        $('figure.highlight .code .line span').each(function () {
-            const classes = $(this).attr('class').split(/\s+/);
-            for (const cls of classes) {
-                $(this).addClass('hljs-' + cls);
-                $(this).removeClass(cls);
-            }
-        });
-
-
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();
 
-        $('figure.highlight').each(function () {
-            if ($(this).find('figcaption').length) {
-                $(this).find('figcaption').addClass('level is-mobile');
-                $(this).find('figcaption').append('<div class="level-left">');
-                $(this).find('figcaption').append('<div class="level-right">');
-                $(this).find('figcaption div.level-left').append($(this).find('figcaption').find('span'));
-                $(this).find('figcaption div.level-right').append($(this).find('figcaption').find('a'));
-            } else {
-                if (clipboard || fold) {
-                    $(this).prepend('<figcaption class="level is-mobile"><div class="level-left"></div><div class="level-right"></div></figcaption>');
-                }
-            }
+        const captions = $('pre div.caption');
+        captions.closest('pre').addClass('highlight-body').wrap('<div class="highlight hljs">');
+        captions.each(function() {
+            $(this).closest('div.highlight').prepend($(this));
+            $(this).addClass('level is-mobile');
+            $(this).append('<div class="level-left">');
+            $(this).append('<div class="level-right">');
+            $(this).find('div.level-left').append($(this).find('span'));
+            $(this).find('div.level-right').append($(this).find('a'));
         });
 
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
-            $('figure.highlight').each(function () {
+            $('div.highlight div.caption').each(function() {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
-                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="svg-copy"></i></a>';
-                $(this).attr('id', id);
-                $(this).find('figcaption div.level-right').append(button);
+                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' code"><i class="svg-copy"></i></a>';
+                $(this).closest('div.highlight').attr('id', id);
+                $(this).find('div.level-right').append(button);
             });
             new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
         }
 
         if (fold) {
-            $('figure.highlight').each(function () {
+            $('div.highlight').each(function() {
                 $(this).addClass('foldable'); // add 'foldable' class as long as fold is enabled
 
-                if ($(this).find('figcaption').find('span').length > 0) {
-                    const span = $(this).find('figcaption').find('span');
+                if ($(this).find('div.caption').find('span').length > 0) {
+                    const span = $(this).find('div.caption').find('span');
                     if (span[0].innerText.indexOf('>folded') > -1) {
                         span[0].innerText = span[0].innerText.replace('>folded', '');
                         $(this).find('figcaption div.level-left').prepend(createFoldButton('folded'));
@@ -66,12 +52,12 @@
                         return;
                     }
                 }
-                $(this).find('figcaption div.level-left').prepend(createFoldButton(fold));
+                $(this).find('div.caption div.level-left').prepend(createFoldButton(fold));
                 toggleFold(this, fold === 'folded');
             });
 
-            $('figure.highlight figcaption .level-left').click(function () {
-                const $code = $(this).closest('figure.highlight');
+            $('div.highlight div.caption .level-left').click(function() {
+                const $code = $(this).closest('div.highlight');
                 toggleFold($code.eq(0), !$code.hasClass('folded'));
             });
         }

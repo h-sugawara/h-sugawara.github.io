@@ -1,1 +1,1 @@
-{"name":"Chaotic Notes","short_name":null,"start_url":"/index.html","theme_color":null,"background_color":null,"display":"standalone","icons":[{"src":"","sizes":"","type":null}]}
+{"name":"Chaotic Notes","start_url":".","theme_color":"white","background_color":"white","display":"standalone","icons":[{"src":"/img/favicon.ico","sizes":"16x16 24x24 32x32 48x48","type":"image/vnd.microsoft.icon"}]}
