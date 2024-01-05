@@ -3,6 +3,7 @@ const { Component, Fragment } = require('inferno');
 const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
 const Paginator = require('./misc/paginator');
 const ArticleMedia = require('./common/article_media');
+const {post} = require("hexo/lib/plugins/helper/is");
 
 module.exports = class extends Component {
     render() {
@@ -12,26 +13,23 @@ module.exports = class extends Component {
         const language = toMomentLocale(page.lang || page.language || config.language);
         moment.locale(language);
 
-        function renderArticleList(posts, year, month = null) {
+        const renderArticleList = (posts, year, month = null) => {
             const time = moment([year, month ? month - 1 : null].filter(i => i !== null));
 
-            return <div className="card">
-                <div className="card-content">
-                    <h3 className="timeline-period">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
-                    <div className="timeline">
-                        {posts.map(post => {
-                            return <ArticleMedia
-                                url={url_for(post.link || post.path)}
-                                title={post.title}
-                                date={date(post.date)}
-                                dateXml={date_xml(post.date)}
-                                categories={post.categories.map(category => category.name)}
-                                thumbnail={post.thumbnail ? url_for(post.thumbnail) : null} />;
-                        })}
-                    </div>
+            return <div className="card card-content">
+                <h3 className="timeline-period">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
+                <div className="timeline">
+                    {posts.map(({link, path, title, date: created, categories, thumbnail }) => <ArticleMedia
+                        url={url_for(link || path)}
+                        title={title}
+                        date={date(created)}
+                        dateXml={date_xml(created)}
+                        categories={categories.map(({ name }) => name)}
+                        thumbnail={thumbnail ? url_for(thumbnail) : null}/>
+                    )}
                 </div>
             </div>;
-        }
+        };
 
         let articleList;
         if (!page.year) {
