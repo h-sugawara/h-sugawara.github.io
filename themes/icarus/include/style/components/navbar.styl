@@ -66,9 +66,12 @@ $navbar-item-margin-h ?= 0
             &.catalogue
                 display: none !important
 
-.navbar-logo
-    img
-        max-height: $logo-height
+.navbar-brand
+    justify-content: center
+
+    .navbar-logo
+        img
+            max-height: $logo-height
 
 @media screen and (min-width: $desktop)
     .navbar > .container .navbar-menu, .container > .navbar .navbar-menu

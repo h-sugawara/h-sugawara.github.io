@@ -38,7 +38,7 @@ class Navbar extends Component {
 
         return <nav className="navbar navbar-main">
             <div className="container navbar-container">
-                <div className="navbar-brand justify-content-center">
+                <div className="navbar-brand">
                     <a className="navbar-item navbar-logo" href={siteUrl}>{navbarLogo}</a>
                 </div>
                 <div className="navbar-menu">
