@@ -1,35 +1,13 @@
 const { Component } = require('inferno');
 
-module.exports = class extends Component {
-    renderPaginationList(getPageUrl, current, last) {
-        const delta = 1;
-        const left = current - delta;
-        const right = current + delta + 1;
-
-        const range = [];
-        for (let i = 1; i <= last; i++) {
-            if (i === 1 || i === last || (i >= left && i < right)) {
-                range.push(i);
-            }
-        }
-
-        let l;
-        const elements = [];
-        range.forEach(value => {
-            if (l) {
-                if (value - l === 2) {
-                    elements.push(<li><a className="pagination-link" href={getPageUrl(l + 1)}>{l + 1}</a></li>);
-                } else if (value - l !== 1) {
-                    elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{__html: '&hellip;'}}></span></li>);
-                }
-            }
-            elements.push(<li><a className={`pagination-link${current === value ? ' is-current' : ''}`} href={getPageUrl(value)}>{value}</a></li>);
-            l = value;
-        });
-
-        return elements;
+function* range(from, to, step = 1) {
+    while (from <= to) {
+        yield from;
+        from += step;
     }
+}
 
+module.exports = class extends Component {
     render() {
         const { current, total, baseUrl, path, urlFor, prevTitle, nextTitle } = this.props;
 
@@ -37,11 +15,37 @@ module.exports = class extends Component {
             return urlFor(i === 1 ? baseUrl : baseUrl + path + '/' + i + '/');
         };
 
+        const getPaginationList = (current, last) => {
+            const delta = 1;
+            const left = current - delta;
+            const right = current + delta + 1;
+
+            let prev;
+            const elements = [];
+            Array.from(range(1, last))
+                .filter(i => i === 1 || i === last || (i >= left && i < right))
+                .forEach(value => {
+                    if (prev) {
+                        const delta = value - prev;
+                        if (delta === 2) {
+                            elements.push(<li><a className="pagination-link" href={getPageUrl(prev + 1)}>{prev + 1}</a></li>);
+                        } else if (delta !== 1) {
+                            elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{__html: '&hellip;'}}></span></li>);
+                        }
+                    }
+                    elements.push(<li><a className={`pagination-link${current === value ? ' is-current' : ''}`} href={getPageUrl(value)}>{value}</a></li>);
+                    prev = value;
+                });
+            return elements;
+        };
+
         return <nav className="pagination">
-            <a className={`pagination-previous${current > 1 ? '' : ' is-invisible'}`} href={getPageUrl(current - 1)}>{prevTitle}</a>
-            <a className={`pagination-next${current < total ? '' : ' is-invisible'}`} href={getPageUrl(current + 1)}>{nextTitle}</a>
+            {current > 1 ? <a className="pagination-previous" href={getPageUrl(current - 1)}>{prevTitle}</a>
+                : <div className="pagination-previous is-invisible"></div>}
+            {current < total ? <a className="pagination-next" href={getPageUrl(current + 1)}>{nextTitle}</a>
+                : <div className="pagination-next is-invisible"></div>}
             <ul className="pagination-list" role="navigation" aria-label="pagination">
-                {this.renderPaginationList(getPageUrl, current, total)}
+                {getPaginationList(current, total)}
             </ul>
         </nav>;
     }
