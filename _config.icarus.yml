@@ -29,7 +29,7 @@ head:
         icons:
             -
                 # The path to the image file
-                src: 'img/favicon.ico'
+                src: '/img/favicon.ico'
                 # A string containing space-separated image dimensions
                 sizes: '16x16 24x24 32x32 48x48'
                 # A hint as to the media type of the image
