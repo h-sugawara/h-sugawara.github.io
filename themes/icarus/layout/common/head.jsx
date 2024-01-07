@@ -78,6 +78,7 @@ module.exports = class extends Component {
             canonical_url = page.permalink,
             rss,
             favicon,
+            apple_touch_icons,
         } = head;
 
         const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();
@@ -131,7 +132,7 @@ module.exports = class extends Component {
             <WebApp.Cacheable
                 helper={helper}
                 favicon={favicon}
-                icons={manifest.icons}
+                icons={apple_touch_icons || manifest.icons}
                 themeColor={manifest.theme_color}
                 name={manifest.name || config.title} />
 

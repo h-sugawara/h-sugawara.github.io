@@ -8,6 +8,13 @@ logo: /img/logo.svg
 head:
     # URL or path to the website's icon
     favicon: /favicon.ico
+    # apple touch icons
+    apple_touch_icons:
+        -
+            # The path to the image file
+            src: '/img/apple-touch-icon-180x180.png'
+            # A string containing space-separated image dimensions
+            sizes: '180x180'
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -29,11 +36,11 @@ head:
         icons:
             -
                 # The path to the image file
-                src: '/img/favicon.ico'
+                src: '/img/android-chrome-512x512.png'
                 # A string containing space-separated image dimensions
-                sizes: '16x16 24x24 32x32 48x48'
+                sizes: '512x512'
                 # A hint as to the media type of the image
-                type: 'image/vnd.microsoft.icon'
+                type: 'image/png'
     # Open Graph metadata
     # https://hexo.io/docs/helpers.html#open-graph
     open_graph:
