@@ -1,7 +1,7 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2023-12-28 22:30:00
+updated: 2024-01-07 10:30:00
 tags:
   - フロントエンド
   - Hexo
@@ -30,7 +30,7 @@ cover:
 
 ## はじめに
 
-この記事は、{% anchor "mediba Advent Calendar 2023 の22日目" https://qiita.com/advent-calendar/2023/mediba true "mediba Advent Calendar 2023" %}にエントリーしています。
+この記事は、[mediba Advent Calendar 2023 の22日目](https://qiita.com/advent-calendar/2023/mediba)にエントリーしています。
 
 ### この記事を書いている人
 
@@ -79,7 +79,7 @@ Node.js のバージョン管理ツールをインストールしておくと楽
 ・Mac または Linux => お好きなツールをインストール。
 
 Git はインストール必須です。
-・Windows => {% anchor "Git for Windowsを公式サイトからダウンロード" https://gitforwindows.org/ true "Git for Windows" %}し、インストール。
+・Windows => [Git for Windowsを公式サイトからダウンロード](https://gitforwindows.org/)し、インストール。
 ・Mac => HomeBrew 等でインストール。
 ・Linux => apt-get や yum でインストール。
 {% endmessage %}
@@ -125,10 +125,10 @@ npm run clean && npm run server
 
 初回セットアップ時のデフォルトテーマは、landscape テーマというものです。
 最低限のことはできるのですが、見た通りデザインがイケてません。オシャレ感が足りません。
-そんな人のために、{% anchor "Hexo公式から有志が作成したテーマを検索" https://hexo.io/themes/ true "Hexo themes" %}できるようになっています。
+そんな人のために、[Hexo公式から有志が作成したテーマを検索](https://hexo.io/themes/)できるようになっています。
 
 検索してみるとたくさんあって悩みますが、私の一番のおすすめは`Icarus`テーマです。
-`Icarus`テーマの{% anchor "ドキュメントからインストール手順" https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/ true "Getting started with icarus" %}が見れるので、導入してみてください。
+`Icarus`テーマの[公式ドキュメントにインストール手順がある](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)ので、導入してみてください。
 
 {% message color:warning %}
 `npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
@@ -166,7 +166,7 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 ```
 
 上記に抜粋した設定項目は、必要最低限の変更した方が望ましい箇所です。
-他の設定については、{% anchor "Hexo公式ホームページに設定に関する詳細説明がまとめられている" https://hexo.io/docs/configuration true "Hexo Configuration" %}ので、そちらをご確認ください。
+他の設定については、[Hexo公式ホームページに設定に関する詳細説明がまとめられている](https://hexo.io/docs/configuration)ので、そちらをご確認ください。
 
 ### 試しに記事を書いてみる
 
@@ -228,7 +228,7 @@ category: Technology
 
 `Icarus`テーマを導入した方は、日本語の表示時フォントが"Microsoft YaHei"になっています。
 見慣れているフォントに変えたいなら、フォント設定に関する処理を書き換えると変更できます（※前項「カスタムテーマ導入」の注意事項を読んでください）。
-やり方については、{% anchor "「Hexoのicarusテーマのフォントの変え方」" https://omathin.com/icarus-theme-change/ true "Hexoのicarusテーマのフォントの変え方" %}や{% anchor "「HEXO の表示フォントを変更」" https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/ true "HEXO の表示フォントを変更" %}をまねてみると良いでしょう。
+やり方については、[「Hexoのicarusテーマのフォントの変え方」](https://omathin.com/icarus-theme-change/)や[「HEXO の表示フォントを変更」](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)をまねてみると良いでしょう。
 
 あとは、テーマのデザインを弄ったり、プラグインを入れたりなど、皆様のお好みでどうぞ。
 リンクプレビュー機能を導入したい方は、私がプラグインを作ってみたので、以下の記事も併せて読んでみてください。
@@ -250,7 +250,7 @@ GitHub のアカウントはあらかじめ作成してください。
 {% endmessage %}
 
 自分のアカウントを使って、`GitHub Pages`用のレポジトリを作成します。
-画像付きの作成手順が{% anchor "GitHub公式ドキュメントにまとめられています" https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site true "サイト用にリポジトリを作成する" %}ので、ご確認ください。
+画像付きの作成手順が[GitHub公式ドキュメントにまとめられています](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)ので、ご確認ください。
 
 作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
 それから、構築実践編で作成した"blog"ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
@@ -336,10 +336,10 @@ npm run clean && npm run deploy
 
 `GitHub Pages`のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
 もちろん、カスタムドメインを無料で登録することもできます。
-詳細については、{% anchor "GitHub公式ドキュメントの説明" https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site true "カスタムドメイン管理" %}にお任せします。
+詳細については、[GitHub公式ドキュメントの説明](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)にお任せします。
 
 ただし、カスタムドメインの取得自体はご自身でやる必要がありますので、ドメインを取得できるサービスをご利用ください。
-ドメインだけ取りたいなら、{% anchor "お名前ドットコム" https://www.onamae.com/ true "お名前ドットコム" %}がオススメです。
+ドメインだけ取りたいなら、[お名前ドットコム](https://www.onamae.com/)がオススメです。
 
 ## 検索できるようにしよう
 
@@ -353,9 +353,9 @@ npm run clean && npm run deploy
 
 お外に公開したブログのアクセス解析と、"Google Search Console"（以下、GSC）の所有者確認のために、"Google Analytics"（以下、GA）にアカウントを作成します。
 
-アカウント作成は、{% anchor "GoogleのAnalyticsページ" http://www.google.com/analytics true "Google Analytics" %}から行ってください。
+アカウント作成は、[GoogleのAnalyticsページ](http://www.google.com/analytics)から行ってください。
 単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。
-Google 検索すると、{% anchor "詳しく説明してくれている方たち" https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2 true "Google検索結果" %}がいますので、彼らのページを見ることをオススメします。
+Google 検索すると、[詳しく説明してくれている方たち](https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2)がいますので、彼らのページを見ることをオススメします。
 
 ### サイトマップ作成
 
@@ -381,15 +381,15 @@ sitemap:
 
 ### Google Search Console 登録
 
-GSCに{% anchor "ブログの登録（または、プロパティ追加）" https://search.google.com/search-console/about?hl=ja true "Google Search Console" %}を行います。
-登録を行うことで、Google 検索結果にインデックスが作成することができます。
+GSCに[ブログの登録（または、プロパティ追加）](https://search.google.com/search-console/about?hl=ja)を行います。
+登録を行うことで、Google 検索結果にインデックスを作成できます。
 
 はじめに所有者確認を行う必要がありますので、GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの5つの中から確認方法を選んでください。
 前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML タグか、ドメインのどちらかで確認を行うのがオススメです。
 なお、HTML ファイルでの確認方法は、`Hexo`が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
 
 所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません（※私はされなかった）。
-ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見れますので、一つずつインデックス登録してあげましょう。
+ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見られますので、一つずつインデックス登録してあげましょう。
 
 ## おわりに
 

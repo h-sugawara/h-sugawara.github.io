@@ -1,7 +1,7 @@
 ---
 title: hexo-tag-ogp-link-previewの公開に纏わる閑話
 date: 2023-11-20 21:00:00
-updated: 2024-01-06 19:30:00
+updated: 2024-01-07 10:30:00
 tags:
   - フロントエンド
   - Hexo
@@ -36,7 +36,7 @@ cover:
 hexo-tag-ogp-link-preview@npm
 {% endlink_preview %}
 
-FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示されるようなカードを、`Hexo`でも上記のような感じで再現することができます。
+FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示されるようなカードを、`Hexo`でも上記のような感じで再現できます。
 
 ## 開発に至った経緯
 
@@ -47,7 +47,7 @@ FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示される
 
 ですが、`Hexo`並びに`Icarus`にはデフォルトでリンクプレビュー機能が存在しません。
 まずは、どうすれば実現できるのかをググりました。
-すると、{% anchor "「Hexo+Icarus リンクカードを設定する」" https://circleken.net/2020/10/post32/ true "Hexo + Icarus リンクカードを設定する" %}という、まさに正鵠を射る記事を発見。
+すると、[「Hexo+Icarus リンクカードを設定する](https://circleken.net/2020/10/post32/)という、まさに正鵠を射る記事を発見。
 そこに書かれていた`hexo-tag-link-preview`を`npm install`して使うことにしました。
 
 しかし、レビュー記事をプレビュー表示してみると、生成したページに問題が発生しています。
@@ -55,7 +55,7 @@ FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示される
 
 そこで、該当のプラグインは OSS なので、Bug issue を立てて修正していただく考えに至りました。
 とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。
-加えて、作者のブログ記事の{% anchor "「hexo-tag-link-previewをnpmで公開しました。」" https://minamo173.com/blog/publish-hexo-tag-link-preview/ true "hexo-tag-link-previewをnpmで公開しました。" %}で、現在は`Hexo`を使用していない、との記述を発見。 
+加えて、作者のブログ記事の[「hexo-tag-link-previewをnpmで公開しました。」](https://minamo173.com/blog/publish-hexo-tag-link-preview/)で、現在は`Hexo`を使用していない、との記述を発見。 
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
 それから、数日で自作プラグインが完成し、無事にレビュー記事にも反映。
