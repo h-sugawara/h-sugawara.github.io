@@ -39,14 +39,12 @@ module.exports = class extends Component {
             return elements;
         };
 
-        return <nav className="pagination">
+        return <nav className="pagination" role="navigation" aria-label="pagination">
             {current > 1 ? <a className="pagination-previous" href={getPageUrl(current - 1)}>{prevTitle}</a>
                 : <div className="pagination-previous is-invisible"></div>}
             {current < total ? <a className="pagination-next" href={getPageUrl(current + 1)}>{nextTitle}</a>
                 : <div className="pagination-next is-invisible"></div>}
-            <ul className="pagination-list" role="navigation" aria-label="pagination">
-                {getPaginationList(current, total)}
-            </ul>
+            <ul className="pagination-list">{getPaginationList(current, total)}</ul>
         </nav>;
     }
 };
