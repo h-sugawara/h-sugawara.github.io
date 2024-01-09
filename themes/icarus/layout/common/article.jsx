@@ -151,26 +151,26 @@ module.exports = class extends Component {
         return <h1 className="title">{title}</h1>;
     }
 
-    renderCategories(pageCategories, url_for) {
+    renderCategories(categories, url_for) {
         return <div className="article-categories">
             <span>@</span>
             {(() => {
-                const categories = [];
-                pageCategories.forEach((category, i) => {
-                    categories.push(<a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
-                    if (i < pageCategories.length - 1) {
-                        categories.push(<span>&nbsp;/&nbsp;</span>);
+                const elements = [];
+                categories.forEach((category, i) => {
+                    elements.push(<a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
+                    if (i < categories.length - 1) {
+                        elements.push(<span>&nbsp;/&nbsp;</span>);
                     }
                 });
-                return categories;
+                return elements;
             })()}
         </div>;
     }
 
-    renderTags(pageTags, url_for) {
+    renderTags(tags, url_for) {
         return <div className="article-tags">
             <span>#</span>
-            {pageTags.map(tag => <a className="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>)}
+            {tags.sort('name').map(tag => <a className="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>)}
         </div>;
     }
 
