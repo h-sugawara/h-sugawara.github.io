@@ -17,3 +17,6 @@ hexo.extend.tag.register(
     require('./tag-gallery-image').galleryImage(hexo),
     {async: false, ends: true}
 );
+
+// hexo-component-inferno による header end injection を削除
+hexo.extend.injector.store.head_end = {};
