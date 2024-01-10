@@ -175,19 +175,19 @@ module.exports = class extends Component {
     }
 
     renderPageNavigation(pagePrev, pageNext, url_for) {
-        return <nav className="post-navigation level is-mobile">
-            <div className={`level-start${pagePrev ? '' : ' is-invisible'}`}>
-                {pagePrev ? <a className={'article-nav-prev level-item link-muted'} href={url_for(pagePrev.path)}>
+        return <nav className="post-navigation">
+            {pagePrev ? <div className='level-start'>
+                <a className={'article-nav-prev'} href={url_for(pagePrev.path)}>
                     <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
-                    <span>{pagePrev.title}</span>
-                </a> : null}
-            </div>
-            <div className={`level-end${pageNext ? '' : ' is-invisible'}`}>
-                {pageNext ? <a className={'article-nav-next level-item link-muted'} href={url_for(pageNext.path)}>
-                    <span>{pageNext.title}</span>
+                    {pagePrev.title}
+                </a>
+            </div> : <div className='level-start is-invisible'></div>}
+            {pageNext ? <div className='level-end'>
+                <a className={'article-nav-next'} href={url_for(pageNext.path)}>
+                    {pageNext.title}
                     <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
-                </a> : null}
-            </div>
+                </a>
+            </div> : <div className='level-end is-invisible'></div>}
         </nav>;
     }
 
