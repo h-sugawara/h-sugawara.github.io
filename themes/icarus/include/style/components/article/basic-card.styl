@@ -3,7 +3,7 @@ article.article
         color: $text-light
         font-size: $size-7
 
-    .article-categories, .article-tags
+    .article-tags
         span
             margin-right: 0.5rem
 
@@ -21,6 +21,18 @@ article.article
     .article-categories
         overflow-x: auto
         margin-bottom: 1.5rem
+        align-items: flex-start
+        display: flex
+        flex-wrap: wrap
+        justify-content: flex-start
+
+        &:before
+            margin-right: 0.5rem
+            content: '@'
+
+        li + li:before
+            padding: 0.5rem
+            content: '/'
 
     .content
         word-wrap: break-word

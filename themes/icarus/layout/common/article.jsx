@@ -152,19 +152,9 @@ module.exports = class extends Component {
     }
 
     renderCategories(categories, url_for) {
-        return <div className="article-categories">
-            <span>@</span>
-            {(() => {
-                const elements = [];
-                categories.forEach((category, i) => {
-                    elements.push(<a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a>);
-                    if (i < categories.length - 1) {
-                        elements.push(<span>&nbsp;/&nbsp;</span>);
-                    }
-                });
-                return elements;
-            })()}
-        </div>;
+        return <ul className="article-categories">
+            {categories.map(category => <li><a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a></li>)}
+        </ul>;
     }
 
     renderTags(tags, url_for) {
