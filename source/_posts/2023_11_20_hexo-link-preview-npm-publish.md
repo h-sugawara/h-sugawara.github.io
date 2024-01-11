@@ -3,12 +3,14 @@ title: hexo-tag-ogp-link-previewの公開に纏わる閑話
 date: 2023-11-20 21:00:00
 updated: 2024-01-07 10:30:00
 tags:
-  - フロントエンド
   - Hexo
   - Icarus
   - JavaScript
   - npm
-category: Technology
+  - Link Preview
+categories:
+  - Technology
+  - Frontend
 toc: true
 has_gallery: false
 has_code: true

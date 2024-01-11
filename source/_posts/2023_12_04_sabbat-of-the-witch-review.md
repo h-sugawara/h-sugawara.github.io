@@ -1,13 +1,15 @@
 ---
 title: サノバウィッチ レビュー
 date: 2023-12-04 19:30:00
-updated: 2024-01-02 16:30:00
+updated: 2024-01-11 19:30:00
 tags:
   - レビュー
   - PCゲーム
   - 美少女ゲーム
   - ゆずソフト
-category: Game
+categories:
+  - Game
+  - Review
 toc: true
 has_gallery: true
 has_code: false

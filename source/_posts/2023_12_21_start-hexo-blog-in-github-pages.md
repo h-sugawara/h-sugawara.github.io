@@ -3,12 +3,13 @@ title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
 updated: 2024-01-07 10:30:00
 tags:
-  - フロントエンド
   - Hexo
   - GitHub
   - GitHub Pages
   - Advent Calendar
-category: Technology
+categories:
+  - Technology
+  - Frontend
 toc: true
 has_gallery: false
 has_code: true
