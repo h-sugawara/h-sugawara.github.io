@@ -14,14 +14,14 @@ toc: true
 has_gallery: true
 has_code: false
 has_icon: false
-og_image: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_title.webp
-thumbnail: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_thumbnail.webp
+og_image: /images/game/sabbat-of-the-witch/title.webp
+thumbnail: /images/thumbnails/sabbat_of_the_witch_thumbnail.webp
 cover:
-  image: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover.webp
+  image: /images/game/sabbat-of-the-witch/cover.webp
   sources:
-    small: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_small.webp
-    medium: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_medium.webp
-    large: /articles/sabbat-of-the-witch-review/sabbat_of_the_witch_cover_large.webp
+    small: /images/game/sabbat-of-the-witch/cover_small.webp
+    medium: /images/game/sabbat-of-the-witch/cover_medium.webp
+    large: /images/game/sabbat-of-the-witch/cover_large.webp
 ---
 
 みなさん、ちゃろー☆

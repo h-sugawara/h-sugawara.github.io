@@ -14,14 +14,14 @@ toc: true
 has_gallery: true
 has_code: false
 has_icon: false
-og_image: /articles/riddle-joker-review/riddle_joker_title.webp
-thumbnail: /articles/riddle-joker-review/riddle_joker_thumbnail.webp
+og_image: /images/game/riddle-joker/title.webp
+thumbnail: /images/thumbnails/riddle_joker_thumbnail.webp
 cover:
-  image: /articles/riddle-joker-review/riddle_joker_cover.webp
+  image: /images/game/riddle-joker/cover.webp
   sources:
-    small: /articles/riddle-joker-review/riddle_joker_cover_small.webp
-    medium: /articles/riddle-joker-review/riddle_joker_cover_medium.webp
-    large: /articles/riddle-joker-review/riddle_joker_cover_large.webp
+    small: /images/game/riddle-joker/cover_small.webp
+    medium: /images/game/riddle-joker/cover_medium.webp
+    large: /images/game/riddle-joker/cover_large.webp
 ---
 
 みなさん、ちゃろー☆
