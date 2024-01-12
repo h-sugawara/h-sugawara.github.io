@@ -18,7 +18,7 @@ module.exports = class extends Component {
             <Head site={site} config={config} helper={helper} page={page} />
             <body className={`is-${columnCount}-column`}>
                 <Navbar config={config} helper={helper} page={page} />
-                <section className="section">
+                <div className="section">
                     <div className="container">
                         <div className="columns">
                             <div className={classname({
@@ -32,7 +32,7 @@ module.exports = class extends Component {
                             <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />
                         </div>
                     </div>
-                </section>
+                </div>
                 <Footer config={config} helper={helper} />
                 <Assets site={site} config={config} helper={helper} page={page} head={false} />
                 <Search config={config} helper={helper} />
