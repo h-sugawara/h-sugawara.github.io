@@ -43,6 +43,9 @@ render_drafts: false
 post_asset_folder: true
 relative_link: false
 future: true
+markdown:
+  render:
+    linkify: false
 highlight:
   enable: true
   line_number: false
@@ -128,3 +131,8 @@ sitemap:
 clean_css:
   exclude:
     - '*.min.css'
+
+# JavaScript minify
+uglify:
+  exclude:
+    - '*.min.js'
