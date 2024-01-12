@@ -60,10 +60,8 @@ function galleryImage(hexo) {
         const {width, height} = getImageSize(args[2]);
 
         return newHtmlFigureElement(
-            newHtmlAnchorElement(
-                gallery,
-                newHtmlImageElement(preview, alt, width, height) + newHtmlFigureCaptionElement(content),
-            ),
+            newHtmlAnchorElement(gallery, newHtmlImageElement(preview, alt, width, height))
+            + newHtmlFigureCaptionElement(content),
         );
     };
 }
