@@ -3,7 +3,7 @@
 const util = require('hexo-util');
 
 function newHtmlFigureCaptionElement(text) {
-    return util.htmlTag('figcaption', {class: 'caption'}, text);
+    return util.htmlTag('figcaption', {class: 'gallery-caption'}, text);
 }
 
 function newHtmlImageElement(src, alt, width, height) {
