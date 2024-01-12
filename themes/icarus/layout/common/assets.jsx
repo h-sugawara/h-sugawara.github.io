@@ -142,8 +142,8 @@ module.exports = class extends Component {
                 <script src={toggleTocJsUrl} defer></script>
             </Fragment> : null}
             {hasCode ? <Fragment>
-                <script src={codeBlockJsUrl} defer></script>
                 {hasClipboard && <script src={clipboardJsUrl} defer></script>}
+                <script src={codeBlockJsUrl} defer></script>
             </Fragment> : null}
             {hasGallery && <script src={galleryJsUrl} defer></script>}
             <script src={mainJsUrl} defer></script>
