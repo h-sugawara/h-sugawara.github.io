@@ -38,9 +38,9 @@ class Navbar extends Component {
 
         return <nav className="navbar navbar-main">
             <div className="container navbar-container">
-                <div className="navbar-brand">
+                <h1 className="navbar-brand">
                     <a className="navbar-item navbar-logo" href={siteUrl}>{navbarLogo}</a>
-                </div>
+                </h1>
                 <div className="navbar-menu">
                     {Object.keys(menu).length ? <div className="navbar-start">
                         {Object.keys(menu).map(name => {

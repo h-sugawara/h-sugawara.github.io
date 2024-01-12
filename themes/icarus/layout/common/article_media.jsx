@@ -10,7 +10,7 @@ module.exports = class extends Component {
             </figure> : null}
             <div className="media-content">
                 <time className="date" dateTime={dateXml}>{date}</time>
-                <a className="title" href={url}>{title}</a>
+                <h4 className="title"><a className="link-muted" href={url}>{title}</a></h4>
                 {categories.length > 0 && <p className="categories">{categories.join(' / ')}</p>}
             </div>
         </article>;

@@ -145,10 +145,7 @@ module.exports = class extends Component {
     }
 
     renderTitle(index, title, pageUrl) {
-        if (index) {
-            return <a className="title link-muted" href={pageUrl}>{title}</a>;
-        }
-        return <h1 className="title">{title}</h1>;
+        return <h2 className="title">{index ? <a className="link-muted" href={pageUrl}>{title}</a> : title}</h2>;
     }
 
     renderCategories(categories, url_for) {
@@ -205,7 +202,7 @@ module.exports = class extends Component {
             <div className="card">
                 {/* Thumbnail */}
                 {cover && this.renderCoverImage(index, url_for, cover, title, pageUrl)}
-                <article className={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
+                <article className={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role={index ? null : 'main'}>
                     {/* Metadata */}
                     {page.layout !== 'page' && this.renderMetadata(config, helper, page, index)}
                     {/* Title */}
