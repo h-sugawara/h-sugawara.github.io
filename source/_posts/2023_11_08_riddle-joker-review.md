@@ -100,9 +100,9 @@ cover:
 
 ちなみに、彼女は本作の根幹となる秘密を抱えているので、そこも意識しながら攻略してみると良いだろう。
 
-{% gallery_img /articles/riddle-joker-review/{mitsukasa_ayase_preview.webp,mitsukasa_ayase.webp} '三司 あやせ' 719x404 %}
+{% gallery riddle-joker-review mitsukasa_ayase_preview.webp,mitsukasa_ayase.webp '三司 あやせ' 719x404 %}
 猫耳を装着した激カワあやせさん © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 在原 七海
 
@@ -124,9 +124,9 @@ cover:
 
 あと、個別ルートにて、彼女が作る餃子の話は、面白くて可愛くてほっこりするので必見。
 
-{% gallery_img /articles/riddle-joker-review/{arihara_nanami_preview.webp,arihara_nanami.webp} '在原 七海' 719x404 %}
+{% gallery riddle-joker-review arihara_nanami_preview.webp,arihara_nanami.webp '在原 七海' 719x404 %}
 七海ちゃんに頼られて拒否できる兄など居ない © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 式部 茉優
 
@@ -146,9 +146,9 @@ cover:
 彼女はとても優秀であるにも関わらず、なぜ二度も留年したのか。
 三司あやせ同様に本作の根幹をなす理由が存在するため、是非攻略してみてほしい。
 
-{% gallery_img /articles/riddle-joker-review/{shikibe_mayu_preview.webp,shikibe_mayu.webp} '式部 茉優' 719x404 %}
+{% gallery riddle-joker-review shikibe_mayu_preview.webp,shikibe_mayu.webp '式部 茉優' 719x404 %}
 茉優先輩にヨシヨシされたい人生であった © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 二条院 羽月
 
@@ -170,9 +170,9 @@ cover:
 このシーンで、彼女のあまりの可愛さに紳士淑女諸君らが、ハートを撃ち抜かれることは想像に難くない。
 異能力モノには興味ないが、ラブコメは好きという方に、攻略を推したいヒロインである。
 
-{% gallery_img /articles/riddle-joker-review/{nijouin_hazuki_preview.webp,nijouin_hazuki.webp} '二条院 羽月' 719x404 %}
+{% gallery riddle-joker-review nijouin_hazuki_preview.webp,nijouin_hazuki.webp '二条院 羽月' 719x404 %}
 ショッピングモールで犬真似を晒す羽月さん © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ## 作品評定
 

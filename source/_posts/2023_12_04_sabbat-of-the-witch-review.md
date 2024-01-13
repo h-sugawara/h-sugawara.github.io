@@ -110,9 +110,9 @@ cover:
 しかし、彼女は、都合の良いそれが無くても、様々な艱難辛苦を自分の力で乗り越えて成長していくのである。
 彼女の個別ルートは、それだけで一つの作品として完成しているので、しっかりと時間をとって攻略してみて欲しい。
 
-{% gallery_img /articles/sabbat-of-the-witch-review/{ayachi_nene_preview.webp,ayachi_nene.webp} '綾地 寧々' 719x404 %}
+{% gallery sabbat-of-the-witch-review ayachi_nene_preview.webp,ayachi_nene.webp '綾地 寧々' 719x404 %}
 嫉妬する寧々ちゃんにマーキングされたい © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 因幡 めぐる
 
@@ -135,9 +135,9 @@ cover:
 
 そして、彼女は、伝説のあいさつ「ちゃろー」を世に生み出した奇才であることを忘れてはいけない。
 
-{% gallery_img /articles/sabbat-of-the-witch-review/{inaba_meguru_preview.webp,inaba_meguru.webp} '因幡 めぐる' 719x404 %}
+{% gallery sabbat-of-the-witch-review inaba_meguru_preview.webp,inaba_meguru.webp '因幡 めぐる' 719x404 %}
 私も大好きです、めぐるさん © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 椎葉 紬
 
@@ -156,9 +156,9 @@ cover:
 彼女は、本作ヒロインの中で最も母性が強いキャラクターであるので、バブみを感じてみたい紳士は是非攻略してみてほしい。
 きっと大満足すること間違いないであろう。
 
-{% gallery_img /articles/sabbat-of-the-witch-review/{shiiba_tsumugi_preview.webp,shiiba_tsumugi.webp} '椎葉 紬' 719x404 %}
+{% gallery sabbat-of-the-witch-review shiiba_tsumugi_preview.webp,shiiba_tsumugi.webp '椎葉 紬' 719x404 %}
 紬ちゃんに看病されたいです © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ### 戸隠 憧子
 
@@ -180,9 +180,9 @@ cover:
 なお、本作ヒロインから最も良い女性を選ぶなら誰かと問われた時、迷わず真っ先に彼女の名前を挙げるであろう。
 尻に敷かれていることを感じさせずに、手のひらの上で気持ちよく転がされたい、と思っている紳士には是非推したい。
 
-{% gallery_img /articles/sabbat-of-the-witch-review/{togakushi_touko_preview.webp,togakushi_touko.webp} '戸隠 憧子' 719x404 %}
+{% gallery sabbat-of-the-witch-review togakushi_touko_preview.webp,togakushi_touko.webp '戸隠 憧子' 719x404 %}
 憧子先輩に毎日料理を作って欲しいです © YUZUSOFT / JUNOS INC. All Rights Reserved.
-{% endgallery_img %}
+{% endgallery %}
 
 ## 作品評定
 
