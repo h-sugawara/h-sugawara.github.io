@@ -13,8 +13,8 @@ hexo.extend.tag.register(
 );
 
 hexo.extend.tag.register(
-    'gallery_img',
-    require('./tag-gallery-image').galleryImage(hexo),
+    'gallery',
+    require('./tag-image-gallery').imageGallery(hexo),
     {async: false, ends: true}
 );
 
