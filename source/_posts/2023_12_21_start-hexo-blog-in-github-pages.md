@@ -1,7 +1,7 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2024-01-07 10:30:00
+updated: 2024-01-14 10:30:00
 tags:
   - Hexo
   - GitHub
@@ -42,7 +42,7 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 
 ### この記事の存在意義
 
-読者様が、この記事をひと通り読んだ後に`Hexo.js` + `GitHub Pages`のブログを作成できるようになっていること。
+読者様が、この記事をひと通り読んだ後に Hexo.js + GitHub Pages のブログを作成できるようになっていること。
 もしくは、この記事を読みながらブログを作成できること。
 
 ### この記事を推したい読者様
@@ -58,13 +58,13 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}を投稿する場所と方法を探していたことがきっかけです。
 
 作中のスクショを張りたかったことと、R18 指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
-`GitHub Pages`で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
+GitHub Pages で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
 あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。
-紆余曲折あって、`Hexo.js`に辿り着き、これを使うことにしました。
+紆余曲折あって、Hexo.js に辿り着き、これを使うことにしました。
 
-こうして、このブログが`Hexo.js` + `GitHub Pages`で爆誕し、さらにこの記事が生み出されることとなったのです。
+こうして、このブログが Hexo.js + GitHub Pages で爆誕し、さらにこの記事が生み出されることとなったのです。
 
-なお、`Hexo`と書かれていると、`ヘクソ`と読みがちですが、`ヘキソ`の読みが正しいようです。
+なお、Hexo と書かれていると、**ヘクソ**と読みがちですが、**ヘキソ**の読みが正しいようです。
 ぶっちゃけ、どっちでも伝わるとは思うので、どっちの呼び方でも良いと思います。
 
 ## 手元でブログを作ろう
@@ -85,24 +85,37 @@ Git はインストール必須です。
 ・Linux => apt-get や yum でインストール。
 {% endmessage %}
 
+#### (1) Node.js 最新版インストール
+
 1. Node.js のバージョン管理ツールから最新版をインストールします。
 大抵のツールは、インストール後にバージョン切り替えをしないので、自分でインストールしたバージョンに変更するコマンドを実行してください。
 その後、`node -v`コマンドで、最新バージョンに切り替わっていることを確認してください。
 2. npm を最新バージョンに更新します。
-3. npm 経由で、hexo-cli をインストールします。
+
+#### (2) hexo-cli インストール
+
+npm 経由で、hexo-cli をインストールします。
+
 ```shell terminal
 npm install -g hexo-cli
 ```
 
 ### ブログセットアップ
 
-1. ブログ一式を作成するコマンドを実行します。
-以下のコマンドは、"blog"という名前のディレクトリでブログ一式が作成されます。任意の名前に変えて実行しても大丈夫です。
+#### (1) ブログ一式を作成
+
+以下のコマンドで、"blog"ディレクトリ配下にブログ一式を作成します。
+"blog"は、任意の名前に変えても大丈夫です。
+
 ```shell terminal
 hexo init blog
 ```
-2. "blog"ディレクトリ(※)に移動し、`npm install`コマンドを実行します。
-(※) 手順1で、任意の名前で作成した場合、"blog"を読み替えてください。
+
+#### (2) npm install
+
+"blog"ディレクトリ(※)に移動し、`npm install`コマンドを実行します。
+(※) 任意の名前で作成した場合、"blog"を読み替えてください。
+
 ```shell terminal
 cd ./blog
 npm install
@@ -120,7 +133,7 @@ Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必�
 npm run clean && npm run server
 ```
 
-コマンド実行時にログにも出ますが、Ctrl+C で`Hexo`サーバーを止められます。
+コマンド実行時にログにも出ますが、Ctrl+C で Hexo サーバーを止められます。
 
 ### カスタムテーマ導入
 
@@ -128,16 +141,16 @@ npm run clean && npm run server
 最低限のことはできるのですが、見た通りデザインがイケてません。オシャレ感が足りません。
 そんな人のために、[Hexo公式から有志が作成したテーマを検索](https://hexo.io/themes/)できるようになっています。
 
-検索してみるとたくさんあって悩みますが、私の一番のおすすめは`Icarus`テーマです。
-`Icarus`テーマの[公式ドキュメントにインストール手順がある](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)ので、導入してみてください。
+検索してみるとたくさんあって悩みますが、私の一番のおすすめは Icarus テーマです。
+Icarus テーマの[公式ドキュメントにインストール手順がある](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)ので、導入してみてください。
 
 {% message color:warning %}
 `npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
 `git clone`する方法、または、GitHub から Download zip する方法で導入することを推奨します。
 {% endmessage %}
 {% message color:info %}
-`Icarus`テーマの最新版 v5.x は、Hexo v6.x ベースで作成されています。
-そのため、ブログ側の`Hexo`を最新版の v7.x ではなく v6.x にすると、互換性に関わる問題が発生しにくいでしょう。
+Icarus テーマの最新版 v5.x は、Hexo v6.x ベースで作成されています。
+そのため、ブログ側の Hexo を最新版の v7.x ではなく v6.x にすると、互換性に関わる問題が発生しにくいでしょう。
 私は念のため、Hexo v7.x を`npm uninstall`した後に、Hexo v6.x を`npm install`しました。
 {% endmessage %}
 
@@ -172,7 +185,7 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 ### 試しに記事を書いてみる
 
 ブログは記事がなければ何も始まらないので、さっそく作りましょう。
-`Hexo`で記事を作成するには、以下のコマンドを実行します。
+Hexo で記事を作成するには、以下のコマンドを実行します。
 
 {% message color:info %}
 記事名（コマンド中の article-name 部分）は、自由に入力してかまいません。
@@ -182,7 +195,7 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 hexo new post "article-name"
 ```
 
-記事は、`source/_posts`ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、"2023_12_22_article-name.md"）が生成されます。
+記事は、"source/_posts"ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、"2023_12_22_article-name.md"）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
 
 ```markdown source/_posts/2023_12_22_article-name.md
@@ -193,9 +206,9 @@ tags:
 ---
 ```
 
-`---`で囲まれた部分を"Front Matter"と呼び、`Hexo`では記事のメタ情報を記載する場所です。
+`---`で囲まれた部分を"Front Matter"と呼び、Hexo では記事のメタ情報を記載する場所です。
 "title"は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
-他にも、テーマによってはカスタムフィールドがあります（例：`Icarus`テーマなら、"thumbnail"や"cover"等）ので、お好みで設定してください。
+他にも、テーマによってはカスタムフィールドがあります（例：Icarus テーマなら、"thumbnail"や"cover"等）ので、お好みで設定してください。
 
 そして、ブログの本文は、"Front Matter"の後に記述します。
 
@@ -227,7 +240,7 @@ category: Technology
 
 ここまでの手順で、ブログとしてはほぼ完成しています。
 
-`Icarus`テーマを導入した方は、日本語の表示時フォントが"Microsoft YaHei"になっています。
+Icarus テーマを導入した方は、日本語の表示時フォントが"Microsoft YaHei"になっています。
 見慣れているフォントに変えたいなら、フォント設定に関する処理を書き換えると変更できます（※前項「カスタムテーマ導入」の注意事項を読んでください）。
 やり方については、[「Hexoのicarusテーマのフォントの変え方」](https://omathin.com/icarus-theme-change/)や[「HEXO の表示フォントを変更」](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)をまねてみると良いでしょう。
 
@@ -250,7 +263,7 @@ GitHub のアカウントはあらかじめ作成してください。
 無料で使いたい場合は、パブリックレポジトリにする必要があります。
 {% endmessage %}
 
-自分のアカウントを使って、`GitHub Pages`用のレポジトリを作成します。
+自分のアカウントを使って、GitHub Pages 用のレポジトリを作成します。
 画像付きの作成手順が[GitHub公式ドキュメントにまとめられています](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)ので、ご確認ください。
 
 作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
@@ -279,7 +292,7 @@ deploy:
       public: false
 ```
 
-その後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に`.nojekyll`ファイルを作成しましょう。
+その後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に".nojekyll"ファイルを作成しましょう。
 これでデプロイの設定は完了です。デプロイする前に、次のセクションの「下書き記事を使いこなす」をよく読んでください。
 
 ### 下書き記事を使いこなす
@@ -293,8 +306,8 @@ deploy:
 hexo new draft "article-name"
 ```
 
-ただし、下書き記事は、手元で`Hexo`サーバーを起動しても、初期状態のままだとブログの記事として表示できません。
-`package.json`の`server scripts`コマンドに手を加える必要があります。
+ただし、下書き記事は、手元で Hexo サーバーを起動しても、初期状態のままだとブログの記事として表示できません。
+"package.json"にある scripts の"server"コマンドに手を加える必要があります。
 
 ```text package.json（※コピーせず、ご自身の手で修正してください）
   "scripts": {
@@ -305,7 +318,7 @@ hexo new draft "article-name"
   },
 ```
 
-このあとは、通常通り`Hexo`サーバーを起動させるだけです。
+このあとは、通常通り Hexo サーバーを起動させるだけです。
 
 ```shell terminal
 npm run clean && npm run server
@@ -321,7 +334,7 @@ hexo publish "article-name"
 
 ### GitHub Pages にデプロイ
 
-それでは、準備も整ったと思いますので、`GitHub Pages`にデプロイしましょう！
+それでは、準備も整ったと思いますので、GitHub Pages にデプロイしましょう！
 デプロイは下記のコマンドを実行するだけで終わります。
 
 {% message color:warning %}
@@ -335,7 +348,7 @@ npm run clean && npm run deploy
 
 ### カスタムドメイン登録
 
-`GitHub Pages`のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
+GitHub Pages のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
 もちろん、カスタムドメインを無料で登録することもできます。
 詳細については、[GitHub公式ドキュメントの説明](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)にお任せします。
 
@@ -361,13 +374,13 @@ Google 検索すると、[詳しく説明してくれている方たち](https:/
 ### サイトマップ作成
 
 ブログに書いた記事を、GSC に認知してもらうためにサイトマップを作成します。
-もちろん手作業で作る必要はなく、`Hexo`公式が`hexo-generator-sitemap`プラグインを用意しているので、それをインストールしましょう。
+もちろん手作業で作る必要はなく、Hexo 公式が`hexo-generator-sitemap`プラグインを用意しているので、それをインストールしましょう。
 
 ```shell terminal
 npm install hexo-generator-sitemap
 ```
 
-インストールが終わったら、ブログの設定ファイル`_config.yml`を開いて、サイトマップ作成用の設定を追加します。
+インストールが終わったら、ブログの設定ファイル"_config.yml"を開いて、サイトマップ作成用の設定を追加します。
 
 ```yaml _config.yml
 # Sitemap
@@ -378,7 +391,7 @@ sitemap:
   categories: false
 ```
 
-設定はこれだけでOKです。デプロイコマンドを実行する度に、`Hexo`がブログのサイトマップを作って、`GitHub Pages`にデプロイしてくれるようになります。
+設定はこれだけでOKです。デプロイコマンドを実行する度に、Hexo がブログのサイトマップを作って、GitHub Pages にデプロイしてくれるようになります。
 
 ### Google Search Console 登録
 
@@ -387,7 +400,7 @@ GSCに[ブログの登録（または、プロパティ追加）](https://search
 
 はじめに所有者確認を行う必要がありますので、GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの5つの中から確認方法を選んでください。
 前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML タグか、ドメインのどちらかで確認を行うのがオススメです。
-なお、HTML ファイルでの確認方法は、`Hexo`が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
+なお、HTML ファイルでの確認方法は、Hexo が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
 
 所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません（※私はされなかった）。
 ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見られますので、一つずつインデックス登録してあげましょう。
