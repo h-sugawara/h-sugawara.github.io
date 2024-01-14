@@ -8,7 +8,7 @@ const {post} = require("hexo/lib/plugins/helper/is");
 module.exports = class extends Component {
     render() {
         const { config, page, helper } = this.props;
-        const { url_for, __, date_xml, date } = helper;
+        const { url_for, __, _p, date_xml, date } = helper;
 
         const language = toMomentLocale(page.lang || page.language || config.language);
         moment.locale(language);
@@ -16,7 +16,7 @@ module.exports = class extends Component {
         const renderArticleList = (posts, year, month = null) => {
             const time = moment([year, month ? month - 1 : null].filter(i => i !== null));
 
-            return <div className="card card-content">
+            return <section className="card card-content">
                 <h3 className="timeline-period">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
                 <div className="timeline">
                     {posts.map(({link, path, title, date: created, categories, thumbnail }) => <ArticleMedia
@@ -28,7 +28,7 @@ module.exports = class extends Component {
                         thumbnail={thumbnail ? url_for(thumbnail) : null}/>
                     )}
                 </div>
-            </div>;
+            </section>;
         };
 
         let articleList;
@@ -44,6 +44,9 @@ module.exports = class extends Component {
         }
 
         return <Fragment>
+            <section className="card card-content">
+                <h2>{_p('common.archive', Infinity)} ({page.current} / {_p('common.page', page.total)})</h2>
+            </section>
             {articleList}
             {page.total > 1 ? <Paginator
                 current={page.current}

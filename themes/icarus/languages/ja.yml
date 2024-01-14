@@ -1,7 +1,7 @@
 common:
     archive:
         one: 'アーカイブ'
-        other: 'アーカイブ'
+        other: 'アーカイブリスト'
     category:
         one: 'カテゴリ'
         other: '全てのカテゴリ'
@@ -12,8 +12,8 @@ common:
         one: '投稿'
         other: '投稿'
     page:
-        one: 'ページ'
-        other: 'ページ'
+        one: '%dページ'
+        other: '%dページ'
     prev: '前'
     next: '次'
 widget:
