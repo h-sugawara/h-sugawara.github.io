@@ -12,10 +12,11 @@ class Insight extends Component {
         return <div className="searchbox">
             <div className="searchbox-container">
                 <div className="searchbox-header">
-                    <div className="searchbox-input-container">
-                        <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
+                    <div className="searchbox-header-container">
+                        <label className="searchbox-label" htmlFor="search">{translation.title}</label>
+                        <a className="searchbox-close" href="javascript:;">&#xD7;</a>
                     </div>
-                    <a className="searchbox-close" href="javascript:;">&#xD7;</a>
+                    <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
                 </div>
                 <div className="searchbox-body"></div>
                 <script dangerouslySetInnerHTML={{__html: js}}></script>
@@ -30,6 +31,7 @@ Insight.Cacheable = cacheComponent(Insight, 'search.insight', props => {
 
     return {
         translation: {
+            title: __('search.search'),
             hint: __('search.hint'),
             untitled: __('search.untitled'),
             posts: _p('common.post', Infinity),

@@ -16,8 +16,9 @@ $searchbox-bg-container ?= $white-ter
 $searchbox-border ?= $border
 // header styles
 $searchbox-bg-input ?= $white
-$searchbox-bg-close-hover ?= $searchbox-bg-container
-$searchbox-bg-close-active ?= $grey-lighter
+$searchbox-bg-close-hover ?= $searchbox-bg-input
+$searchbox-bg-close-active ?= $primary
+$searchbox-fg-close-active ?= findColorInvert($primary)
 // body styles
 $searchbox-fg-result-header ?= #525252
 $searchbox-fg-result-item-secondary ?= #525252
@@ -40,7 +41,6 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
     height: 100%
     z-index: 100
     font-size: 1rem
-    line-height: 0
     background: $searchbox-bg-overlay
 
     &.show
@@ -79,27 +79,37 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
 
     .searchbox-header
         display: flex
-        flex-direction: row
+        flex-direction: column
         line-height: 1.5em
         font-weight: normal
+        align-items: stretch
         background-color: $searchbox-bg-input
-        // fix Chrome 71 height issue
-        // https://github.com/ppoffice/hexo-theme-icarus/issues/719
-        min-height: 3rem
 
-    .searchbox-input-container
+    // fix Chrome 71 height issue
+    // https://github.com/ppoffice/hexo-theme-icarus/issues/719
+    // min-height: 3rem
+
+    .searchbox-header-container
         display: flex
+        flex-direction: row
+        align-items: center
+        background-color: $searchbox-bg-container
+        border-bottom: 1px solid $searchbox-border
+
+    .searchbox-label
         flex-grow: 1
+        color: $searchbox-fg-result-header
+        padding: .75em 1em
 
     .searchbox-input
         flex-grow: 1
-        color: inherit
         box-sizing: border-box
-        padding: 0.5em 0 0.5em 0.75em
+        padding: 0.5em 0.75em
+        color: inherit
         background: $searchbox-bg-input
 
     .searchbox-close
-        display: inline-block
+        flex-grow: 0
         font-size: $size-3
         padding: 0.5em
         cursor: pointer
@@ -108,6 +118,7 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
             background: $searchbox-bg-close-hover
 
         &:active
+            color: $searchbox-fg-close-active
             background: $searchbox-bg-close-active
 
     .searchbox-body
