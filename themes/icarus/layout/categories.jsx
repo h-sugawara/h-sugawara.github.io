@@ -10,6 +10,6 @@ module.exports = class extends Component {
             .map(({ orderBy, order }) => { return { orderBy, order }; })
             .shift() || {};
 
-        return <Categories.Cacheable site={site} page={page} helper={helper} widget={widget} />;
+        return <Categories.Cacheable site={site} page={page} helper={helper} widget={widget} main={true} />;
     }
 };

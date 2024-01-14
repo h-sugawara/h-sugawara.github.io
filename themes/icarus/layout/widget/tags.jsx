@@ -3,22 +3,22 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Tags extends Component {
     render() {
-        const { showCount, title, tags } = this.props;
+        const { showCount, title, tags, main } = this.props;
 
-        return <div className="card widget card-content menu" datatype="tags">
-            <h3 className="menu-label">{title}</h3>
+        return <section className="card widget card-content menu" datatype="tags">
+            {main ? <h2 className="menu-label">{title}</h2> : <h3 className="menu-label">{title}</h3>}
             <div className="field is-grouped is-grouped-multiline">
                 {tags.map(tag => <a className="control tags has-addons" href={tag.url}>
                     <span className="tag">{tag.name}</span>
                     {showCount && <span className="tag">{tag.count}</span>}
                 </a>)}
             </div>
-        </div>;
+        </section>;
     }
 }
 
 Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
-    const {helper, widget = {}, site} = props;
+    const {helper, widget = {}, site, main = false} = props;
     const {url_for, _p} = helper;
     const {order_by = 'name', amount, show_count = true} = widget;
 
@@ -37,8 +37,9 @@ Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
 
     return {
         showCount: show_count,
-        title: _p('common.tag', Infinity),
-        tags: tags,
+        title: _p('common.tag', amount ? 1 : Infinity),
+        tags,
+        main,
     };
 });
 

@@ -8,16 +8,14 @@ module.exports = class extends Component {
         const { parents, category } = page;
 
         return <Fragment>
-            <div className="card">
-                <div className="card-content">
-                    <nav className="breadcrumb" aria-label="breadcrumbs">
-                        <ul>
-                            <li><a href={url_for('/categories/')}>{_p('common.category', Infinity)}</a></li>
-                            {parents.map(({path, name}) => <li><a href={url_for(path)}>{name}</a></li>)}
-                            <li className="is-active"><a href="#" aria-current="page">{category}</a></li>
-                        </ul>
-                    </nav>
-                </div>
+            <div className="card card-content">
+                <nav className="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a href={url_for('/categories/')}>{_p('common.category', Infinity)}</a></li>
+                        {parents.map(({path, name}) => <li><a href={url_for(path)}>{name}</a></li>)}
+                        <li className="is-active"><a href="#" aria-current="page">{category}</a></li>
+                    </ul>
+                </nav>
             </div>
             <Index config={config} page={page} helper={helper} />
         </Fragment>;

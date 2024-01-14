@@ -15,17 +15,17 @@ class Categories extends Component {
     }
 
     render() {
-        const { showCount, categories, title } = this.props;
+        const { showCount, categories, title, main } = this.props;
 
-        return <div className="card widget card-content menu" datatype="categories">
-            <h3 className="menu-label">{title}</h3>
+        return <section className="card widget card-content menu" datatype="categories">
+            {main ? <h2 className="menu-label">{title}</h2> : <h3 className="menu-label">{title}</h3>}
             <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
-        </div>;
+        </section>;
     }
 }
 
 Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => {
-    const {page, helper, widget = {}, site} = props;
+    const {page, helper, widget = {}, site, main = false} = props;
     const { url_for, _p } = helper;
     const {
         categories = site.categories,
@@ -75,6 +75,7 @@ Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => 
         showCount: showCount,
         categories: hierarchicalList(0),
         title: _p('common.category', Infinity),
+        main,
     };
 });
 

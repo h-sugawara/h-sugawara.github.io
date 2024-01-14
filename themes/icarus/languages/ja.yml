@@ -4,10 +4,10 @@ common:
         other: 'アーカイブ'
     category:
         one: 'カテゴリ'
-        other: 'カテゴリ'
+        other: '全てのカテゴリ'
     tag:
-        one: 'タグ'
-        other: 'タグ'
+        one: '人気のタグ'
+        other: '全てのタグ'
     post:
         one: '投稿'
         other: '投稿'

@@ -6,7 +6,7 @@ class RecentPosts extends Component {
     render() {
         const { title, posts } = this.props;
 
-        return <div className="card widget card-content" datatype="recent-posts">
+        return <section className="card widget card-content" datatype="recent-posts">
             <h3 className="menu-label">{title}</h3>
             {posts.map(post => <ArticleMedia
                 url={post.url}
@@ -15,7 +15,7 @@ class RecentPosts extends Component {
                 dateXml={post.dateXml}
                 categories={post.categories}
                 thumbnail={post.thumbnail} />)}
-        </div>;
+        </section>;
     }
 }
 
