@@ -7,7 +7,7 @@ hexo.extend.tag.register(
 );
 
 hexo.extend.tag.register(
-    'multi_ruby_in_lines',
+    'rubies',
     require('./tag-ruby-annotation').getBlockRuby(hexo),
     {async: false, ends: true}
 );
