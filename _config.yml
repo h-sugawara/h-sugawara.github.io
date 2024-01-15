@@ -118,7 +118,6 @@ deploy:
 link_preview:
   class_name:
     anchor_link: link-muted link-preview
-    image: not-gallery-item
 
 # Sitemap
 sitemap:
