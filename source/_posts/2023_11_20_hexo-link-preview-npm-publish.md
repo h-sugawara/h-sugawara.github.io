@@ -1,7 +1,7 @@
 ---
 title: hexo-tag-ogp-link-previewの公開に纏わる閑話
 date: 2023-11-20 21:00:00
-updated: 2024-01-14 10:30:00
+updated: 2024-01-16 19:30:00
 tags:
   - Hexo
   - Icarus
@@ -83,16 +83,21 @@ FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示される
 
 記事のスタイル定義ファイルに、リンクプレビューで使用する変数定義と各種クラスを追加します。
 
-{% message color:info title:2023年12月21日更新 %}
-(1) 変数の記載場所を一か所に集約
-(2) 1.91:1のアスペクト比でリンクプレビュー画像を表示できるように修正
-(3) 画像及び説明文の角半径を親要素とピッタリ合うように修正
+{% message color:info title:2024年01月16日更新 %}
+1. 変数の記載場所を一か所に集約
+2. 1.91:1 のアスペクト比でリンクプレビュー画像を表示できるように修正
+3. 角半径を親要素で調整するように修正
+4. 画像の下部に余白ができないように修正
+5. descriptions クラスの padding 設定を修正
+6. link-preview クラスの一部の設定値を変数宣言に変更
 {% endmessage %}
 
 ```stylus themes/icarus/include/style/article.styl
+$link-preview-card-border ?= 1px solid #cbd0d3
 $link-preview-card-radius ?= 8px
-$link-preview-card-border-width ?= 1px
-$link-preview-card-contents-radius ?= $link-preview-card-radius - $link-preview-card-border-width
+$link-preview-card-margin ?= 1rem 0
+$link-preview-card-bg-color ?= #f2f3f5
+$link-preview-card-og-description-color ?= #757c83
 
 article
     /* ... 省略 ... */
@@ -101,26 +106,25 @@ article
         .content
             /* ... 省略 ... */
             .link-preview
-                border: $link-preview-card-border-width solid #cbd0d3
+                display: block
+                overflow: hidden
+                border: $link-preview-card-border
                 border-radius: $link-preview-card-radius
-                margin: 1rem 0 1rem 0
+                margin: $link-preview-card-margin
                 font-size: 1rem
-                background-color: #f2f3f5
+                background-color: $link-preview-card-bg-color
 
                 .og-image
                     img
-                        border-top-left-radius: $link-preview-card-contents-radius
-                        border-top-right-radius: $link-preview-card-contents-radius
+                        display: block
                         object-fit: cover
                         object-position: center
-                        width: 100% !important
-                        height: 100% !important
                         aspect-ratio: 40 / 21
+                        width: 100%
+                        height: auto
 
                 .descriptions
-                    padding: 0 1rem 0.5rem 1rem
-                    border-bottom-left-radius: $link-preview-card-contents-radius
-                    border-bottom-right-radius: $link-preview-card-contents-radius
+                    padding: 0.5rem 1rem
 
                     .og-title
                         font-size: 1.25rem
@@ -128,7 +132,7 @@ article
                         margin-bottom: 0.25rem
 
                     .og-description
-                        color: #757c83
+                        color: $link-preview-card-og-description-color
 ```
 以上で、デザインの設定は完了です。
 
