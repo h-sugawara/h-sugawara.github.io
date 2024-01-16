@@ -5,9 +5,11 @@
 /* ---------------------------------
  *    Article Summary and Content
  * --------------------------------- */
+$link-preview-card-border ?= 1px solid #cbd0d3
 $link-preview-card-radius ?= 8px
-$link-preview-card-border-width ?= 1px
-$link-preview-card-contents-radius ?= $link-preview-card-radius - $link-preview-card-border-width
+$link-preview-card-margin ?= 1rem 0
+$link-preview-card-bg-color ?= #f2f3f5
+$link-preview-card-og-description-color ?= #757c83
 
 article.article
     .content
@@ -79,28 +81,25 @@ article.article
 
         .link-preview
             display: block
-            border-width: $link-preview-card-border-width
-            border-style: solid
-            border-color: #cbd0d3
+            overflow: hidden
+            border: $link-preview-card-border
             border-radius: $link-preview-card-radius
-            margin: 1rem 0 1rem 0
+            margin: $link-preview-card-margin
             font-size: $size-normal
-            background-color: #f2f3f5
+            line-height: 1.5
+            background-color: $link-preview-card-bg-color
 
             .og-image
                 img
-                    border-top-left-radius: $link-preview-card-contents-radius
-                    border-top-right-radius: $link-preview-card-contents-radius
+                    display: block
                     object-fit: cover
                     object-position: center
-                    width: 100% !important
-                    height: 100% !important
                     aspect-ratio: 40 / 21
+                    width: 100%
+                    height: auto
 
             .descriptions
-                padding: 0 1rem 0.5rem 1rem
-                border-bottom-left-radius: $link-preview-card-contents-radius
-                border-bottom-right-radius: $link-preview-card-contents-radius
+                padding: 0.5rem 1rem
 
                 .og-title
                     font-size: $size-4
@@ -108,7 +107,7 @@ article.article
                     margin-bottom: 0.25rem
 
                 .og-description
-                    color: #525252
+                    color: $link-preview-card-og-description-color
 
 // Overflow table
 .table-overflow
