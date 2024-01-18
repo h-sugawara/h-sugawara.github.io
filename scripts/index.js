@@ -2,7 +2,7 @@
 
 hexo.extend.tag.register(
     'ruby',
-    require('./tag-ruby-annotation').getInlineRuby(hexo),
+    require('./tag-ruby-annotation').getInlineRuby(),
     {async: false, ends: false}
 );
 

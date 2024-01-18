@@ -1,22 +1,19 @@
 'use strict';
 
-const util = require('hexo-util');
+const {htmlTag} = require('hexo-util');
 
 function getRubyText(args) {
     return args.map(arg => {
         const result = [...arg.matchAll(/(?<base>[^|]+)[|｜](?<text>.*)/g)]
-            .filter(value => value.hasOwnProperty('groups') && typeof value.groups === 'object')
-            .map(value => {
-                const rubyContent = value.groups.base + util.htmlTag('rt', {}, value.groups.text, false);
-                return util.htmlTag('ruby', {}, rubyContent, false);
-            })
+            .filter(value => 'groups' in value && typeof value.groups === 'object')
+            .map(({groups}) => htmlTag('ruby', {}, groups.base + htmlTag('rt', {}, groups.text), false))
             .join()
         return result || arg;
     }).join(' ');
 }
 
-function getInlineRuby(hexo) {
-    return (args) => getRubyText(args);
+function getInlineRuby() {
+    return args => getRubyText(args);
 }
 
 function getBlockRuby(hexo) {
