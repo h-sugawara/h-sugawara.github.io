@@ -63,7 +63,7 @@ function imageGallery(hexo) {
 
         return newHtmlFigureElement(
             newHtmlAnchorElement(gallery, newHtmlImageElement(preview, alt, width, height))
-            + newHtmlFigureCaptionElement(content),
+            + (content ? newHtmlFigureCaptionElement(content) : ''),
         );
     };
 }
