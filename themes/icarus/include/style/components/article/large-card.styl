@@ -14,15 +14,15 @@ $link-preview-card-og-description-color ?= #757c83
 article.article
     .content
         h2
-            font-size: $size-3
             position: relative
             margin: 1rem -8px 1rem -32px
             padding: 1rem
-            color: #184ea0
-            border-radius: 0 100vh 100vh 0
-            background: #eef3fc
+            border-radius: 0 1vh 1vh 0
             -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, .2)
             box-shadow: 3px 3px 5px rgba(0, 0, 0, .2)
+            background: #eef3fc
+            font-size: $size-3
+            color: #184ea0
 
         h2:before
             position: absolute
@@ -35,38 +35,32 @@ article.article
             border-left: 10px solid transparent
 
         h3
-            font-size: $size-4
             position: relative
             margin-top: 0.5rem
-            margin-left: 0.75rem
-            padding: 1rem 0 1rem 1rem
-            color: #005748
+            margin-left: -10px
+            padding: 1rem 0 1rem 2rem
+            border-radius: 15vh 0 0 15vh
             background: #e1eed8
+            font-size: $size-4
+            color: #005748
 
         h3:before
             position: absolute
-            top: 0
-            left: -30px
-            content: ''
-            border-width: 1.75rem 30px 1.75rem 0
-            border-style: solid
-            border-color: transparent #e1eed8 transparent transparent
-
-        h3:after
-            position: absolute
             top: calc(50% - 5px)
-            left: -10px
+            left: 10px
             width: 10px
             height: 10px
-            content: ''
             border-radius: 50%
             background: #005748
+            content: ''
 
         h4
-            font-size: $size-5
+            border-bottom: double 3px #ffa500
+            padding-bottom: 3px
+            font-size: $size-4
 
         h5
-            font-size: $size-6
+            font-size: $size-5
 
         p
             a
