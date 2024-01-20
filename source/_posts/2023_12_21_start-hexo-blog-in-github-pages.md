@@ -1,7 +1,7 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2024-01-14 10:30:00
+updated: 2024-01-20 13:30:00
 tags:
   - Hexo
   - GitHub

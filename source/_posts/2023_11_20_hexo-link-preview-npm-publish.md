@@ -1,7 +1,7 @@
 ---
 title: hexo-tag-ogp-link-previewの公開に纏わる閑話
 date: 2023-11-20 21:00:00
-updated: 2024-01-16 19:30:00
+updated: 2024-01-20 13:30:00
 tags:
   - Hexo
   - Icarus
@@ -97,7 +97,7 @@ $link-preview-card-border ?= 1px solid #cbd0d3
 $link-preview-card-radius ?= 8px
 $link-preview-card-margin ?= 1rem 0
 $link-preview-card-bg-color ?= #f2f3f5
-$link-preview-card-og-description-color ?= #757c83
+$link-preview-card-og-description-color ?= #525252
 
 article
     /* ... 省略 ... */
