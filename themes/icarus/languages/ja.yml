@@ -6,7 +6,8 @@ common:
         one: 'カテゴリ'
         other: '全てのカテゴリ'
     tag:
-        one: '人気のタグ'
+        zero: '人気のタグ'
+        one: 'タグ'
         other: '全てのタグ'
     post:
         one: '投稿'

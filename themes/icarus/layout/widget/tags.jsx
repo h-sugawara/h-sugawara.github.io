@@ -37,7 +37,7 @@ Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
 
     return {
         showCount: show_count,
-        title: _p('common.tag', amount ? 1 : Infinity),
+        title: _p('common.tag', amount ? 0 : Infinity),
         tags,
         main,
     };
