@@ -4,10 +4,11 @@ date: {{ date }}
 updated: {{ date }}
 tags:
 category:
-toc: true
-has_gallery: false
-has_code: false
-has_icon: false
+categories:
+toc:
+has_gallery:
+has_code:
+has_icon:
 og_image:
 thumbnail:
 cover:
