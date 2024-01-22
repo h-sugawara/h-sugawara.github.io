@@ -3,7 +3,14 @@
 @import '../../slim-bulma-stylus/component/media'
 @import '../../slim-bulma-stylus/form-tool/field-grouped'
 
-article.media
+.media
+    align-items: center
+    padding: 0.5rem 0.25rem
+
+    &:hover
+        background-color: $menu-item-hover-background-color
+        color: $menu-item-hover-color
+
     .image
         width: 64px
         height: 64px

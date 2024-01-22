@@ -8,13 +8,14 @@ class RecentPosts extends Component {
 
         return <section className="card widget card-content" datatype="recent-posts">
             <h3 className="menu-label">{title}</h3>
-            {posts.map(post => <ArticleMedia
-                url={post.url}
-                title={post.title}
-                date={post.date}
-                dateXml={post.dateXml}
-                categories={post.categories}
-                thumbnail={post.thumbnail} />)}
+            {posts.map(({url, title, date, dateXml, categories, thumbnail}) => <ArticleMedia
+                url={url}
+                title={title}
+                date={date}
+                dateXml={dateXml}
+                categories={categories}
+                thumbnail={thumbnail} />
+            )}
         </section>;
     }
 }
