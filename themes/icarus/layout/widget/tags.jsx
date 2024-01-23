@@ -8,9 +8,9 @@ class Tags extends Component {
         return <section className="card widget card-content menu" datatype="tags">
             {main ? <h2 className="menu-label">{title}</h2> : <h3 className="menu-label">{title}</h3>}
             <div className="field is-grouped is-grouped-multiline">
-                {tags.map(tag => <a className="control tags has-addons" href={tag.url}>
-                    <span className="tag">{tag.name}</span>
-                    {showCount && <span className="tag">{tag.count}</span>}
+                {tags.map(({ url, name, count }) => <a className="control tags has-addons" href={url}>
+                    <span className="tag">{name}</span>
+                    {showCount && <span className="tag">{count}</span>}
                 </a>)}
             </div>
         </section>;
@@ -31,9 +31,7 @@ Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
     if (amount) {
         tags = tags.limit(amount);
     }
-    tags = tags.map(({ name, length: count, path }) => {
-        return { name, count, url: url_for(path) };
-    });
+    tags = tags.map(({ name, length: count, path }) => ({ name, count, url: url_for(path) }));
 
     return {
         showCount: show_count,

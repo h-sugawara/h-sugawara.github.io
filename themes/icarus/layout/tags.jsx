@@ -7,9 +7,7 @@ module.exports = class extends Component {
 
         // tags widgetの設定からamountのみ除外する
         const widget = (config.widgets || []).filter(widget => widget.type === 'tags')
-            .map(({ order_by, show_count }) => {
-                return { order_by, show_count };
-            })
+            .map(({ order_by, show_count }) => ({ order_by, show_count }))
             .shift() || {};
 
         return <Tags.Cacheable site={site} helper={helper} widget={widget} main={true} />;

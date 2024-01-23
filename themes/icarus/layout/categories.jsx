@@ -7,9 +7,7 @@ module.exports = class extends Component {
 
         // categories widgetの設定からorderByとorderのみを抽出する
         const widget = (config.widgets || []).filter(widget => widget.type === 'categories')
-            .map(({ orderBy, order }) => {
-                return { orderBy, order };
-            })
+            .map(({ orderBy, order }) => ({ orderBy, order }))
             .shift() || {};
 
         return <Categories.Cacheable site={site} page={page} helper={helper} widget={widget} main={true} />;
