@@ -6,7 +6,7 @@ class Categories extends Component {
         return categories.map(category => {
             return <li>
                 <a className={`level is-mobile${category.isCurrent ? ' is-active' : ''}`} href={category.url}>
-                    <span className="level-left">{category.name}</span>
+                    {category.name}
                     {showCount && <span className="tag">{category.count}</span>}
                 </a>
                 {category.children.length > 0 && <ul>{this.renderList(category.children, showCount)}</ul>}
