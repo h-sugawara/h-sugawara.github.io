@@ -8,7 +8,7 @@ class RecentPosts extends Component {
 
         return <section className="card widget card-content" datatype="recent-posts">
             <h3 className="menu-label">{title}</h3>
-            {posts.map(({url, title, date, dateXml, categories, thumbnail}) => <ArticleMedia
+            {posts.map(({ url, title, date, dateXml, categories, thumbnail }) => <ArticleMedia
                 url={url}
                 title={title}
                 date={date}
@@ -30,14 +30,14 @@ RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recent_posts', props
     }
 
     const posts = site.posts.sort('date', -1).limit(limit)
-        .map(({ link, path, title, date: postDate, thumbnail, categories = [] }) => {
+        .map(({ link, path, title, date: created, thumbnail, categories = [] }) => {
             return {
                 url: url_for(link || path),
                 title: title,
-                date: date(postDate),
-                dateXml: date_xml(postDate),
+                date: date(created),
+                dateXml: date_xml(created),
                 thumbnail: thumbnail ? url_for(thumbnail) : null,
-                categories: categories.map(category => category.name),
+                categories: categories.map(({ name }) => name),
             };
         });
 

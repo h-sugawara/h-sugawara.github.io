@@ -30,7 +30,7 @@ module.exports = class extends Component {
                         if (delta === 2) {
                             elements.push(<li><a className="pagination-link" href={getPageUrl(prev + 1)}>{prev + 1}</a></li>);
                         } else if (delta !== 1) {
-                            elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{__html: '&hellip;'}}></span></li>);
+                            elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{ __html: '&hellip;' }}></span></li>);
                         }
                     }
                     elements.push(<li><a className={`pagination-link${current === value ? ' is-current' : ''}`} href={getPageUrl(value)}>{value}</a></li>);

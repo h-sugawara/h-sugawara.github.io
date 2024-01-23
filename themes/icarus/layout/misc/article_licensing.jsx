@@ -1,5 +1,5 @@
-const {Component} = require('inferno');
-const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const FontAwesomeIcon = require('./font_awesome_icon');
 
 class ArticleLicensing extends Component {
@@ -23,26 +23,34 @@ class ArticleLicensing extends Component {
                 <a href={link}>{link}</a>
             </div>
             <div className="licensing-meta level is-mobile level-left">
-                {author ? <div className="level-item is-narrow"><div><p>{authorTitle}</p>{author}</div></div> : null}
-                {createdAt ? <div className="level-item is-narrow"><div><p>{createdTitle}</p>{createdAt}</div></div> : null}
-                {updatedAt ? <div className="level-item is-narrow"><div><p>{updatedTitle}</p>{updatedAt}</div></div> : null}
-                {licenses && Object.keys(licenses).length ? <div className="level-item is-narrow"><div>
-                    <p>{licensedTitle}</p>
-                    {Object.keys(licenses).map(name => {
-                        const license = licenses[name];
-                        let iconList = [];
-                        if (license.icon) {
-                            iconList = Array.isArray(license.icon) ? license.icon : [ license.icon ];
-                        }
-                        return <a className={license.icon ? 'icons' : ''}
-                            rel="noopener"
-                            target="_blank"
-                            title={name}
-                            href={license.url}>
-                            {iconList.length ? iconList.map(icon => <FontAwesomeIcon type={icon} className="icon" />) : name}
-                        </a>;
-                    })}
-                </div></div> : null}
+                {author ? <div className="level-item is-narrow">
+                    <div><p>{authorTitle}</p>{author}</div>
+                </div> : null}
+                {createdAt ? <div className="level-item is-narrow">
+                    <div><p>{createdTitle}</p>{createdAt}</div>
+                </div> : null}
+                {updatedAt ? <div className="level-item is-narrow">
+                    <div><p>{updatedTitle}</p>{updatedAt}</div>
+                </div> : null}
+                {licenses && Object.keys(licenses).length ? <div className="level-item is-narrow">
+                    <div>
+                        <p>{licensedTitle}</p>
+                        {Object.keys(licenses).map(name => {
+                            const license = licenses[name];
+                            let iconList = [];
+                            if (license.icon) {
+                                iconList = Array.isArray(license.icon) ? license.icon : [ license.icon ];
+                            }
+                            return <a className={license.icon ? 'icons' : ''}
+                                rel="noopener"
+                                target="_blank"
+                                title={name}
+                                href={license.url}>
+                                {iconList.length ? iconList.map(icon => <FontAwesomeIcon type={icon} className="icon" />) : name}
+                            </a>;
+                        })}
+                    </div>
+                </div> : null}
             </div>
         </div>;
     }

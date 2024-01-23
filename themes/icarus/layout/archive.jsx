@@ -3,7 +3,6 @@ const { Component, Fragment } = require('inferno');
 const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
 const Paginator = require('./misc/paginator');
 const ArticleMedia = require('./common/article_media');
-const {post} = require("hexo/lib/plugins/helper/is");
 
 module.exports = class extends Component {
     render() {
@@ -19,13 +18,13 @@ module.exports = class extends Component {
             return <section className="card card-content">
                 <h3 className="timeline-period">{time.format(month === null ? 'YYYY年' : 'YYYY年 MM月')}</h3>
                 <div className="timeline">
-                    {posts.map(({link, path, title, date: created, categories, thumbnail }) => <ArticleMedia
+                    {posts.map(({ link, path, title, date: created, categories, thumbnail }) => <ArticleMedia
                         url={url_for(link || path)}
                         title={title}
                         date={date(created)}
                         dateXml={date_xml(created)}
                         categories={categories.map(({ name }) => name)}
-                        thumbnail={thumbnail ? url_for(thumbnail) : null}/>
+                        thumbnail={thumbnail ? url_for(thumbnail) : null} />
                     )}
                 </div>
             </section>;
@@ -34,7 +33,9 @@ module.exports = class extends Component {
         let articleList;
         if (!page.year) {
             const years = {};
-            page.posts.each(p => { years[p.date.year()] = null; });
+            page.posts.each(p => {
+                years[p.date.year()] = null;
+            });
             articleList = Object.keys(years).sort((a, b) => b - a).map(year => {
                 const posts = page.posts.filter(p => p.date.year() === parseInt(year, 10));
                 return renderArticleList(posts, year, null);

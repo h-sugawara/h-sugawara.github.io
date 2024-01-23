@@ -96,23 +96,23 @@ module.exports = class extends Component {
         const onLoadForPreloadCss = 'this.onload=null;this.rel=\'stylesheet\'';
 
         return <Fragment>
-            <link rel="preload" href={subCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
-            {hasIcon && <link rel="preload" href={iconCssUrl} as="style" onLoad={onLoadForPreloadCss}/>}
+            <link rel="preload" href={subCssUrl} as="style" onLoad={onLoadForPreloadCss} />
+            {hasIcon && <link rel="preload" href={iconCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
             {hasCode ? <Fragment>
-                <link rel="preload" href={codeFontCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
-                <link rel="preload" href={hlThemeCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
-                <link rel="preload" href={codeBlockCssUrl} as="style" onLoad={onLoadForPreloadCss}/>
+                <link rel="preload" href={codeFontCssUrl} as="style" onLoad={onLoadForPreloadCss} />
+                <link rel="preload" href={hlThemeCssUrl} as="style" onLoad={onLoadForPreloadCss} />
+                <link rel="preload" href={codeBlockCssUrl} as="style" onLoad={onLoadForPreloadCss} />
             </Fragment> : null}
-            {hasGallery && <link rel="preload" href={galleryCssUrl} as="style" onLoad={onLoadForPreloadCss}/>}
+            {hasGallery && <link rel="preload" href={galleryCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
             <noscript>
-                <link rel="stylesheet" href={subCssUrl}/>
-                {hasIcon && <link rel="stylesheet" href={iconCssUrl}/>}
+                <link rel="stylesheet" href={subCssUrl} />
+                {hasIcon && <link rel="stylesheet" href={iconCssUrl} />}
                 {hasCode ? <Fragment>
-                    <link rel="stylesheet" href={codeFontCssUrl}/>
-                    <link rel="stylesheet" href={hlThemeCssUrl}/>
-                    <link rel="stylesheet" href={codeBlockCssUrl}/>
+                    <link rel="stylesheet" href={codeFontCssUrl} />
+                    <link rel="stylesheet" href={hlThemeCssUrl} />
+                    <link rel="stylesheet" href={codeBlockCssUrl} />
                 </Fragment> : null}
-                {hasGallery && <link rel="preload" href={galleryCssUrl} as="style" onLoad={onLoadForPreloadCss}/>}
+                {hasGallery && <link rel="preload" href={galleryCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
             </noscript>
         </Fragment>;
     }
@@ -151,29 +151,29 @@ module.exports = class extends Component {
     }
 
     render() {
-        const {site, config, page, helper, head, type} = this.props;
-        const {clipboard: hasClipboard, embeddedConfig} = getHighlightConfig(config.article);
+        const { site, config, page, helper, head, type } = this.props;
+        const { clipboard: hasClipboard, embeddedConfig } = getHighlightConfig(config.article);
         const language = page.lang || page.language || config.language;
 
         const hasIcon = page.has_icon || config.has_icon;
         const hasCode = page.has_code || config.has_code;
         const searchEnabled = typeof config.search.type === 'string' && config.search.type !== '';
-        const {moment: momentEnabled = false} = config;
+        const { moment: momentEnabled = false } = config;
         const tocEnabled = (config.toc === true) && ['page', 'post'].includes(page.layout);
-        const {has_gallery: hasGallery = false} = page;
+        const { has_gallery: hasGallery = false } = page;
 
         if (!head) {
             return <Fragment>
-                {hasCode && <script dangerouslySetInnerHTML={{__html: embeddedConfig}}></script>}
-                {momentEnabled && <script dangerouslySetInnerHTML={{__html: `moment.locale("${language}");`}}></script>}
-                <Plugins site={site} config={config} helper={helper} page={page} head={false}/>
+                {hasCode && <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>}
+                {momentEnabled && <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>}
+                <Plugins site={site} config={config} helper={helper} page={page} head={false} />
             </Fragment>;
         }
 
         const cssFlags = { hasIcon, hasCode, hasGallery };
         const jsFlags = { momentEnabled, searchEnabled, tocEnabled, hasCode, hasClipboard, hasGallery };
-        const { main: mainCssUrl, ...cssUrls} = getCssUrl(helper, config, type);
-        const { jQuery: jQueryScriptUrl, ...jsUrls} = getScriptUrl(helper, config);
+        const { main: mainCssUrl, ...cssUrls } = getCssUrl(helper, config, type);
+        const { jQuery: jQueryScriptUrl, ...jsUrls } = getScriptUrl(helper, config);
 
         return <Fragment>
             <link rel="stylesheet" href={mainCssUrl} />

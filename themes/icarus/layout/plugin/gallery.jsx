@@ -19,7 +19,7 @@ class Gallery extends Component {
         }
 
         const js = 'window.addEventListener("load",()=>{if(typeof $.fn.lightGallery===\'function\'){$(\'.article\').lightGallery({selector:\'.gallery-item\'});} if(typeof $.fn.justifiedGallery===\'function\'){if($(\'.justified-gallery>p>.gallery-item\').length){$(\'.justified-gallery > p > .gallery-item\').unwrap();}$(\'.justified-gallery\').justifiedGallery();}});';
-        return <script dangerouslySetInnerHTML={{__html: js}} />;
+        return <script dangerouslySetInnerHTML={{ __html: js }} />;
     }
 }
 

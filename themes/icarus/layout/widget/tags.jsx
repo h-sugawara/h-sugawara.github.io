@@ -18,9 +18,9 @@ class Tags extends Component {
 }
 
 Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
-    const {helper, widget = {}, site, main = false} = props;
-    const {url_for, _p} = helper;
-    const {order_by = 'name', amount, show_count = true} = widget;
+    const { helper, widget = {}, site, main = false } = props;
+    const { url_for, _p } = helper;
+    const { order_by = 'name', amount, show_count = true } = widget;
 
     let tags = props.tags || site.tags;
     if (!tags || !tags.length) {
@@ -31,8 +31,8 @@ Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
     if (amount) {
         tags = tags.limit(amount);
     }
-    tags = tags.map(({ name, length, path }) => {
-        return { name: name, count: length, url: url_for(path) };
+    tags = tags.map(({ name, length: count, path }) => {
+        return { name, count, url: url_for(path) };
     });
 
     return {

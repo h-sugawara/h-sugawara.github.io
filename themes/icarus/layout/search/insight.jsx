@@ -6,7 +6,7 @@ class Insight extends Component {
         const { translation, contentUrl } = this.props;
 
         const js = 'document.addEventListener(\'DOMContentLoaded\', function () {loadInsight('
-            .concat(JSON.stringify({contentUrl: contentUrl}), ', ')
+            .concat(JSON.stringify({ contentUrl: contentUrl }), ', ')
             .concat(JSON.stringify(translation), ');});');
 
         return <div className="searchbox">
@@ -19,7 +19,7 @@ class Insight extends Component {
                     <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
                 </div>
                 <div className="searchbox-body"></div>
-                <script dangerouslySetInnerHTML={{__html: js}}></script>
+                <script dangerouslySetInnerHTML={{ __html: js }}></script>
             </div>
         </div>;
     }

@@ -25,7 +25,7 @@ class Categories extends Component {
 }
 
 Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => {
-    const {page, helper, widget = {}, site, main = false} = props;
+    const { page, helper, widget = {}, site, main = false } = props;
     const { url_for, _p } = helper;
     const {
         categories = site.categories,

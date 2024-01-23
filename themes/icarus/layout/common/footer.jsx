@@ -29,15 +29,15 @@ class Footer extends Component {
                 <div className="level-start">
                     <a className="footer-logo" href={siteUrl}>{footerLogo}</a>
                     <p>
-                        <span dangerouslySetInnerHTML={{__html: `&copy; ${siteYear} ${author || siteTitle}`}}></span>
+                        <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
                         &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener" className="underline">Hexo</a>&nbsp;and&nbsp;
                         <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener" className="underline">Icarus</a>
                         {showVisitorCounter ? <Fragment>
                             <br />
-                            <span id="busuanzi_container_site_uv" dangerouslySetInnerHTML={{__html: visitorCounterTitle}}></span>
+                            <span id="busuanzi_container_site_uv" dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span>
                         </Fragment> : null}
                     </p>
-                    {copyright ? <p dangerouslySetInnerHTML={{__html: copyright}}></p> : null}
+                    {copyright ? <p dangerouslySetInnerHTML={{ __html: copyright }}></p> : null}
                 </div>
                 {Object.keys(links).length ? <div className="level-end field has-addons">
                     {Object.keys(links).map(name => {
@@ -53,9 +53,9 @@ class Footer extends Component {
 }
 
 module.exports = cacheComponent(Footer, 'common.footer', props => {
-    const {config, helper} = props;
-    const {url_for, _p, date} = helper;
-    const {logo, title, author, footer, plugins} = config;
+    const { config, helper } = props;
+    const { url_for, _p, date } = helper;
+    const { logo, title, author, footer, plugins } = config;
 
     const links = {};
     if (footer && footer.links) {

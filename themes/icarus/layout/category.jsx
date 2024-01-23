@@ -12,7 +12,7 @@ module.exports = class extends Component {
                 <nav className="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a href={url_for('/categories/')}>{_p('common.category', Infinity)}</a></li>
-                        {parents.map(({path, name}) => <li><a href={url_for(path)}>{name}</a></li>)}
+                        {parents.map(({ path, name }) => <li><a href={url_for(path)}>{name}</a></li>)}
                         <li className="is-active"><a href="#" aria-current="page">{category}</a></li>
                     </ul>
                 </nav>

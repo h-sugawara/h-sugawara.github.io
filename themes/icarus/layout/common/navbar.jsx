@@ -11,6 +11,7 @@ function isSameLink(a, b) {
         }
         return paths.join('/');
     }
+
     return santize(a) === santize(b);
 }
 
@@ -57,12 +58,12 @@ class Navbar extends Component {
                                 </a>;
                             })}
                         </Fragment> : null}
-                        {showToc ? <a className="navbar-item catalogue" title={tocTitle} href="javascript:;">
+                        {showToc && <a className="navbar-item catalogue" title={tocTitle} href="javascript:;">
                             <FontAwesomeIcon type="fa-list-ul" className="nav-toc-icon" />
-                        </a> : null}
-                        {showSearch ? <a className="navbar-item search" title={searchTitle} href="javascript:;">
+                        </a>}
+                        {showSearch && <a className="navbar-item search" title={searchTitle} href="javascript:;">
                             <FontAwesomeIcon type="fa-search" className="nav-search-icon" />
-                        </a> : null}
+                        </a>}
                     </div>
                 </div>
             </div>
