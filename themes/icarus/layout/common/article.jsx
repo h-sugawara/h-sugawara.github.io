@@ -109,7 +109,7 @@ module.exports = class extends Component {
         const { article, plugins } = config;
         const { date, date_xml, _p } = helper;
         const { language: cfgLanguage = 'en' } = config;
-        const { date: pageDate, updated: pageUpdated, author: pageAuthor, lang: pageLang, language: pageLanguage } = page;
+        const { date: pageDate, updated: pageUpdated, author: pageAuthor = '', lang: pageLang, language: pageLanguage } = page;
         const { update_time: updateTime = true, readtime: hasReadTime = false } = article;
         const { busuanzi = false } = plugins;
 
@@ -128,19 +128,19 @@ module.exports = class extends Component {
                 __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`),
             }}></span>}
             {/* author */}
-            {pageAuthor ? <span className="level-item is-narrow"> {pageAuthor} </span> : null}
+            {pageAuthor !== '' && <span className="level-item is-narrow">{pageAuthor}</span>}
             {/* Read time */}
-            {hasReadTime ? <span className="level-item is-narrow">
+            {hasReadTime && <span className="level-item is-narrow">
                 {(() => {
                     const { time } = getReadTimeAndWordCountOf(page._content);
                     // return `${_p('article.read_time', time.locale(language).humanize())} (${_p('article.word_count', words)})`;
                     return `${_p('article.read_time', time.locale(language).humanize())}`;
                 })()}
-            </span> : null}
+            </span>}
             {/* Visitor counter */}
-            {hasVisitorCounter ? <span className="level-item is-narrow" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
+            {hasVisitorCounter && <span className="level-item is-narrow" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
                 __html: _p('plugin.visit_count', '<span id="busuanzi_value_page_pv">0</span>'),
-            }}></span> : null}
+            }}></span>}
         </div>;
     }
 
@@ -150,27 +150,27 @@ module.exports = class extends Component {
 
     renderCategories(categories, url_for) {
         return <ul className="article-categories">
-            {categories.map(category => <li><a className="link-muted is-capitalized" href={url_for(category.path)}>{category.name}</a></li>)}
+            {categories.map(({ path, name }) => <li><a className="link-muted is-capitalized" href={url_for(path)}>{name}</a></li>)}
         </ul>;
     }
 
     renderTags(tags, url_for) {
         return <div className="article-tags">
             <span>#</span>
-            {tags.sort('name').map(tag => <a className="link-muted" rel="tag" href={url_for(tag.path)}>{tag.name}</a>)}
+            {tags.sort('name').map(({ path, name }) => <a className="link-muted" rel="tag" href={url_for(path)}>{name}</a>)}
         </div>;
     }
 
     renderPageNavigation(pagePrev, pageNext, url_for) {
         return <nav className="post-navigation">
-            {pagePrev ? <div className='level-start'>
-                <a className={'article-nav-prev'} href={url_for(pagePrev.path)}>
+            {pagePrev ? <div className="level-start">
+                <a className="article-nav-prev" href={url_for(pagePrev.path)}>
                     <FontAwesomeIcon type="fa-chevron-left" className="nav-arrow-icon" />
                     {pagePrev.title}
                 </a>
-            </div> : <div className='level-start is-invisible'></div>}
-            {pageNext ? <div className='level-end'>
-                <a className={'article-nav-next'} href={url_for(pageNext.path)}>
+            </div> : <div className="level-start is-invisible"></div>}
+            {pageNext ? <div className="level-end">
+                <a className="article-nav-next" href={url_for(pageNext.path)}>
                     {pageNext.title}
                     <FontAwesomeIcon type="fa-chevron-right" className="nav-arrow-icon" />
                 </a>
@@ -180,21 +180,24 @@ module.exports = class extends Component {
 
     render() {
         const { config, helper, page, index } = this.props;
-        const { article } = config;
+        const { article = {} } = config;
         const { url_for } = helper;
         const {
             title = '',
             categories = [],
-            excerpt = false,
+            excerpt = '',
             tags = [],
+            direction = '',
             cover,
             link,
             path,
+            layout,
             prev: pagePrev,
             next: pageNext,
         } = page;
+        const { licenses = {} } = article;
         const pageUrl = url_for(link || path);
-        const showLicenseBlock = !index && article && article.licenses && Object.keys(article.licenses);
+        const showLicenseBlock = !index && Object.keys(licenses).length > 0;
         const showPostNavigation = !index && (pagePrev || pageNext);
 
         return <Fragment>
@@ -202,32 +205,32 @@ module.exports = class extends Component {
             <div className="card">
                 {/* Thumbnail */}
                 {cover && this.renderCoverImage(index, url_for, cover, title, pageUrl)}
-                <article className={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role={index ? null : 'main'}>
+                <article className={`card-content article${direction !== '' ? ` ${direction}` : ''}`} role={!index && 'main'}>
                     {/* Metadata */}
-                    {page.layout !== 'page' && this.renderMetadata(config, helper, page, index)}
+                    {layout !== 'page' && this.renderMetadata(config, helper, page, index)}
                     {/* Title */}
                     {title !== '' && this.renderTitle(index, title, pageUrl)}
                     {/* Categories */}
-                    {categories && categories.length ? this.renderCategories(categories, url_for) : null}
+                    {categories.length > 0 && this.renderCategories(categories, url_for)}
                     {/* Content/Excerpt */}
-                    {index && excerpt ? <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{__html: excerpt}}></a>
-                        : <div className="content" dangerouslySetInnerHTML={{__html: page.content}}></div>}
+                    {index && excerpt !== '' ? <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{ __html: excerpt }}></a>
+                        : <div className="content" dangerouslySetInnerHTML={{ __html: page.content }}></div>}
                     {/* Licensing block */}
                     {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}
                     {/* Tags */}
-                    {tags && tags.length ? this.renderTags(tags, url_for) : null}
+                    {tags.length > 0 && this.renderTags(tags, url_for)}
                     {/* "Read more" button */}
                     {/* index && page.excerpt ? <a class="article-more button is-small is-size-7" href={`${url_for(page.link || page.path)}#more`}>{__('article.more')}</a> : null */}
                     {/* Share button */}
-                    {!index ? <Share config={config} page={page} helper={helper} /> : null}
+                    {!index && <Share config={config} page={page} helper={helper} />}
                 </article>
             </div>
             {/* Donate button */}
-            {!index ? <Donates config={config} helper={helper} /> : null}
+            {!index && <Donates config={config} helper={helper} />}
             {/* Post navigation */}
             {showPostNavigation && this.renderPageNavigation(pagePrev, pageNext, url_for)}
             {/* Comment */}
-            {!index ? <Comment config={config} page={page} helper={helper}/> : null}
+            {!index && <Comment config={config} page={page} helper={helper} />}
         </Fragment>;
     }
 };
