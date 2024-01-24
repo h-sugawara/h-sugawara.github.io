@@ -4,7 +4,7 @@ module.exports = class extends Component {
     render() {
         const { url, title, date, dateXml, categories, thumbnail } = this.props;
 
-        return <a className="media link-muted" href={url}>
+        return <a className="media" href={url}>
             {thumbnail ? <figure className="media-left image"><img src={thumbnail} alt={title} loading="lazy" /></figure> : null}
             <div className="media-content">
                 <time dateTime={dateXml}>{date}</time>
