@@ -59,11 +59,9 @@ class Toc extends Component {
 
         if ('id' in toc && 'index' in toc && 'text' in toc) {
             result = <li>
-                <a className={`level is-mobile${collapsed ? ' collapsed' + (toc.index === '1' ? ' is-active' : '') : ''}`} href={`#${toc.id}`}>
-                    <span className="level-left">
-                        {showIndex && <span className="level-item">{toc.index}</span>}
-                        <span className="level-item">{unescapeHTML(toc.text)}</span>
-                    </span>
+                <a className={`level is-mobile level-left${collapsed ? ' collapsed' + (toc.index === '1' ? ' is-active' : '') : ''}`} href={`#${toc.id}`}>
+                    {showIndex && <span className="level-item is-narrow">{toc.index}</span>}
+                    <span className="level-item is-narrow">{unescapeHTML(toc.text)}</span>
                 </a>
                 {result}
             </li>;

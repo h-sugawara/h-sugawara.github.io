@@ -1,16 +1,16 @@
-const { Component } = require('inferno');
+const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Categories extends Component {
     renderList(categories, showCount) {
         return categories.map(category => {
-            return <li>
+            return <Fragment>
                 <a className={`level is-mobile${category.isCurrent ? ' is-active' : ''}`} href={category.url}>
                     {category.name}
                     {showCount && <span className="tag">{category.count}</span>}
                 </a>
-                {category.children.length > 0 && <ul>{this.renderList(category.children, showCount)}</ul>}
-            </li>;
+                {category.children.length > 0 && <div>{this.renderList(category.children, showCount)}</div>}
+            </Fragment>;
         });
     }
 
@@ -19,7 +19,7 @@ class Categories extends Component {
 
         return <section className="card widget card-content menu" datatype="categories">
             {main ? <h2 className="menu-label">{title}</h2> : <h3 className="menu-label">{title}</h3>}
-            <ul className="menu-list">{this.renderList(categories, showCount)}</ul>
+            <div className="menu-list">{this.renderList(categories, showCount)}</div>
         </section>;
     }
 }

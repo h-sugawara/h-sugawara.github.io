@@ -1,5 +1,3 @@
-@import '../../slim-bulma-stylus/component/menu-list'
-
 /* ---------------------------------
  *      Table of Content Widget
  * --------------------------------- */
@@ -9,11 +7,12 @@
             ul
                 margin-right: 0
 
-            a.collapsed.is-active + .menu-list
-                display: block
+            .collapsed
+                & + .menu-list
+                    display: none
 
-            a.collapsed + .menu-list
-                display: none
+                &.is-active + .menu-list
+                    display: block
 
 +mobile()
     .widget.card#toc
