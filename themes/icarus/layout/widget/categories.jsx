@@ -3,13 +3,13 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Categories extends Component {
     renderList(categories, showCount) {
-        return categories.map(category => {
+        return categories.map(({ isCurrent, url, name, count, children = [] }) => {
             return <Fragment>
-                <a className={`level is-mobile${category.isCurrent ? ' is-active' : ''}`} href={category.url}>
-                    {category.name}
-                    {showCount && <span className="tag">{category.count}</span>}
+                <a className={`level is-mobile${isCurrent ? ' is-active' : ''}`} href={url}>
+                    {name}
+                    {showCount && <span className="tag">{count}</span>}
                 </a>
-                {category.children.length > 0 && <div>{this.renderList(category.children, showCount)}</div>}
+                {children.length > 0 && <div>{this.renderList(children, showCount)}</div>}
             </Fragment>;
         });
     }
@@ -45,34 +45,28 @@ Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => 
 
     const depth = isNaN(props.depth) ? 0 : parseInt(props.depth, 10);
     const hierarchicalList = (level, parent) => {
-        return prepareQuery(parent).map(cat => {
-            const children = !depth || level + 1 < depth ? hierarchicalList(level + 1, cat._id) : [];
+        return prepareQuery(parent).map(({ _id, length, posts, base, path, name }) => {
+            const children = !depth || level + 1 < depth ? hierarchicalList(level + 1, _id) : [];
 
             let isCurrent = false;
             if (showCurrent && page) {
-                for (let j = 0; j < cat.length; j++) {
-                    const post = cat.posts.data[j];
-                    if (post && post._id === page._id) {
+                for (let j = 0; j < length; j++) {
+                    const post = posts.data[j];
+                    if (post && post._id === _id) {
                         isCurrent = true;
                         break;
                     }
                 }
                 // special case: category page
-                isCurrent = isCurrent || (page.base && page.base.startsWith(cat.path));
+                isCurrent = isCurrent || (base && base.startsWith(path));
             }
 
-            return {
-                children: children,
-                isCurrent: isCurrent,
-                name: cat.name,
-                count: cat.length,
-                url: url_for(cat.path),
-            };
+            return { children, isCurrent, name, count: length, url: url_for(path) };
         });
     };
 
     return {
-        showCount: showCount,
+        showCount,
         categories: hierarchicalList(0),
         title: _p('common.category', Infinity),
         main,

@@ -30,8 +30,8 @@ class Footer extends Component {
                     <a className="footer-logo" href={siteUrl}>{footerLogo}</a>
                     <p>
                         <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
-                        &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener" className="underline">Hexo</a>&nbsp;and&nbsp;
-                        <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener" className="underline">Icarus</a>
+                        &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;and&nbsp;
+                        <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                         {showVisitorCounter ? <Fragment>
                             <br />
                             <span id="busuanzi_container_site_uv" dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span>

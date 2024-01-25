@@ -20,21 +20,21 @@ class Tags extends Component {
 Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
     const { helper, widget = {}, site, main = false } = props;
     const { url_for, _p } = helper;
-    const { order_by = 'name', amount, show_count = true } = widget;
+    const { order_by = 'name', amount, show_count: showCount = true } = widget;
 
     let tags = props.tags || site.tags;
     if (!tags || !tags.length) {
         return null;
     }
 
-    tags = tags.sort('name').sort(order_by).filter(tag => tag.length);
+    tags = tags.sort('name').sort(order_by).filter(({ length }) => length);
     if (amount) {
         tags = tags.limit(amount);
     }
     tags = tags.map(({ name, length: count, path }) => ({ name, count, url: url_for(path) }));
 
     return {
-        showCount: show_count,
+        showCount,
         title: _p('common.tag', amount ? 0 : Infinity),
         tags,
         main,

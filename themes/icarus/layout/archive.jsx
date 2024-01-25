@@ -8,9 +8,10 @@ module.exports = class extends Component {
     render() {
         const { config, page, helper } = this.props;
         const { url_for, __, _p, date_xml, date } = helper;
+        const { lang, language, year, posts, month, current, total, base } = page;
+        const { language: cfgLanguage, pagination_dir } = config;
 
-        const language = toMomentLocale(page.lang || page.language || config.language);
-        moment.locale(language);
+        moment.locale(toMomentLocale(lang || language || cfgLanguage));
 
         const renderArticleList = (posts, year, month = null) => {
             const time = moment([year, month ? month - 1 : null].filter(i => i !== null));
@@ -31,32 +32,36 @@ module.exports = class extends Component {
         };
 
         let articleList;
-        if (!page.year) {
+        if (!year) {
             const years = {};
-            page.posts.each(p => {
-                years[p.date.year()] = null;
+            posts.each(({ date }) => {
+                years[date.year()] = null;
             });
-            articleList = Object.keys(years).sort((a, b) => b - a).map(year => {
-                const posts = page.posts.filter(p => p.date.year() === parseInt(year, 10));
-                return renderArticleList(posts, year, null);
-            });
+            articleList = Object.keys(years)
+                .sort((a, b) => b - a)
+                .map(year => renderArticleList(
+                    posts.filter(({ date }) => date.year() === parseInt(year, 10)),
+                    year,
+                    null
+                ));
         } else {
-            articleList = renderArticleList(page.posts, page.year, page.month);
+            articleList = renderArticleList(posts, year, month);
         }
 
         return <Fragment>
             <section className="card card-content">
-                <h2>{_p('common.archive', Infinity)} ({page.current} / {_p('common.page', page.total)})</h2>
+                <h2>{_p('common.archive', Infinity)} ({current} / {_p('common.page', total)})</h2>
             </section>
             {articleList}
-            {page.total > 1 ? <Paginator
-                current={page.current}
-                total={page.total}
-                baseUrl={page.base}
-                path={config.pagination_dir}
+            {total > 1 && <Paginator
+                current={current}
+                total={total}
+                baseUrl={base}
+                path={pagination_dir}
                 urlFor={url_for}
                 prevTitle={__('common.prev')}
-                nextTitle={__('common.next')} /> : null}
+                nextTitle={__('common.next')}
+            />}
         </Fragment>;
     }
 };

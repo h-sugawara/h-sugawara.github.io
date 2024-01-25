@@ -5,7 +5,7 @@ const { tocObj: getTocObj, unescapeHTML } = require('hexo-util');
 function getToc(content, maxDepth) {
     const toc = {};
     const tocObj = getTocObj(content, { min_depth: 1, max_depth: 6 });
-    const minLevels = Array.from(new Set(tocObj.map(item => item.level))).sort((a, b) => a - b).slice(0, maxDepth);
+    const minLevels = Array.from(new Set(tocObj.map(({ level }) => level))).sort((a, b) => a - b).slice(0, maxDepth);
     const levels = new Array(minLevels.length).fill(0);
 
     tocObj.forEach(item => {
@@ -40,6 +40,7 @@ function getToc(content, maxDepth) {
         node.text = text;
         node.index = levels.slice(0, level + 1).join('.');
     });
+
     return toc;
 }
 
@@ -52,20 +53,21 @@ class Toc extends Component {
         let result;
 
         if (keys.length > 0) {
-            result = <ul className="menu-list">
-                {keys.map(i => this.renderToc(toc[i], collapsed, showIndex))}
-            </ul>;
+            result = <ul className="menu-list">{keys.map(i => this.renderToc(toc[i], collapsed, showIndex))}</ul>;
         }
 
         if ('id' in toc && 'index' in toc && 'text' in toc) {
+            const { index, id, text } = toc;
+
             result = <li>
-                <a className={`level is-mobile level-left${collapsed ? ' collapsed' + (toc.index === '1' ? ' is-active' : '') : ''}`} href={`#${toc.id}`}>
-                    {showIndex && <span className="level-item is-narrow">{toc.index}</span>}
-                    <span className="level-item is-narrow">{unescapeHTML(toc.text)}</span>
+                <a className={`level is-mobile level-left${collapsed ? ' collapsed' + (index === '1' ? ' is-active' : '') : ''}`} href={`#${id}`}>
+                    {showIndex && <span className="level-item is-narrow">{index}</span>}
+                    <span className="level-item is-narrow">{unescapeHTML(text)}</span>
                 </a>
                 {result}
             </li>;
         }
+
         return result;
     }
 
@@ -87,7 +89,7 @@ class Toc extends Component {
 Toc.Cacheable = cacheComponent(Toc, 'widget.toc', props => {
     const { config, page, widget, helper } = props;
     const { layout, content, encrypt, origin } = page;
-    const { index, collapsed = true, depth = 3 } = widget;
+    const { index: showIndex, collapsed = true, depth: maxDepth = 3 } = widget;
 
     if (!config.toc || !['page', 'post'].includes(layout)) {
         return null;
@@ -95,9 +97,9 @@ Toc.Cacheable = cacheComponent(Toc, 'widget.toc', props => {
 
     return {
         title: helper._p('widget.catalogue', Infinity),
-        collapsed: collapsed,
-        maxDepth: depth,
-        showIndex: index,
+        collapsed,
+        maxDepth,
+        showIndex,
         content: encrypt ? origin : content,
     };
 });

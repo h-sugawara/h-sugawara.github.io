@@ -6,17 +6,19 @@ module.exports = class extends Component {
     render() {
         const { config, page, helper } = this.props;
         const { __, url_for } = helper;
+        const { posts, total, current, base } = page;
+        const { pagination_dir } = config;
 
         return <Fragment>
-            {page.posts.map(post => <Article config={config} page={post} helper={helper} index={true} />)}
-            {page.total > 1 ? <Paginator
-                current={page.current}
-                total={page.total}
-                baseUrl={page.base}
-                path={config.pagination_dir}
+            {posts.map(post => <Article config={config} page={post} helper={helper} index={true} />)}
+            {total > 1 && <Paginator
+                current={current}
+                total={total}
+                baseUrl={base}
+                path={pagination_dir}
                 urlFor={url_for}
                 prevTitle={__('common.prev')}
-                nextTitle={__('common.next')} /> : null}
+                nextTitle={__('common.next')} />}
         </Fragment>;
     }
 };

@@ -6,70 +6,128 @@ const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_
 const Assets = require('./assets');
 const Constants = require('../constants');
 
-function getPageTitle(page, siteTitle, helper, type) {
-    let title = page.title;
+function getPageTitle(helper, page, siteTitle, type) {
+    const getPageName = () => {
+        const { is_month, is_year, _p } = helper;
+        const { title, year, month, category, tag } = page;
 
-    switch (type) {
-        case Constants.PAGE_TYPE_ARCHIVE:
-            title = helper._p('common.archive', Infinity);
-            if (helper.is_month()) {
-                title += ': ' + page.year + '/' + page.month;
-            } else if (helper.is_year()) {
-                title += ': ' + page.year;
-            }
-            break;
-        case Constants.PAGE_TYPE_CATEGORIES:
-            title = helper._p('common.category', Infinity);
-            break;
-        case Constants.PAGE_TYPE_CATEGORY:
-            title = helper._p('common.category', 1) + ': ' + page.category;
-            break;
-        case Constants.PAGE_TYPE_TAGS:
-            title = helper._p('common.tag', Infinity);
-            break;
-        case Constants.PAGE_TYPE_TAG:
-            title = helper._p('common.tag', 1) + ': ' + page.tag;
-            break;
-    }
+        switch (type) {
+            case Constants.PAGE_TYPE_ARCHIVE:
+                // eslint-disable-next-line no-case-declarations
+                const pageName = _p('common.archive', Infinity);
+                if (is_month()) {
+                    return `${pageName}: ${year}/${month}`;
+                } else if (is_year()) {
+                    return `${pageName}: ${year}`;
+                }
+                return pageName;
+            case Constants.PAGE_TYPE_CATEGORIES:
+                return _p('common.category', Infinity);
+            case Constants.PAGE_TYPE_CATEGORY:
+                return `${_p('common.category', 1)}: ${category}`;
+            case Constants.PAGE_TYPE_TAGS:
+                return _p('common.tag', Infinity);
+            case Constants.PAGE_TYPE_TAG:
+                return `${_p('common.tag', 1)}: ${tag}`;
+        }
+        return title;
+    };
 
-    return [title, siteTitle].filter(str => typeof str !== 'undefined' && str.trim() !== '').join(' - ');
+    return [getPageName(), siteTitle].filter(str => typeof str !== 'undefined' && str.trim() !== '').join(' - ');
 }
 
-function getImages(helper, page, article) {
-    const { url_for } = helper;
+function getImages(url_for, page, article) {
+    const { og_image, cover, thumbnail, content } = page;
 
-    if (typeof page.og_image === 'string') {
-        return [ page.og_image ];
+    if (typeof og_image === 'string') {
+        return [ og_image ];
     }
-    if (typeof page.cover === 'string') {
-        return [ url_for(page.cover) ];
+    if (typeof cover === 'string') {
+        return [ url_for(cover) ];
     }
-    if (page.cover && typeof page.cover.image === 'string') {
-        return [ url_for(page.cover.image) ];
+    if (cover && typeof cover.image === 'string') {
+        return [ url_for(cover.image) ];
     }
-    if (typeof page.thumbnail === 'string') {
-        return [ url_for(page.thumbnail) ];
+    if (typeof thumbnail === 'string') {
+        return [ url_for(thumbnail) ];
     }
     if (article && typeof article.og_image === 'string') {
         return [ article.og_image ];
     }
-    if (page.content && page.content.includes('<img')) {
+    if (content && content.includes('<img')) {
+        const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;
         const images = [];
         let img;
-        const imgPattern = /<img [^>]*src=['"]([^'"]+)([^>]*>)/gi;
-        while ((img = imgPattern.exec(page.content)) !== null) {
+        while ((img = imgPattern.exec(content)) !== null) {
             images.push(img[1]);
         }
         return images;
     }
+
     return [ url_for('/img/og_image.png') ];
 }
 
 module.exports = class extends Component {
+    renderOpenGraph(is_post, config, language, open_graph, images, page) {
+        const { type, title, author, description, url, site_name, twitter_id, twitter_card, twitter_site, google_plus, fb_admins, fb_app_id, image } = open_graph;
+        const { title: pageTitle, date, updated, description: pageDescription, excerpt, content, tags, permalink, photos } = page;
+        const { title: cfgTitle, url: cfgUrl, author: cfgAuthor, description: cfgDescription, keywords } = config;
+
+        let openGraphImages = images;
+        if ((Array.isArray(image) && image.length > 0) || typeof image === 'string') {
+            openGraphImages = image;
+        } else if ((Array.isArray(photos) && photos.length > 0) || typeof photos === 'string') {
+            openGraphImages = photos;
+        }
+
+        return <OpenGraph
+            type={type || (is_post(page) ? 'article' : 'website')}
+            title={title || pageTitle || cfgTitle}
+            date={date}
+            updated={updated}
+            author={author || cfgAuthor}
+            description={description || pageDescription || excerpt || content || cfgDescription}
+            keywords={(tags && tags.length ? tags : undefined) || keywords}
+            url={url || permalink || cfgUrl}
+            images={openGraphImages}
+            siteName={site_name || cfgTitle}
+            language={language}
+            twitterId={twitter_id}
+            twitterCard={twitter_card}
+            twitterSite={twitter_site}
+            googlePlus={google_plus}
+            facebookAdmins={fb_admins}
+            facebookAppId={fb_app_id} />;
+    }
+
+    renderStructuredData(config, structured_data, images, page) {
+        const { title, description, url, author, publisher, publisher_logo, image } = structured_data;
+        const { title: pageTitle, description: pageDescription, excerpt, content, permalink, date, updated, photos } = page;
+        const { title: cfgTitle, url: cfgUrl, description: cfgDescription, author: cfgAuthor } = config;
+
+        let structuredImages = images;
+        if ((Array.isArray(image) && image.length > 0) || typeof image === 'string') {
+            structuredImages = image;
+        } else if ((Array.isArray(photos) && photos.length > 0) || typeof photos === 'string') {
+            structuredImages = photos;
+        }
+
+        return <StructuredData
+            title={title || pageTitle || cfgTitle}
+            description={description || pageDescription || excerpt || content || cfgDescription}
+            url={url || permalink || cfgUrl}
+            author={author || cfgAuthor}
+            publisher={publisher || cfgTitle}
+            publisherLogo={publisher_logo || config.logo}
+            date={date}
+            updated={updated}
+            images={structuredImages} />;
+    }
+
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for, is_post } = helper;
-        const { url, head = {}, article } = config;
+        const { title: siteTitle, head = {}, article, widgets } = config;
         const {
             meta = [],
             manifest = {},
@@ -81,97 +139,47 @@ module.exports = class extends Component {
             apple_touch_icons,
         } = head;
 
-        const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();
-
+        const pageType = Constants.getPageType(helper);
+        const noIndex = [Constants.PAGE_TYPE_ARCHIVE, Constants.PAGE_TYPE_CATEGORY, Constants.PAGE_TYPE_TAG].includes(pageType);
         const language = page.lang || page.language || config.language;
-
-        const images = getImages(helper, page, article);
+        const hasOpenGraph = typeof open_graph === 'object' && open_graph !== null;
+        const hasStructuredData = typeof structured_data === 'object' && structured_data !== null;
+        const hasMetaData = meta && meta.length > 0;
+        const images = getImages(url_for, page, article);
+        const webApp = {
+            icons: apple_touch_icons || manifest.icons,
+            themeColor: manifest.theme_color,
+            name: manifest.name || siteTitle,
+        };
 
         let adsenseClientId = null;
-        if (Array.isArray(config.widgets)) {
-            const widget = config.widgets.find(widget => widget.type === 'adsense');
-            if (widget) {
-                adsenseClientId = widget.client_id;
-            }
-        }
-
-        let openGraphImages = images;
-        if ((typeof open_graph === 'object' && open_graph !== null)
-            && ((Array.isArray(open_graph.image) && open_graph.image.length > 0) || typeof open_graph.image === 'string')) {
-            openGraphImages = open_graph.image;
-        } else if ((Array.isArray(page.photos) && page.photos.length > 0) || typeof page.photos === 'string') {
-            openGraphImages = page.photos;
-        }
-
-        let structuredImages = images;
-        if ((typeof structured_data === 'object' && structured_data !== null)
-            && ((Array.isArray(structured_data.image) && structured_data.image.length > 0) || typeof structured_data.image === 'string')) {
-            structuredImages = structured_data.image;
-        } else if ((Array.isArray(page.photos) && page.photos.length > 0) || typeof page.photos === 'string') {
-            structuredImages = page.photos;
-        }
-
         let followItVerificationCode = null;
-        if (Array.isArray(config.widgets)) {
-            const widget = config.widgets.find(widget => widget.type === 'followit');
-            if (widget) {
-                followItVerificationCode = widget.verification_code;
+        if (Array.isArray(widgets)) {
+            const adsense = widgets.find(({ type }) => type === 'adsense');
+            if (adsense) {
+                adsenseClientId = adsense.client_id;
+            }
+            const followIt = widgets.find(({ type }) => type === 'followit');
+            if (followIt) {
+                followItVerificationCode = followIt.verification_code;
             }
         }
-
-        const pageType = Constants.getPageType(helper);
 
         return <head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            {noIndex ? <meta name="robots" content="noindex" /> : null}
-            {meta && meta.length ? <MetaTags meta={meta} /> : null}
-
-            <title>{getPageTitle(page, config.title, helper, pageType)}</title>
-
-            <WebApp.Cacheable
-                helper={helper}
-                favicon={favicon}
-                icons={apple_touch_icons || manifest.icons}
-                themeColor={manifest.theme_color}
-                name={manifest.name || config.title} />
-
-            {typeof open_graph === 'object' && open_graph !== null ? <OpenGraph
-                type={open_graph.type || (is_post(page) ? 'article' : 'website')}
-                title={open_graph.title || page.title || config.title}
-                date={page.date}
-                updated={page.updated}
-                author={open_graph.author || config.author}
-                description={open_graph.description || page.description || page.excerpt || page.content || config.description}
-                keywords={(page.tags && page.tags.length ? page.tags : undefined) || config.keywords}
-                url={open_graph.url || page.permalink || url}
-                images={openGraphImages}
-                siteName={open_graph.site_name || config.title}
-                language={language}
-                twitterId={open_graph.twitter_id}
-                twitterCard={open_graph.twitter_card}
-                twitterSite={open_graph.twitter_site}
-                googlePlus={open_graph.google_plus}
-                facebookAdmins={open_graph.fb_admins}
-                facebookAppId={open_graph.fb_app_id} /> : null}
-
-            {typeof structured_data === 'object' && structured_data !== null ? <StructuredData
-                title={structured_data.title || page.title || config.title}
-                description={structured_data.description || page.description || page.excerpt || page.content || config.description}
-                url={structured_data.url || page.permalink || url}
-                author={structured_data.author || config.author}
-                publisher={structured_data.publisher || config.title}
-                publisherLogo={structured_data.publisher_logo || config.logo}
-                date={page.date}
-                updated={page.updated}
-                images={structuredImages} /> : null}
-
+            {noIndex && <meta name="robots" content="noindex" />}
+            {hasMetaData && <MetaTags meta={meta} />}
+            <title>{getPageTitle(helper, page, siteTitle, pageType)}</title>
+            <WebApp.Cacheable helper={helper} favicon={favicon} icons={webApp.icons} themeColor={webApp.themeColor} name={webApp.name} />
+            {hasOpenGraph && this.renderOpenGraph(is_post, config, language, open_graph, images, page)}
+            {hasStructuredData && this.renderStructuredData(config, structured_data, images, page)}
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
-            {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
+            {rss ? <link rel="alternate" href={url_for(rss)} title={siteTitle} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             <Assets site={site} config={config} helper={helper} page={page} head={true} type={pageType} />
-            {adsenseClientId ? <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
-            {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
+            {adsenseClientId && <script data-ad-client={adsenseClientId} src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>}
+            {followItVerificationCode && <meta name="follow.it-verification-code" content={followItVerificationCode} />}
         </head>;
     }
 };
