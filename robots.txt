@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /images/thumbnails/
+Disallow: /*title.webp$
+
+Sitemap: https://blog.chaotic-notes.com/sitemap.xml
