@@ -46,6 +46,10 @@ future: true
 markdown:
   render:
     linkify: false
+  plugins:
+    - name: 'markdown-it-multimd-table'
+      options:
+        rowspan: true
 highlight:
   enable: true
   line_number: false
