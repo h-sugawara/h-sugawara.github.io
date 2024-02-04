@@ -1,11 +1,12 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2024-01-20 13:30:00
+updated: 2024-02-05 08:30:00
 tags:
+  - ブログ作成
   - Hexo
-  - GitHub
-  - GitHub Pages
+  - Icarus
+  - npm
   - Advent Calendar
 categories:
   - Technology
@@ -29,9 +30,16 @@ cover:
 
 <!-- more -->
 
+{% message color:info %}
+この記事は、[mediba Advent Calendar 2023 の22日目](https://qiita.com/advent-calendar/2023/mediba)にエントリーしています。
+{% endmessage %}
+
 ## はじめに
 
-この記事は、[mediba Advent Calendar 2023 の22日目](https://qiita.com/advent-calendar/2023/mediba)にエントリーしています。
+{% message color:info title:2024年02月05日更新 %}
+2024年02月05日に、この記事を「ブログ作成」シリーズとして前後編の二つに分割しました。この記事は、前編の記事となります。
+後半は、「{% post_link open-hexo-blog-up-to-the-public 'Hexo製ブログを公開してGoogle検索できるようにする' %}」の記事で読むことができます。
+{% endmessage %}
 
 ### この記事を書いている人
 
@@ -69,7 +77,7 @@ GitHub Pages で静的サイトホスティングができることは知って�
 
 ## 手元でブログを作ろう
 
-御託を並べる暇があったら、早く作成手順を見せろ、とそろそろ言われそうなので、構築実践編に移りましょう。
+御託を並べる暇があったら、早く作成手順を見せろ、とそろそろ言われそうなので、構築編に移りましょう。
 まずは、手元でブログを作って、ローカル環境のパソコン内で動かしてみます。
 
 ### ローカル環境整備
@@ -122,6 +130,9 @@ npm install
 ```
 
 これだけでブログのセットアップは完了です。ね？簡単でしょ？
+
+#### (3) 表示確認
+
 では、下記のコマンドを実行してセットアップしたブログを表示してみましょう！
 
 {% message color:warning %}
@@ -185,6 +196,9 @@ post_asset_folder: true # 記事ごとに画像ファイルを配置したいな
 ### 試しに記事を書いてみる
 
 ブログは記事がなければ何も始まらないので、さっそく作りましょう。
+
+#### (1) 記事ファイル生成
+
 Hexo で記事を作成するには、以下のコマンドを実行します。
 
 {% message color:info %}
@@ -194,6 +208,8 @@ Hexo で記事を作成するには、以下のコマンドを実行します。
 ```shell terminal
 hexo new post "article-name"
 ```
+
+#### (2) 記事のメタ情報を書く
 
 記事は、"source/_posts"ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、"2023_12_22_article-name.md"）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
@@ -210,6 +226,8 @@ tags:
 "title"は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
 他にも、テーマによってはカスタムフィールドがあります（例：Icarus テーマなら、"thumbnail"や"cover"等）ので、お好みで設定してください。
 
+#### (3) 記事の本文を書く
+
 そして、ブログの本文は、"Front Matter"の後に記述します。
 
 実際の記事の執筆は、下記のように"Front Matter"に色々と設定したり、本文を書いたりします。
@@ -221,9 +239,10 @@ title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-22 09:00:00
 updated: 2023-12-22 09:00:00
 tags:
-  - フロントエンド
+  - ブログ作成
   - Hexo
-  - GitHub Pages
+  - Icarus
+  - npm
   - Advent Calendar
 category: Technology
 ---
@@ -249,161 +268,9 @@ Icarus テーマを導入した方は、日本語の表示時フォントが"Mic
 
 {% link_preview https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/ %}hexo-tag-ogp-link-previewプラグインの公開秘話{% endlink_preview %}
 
-## ブログをお外に公開しよう
+## 後編へ続く
 
-さて、手元で表示しているブログが満足する出来になって、そろそろお外に公開したくなってきた頃かと思います。
-このまま、公開実践編の手順に進みましょう。
-
-### 公開用レポジトリ作成
-
-{% message color:info %}
-GitHub のアカウントはあらかじめ作成してください。
-{% endmessage %}
-{% message color:warning %}
-無料で使いたい場合は、パブリックレポジトリにする必要があります。
-{% endmessage %}
-
-自分のアカウントを使って、GitHub Pages 用のレポジトリを作成します。
-画像付きの作成手順が[GitHub公式ドキュメントにまとめられています](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)ので、ご確認ください。
-
-作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
-それから、構築実践編で作成した"blog"ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
-(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、"blog"をそれに読み替えてください。
-
-ちなみに、この手順を行ってから、構築手順を行うこともできます。
-
-### デプロイ設定
-
-デプロイの設定は、ブログの設定ファイルにあります。下記のように書き換えましょう。
-
-```yaml _config.yml
-# Include / Exclude file(s)
-include:
-    - '.nojekyll'
-exclude:
-ignore:
-# ... 途中省略...
-# Deployment
-deploy:
-  type: git
-  repo: https://github.com/octocat/octocat.github.io # 「octocat」（2ヶ所）は、ご自身のアカウントIDに変更してください。
-  branch: gh-pages
-  ignore_hidden:
-      public: false
-```
-
-その後は、チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリ直下に".nojekyll"ファイルを作成しましょう。
-これでデプロイの設定は完了です。デプロイする前に、次のセクションの「下書き記事を使いこなす」をよく読んでください。
-
-### 下書き記事を使いこなす
-
-`hexo new post`コマンドで作った記事は、公開状態の投稿記事になります。
-ということは、ブログをお外に公開すると、今後は「書きかけの記事が投稿されちゃった」事故が起こりえます。
-非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防げます。
-次のコマンドで、下書き記事を作成します。
-
-```shell terminal
-hexo new draft "article-name"
-```
-
-ただし、下書き記事は、手元で Hexo サーバーを起動しても、初期状態のままだとブログの記事として表示できません。
-"package.json"にある scripts の"server"コマンドに手を加える必要があります。
-
-```text package.json（※コピーせず、ご自身の手で修正してください）
-  "scripts": {
-    "build": "hexo generate",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server --drafts" // 「 --drafts」を後ろに追加
-  },
-```
-
-このあとは、通常通り Hexo サーバーを起動させるだけです。
-
-```shell terminal
-npm run clean && npm run server
-```
-
-さて、上記の手順は、あくまで手元で表示できるようにしただけであって、お外では依然として下書き記事が非公開状態として扱われます。
-前述の通り、投稿記事は公開状態として扱われるので、下書き記事を投稿記事に変換しましょう。
-下記のコマンドを実行することで実現できます。
-
-```shell terminal
-hexo publish "article-name"
-```
-
-### GitHub Pages にデプロイ
-
-それでは、準備も整ったと思いますので、GitHub Pages にデプロイしましょう！
-デプロイは下記のコマンドを実行するだけで終わります。
-
-{% message color:warning %}
-Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必要です。
-それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
-{% endmessage %}
-
-```shell terminal
-npm run clean && npm run deploy
-```
-
-### カスタムドメイン登録
-
-GitHub Pages のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
-もちろん、カスタムドメインを無料で登録することもできます。
-詳細については、[GitHub公式ドキュメントの説明](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)にお任せします。
-
-ただし、カスタムドメインの取得自体はご自身でやる必要がありますので、ドメインを取得できるサービスをご利用ください。
-ドメインだけ取りたいなら、[お名前ドットコム](https://www.onamae.com/)がオススメです。
-
-## 検索できるようにしよう
-
-ここまできたらあと少しで終わりです。お外に公開したブログを検索できるようにしてみましょう。
-
-### Google Analytics 登録
-
-{% message color:info %}
-所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
-{% endmessage %}
-
-お外に公開したブログのアクセス解析と、"Google Search Console"（以下、GSC）の所有者確認のために、"Google Analytics"（以下、GA）にアカウントを作成します。
-
-アカウント作成は、[GoogleのAnalyticsページ](http://www.google.com/analytics)から行ってください。
-単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。
-Google 検索すると、[詳しく説明してくれている方たち](https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2)がいますので、彼らのページを見ることをオススメします。
-
-### サイトマップ作成
-
-ブログに書いた記事を、GSC に認知してもらうためにサイトマップを作成します。
-もちろん手作業で作る必要はなく、Hexo 公式が`hexo-generator-sitemap`プラグインを用意しているので、それをインストールしましょう。
-
-```shell terminal
-npm install hexo-generator-sitemap
-```
-
-インストールが終わったら、ブログの設定ファイル"_config.yml"を開いて、サイトマップ作成用の設定を追加します。
-
-```yaml _config.yml
-# Sitemap
-sitemap:
-  path:
-    - sitemap.xml
-  tags: false
-  categories: false
-```
-
-設定はこれだけでOKです。デプロイコマンドを実行する度に、Hexo がブログのサイトマップを作って、GitHub Pages にデプロイしてくれるようになります。
-
-### Google Search Console 登録
-
-GSCに[ブログの登録（または、プロパティ追加）](https://search.google.com/search-console/about?hl=ja)を行います。
-登録を行うことで、Google 検索結果にインデックスを作成できます。
-
-はじめに所有者確認を行う必要がありますので、GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの5つの中から確認方法を選んでください。
-前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML タグか、ドメインのどちらかで確認を行うのがオススメです。
-なお、HTML ファイルでの確認方法は、Hexo が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
-
-所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません（※私はされなかった）。
-ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見られますので、一つずつインデックス登録してあげましょう。
+続きは、「{% post_link open-hexo-blog-up-to-the-public 'Hexo製ブログを公開してGoogle検索できるようにする' %}」をご覧ください。
 
 ## おわりに
 
