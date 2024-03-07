@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
+    <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
     
     <lastmod>2024-01-20</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
+    <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
     
     <lastmod>2024-01-20</lastmod>
     
@@ -94,7 +94,7 @@
 
   <url>
     <loc>https://blog.chaotic-notes.com/</loc>
-    <lastmod>2024-03-05</lastmod>
+    <lastmod>2024-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
