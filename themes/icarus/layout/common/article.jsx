@@ -119,13 +119,13 @@ module.exports = class extends Component {
         const hasVisitorCounter = !index && busuanzi === true;
 
         return <div className="article-meta level is-mobile level-left">
-            {/* Creation Date */}
-            {pageDate && <span className="level-item is-narrow" dangerouslySetInnerHTML={{
-                __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`),
-            }}></span>}
             {/* Last Update Date */}
             {shouldShowUpdated && <span className="level-item is-narrow" dangerouslySetInnerHTML={{
                 __html: _p('article.updated_at', `<time dateTime="${date_xml(pageUpdated)}" title="${new Date(pageUpdated).toLocaleString()}">${date(pageUpdated)}</time>`),
+            }}></span>}
+            {/* Creation Date */}
+            {pageDate && <span className="level-item is-narrow" dangerouslySetInnerHTML={{
+                __html: _p('article.created_at', `<time dateTime="${date_xml(pageDate)}" title="${new Date(pageDate).toLocaleString()}">${date(pageDate)}</time>`),
             }}></span>}
             {/* author */}
             {pageAuthor !== '' && <span className="level-item is-narrow">{pageAuthor}</span>}
