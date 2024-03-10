@@ -119,7 +119,7 @@ module.exports = class extends Component {
             author={author || cfgAuthor}
             publisher={publisher || cfgTitle}
             publisherLogo={publisher_logo || config.logo}
-            date={date}
+            // date={date}
             updated={updated}
             images={structuredImages} />;
     }
