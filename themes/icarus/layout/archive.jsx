@@ -1,6 +1,6 @@
 const moment = require('moment');
 const { Component, Fragment } = require('inferno');
-const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
+const { toMomentLocale } = require('hexo/dist/plugins/helper/date');
 const Paginator = require('./misc/paginator');
 const ArticleMedia = require('./common/article_media');
 
