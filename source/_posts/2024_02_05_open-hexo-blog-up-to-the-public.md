@@ -18,11 +18,11 @@ has_icon: false
 og_image: /images/technology/blog_title.webp
 thumbnail: /images/thumbnails/hexo_thumbnail.webp
 cover:
-  image: /images/technology/blog_cover.webp
+  image: /images/technology/blog/cover.webp
   sources:
-    small: /images/technology/blog_cover_small.webp
-    medium: /images/technology/blog_cover_medium.webp
-    large: /images/technology/blog_cover_large.webp
+    small: /images/technology/blog/cover_small.webp
+    medium: /images/technology/blog/cover_medium.webp
+    large: /images/technology/blog/cover_large.webp
 ---
 
 手元で作成したHexo.js製ブログを、GitHub Pagesで公開して、Google検索できるようにするまでの手順を、この記事にまとめました。

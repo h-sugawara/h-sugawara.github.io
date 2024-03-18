@@ -18,11 +18,11 @@ has_icon: false
 og_image: /images/technology/programming_title.webp
 thumbnail: /images/thumbnails/npm_thumbnail.webp
 cover:
-  image: /images/technology/programming_cover.webp
+  image: /images/technology/programming/cover.webp
   sources:
-    small: /images/technology/programming_cover_small.webp
-    medium: /images/technology/programming_cover_medium.webp
-    large: /images/technology/programming_cover_large.webp
+    small: /images/technology/programming/cover_small.webp
+    medium: /images/technology/programming/cover_medium.webp
+    large: /images/technology/programming/cover_large.webp
 ---
 
 2023年12月26日（火）、Hexo 用タグプラグイン hexo-tag-ogp-link-preview v1.1.0 のアップデートを公開しました。
