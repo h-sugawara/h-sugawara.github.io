@@ -68,10 +68,10 @@ function getImages(url_for, page, article) {
 }
 
 module.exports = class extends Component {
-    renderOpenGraph(is_post, config, language, open_graph, images, page) {
+    renderOpenGraph(config, language, open_graph, images, page, pageType) {
         const { type, title, author, description, url, site_name, twitter_id, twitter_card, twitter_site, google_plus, fb_admins, fb_app_id, image } = open_graph;
         const { title: pageTitle, date, updated, description: pageDescription, excerpt, content, tags, permalink, photos } = page;
-        const { title: cfgTitle, url: cfgUrl, author: cfgAuthor, description: cfgDescription, keywords } = config;
+        const { title: cfgTitle, url: cfgUrl, author: cfgAuthor, description: cfgDescription, keywords: cfgKeywords } = config;
 
         let openGraphImages = images;
         if ((Array.isArray(image) && image.length > 0) || typeof image === 'string') {
@@ -80,14 +80,27 @@ module.exports = class extends Component {
             openGraphImages = photos;
         }
 
+        let keywords = cfgKeywords;
+        if (tags && tags.length > 0) {
+            switch (pageType) {
+                case Constants.PAGE_TYPE_CATEGORIES:
+                case Constants.PAGE_TYPE_TAGS:
+                    keywords = tags.sort('name').sort('-length');
+                    break;
+                default:
+                    keywords = tags.sort('name');
+                    break;
+            }
+        }
+
         return <OpenGraph
-            type={type || (is_post(page) ? 'article' : 'website')}
+            type={type || (pageType === Constants.PAGE_TYPE_POST ? 'article' : 'website')}
             title={title || pageTitle || cfgTitle}
             date={date}
             updated={updated}
             author={author || cfgAuthor}
             description={description || pageDescription || excerpt || content || cfgDescription}
-            keywords={tags && tags.length > 0 ? tags.sort('name') : keywords}
+            keywords={keywords}
             url={url || permalink || cfgUrl}
             images={openGraphImages}
             siteName={site_name || cfgTitle}
@@ -126,7 +139,7 @@ module.exports = class extends Component {
 
     render() {
         const { site, config, helper, page } = this.props;
-        const { url_for, is_post } = helper;
+        const { url_for } = helper;
         const { title: siteTitle, head = {}, article, widgets } = config;
         const {
             meta = [],
@@ -172,7 +185,7 @@ module.exports = class extends Component {
             {hasMetaData && <MetaTags meta={meta} />}
             <title>{getPageTitle(helper, page, siteTitle, pageType)}</title>
             <WebApp.Cacheable helper={helper} favicon={favicon} icons={webApp.icons} themeColor={webApp.themeColor} name={webApp.name} />
-            {hasOpenGraph && this.renderOpenGraph(is_post, config, language, open_graph, images, page)}
+            {hasOpenGraph && this.renderOpenGraph(config, language, open_graph, images, page, pageType)}
             {hasStructuredData && this.renderStructuredData(config, structured_data, images, page)}
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={siteTitle} type="application/atom+xml" /> : null}
