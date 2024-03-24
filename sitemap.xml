@@ -1,114 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/riddle-joker-review/</loc>
-    
-    <lastmod>2024-03-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/sabbat-of-the-witch-review/</loc>
-    
-    <lastmod>2024-03-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/convert-image-format-to-webp/</loc>
-    
-    <lastmod>2024-03-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/guide-riddle-joker/</loc>
-    
-    <lastmod>2024-03-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/search-liquefaction-risk-from-gsi-maps/</loc>
-    
-    <lastmod>2024-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
-    
-    <lastmod>2024-02-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
-    
-    <lastmod>2024-02-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/look-past-and-present-from-mekamasen-story/</loc>
-    
-    <lastmod>2024-01-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
-    
-    <lastmod>2024-01-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
-    
-    <lastmod>2024-01-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chaotic-notes.com/about/index.html</loc>
-    
-    <lastmod>2023-11-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-
-  <url>
-    <loc>https://blog.chaotic-notes.com/</loc>
-    <lastmod>2024-03-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  
-
-  
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/riddle-joker-review/</loc>
+        <lastmod>2024-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/sabbat-of-the-witch-review/</loc>
+        <lastmod>2024-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/convert-image-format-to-webp/</loc>
+        <lastmod>2024-03-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/guide-riddle-joker/</loc>
+        <lastmod>2024-03-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/search-liquefaction-risk-from-gsi-maps/</loc>
+        <lastmod>2024-03-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
+        <lastmod>2024-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
+        <lastmod>2024-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/look-past-and-present-from-mekamasen-story/</loc>
+        <lastmod>2024-01-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
+        <lastmod>2024-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
+        <lastmod>2024-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/about/index.html</loc>
+        <lastmod>2023-11-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://blog.chaotic-notes.com/</loc>
+        <lastmod>2024-03-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
 </urlset>
