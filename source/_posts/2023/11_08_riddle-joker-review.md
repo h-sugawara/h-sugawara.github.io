@@ -1,7 +1,7 @@
 ---
 title: RIDDLE JOKER 評価・レビュー
 date: 2023-11-08 19:30:00
-updated: 2024-03-11 10:30:00
+updated: 2024-03-24 12:00:00
 tags:
   - ゆずソフトレビュー
   - レビュー
@@ -70,8 +70,6 @@ alias: 2023/11/08/riddle-joker-review/index.html
 
 前作「千恋＊万花」と比較して、本作から導入された新機能は太字で記載している。
 
-- タイトル画面
-  - NEW GAME、DATA LOAD、CONTINUE、FLOWCHART、EXTRA、AFTER、SYSTEM、EXIT
 - ストーリープレイ画面
   - セーブ・クイックセーブ、ロード・クイックロード、前・次のシーンへ移動、前・次の選択肢へ移動、オート、スキップ・バックスキップ、ウインドウ非表示、音声リピート、お気に入りボイス登録、システム設定、バックログ、フローチャート、**タイトル画面へ移動**
 - エクストラモード
@@ -81,19 +79,20 @@ alias: 2023/11/08/riddle-joker-review/index.html
 
 #### シナリオ
 
-|  ルート名  | 構成チャプター                                                                                              |
-|:------:|------------------------------------------------------------------------------------------------------|
-|   共通   | PROLOGUE、CHAPTER 1(4)、CHAPTER 2(4)、CHAPTER 3(6)                                                      |
-| 三司 あやせ | CHAPTER 3-7、CHAPTER 4(3)、CHAPTER 5(3)、CHAPTER 6(4)、CHAPTER 7(2)、EPILOGUE                             |
-|   ^^   | AFTER STORY 1、AFTER STORY 2                                                                          |
-| 在原 七海  | CHAPTER 3-7、CHAPTER 4(4)、CHAPTER 5(2)、CHAPTER 6(3)、CHAPTER 7(5)、EPILOGUE                             |
-|   ^^   | AFTER STORY 1、AFTER STORY 2                                                                          |
-| 式部 茉優  | CHAPTER 3-7、CHAPTER 4(6)、CHAPTER 5(8)、CHAPTER 6(6)、CHAPTER 7(5)、CHAPTER 8(5)、EPILOGUE                |
-|   ^^   | AFTER STORY 1、AFTER STORY 2                                                                          |
-| 二条院 羽月 | CHAPTER 4(3)、CHAPTER 5(4)、CHAPTER 6(4)、CHAPTER 7(3)、CHAPTER 8(4)、CHAPTER 9(4)、CHAPTER 10(4)、EPILOGUE |
-|   ^^   | AFTER STORY 1、AFTER STORY 2                                                                          |
-| 壬生 千咲  | CHAPTER 3-7、CHAPTER 4(4)、CHAPTER 5(2)、CHAPTER 6(2)、EPILOGUE                                          |
-|   ^^   | AFTER STORY                                                                                          |
+※全ヒロインアフターストーリーあり（あやせ・七海・茉優・葉月は2話、千咲は1話）
+
+- 共通ルート
+  - PROLOGUE、CHAPTER 1-1~1-4、2-1~2-4、3-1~3-6
+- 三司 あやせ ルート
+  - CHAPTER 3-7、4-1~4-3、5-1~5-3、6-1~6-4、7-1~7-2、EPILOGUE
+- 在原 七海 ルート
+  - CHAPTER 3-7、4-1~4-4、5-1~5-2、6-1~6-3、7-1~7-5、EPILOGUE
+- 式部 茉優 ルート
+  - CHAPTER 3-7、4-1~4-6、5-1~5-8、6-1~6-6、7-1~7-5、8-1~8-5、EPILOGUE
+- 二条院 羽月 ルート
+  - CHAPTER 4-1~4-3、5-1~5-4、6-1~6-4、7-1~7-3、8-1~8-4、9-1~9-4、10-1~10-4、EPILOGUE
+- 壬生 千咲 ルート
+  - CHAPTER 3-7、4-1~4-4、5-1~5-2、6-1~6-2、EPILOGUE
 
 ## メインヒロイン評論
 
