@@ -127,6 +127,7 @@ link_preview:
 sitemap:
   path:
     - sitemap.xml
+  template: ./sitemap_template.xml
   tags: false
   categories: false
 
