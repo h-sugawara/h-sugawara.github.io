@@ -1,13 +1,12 @@
 ---
-title: hexo-tag-ogp-link-preview v1.1.0 更新内容の解説
+title: リンクプレビュープラグイン version 1.1 の内容解説
 date: 2024-01-08 08:30:00
-updated: 2024-01-20 13:30:00
+updated: 2024-03-27 19:00:00
 tags:
+  - 自作Hexoプラグイン
   - Hexo
-  - Icarus
   - JavaScript
   - npm
-  - Link Preview
 categories:
   - Technology
   - Frontend
