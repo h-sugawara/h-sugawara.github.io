@@ -18,12 +18,8 @@ hexo.extend.tag.register(
     {async: false, ends: true}
 );
 
-hexo.extend.tag.unregister('message');
 hexo.extend.tag.register(
     'message',
     require('./tag-message').message(hexo),
     {async: false, ends: true}
 );
-
-// hexo-component-inferno による header end injection を削除
-hexo.extend.injector.store.head_end = {};
