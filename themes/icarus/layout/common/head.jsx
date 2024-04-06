@@ -2,6 +2,7 @@ const { Component } = require('inferno');
 const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
 const WebApp = require('hexo-component-inferno/lib/view/misc/web_app');
 const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
+const WebSiteStructuredData = require('../misc/website_structured_data');
 const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_data');
 const Assets = require('./assets');
 const Constants = require('../constants');
@@ -140,7 +141,7 @@ module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for } = helper;
-        const { title: siteTitle, head = {}, article, widgets } = config;
+        const { title: siteTitle, url: siteUrl, head = {}, article, widgets } = config;
         const {
             meta = [],
             manifest = {},
@@ -186,6 +187,7 @@ module.exports = class extends Component {
             <title>{getPageTitle(helper, page, siteTitle, pageType)}</title>
             <WebApp.Cacheable helper={helper} favicon={favicon} icons={webApp.icons} themeColor={webApp.themeColor} name={webApp.name} />
             {hasOpenGraph && this.renderOpenGraph(config, language, open_graph, images, page, pageType)}
+            <WebSiteStructuredData name={siteTitle} url={siteUrl} />
             {hasStructuredData && this.renderStructuredData(config, structured_data, images, page)}
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={siteTitle} type="application/atom+xml" /> : null}
