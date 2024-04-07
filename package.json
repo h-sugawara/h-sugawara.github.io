@@ -6,7 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server --drafts --debug"
+    "server": "hexo server --drafts --debug",
+    "preview": "hexo server"
   },
   "hexo": {
     "version": "7.1.1"
