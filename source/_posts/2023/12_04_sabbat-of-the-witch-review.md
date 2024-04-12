@@ -1,7 +1,7 @@
 ---
 title: サノバウィッチ 評価・レビュー
 date: 2023-12-04 19:30:00
-updated: 2024-04-07 10:30:00
+updated: 2024-04-12 19:30:00
 tags:
   - ゆずソフトレビュー
   - レビュー
@@ -29,6 +29,11 @@ cover:
 ゆずソフトより2015年に発売された「サノバウィッチ SABBAT OF THE WITCH」を攻略完了したので、作品の評価をレビューします。
 
 <!-- more -->
+
+{% message color:info %}
+こちらは、「サノバウィッチ SABBAT OF THE WITCH」のレビュー記事です。
+作品の詳細攻略は、{% post_link guide-sabbat-of-the-witch 'ガイド記事を投稿しています' %}ので、そちらを是非ご覧ください。
+{% endmessage %}
 
 ## 作品概要
 
