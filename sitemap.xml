@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/guide-riddle-joker/</loc>
+        <lastmod>2024-05-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/describe-github-actions-on-push/</loc>
         <lastmod>2024-04-21</lastmod>
         <changefreq>monthly</changefreq>
@@ -20,12 +26,6 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/articles/guide-sabbat-of-the-witch/</loc>
-        <lastmod>2024-04-07</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://blog.chaotic-notes.com/articles/guide-riddle-joker/</loc>
         <lastmod>2024-04-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -55,13 +55,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -80,7 +80,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2024-04-21</lastmod>
+        <lastmod>2024-05-05</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
