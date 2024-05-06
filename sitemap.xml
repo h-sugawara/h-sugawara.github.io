@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/review-senren-banka/</loc>
+        <lastmod>2024-05-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/guide-riddle-joker/</loc>
         <lastmod>2024-05-05</lastmod>
         <changefreq>monthly</changefreq>
@@ -31,13 +37,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
         <lastmod>2024-03-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
         <lastmod>2024-03-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -80,7 +86,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2024-05-05</lastmod>
+        <lastmod>2024-05-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
