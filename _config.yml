@@ -69,8 +69,17 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 5
+  per_page: 6
   order_by: -date
+
+# Archive
+# per_page: Posts displayed per page. (0 = disable pagination)
+# yearly: Generate yearly archive. (default = true)
+# monthly: Generate monthly archive. (default = true)
+archive_generator:
+  per_page: 12
+  yearly: true
+  monthly: false
 
 # Category & Tag
 default_category: uncategorized
