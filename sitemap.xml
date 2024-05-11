@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/about/</loc>
+        <lastmod>2024-05-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/riddle-joker-review/</loc>
         <lastmod>2024-05-06</lastmod>
         <changefreq>monthly</changefreq>
@@ -75,12 +81,6 @@
     <url>
         <loc>https://blog.chaotic-notes.com/articles/look-past-and-present-from-mekamasen-story/</loc>
         <lastmod>2024-01-21</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://blog.chaotic-notes.com/about/</loc>
-        <lastmod>2023-04-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
