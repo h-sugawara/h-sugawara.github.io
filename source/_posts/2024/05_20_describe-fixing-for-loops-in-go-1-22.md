@@ -1,7 +1,7 @@
 ---
 title: Go 1.22でForループスコープ変数の問題が正式に修正へ
-date: 2024-05-20 08:30:00
-updated: 2024-05-20 08:30:00
+date: 2024-05-20 09:00:00
+updated: 2024-05-20 09:00:00
 tags:
   - 技術解説
   - 解説
@@ -14,7 +14,7 @@ toc: true
 has_gallery: false
 has_code: false
 has_icon: false
-og_image: /images/technology/programming_title.webp
+og_image: /images/technology/programming/title.webp
 thumbnail: /images/thumbnails/golang_thumbnail.webp
 cover:
   image: /images/technology/programming/cover.webp
