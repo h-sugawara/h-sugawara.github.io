@@ -1,7 +1,7 @@
 ---
 title: RIDDLE JOKER 感想＆評価 レビュー
 date: 2023-11-08 19:30:00
-updated: 2024-05-06 19:30:00
+updated: 2024-07-16 19:00:00
 tags:
   - ゆずソフトレビュー
   - レビュー
@@ -296,14 +296,3 @@ R18 ダウンロード版@DMM
 {% link_preview https://store.steampowered.com/app/1277930/Riddle_Joker/ %}
 全年齢 ダウンロード版@Steam
 {% endlink_preview %}
-
-## 関連記事
-
-### 前作「千恋＊万花」
-
-- {% post_link review-senren-banka 'レビュー記事' %}
-- 攻略ガイド記事（準備中）
-
-### 次作「喫茶ステラと死神の蝶」
-
-- レビュー及び攻略ガイドの記事準備中
