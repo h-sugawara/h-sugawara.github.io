@@ -69,13 +69,13 @@ function getScriptUrl(helper, config) {
 
     return {
         main: url_for('/js/main.js'),
-        jQuery: cdn('jquery', '3.3.1', 'dist/jquery.min.js'),
-        moment: cdn('moment', '2.22.2', 'min/moment-with-locales.min.js'),
+        jQuery: cdn('jquery', '3.7.1', 'dist/jquery.min.js'),
+        moment: cdn('moment', '2.30.1', 'min/moment-with-locales.min.js'),
         relativeDateTime: url_for('/js/relative_datetime.js'),
         searchJs: url_for(`/js/${search.type}.js`),
         toc: url_for('/js/toc.js'),
         toggleToc: url_for('/js/toggle_toc.js'),
-        clipboard: cdn('clipboard', '2.0.4', 'dist/clipboard.min.js'),
+        clipboard: cdn('clipboard', '2.0.11', 'dist/clipboard.min.js'),
         codeBlock: url_for('/js/codeblock.js'),
         gallery: url_for('/js/gallery.js'),
     };
