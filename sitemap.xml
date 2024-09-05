@@ -109,13 +109,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -128,7 +128,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2024-08-19</lastmod>
+        <lastmod>2024-09-05</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
