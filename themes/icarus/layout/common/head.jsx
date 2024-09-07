@@ -114,34 +114,43 @@ module.exports = class extends Component {
             facebookAppId={fb_app_id} />;
     }
 
-    renderStructuredData(config, structured_data, images, page) {
-        const { title, description, url, author, publisher, publisher_logo, image } = structured_data;
-        const { title: pageTitle, description: pageDescription, excerpt, content, permalink, date, updated, photos } = page;
-        const { title: cfgTitle, url: cfgUrl, description: cfgDescription, author: cfgAuthor } = config;
+    renderStructuredData(config, structured_data, images, page, type) {
+        const { title: siteTitle, url: siteUrl, description: siteDescription, author: siteAuthor } = config;
 
-        let structuredImages = images;
-        if ((Array.isArray(image) && image.length > 0) || typeof image === 'string') {
-            structuredImages = image;
-        } else if ((Array.isArray(photos) && photos.length > 0) || typeof photos === 'string') {
-            structuredImages = photos;
+        if (type === Constants.PAGE_TYPE_HOME) {
+            return <WebSiteStructuredData name={siteTitle} url={siteUrl} />;
         }
 
-        return <StructuredData
-            title={title || pageTitle || cfgTitle}
-            description={description || pageDescription || excerpt || content || cfgDescription}
-            url={url || permalink || cfgUrl}
-            author={author || cfgAuthor}
-            publisher={publisher || cfgTitle}
-            publisherLogo={publisher_logo || config.logo}
-            date={date}
-            updated={updated}
-            images={structuredImages} />;
+        if (typeof structured_data === 'object' && structured_data !== null) {
+            const { title, description, url, author, publisher, publisher_logo, image } = structured_data;
+            const { title: pageTitle, description: pageDescription, excerpt, content, permalink, date, updated, photos } = page;
+
+            let structuredImages = images;
+            if ((Array.isArray(image) && image.length > 0) || typeof image === 'string') {
+                structuredImages = image;
+            } else if ((Array.isArray(photos) && photos.length > 0) || typeof photos === 'string') {
+                structuredImages = photos;
+            }
+
+            return <StructuredData
+                title={title || pageTitle || siteTitle}
+                description={description || pageDescription || excerpt || content || siteDescription}
+                url={url || permalink || siteUrl}
+                author={author || siteAuthor}
+                publisher={publisher || siteTitle}
+                publisherLogo={publisher_logo || config.logo}
+                date={date}
+                updated={updated}
+                images={structuredImages} />;
+        }
+
+        return null;
     }
 
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for } = helper;
-        const { title: siteTitle, url: siteUrl, head = {}, article, widgets } = config;
+        const { title: siteTitle, head = {}, article, widgets } = config;
         const {
             meta = [],
             manifest = {},
@@ -157,7 +166,6 @@ module.exports = class extends Component {
         const noIndex = [Constants.PAGE_TYPE_ARCHIVE, Constants.PAGE_TYPE_CATEGORY, Constants.PAGE_TYPE_TAG].includes(pageType);
         const language = page.lang || page.language || config.language;
         const hasOpenGraph = typeof open_graph === 'object' && open_graph !== null;
-        const hasStructuredData = typeof structured_data === 'object' && structured_data !== null;
         const hasMetaData = meta && meta.length > 0;
         const images = getImages(url_for, page, article);
         const webApp = {
@@ -187,8 +195,7 @@ module.exports = class extends Component {
             <title>{getPageTitle(helper, page, siteTitle, pageType)}</title>
             <WebApp.Cacheable helper={helper} favicon={favicon} icons={webApp.icons} themeColor={webApp.themeColor} name={webApp.name} />
             {hasOpenGraph && this.renderOpenGraph(config, language, open_graph, images, page, pageType)}
-            <WebSiteStructuredData name={siteTitle} url={siteUrl} />
-            {hasStructuredData && this.renderStructuredData(config, structured_data, images, page)}
+            {this.renderStructuredData(config, structured_data, images, page, pageType)}
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={siteTitle} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
