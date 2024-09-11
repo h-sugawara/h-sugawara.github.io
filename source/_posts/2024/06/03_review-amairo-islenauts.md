@@ -1,7 +1,7 @@
 ---
 title: 天色＊アイルノーツ 感想＆評価 レビュー
 date: 2024-06-03 09:00:00
-updated: 2024-06-03 09:00:00
+updated: 2024-09-11 09:00:00
 tags:
   - ゆずソフトレビュー
   - レビュー
@@ -26,9 +26,14 @@ cover:
 ---
 
 みなさん、ちゃろー☆
-ゆずソフトより2013年に発売された「天色＊アイルノーツ Amairo Islenauts」を攻略完了したので、作品の評価を感想付きでレビューします。
+ゆずソフトより2013年に発売された「天色＊アイルノーツ Amairo Islenauts」をクリアしたので、作品の評価を感想付きでレビューします。
 
 <!-- more -->
+
+{% message color:info %}
+こちらは、「天色＊アイルノーツ Amairo Islenauts」のレビュー記事です。
+本作を始め、[ゆずソフト作品のレビュー](/tags/ゆずソフトレビュー/)を多数投稿しているので、興味があれば是非ご覧ください。
+{% endmessage %}
 
 ## 作品概要
 
@@ -253,10 +258,3 @@ OP「Blue-Love Chime」はとても良い曲であり、ED「天色」はとて�
 {% link_preview https://dlsoft.dmm.co.jp/detail/russ_0164/ %}
 R18 ダウンロード版@DMM
 {% endlink_preview %}
-
-## 関連記事
-
-### 次作「サノバウィッチ」
-
-- {% post_link sabbat-of-the-witch-review 'レビュー記事' %}
-- {% post_link guide-sabbat-of-the-witch '攻略ガイド記事' %}
