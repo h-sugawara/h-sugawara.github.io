@@ -1,7 +1,7 @@
 ---
 title: RIDDLE JOKER 感想＆評価 レビュー
 date: 2023-11-08 19:30:00
-updated: 2024-07-16 19:00:00
+updated: 2024-09-12 09:00:00
 tags:
   - ゆずソフトレビュー
   - レビュー
@@ -33,7 +33,7 @@ alias: 2023/11/08/riddle-joker-review/index.html
 
 {% message color:info %}
 この記事は、「RIDDLE JOKER（リドルジョーカー）」のレビューです。
-他にも、{% post_link guide-riddle-joker '本作の攻略ガイド記事' %}や、[ゆずソフトの他作品のレビュー記事](/tags/ゆずソフトレビュー/)もありますので、そちらも是非ご覧ください。
+本作を始め、[ゆずソフト作品のレビュー](/tags/ゆずソフトレビュー/)を多数投稿しているので、興味があれば是非ご覧ください。
 {% endmessage %}
 
 ## 作品概要
