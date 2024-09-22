@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/describe-introducing-iteration-in-go-1-23/</loc>
+        <lastmod>2024-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/riddle-joker-review/</loc>
         <lastmod>2024-09-12</lastmod>
         <changefreq>monthly</changefreq>
@@ -115,13 +121,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -134,7 +140,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2024-09-12</lastmod>
+        <lastmod>2024-09-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
