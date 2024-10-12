@@ -112,9 +112,9 @@ head:
 navbar:
     # Navigation menu items
     menu:
-        Home: /
+#        Home: /
         Archives: /archives/
-#        Categories: /categories/
+        Categories: /categories/
         Tags: /tags/
         About: /about/
     # Links to be shown on the right of the navigation bar
