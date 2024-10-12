@@ -71,8 +71,8 @@ class Widgets extends Component {
 
         const pageType = Constants.getPageType(helper);
         const skipWidgetMap = {
-            'categories': [ Constants.PAGE_TYPE_CATEGORIES ],
-            'tags': [ Constants.PAGE_TYPE_TAGS ],
+            'categories': [Constants.PAGE_TYPE_CATEGORIES, Constants.PAGE_TYPE_POST, Constants.PAGE_TYPE_PAGE],
+            'tags': [Constants.PAGE_TYPE_TAGS, Constants.PAGE_TYPE_POST, Constants.PAGE_TYPE_PAGE],
         };
 
         const columnSize = getColumnSizeClass(columnCount);
