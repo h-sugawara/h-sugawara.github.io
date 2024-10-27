@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/review-amairo-islenauts/</loc>
+        <lastmod>2024-10-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/review-senren-banka/</loc>
         <lastmod>2024-10-27</lastmod>
         <changefreq>monthly</changefreq>
@@ -33,12 +39,6 @@
     <url>
         <loc>https://blog.chaotic-notes.com/articles/describe-introducing-iteration-in-go-1-23/</loc>
         <lastmod>2024-09-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://blog.chaotic-notes.com/articles/review-amairo-islenauts/</loc>
-        <lastmod>2024-09-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -109,13 +109,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
         <lastmod>2024-03-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/update-hexo-link-preview-plugin-v1-1-0/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/</loc>
         <lastmod>2024-03-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -133,13 +133,13 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://blog.chaotic-notes.com/articles/open-hexo-blog-up-to-the-public/</loc>
+        <loc>https://blog.chaotic-notes.com/articles/start-hexo-blog-in-github-pages/</loc>
         <lastmod>2024-02-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
