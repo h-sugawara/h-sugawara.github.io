@@ -17,21 +17,16 @@ module.exports = class extends Component {
 
         const getPaginationList = (current, last) => {
             const delta = 1;
-            const left = current - delta;
+            const left = current - delta - 1;
             const right = current + delta + 1;
 
             let prev;
             const elements = [];
             Array.from(range(1, last))
-                .filter(i => i === 1 || i === last || (i >= left && i < right))
+                .filter(i => i === 1 || i === last || (i >= left && i <= right))
                 .forEach(value => {
-                    if (prev) {
-                        const delta = value - prev;
-                        if (delta === 2) {
-                            elements.push(<li><a className="pagination-link" href={getPageUrl(prev + 1)}>{prev + 1}</a></li>);
-                        } else if (delta !== 1) {
-                            elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{ __html: '&hellip;' }}></span></li>);
-                        }
+                    if (prev && prev !== value - 1) {
+                        elements.push(<li><span className="pagination-ellipsis" dangerouslySetInnerHTML={{ __html: '&hellip;' }}></span></li>);
                     }
                     elements.push(<li><a className={`pagination-link${current === value ? ' is-current' : ''}`} href={getPageUrl(value)}>{value}</a></li>);
                     prev = value;
