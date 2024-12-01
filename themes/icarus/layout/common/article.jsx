@@ -194,10 +194,11 @@ module.exports = class extends Component {
             layout,
             prev: pagePrev,
             next: pageNext,
+            isSpecialPage = false,
         } = page;
         const { licenses = {} } = article;
         const pageUrl = url_for(link || path);
-        const showLicenseBlock = !index && Object.keys(licenses).length > 0;
+        const showLicenseBlock = !index && Object.keys(licenses).length > 0 && !isSpecialPage;
         const showPostNavigation = !index && (pagePrev || pageNext);
 
         return <Fragment>

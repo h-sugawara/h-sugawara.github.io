@@ -36,6 +36,10 @@ function hasColumn(widgets, position, config, page) {
 }
 
 function getColumnCount(widgets, config, page) {
+    const { isSpecialPage = false } = page;
+    if (isSpecialPage) {
+        return 1;
+    }
     return [hasColumn(widgets, 'left', config, page), hasColumn(widgets, 'right', config, page)].filter(v => !!v).length + 1;
 }
 
@@ -64,8 +68,9 @@ class Widgets extends Component {
         const { site, config, helper, page, position } = this.props;
         const widgets = formatWidgets(config.widgets)[position] || [];
         const columnCount = getColumnCount(config.widgets, config, page);
+        const { isSpecialPage = false } = page;
 
-        if (!widgets.length) {
+        if (!widgets.length || isSpecialPage) {
             return null;
         }
 
