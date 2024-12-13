@@ -34,7 +34,7 @@ module.exports = class extends Component {
             return elements;
         };
 
-        return <nav className="pagination" role="navigation" aria-label="pagination">
+        return <nav className="pagination" aria-label="pagination">
             {current > 1 ? <a className="pagination-previous" href={getPageUrl(current - 1)}>{prevTitle}</a>
                 : <div className="pagination-previous is-invisible"></div>}
             {current < total ? <a className="pagination-next" href={getPageUrl(current + 1)}>{nextTitle}</a>
