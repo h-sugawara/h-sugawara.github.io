@@ -6,11 +6,11 @@
     li + li
         margin-top: 0.25em
 
-    p, dl, ol, ul, blockquote, pre, table
+    p, dl, ol, ul, blockquote, pre, table, aside
         &:not(:last-child)
             margin-bottom: 1em
 
-    h2, h3, h4
+    h2, h3, h4, h5
         color: $content-heading-color
         font-weight: $content-heading-weight
         line-height: $content-heading-line-height
@@ -31,7 +31,11 @@
 
     h4
         font-size: 1.25em
-        margin-bottom: 0.8em
+        margin-bottom: 0.6em
+
+    h5
+        font-size 1.125em
+        margin-bottom 0.5em
 
     blockquote
         background-color: $content-blockquote-background-color
@@ -56,7 +60,6 @@
     ol
         list-style-position: outside
         margin-left: 2em
-        margin-top: 1em
 
         &:not([type])
             list-style-type: decimal
@@ -76,17 +79,12 @@
     ul
         list-style: disc outside
         margin-left: 2em
-        margin-top: 1em
 
         ul
             list-style-type: circle
 
             ul
                 list-style-type: square
-
-    ol, ul
-        ol, ul
-            margin-top: 0.25em
 
     figure
         text-align: center
