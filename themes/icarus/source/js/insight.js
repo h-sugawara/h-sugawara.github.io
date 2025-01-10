@@ -16,9 +16,9 @@ function loadInsight(config, translation) {
         let last;
         const result = [];
 
-        ranges.forEach((r) => {
+        ranges.forEach(r => {
             if (!last || r[0] > last[1]) {
-                result.push((last = r));
+                result.push(last = r);
             } else if (r[1] > last[1]) {
                 last[1] = r[1];
             }
@@ -33,14 +33,14 @@ function loadInsight(config, translation) {
         }
         const testText = text.toLowerCase();
         const indices = matches
-            .map((match) => {
+            .map(match => {
                 const index = testText.indexOf(match.toLowerCase());
                 if (!match || index === -1) {
                     return null;
                 }
                 return [index, index + match.length];
             })
-            .filter((match) => {
+            .filter(match => {
                 return match !== null;
             })
             .sort((a, b) => {
@@ -81,9 +81,6 @@ function loadInsight(config, translation) {
 
     function searchItem(icon, title, slug, preview, url) {
         title = title != null && title !== '' ? title : translation.untitled;
-        const subtitle = slug
-            ? '<span class="searchbox-result-title-secondary">(' + slug + ')</span>'
-            : '';
 
         let resultIcon = '';
         switch (icon) {
@@ -91,17 +88,17 @@ function loadInsight(config, translation) {
                 resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
                     <path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/>
                 </svg>`;
-                break
+                break;
             case 'folder':
                 resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
                     <path d="M464 128H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48z"/>
                 </svg>`;
-                break
+                break;
             case 'tag':
                 resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
                     <path d="M0 252.1V48C0 21.5 21.5 0 48 0h204.1a48 48 0 0 1 33.9 14.1l211.9 211.9c18.7 18.7 18.7 49.1 0 67.9L293.8 497.9c-18.7 18.7-49.1 18.7-67.9 0L14.1 286.1A48 48 0 0 1 0 252.1zM112 64c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/>
                 </svg>`;
-                break
+                break;
         }
 
         return `<a class="searchbox-result-item" href="${url}">
@@ -120,7 +117,7 @@ function loadInsight(config, translation) {
         switch (type) {
             case 'POSTS':
             case 'PAGES':
-                $searchItems = array.map((item) => {
+                $searchItems = array.map(item => {
                     const title = findAndHighlight(item.title, keywords);
                     const text = findAndHighlight(item.text, keywords, 100);
                     return searchItem('file', title, null, text, item.link);
@@ -128,7 +125,7 @@ function loadInsight(config, translation) {
                 break;
             case 'CATEGORIES':
             case 'TAGS':
-                $searchItems = array.map((item) => {
+                $searchItems = array.map(item => {
                     const name = findAndHighlight(item.name, keywords);
                     const slug = findAndHighlight(item.slug, keywords);
                     return searchItem(type === 'CATEGORIES' ? 'folder' : 'tag', name, slug, null, item.link);
@@ -143,10 +140,10 @@ function loadInsight(config, translation) {
     function parseKeywords(keywords) {
         return keywords
             .split(' ')
-            .filter((keyword) => {
+            .filter(keyword => {
                 return !!keyword;
             })
-            .map((keyword) => {
+            .map(keyword => {
                 return keyword.toLowerCase();
             });
     }
@@ -158,8 +155,8 @@ function loadInsight(config, translation) {
      */
     function filter(keywords, obj, fields) {
         const keywordArray = parseKeywords(keywords);
-        const containKeywords = keywordArray.filter((keyword) => {
-            const containFields = fields.filter((field) => {
+        const containKeywords = keywordArray.filter(keyword => {
+            const containFields = fields.filter(field => {
                 if (!Object.prototype.hasOwnProperty.call(obj, field)) {
                     return false;
                 }
@@ -178,16 +175,16 @@ function loadInsight(config, translation) {
 
     function filterFactory(keywords) {
         return {
-            post: function (obj) {
+            post: function(obj) {
                 return filter(keywords, obj, ['title', 'text']);
             },
-            page: function (obj) {
+            page: function(obj) {
                 return filter(keywords, obj, ['title', 'text']);
             },
-            category: function (obj) {
+            category: function(obj) {
                 return filter(keywords, obj, ['name', 'slug']);
             },
-            tag: function (obj) {
+            tag: function(obj) {
                 return filter(keywords, obj, ['name', 'slug']);
             },
         };
@@ -201,7 +198,7 @@ function loadInsight(config, translation) {
      */
     function weight(keywords, obj, fields, weights) {
         let value = 0;
-        parseKeywords(keywords).forEach((keyword) => {
+        parseKeywords(keywords).forEach(keyword => {
             const pattern = new RegExp(keyword, 'img'); // Global, Multi-line, Case-insensitive
             fields.forEach((field, index) => {
                 if (Object.prototype.hasOwnProperty.call(obj, field)) {
@@ -215,16 +212,16 @@ function loadInsight(config, translation) {
 
     function weightFactory(keywords) {
         return {
-            post: function (obj) {
+            post: function(obj) {
                 return weight(keywords, obj, ['title', 'text'], [3, 1]);
             },
-            page: function (obj) {
+            page: function(obj) {
                 return weight(keywords, obj, ['title', 'text'], [3, 1]);
             },
-            category: function (obj) {
+            category: function(obj) {
                 return weight(keywords, obj, ['name', 'slug'], [1, 1]);
             },
-            tag: function (obj) {
+            tag: function(obj) {
                 return weight(keywords, obj, ['name', 'slug'], [1, 1]);
             },
         };
@@ -269,7 +266,7 @@ function loadInsight(config, translation) {
         $container.empty();
         for (const key in searchResult) {
             $container.append(
-                sectionFactory(parseKeywords(keywords), key.toUpperCase(), searchResult[key]),
+                sectionFactory(parseKeywords(keywords), key.toUpperCase(), searchResult[key])
             );
         }
     }
@@ -307,11 +304,11 @@ function loadInsight(config, translation) {
         }
     }
 
-    $.getJSON(config.contentUrl, (json) => {
+    $.getJSON(config.contentUrl, json => {
         if (location.hash.trim() === '#insight-search') {
             $main.addClass('show');
         }
-        $input.on('input', function () {
+        $input.on('input', function() {
             const keywords = $(this).val();
             searchResultToDOM(keywords, search(json, keywords));
         });
@@ -324,14 +321,14 @@ function loadInsight(config, translation) {
             $main.addClass('show');
             $main.find('.searchbox-input').focus();
         })
-        .on('click touchend', '.searchbox-result-item', function (e) {
+        .on('click touchend', '.searchbox-result-item', function(e) {
             if (e.type !== 'click' && !touch) {
                 return;
             }
             gotoLink($(this));
             touch = false;
         })
-        .on('click touchend', '.searchbox-close', (e) => {
+        .on('click touchend', '.searchbox-close', e => {
             if (e.type !== 'click' && !touch) {
                 return;
             }
@@ -342,7 +339,7 @@ function loadInsight(config, translation) {
             $main.removeClass('show');
             touch = false;
         })
-        .on('keydown', (e) => {
+        .on('keydown', e => {
             if (!$main.hasClass('show')) return;
             switch (e.keyCode) {
                 case 27: // ESC
@@ -359,10 +356,10 @@ function loadInsight(config, translation) {
                     break;
             }
         })
-        .on('touchstart', (e) => {
+        .on('touchstart', e => {
             touch = true;
         })
-        .on('touchmove', (e) => {
+        .on('touchmove', e => {
             touch = false;
         });
 }

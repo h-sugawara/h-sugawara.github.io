@@ -1,7 +1,7 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function ($) {
+(function($) {
     if (typeof $.fn.lightGallery === 'function') {
-        $('.article').lightGallery({selector: '.gallery-item'});
+        $('.article').lightGallery({ selector: '.gallery-item' });
     }
     if (typeof $.fn.justifiedGallery === 'function') {
         if ($('.justified-gallery > p > .gallery-item').length) {

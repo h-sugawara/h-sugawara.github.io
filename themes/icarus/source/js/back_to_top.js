@@ -13,25 +13,25 @@ $(document).ready(() => {
             classname: 'card has-text-centered',
             left: '',
             width: 64,
-            bottom: bottomMargin
-        }
+            bottom: bottomMargin,
+        },
     };
     state['desktop-hidden'] = Object.assign({}, state.base, {
-        classname: state.base.classname + ' rise-up'
+        classname: state.base.classname + ' rise-up',
     });
     state['desktop-visible'] = Object.assign({}, state['desktop-hidden'], {
-        classname: state['desktop-hidden'].classname + ' fade-in'
+        classname: state['desktop-hidden'].classname + ' fade-in',
     });
     state['desktop-dock'] = Object.assign({}, state['desktop-visible'], {
         classname: state['desktop-visible'].classname + ' fade-in is-rounded',
-        width: 40
+        width: 40,
     });
     state['mobile-hidden'] = Object.assign({}, state.base, {
         classname: state.base.classname + ' fade-in',
-        right: rightMargin
+        right: rightMargin,
     });
     state['mobile-visible'] = Object.assign({}, state['mobile-hidden'], {
-        classname: state['mobile-hidden'].classname + ' rise-up'
+        classname: state['mobile-hidden'].classname + ' rise-up',
     });
 
     function isStateEquals(prev, next) {
@@ -118,13 +118,13 @@ $(document).ready(() => {
                 nextState = state['desktop-visible'];
             } else {
                 nextState = Object.assign({}, state['desktop-dock'], {
-                    bottom: getScrollBottom() - maxBottom + bottomMargin
+                    bottom: getScrollBottom() - maxBottom + bottomMargin,
                 });
             }
 
             const left = $mainColumn.offset().left + $mainColumn.outerWidth() + padding;
             nextState = Object.assign({}, nextState, {
-                left: Math.min(left, maxLeft)
+                left: Math.min(left, maxLeft),
             });
             applyState(nextState);
         } else {

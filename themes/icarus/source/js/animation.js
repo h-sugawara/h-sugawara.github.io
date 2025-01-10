@@ -11,7 +11,7 @@
     [
         '.column-main > .card, .column-main > .pagination, .column-main > .post-navigation',
         '.column-left > .card, .column-right-shadow > .card',
-        '.column-right > .card'
+        '.column-right > .card',
     ].forEach(selector => {
         $(selector).forEach(element => {
             element.style.transition = '0s';
@@ -37,7 +37,7 @@
         [
             '.column-main > .card, .column-main > .pagination, .column-main > .post-navigation',
             '.column-left > .card, .column-right-shadow > .card',
-            '.column-right > .card'
+            '.column-right > .card',
         ].forEach(selector => {
             $(selector).forEach(element => {
                 setTimeout(() => {

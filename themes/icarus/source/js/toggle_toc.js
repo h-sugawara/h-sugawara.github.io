@@ -1,5 +1,5 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function ($) {
+(function($) {
     const $toc = $('#toc');
     if ($toc.length > 0) {
         const $mask = $('<div>');

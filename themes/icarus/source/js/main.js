@@ -1,6 +1,6 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function ($) {
-    $('.article > .content > table').each(function () {
+(function($) {
+    $('.article > .content > table').each(function() {
         if ($(this).width() > $(this).parent().width()) {
             $(this).wrap('<div class="table-overflow"></div>');
         }

@@ -1,5 +1,5 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function ($, ClipboardJS, config) {
+(function($, ClipboardJS, config) {
     function toggleFold(codeBlock, isFolded) {
         const $toggle = $(codeBlock).find('.fold i');
         !isFolded ? $(codeBlock).removeClass('folded') : $(codeBlock).addClass('folded');
