@@ -8,7 +8,8 @@
     }
 
     function createFoldButton(fold) {
-        return '<span class="fold">' + (fold === 'unfolded' ? '<i class="svg-angle-down"></i>' : '<i class="svg-angle-right"></i>') + '</span>';
+        const icon = fold === 'unfolded' ? '<i class="svg-angle-down"></i>' : '<i class="svg-angle-right"></i>';
+        return '<span class="fold" type="button">' + icon + '</span>';
     }
 
     if (typeof config !== 'undefined'
@@ -26,13 +27,13 @@
             $(this).append('<div class="level-left">');
             $(this).append('<div class="level-right">');
             $(this).find('div.level-left').append($(this).find('span'));
-            $(this).find('div.level-right').append($(this).find('a'));
+            $(this).find('div.level-right').append($(this).find('button'));
         });
 
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
             $('div.highlight div.caption').each(function() {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
-                const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' code"><i class="svg-copy"></i></a>';
+                const button = '<button type="button" class="copy" title="Copy" data-clipboard-target="#' + id + ' code"><i class="svg-copy"></i></button>';
                 $(this).closest('div.highlight').attr('id', id);
                 $(this).find('div.level-right').append(button);
             });
