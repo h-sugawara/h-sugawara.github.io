@@ -215,7 +215,7 @@ module.exports = class extends Component {
                     {categories.length > 0 && this.renderCategories(categories, url_for)}
                     {/* Content/Excerpt */}
                     {index && excerpt !== '' ? <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{ __html: excerpt }}></a>
-                        : <div className="content" dangerouslySetInnerHTML={{ __html: page.content }}></div>}
+                        : <div className="content" dangerouslySetInnerHTML={{ __html: excerpt + page.more }}></div>}
                     {/* Licensing block */}
                     {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}
                     {/* Tags */}
