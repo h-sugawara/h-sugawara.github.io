@@ -58,12 +58,12 @@ class Navbar extends Component {
                                 </a>;
                             })}
                         </Fragment> : null}
-                        {showToc && <a className="navbar-item catalogue" title={tocTitle} href="javascript:;">
+                        {showToc && <button className="navbar-item catalogue" title={tocTitle} type="button">
                             <FontAwesomeIcon type="fa-list-ul" className="nav-toc-icon" />
-                        </a>}
-                        {showSearch && <a className="navbar-item search" title={searchTitle} href="javascript:;">
+                        </button>}
+                        {showSearch && <button className="navbar-item search" title={searchTitle} type="button">
                             <FontAwesomeIcon type="fa-search" className="nav-search-icon" />
-                        </a>}
+                        </button>}
                     </div>
                 </div>
             </div>
