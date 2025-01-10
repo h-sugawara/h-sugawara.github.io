@@ -14,7 +14,7 @@ class Insight extends Component {
                 <div className="searchbox-header">
                     <div className="searchbox-header-container">
                         <label className="searchbox-label" htmlFor="search">{translation.title}</label>
-                        <a className="searchbox-close" href="javascript:;">&#xD7;</a>
+                        <button className="searchbox-close" type="button">&#xD7;</button>
                     </div>
                     <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
                 </div>
