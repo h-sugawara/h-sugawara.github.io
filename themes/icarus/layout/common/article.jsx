@@ -50,7 +50,32 @@ function getWordCount(content) {
 }
 
 module.exports = class extends Component {
-    renderCoverImage(index, url_for, cover, title, pageUrl) {
+    renderHeader(config, helper, page, index, pageUrl) {
+        const {
+            title = '',
+            cover,
+            layout,
+        } = page;
+        const { url_for } = helper;
+
+        const header = <Fragment>
+            {/* Thumbnail */}
+            {cover && this.renderCoverImage(url_for, cover, title)}
+            <div className="article-header">
+                {/* Metadata */}
+                {layout !== 'page' && this.renderMetadata(config, helper, page, index)}
+                {/* Title */}
+                {title !== '' && this.renderTitle(title)}
+            </div>
+        </Fragment>;
+
+        if (index) {
+            return <a href={pageUrl} className="header link-muted">{header}</a>;
+        }
+        return header;
+    }
+
+    renderCoverImage(url_for, cover, title) {
         let coverImage = '';
         let coverSources = null;
 
@@ -99,9 +124,6 @@ module.exports = class extends Component {
             Image = <picture>{coverSources}{Image}</picture>;
         }
 
-        if (index) {
-            return <a href={pageUrl} className="card-image image is-7by3">{Image}</a>;
-        }
         return <span className="card-image image is-7by3">{Image}</span>;
     }
 
@@ -144,14 +166,24 @@ module.exports = class extends Component {
         </div>;
     }
 
-    renderTitle(index, title, pageUrl) {
-        return <h2 className="title">{index ? <a className="link-muted" href={pageUrl}>{title}</a> : title}</h2>;
+    renderTitle(title) {
+        return <h2 className="title">{title}</h2>;
     }
 
     renderCategories(categories, url_for) {
         return <ul className="article-categories">
             {categories.map(({ path, name }) => <li><a className="link-muted is-capitalized" href={url_for(path)}>{name}</a></li>)}
         </ul>;
+    }
+
+    renderContent(page, index, pageUrl) {
+        const { excerpt, more, content } = page;
+        const hasExcerpt = excerpt !== '';
+
+        if (index) {
+            return <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{ __html: hasExcerpt ? excerpt : content }}></a>;
+        }
+        return <div className="content" dangerouslySetInnerHTML={{ __html: hasExcerpt ? excerpt + more : content }}></div>;
     }
 
     renderTags(tags, url_for) {
@@ -183,15 +215,11 @@ module.exports = class extends Component {
         const { article = {} } = config;
         const { url_for } = helper;
         const {
-            title = '',
             categories = [],
-            excerpt = '',
             tags = [],
             direction = '',
-            cover,
             link,
             path,
-            layout,
             prev: pagePrev,
             next: pageNext,
             isSpecialPage = false,
@@ -204,18 +232,13 @@ module.exports = class extends Component {
         return <Fragment>
             {/* Main content */}
             <div className="card">
-                {/* Thumbnail */}
-                {cover && this.renderCoverImage(index, url_for, cover, title, pageUrl)}
                 <article className={`card-content article${direction !== '' ? ` ${direction}` : ''}`} role={!index && 'main'}>
-                    {/* Metadata */}
-                    {layout !== 'page' && this.renderMetadata(config, helper, page, index)}
-                    {/* Title */}
-                    {title !== '' && this.renderTitle(index, title, pageUrl)}
+                    {/* Header */}
+                    {this.renderHeader(config, helper, page, index, pageUrl)}
                     {/* Categories */}
                     {categories.length > 0 && this.renderCategories(categories, url_for)}
                     {/* Content/Excerpt */}
-                    {index && excerpt !== '' ? <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{ __html: excerpt }}></a>
-                        : <div className="content" dangerouslySetInnerHTML={{ __html: excerpt + page.more }}></div>}
+                    {this.renderContent(page, index, pageUrl)}
                     {/* Licensing block */}
                     {showLicenseBlock && <ArticleLicensing.Cacheable page={page} config={config} helper={helper} />}
                     {/* Tags */}

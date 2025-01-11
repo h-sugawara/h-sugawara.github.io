@@ -1,17 +1,15 @@
-article.article
-    .article-meta, .article-tags, .article-categories
-        color: $text-light
-        font-size: $size-7
+.article
+    padding: 1.5rem 0
 
-    .article-tags
-        span
-            margin-right: 0.5rem
+    .image
+        margin-top: -1.5rem
+        margin-bottom: 1.5rem
 
-    .article-meta
-        overflow-x: auto
-        margin-bottom: 0.25rem
+    .article-header, .article-categories
+        margin: 0 1.5rem 1.5rem
 
     .title
+        color: inherit
         font-size: $size-2
         line-height: 1.5
 
@@ -19,9 +17,16 @@ article.article
         .title
             font-size: $size-3
 
+    .article-meta, .article-categories, .article-tags
+        color: $text-light
+        font-size: $size-7
+
+    .article-meta
+        overflow-x: auto
+        margin-bottom: 0.25rem
+
     .article-categories
         overflow-x: auto
-        margin-bottom: 1.5rem
         align-items: flex-start
         display: flex
         flex-wrap: wrap
@@ -35,19 +40,23 @@ article.article
             padding: 0 0.5rem
             content: '/'
 
-    .content
-        word-wrap: break-word
-        font-size: $size-5_5
-        line-height: 1.75
-
     .article-tags
         display: flex
         flex-wrap: wrap
-        margin-bottom: 0.25rem
+        margin: 0 1.5rem 0.25rem
+
+        span
+            margin-right: 0.5rem
 
         a
             margin-right: 0.5rem
             margin-bottom: 1rem
+
+.content
+    margin: 0 1.5rem
+    word-wrap: break-word
+    font-size: $size-5_5
+    line-height: 1.75
 
 .image
     &.is-7by3
