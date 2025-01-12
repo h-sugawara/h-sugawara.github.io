@@ -1,6 +1,8 @@
-const logger = require('hexo-log')();
+const createLogger = require('hexo-log');
 const deepmerge = require('deepmerge');
 const Migration = require('hexo-component-inferno/lib/core/migrate').Migration;
+
+const logger = createLogger.default();
 
 module.exports = class extends Migration {
     constructor() {
@@ -14,7 +16,7 @@ module.exports = class extends Migration {
             canonical_url: config.canonical_url || null,
             open_graph: config.open_graph || null,
             meta: config.meta || null,
-            rss: config.rss || null
+            rss: config.rss || null,
         };
         delete result.favicon;
         delete result.canonical_url;
