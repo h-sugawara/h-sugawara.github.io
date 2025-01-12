@@ -1,1 +1,1 @@
-!function(t,e){"function"==typeof e&&t(".article-meta time").each((function(){t(this).text(e(t(this).attr("datetime")).fromNow())}))}(jQuery,window.moment);
+!function(t){"function"==typeof t&&document.querySelectorAll(".article-meta time").forEach((e=>{e.textContent=t(e.getAttribute("datetime")).fromNow()}))}(window.moment);

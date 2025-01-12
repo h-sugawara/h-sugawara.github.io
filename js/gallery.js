@@ -1,1 +1,1 @@
-!function(e){"function"==typeof e.fn.lightGallery&&e(".article").lightGallery({selector:".gallery-item"}),"function"==typeof e.fn.justifiedGallery&&(e(".justified-gallery > p > .gallery-item").length&&e(".justified-gallery > p > .gallery-item").unwrap(),e(".justified-gallery").justifiedGallery())}(jQuery);
+!function(l){"function"==typeof l.fn.lightGallery&&l(".article").lightGallery({selector:".gallery-item"})}(jQuery);
