@@ -1,15 +1,19 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function($, ClipboardJS, config) {
-    function toggleFold(codeBlock, isFolded) {
-        const $toggle = $(codeBlock).find('.fold i');
-        !isFolded ? $(codeBlock).removeClass('folded') : $(codeBlock).addClass('folded');
-        !isFolded ? $toggle.removeClass('svg-angle-right') : $toggle.removeClass('svg-angle-down');
-        !isFolded ? $toggle.addClass('svg-angle-down') : $toggle.addClass('svg-angle-right');
+(function(ClipboardJS, config) {
+    function toggleFold($codeBlock, isFolded) {
+        const $toggle = $codeBlock.querySelector('.fold i');
+        !isFolded ? $codeBlock.classList.remove('folded') : $codeBlock.classList.add('folded');
+        $toggle.classList.remove(!isFolded ? 'svg-angle-right' : 'svg-angle-down');
+        $toggle.classList.add(!isFolded ? 'svg-angle-down' : 'svg-angle-right');
     }
 
     function createFoldButton(fold) {
-        const icon = fold === 'unfolded' ? '<i class="svg-angle-down"></i>' : '<i class="svg-angle-right"></i>';
-        return '<span class="fold" type="button">' + icon + '</span>';
+        const icon = document.createElement('i');
+        icon.classList.add(fold === 'unfolded' ? 'svg-angle-down' : 'svg-angle-right');
+        const button = document.createElement('span');
+        button.classList.add('fold');
+        button.appendChild(icon);
+        return button;
     }
 
     if (typeof config !== 'undefined'
@@ -19,48 +23,65 @@
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();
 
-        const captions = $('pre div.caption');
-        captions.closest('pre').addClass('highlight-body').wrap('<div class="highlight hljs">');
-        captions.each(function() {
-            $(this).closest('div.highlight').prepend($(this));
-            $(this).addClass('level is-mobile');
-            $(this).append('<div class="level-left">');
-            $(this).append('<div class="level-right">');
-            $(this).find('div.level-left').append($(this).find('span'));
-            $(this).find('div.level-right').append($(this).find('button'));
+        document.querySelectorAll('pre').forEach($element => {
+            $element.classList.add('highlight-body');
+            $element.outerHTML = '<div class="highlight hljs">' + $element.outerHTML + '</div>';
+        });
+
+        document.querySelectorAll('div.highlight').forEach($element => {
+            const left = document.createElement('div');
+            left.classList.add('level-left');
+            const right = document.createElement('div');
+            right.classList.add('level-right');
+            const $caption = $element.querySelector('.caption');
+            $caption.classList.add('level', 'is-mobile');
+            $caption.appendChild(left);
+            $caption.appendChild(right);
+            left.insertBefore($caption.querySelector('span'), left.firstElementChild);
+            $element.insertBefore($caption, $element.firstElementChild);
         });
 
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
-            $('div.highlight div.caption').each(function() {
+            document.querySelectorAll('div.highlight div.caption').forEach($element => {
+                const copyIcon = document.createElement('i');
+                copyIcon.classList.add('svg-copy');
+                const button = document.createElement('button');
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
-                const button = '<button type="button" class="copy" title="Copy" data-clipboard-target="#' + id + ' code"><i class="svg-copy"></i></button>';
-                $(this).closest('div.highlight').attr('id', id);
-                $(this).find('div.level-right').append(button);
+                button.classList.add('copy');
+                button.setAttribute('type', 'button');
+                button.setAttribute('title', 'Copy');
+                button.setAttribute('data-clipboard-target', '#' + id + ' code');
+                button.appendChild(copyIcon);
+                $element.querySelector('div.level-right').appendChild(button);
+                $element.closest('div.highlight').setAttribute('id', id);
             });
             new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
         }
 
         if (fold) {
-            $('div.highlight').each(function() {
-                $(this).addClass('foldable'); // add 'foldable' class as long as fold is enabled
-
-                if ($(this).find('div.caption').find('span').length > 0) {
-                    const span = $(this).find('div.caption').find('span');
-                    if (span[0].innerText.indexOf('>folded') > -1) {
-                        span[0].innerText = span[0].innerText.replace('>folded', '');
-                        $(this).find('figcaption div.level-left').prepend(createFoldButton('folded'));
-                        toggleFold(this, true);
-                        return;
-                    }
+            document.querySelectorAll('div.highlight').forEach($code => {
+                $code.classList.add('foldable');
+                const $caption = $code.querySelectorAll('div.caption span');
+                if ($caption.length > 0 && $caption[0].textContent.indexOf('>folded') > -1) {
+                    $caption[0].textContent = $caption[0].textContent.replace('>folded', '');
+                    $code.querySelectorAll('figcaption div.level-left').forEach($element => {
+                        $element.insertBefore(createFoldButton('folded'), $element.firstElementChild);
+                    });
+                    toggleFold($code, true);
+                    return;
                 }
-                $(this).find('div.caption div.level-left').prepend(createFoldButton(fold));
-                toggleFold(this, fold === 'folded');
+                $code.querySelectorAll('div.caption div.level-left').forEach($element => {
+                    $element.insertBefore(createFoldButton(fold), $element.firstElementChild);
+                });
+                toggleFold($code, fold === 'folded');
             });
 
-            $('div.highlight div.caption .level-left').click(function() {
-                const $code = $(this).closest('div.highlight');
-                toggleFold($code.eq(0), !$code.hasClass('folded'));
+            document.querySelectorAll('div.highlight div.caption .level-left').forEach($element => {
+                $element.addEventListener('click', $event => {
+                    const $code = $event.target.closest('div.highlight');
+                    toggleFold($code, !$code.classList.contains('folded'));
+                });
             });
         }
     }
-}(jQuery, window.ClipboardJS, window.IcarusThemeSettings));
+}(window.ClipboardJS, window.IcarusThemeSettings));

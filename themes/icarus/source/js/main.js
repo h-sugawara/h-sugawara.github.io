@@ -1,20 +1,25 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function($) {
-    $('.article > .content > table').each(function() {
-        if ($(this).width() > $(this).parent().width()) {
-            $(this).wrap('<div class="table-overflow"></div>');
+(function() {
+    document.querySelectorAll('.article > .content > table').forEach($table => {
+        if ($table.offsetWidth > $table.parentElement.offsetWidth) {
+            $table.outerHTML = '<div class="table-overflow">' + $table.outerHTML + '</div>';
         }
     });
 
+    const $navbarMain = document.querySelector('.navbar-main');
+    const $navbarStart = $navbarMain.querySelector('.navbar-start');
+    const $navbarEnd = $navbarMain.querySelector('.navbar-end');
+    const navbarMenu = $navbarMain.querySelector('.navbar-menu');
+
     function adjustNavbar() {
-        const navbarWidth = $('.navbar-main .navbar-start').outerWidth() + $('.navbar-main .navbar-end').outerWidth();
-        if ($(document).outerWidth() < navbarWidth) {
-            $('.navbar-main .navbar-menu').addClass('justify-content-start');
+        const navbarWidth = $navbarStart.offsetWidth + $navbarEnd.offsetWidth;
+        if (document.offsetWidth < navbarWidth) {
+            navbarMenu.classList.add('justify-content-start');
         } else {
-            $('.navbar-main .navbar-menu').removeClass('justify-content-start');
+            navbarMenu.classList.remove('justify-content-start');
         }
     }
 
     adjustNavbar();
-    $(window).resize(adjustNavbar);
-}(jQuery));
+    window.addEventListener('resize', adjustNavbar);
+}());
