@@ -1,7 +1,7 @@
 ---
 title: Docker Compose RestartでMySQLを初期化する方法
 date: 2024-12-09 09:00:00
-updated: 2024-12-09 09:00:00
+updated: 2025-01-12 20:00:00
 tags:
   - 技術解説
   - 解説
@@ -40,13 +40,13 @@ Docker Compose で MySQL コンテナを取り扱っている時に、compose.ym
 macOS などの Unix/Linux 系 OS だけでローカル環境を揃えられる時にご利用ください。
 {% endmessage %}
 
-この記事は、Docker Compose を使っていて、docker compose down コマンドと docker compose up コマンドを使わずに、MySQL コンテナの`docker-entrypoint-initdb.d`を処理させる方法を知りたい方にオススメです（ちなみに、PostgreSQL や MongoDB のコンテナでも流用可能です）。
+この記事は、Docker Compose を使っていて、`docker compose down` コマンドと `docker compose up` コマンドを使わずに、MySQL コンテナの docker-entrypoint-initdb.d を処理させる方法を知りたい方にオススメです（ちなみに、PostgreSQL や MongoDB のコンテナでも流用可能です）。
 
 ### docker-entrypoint-initdb.d
 
-`docker-entrypoint-initdb.d`は、MySQL や PostgreSQL などのデータベースコンテナで、始めて起動した時に初期化を行うための機能です。
-ホストにあるディレクトリやファイルを、`docker-entrypoint-initdb.d`そのものやその配下のファイルとしてコンテナにマウントすることで、データベースにテーブルを作成したり、データ投入したりできるため、とても使い勝手が良いです。
-この機能は、MySQL 公式の Docker Hub ページで、次のように説明されています（日本語訳を付けていますが、間違えている可能性もあるので、原文をきちんと読んでください）。
+docker-entrypoint-initdb.d は、MySQL や PostgreSQL などのデータベースコンテナで、始めて起動した時に初期化を行うための機能です。
+これは、ホストにあるディレクトリやファイルを、docker-entrypoint-initdb.d 自身やその配下のファイルとしてコンテナにマウントすることで、データベースにテーブルを作成したり、データ投入したりできるため、とても使い勝手が良いです。
+MySQL 公式の Docker Hub ページでは、次のように説明されています（日本語訳を付けていますが、間違えている可能性もあるので、原文をきちんと読んでください）。
 
 > Initializing a fresh instance
 > 
@@ -66,23 +66,23 @@ macOS などの Unix/Linux 系 OS だけでローカル環境を揃えられる�
 
 ## 些末でも悩ましい問題
 
-さて、MySQL のコンテナの便利な`docker-entrypoint-initdb.d`ですが、Docker Compose で取り扱う時には、ちょっとした不便もあります。それは、些末な不都合だけれども、使い続けると悩ましくなる、塵も積もれば山となる様な問題で、以下の2つがあります。
+さて、MySQL のコンテナの便利な docker-entrypoint-initdb.d ですが、Docker Compose で取り扱う時には、ちょっとした不便もあります。それは、些末な不都合だけれども、使い続けると悩ましくなる、塵も積もれば山となる様な問題で、以下の2つがあります。
 
 ### 単純な再起動で初期化せず
 
-`docker-entrypoint-initdb.d`は、コンテナ起動時のエントリーポイントの処理で、/var/lib/mysql が存在するボリュームがマウントされていなければ、実行される仕様です（処理の詳細は、[MySQL 8.0 の docker-entrypoint.sh](https://github.com/docker-library/mysql/blob/master/8.0/docker-entrypoint.sh)を参照してください）。
-ゆえに、docker compose down 以外の docker compose restart や docker compose create などの如何なるコマンドを駆使して頑張っても、それらのコマンドはボリュームを削除しないため、MySQL コンテナは初期化処理をしてくれません。
+docker-entrypoint-initdb.d は、コンテナ起動時のエントリーポイントの処理で、`/var/lib/mysql` が存在するボリュームがマウントされていなければ、実行される仕様です（処理の詳細は、[MySQL 8.0 の docker-entrypoint.sh](https://github.com/docker-library/mysql/blob/master/8.0/docker-entrypoint.sh) を参照してください）。
+ゆえに、`docker compose down` 以外の `docker compose restart` や `docker compose create` などの如何なるコマンドを駆使して頑張っても、それらのコマンドはボリュームを削除しないため、MySQL コンテナは初期化処理をしてくれません。
 
 ### 匿名ボリュームのボタ山
 
-`docker-entrypoint-initdb.d`で、MySQL の初期化させる度に必ず付き纏う現象があります。それは、Anonymous Volume が一つ生成されることです。
-そのため、docker compose up と docker compose down のコマンドを繰り返していたら、いつの間にかゴミボリュームの大量生産され、ホストのストレージを食い潰しそうになることもあります。
+docker-entrypoint-initdb.d で、MySQL を初期化させる度に必ず付き纏う現象があります。それは、Anonymous Volume が一つ生成されることです。
+そのため、`docker compose up` と `docker compose down` のコマンドを繰り返していたら、いつの間にかゴミボリュームが大量生産され、ホストのストレージを食い潰しそうになることもあります。
 名前が無いからこそ、残しておきたいボリュームと区別が面倒で、お掃除する時には思わぬ苦行を課せられるわけです。全てのボリュームを消せばいいという思い切った考えで割り切ることもできますけど、SDGs 何それ美味しいの、みたいな正直イケてない仕様です。
 
 ## 問題の解決方法の発見
 
 とある日、私は、docker-compose.yml から compose.yml への移行のために、[Docker 公式のドキュメント](https://docs.docker.com/reference/compose-file/)で仕様を確認していました。
-そこで、[Services top-level elements](https://docs.docker.com/reference/compose-file/services/) ページにある volume 属性の Long syntax セクションを読んだ時に、`docker-entrypoint-initdb.d`にまつわる問題の解消方法をついに発見するに至りました。
+そこで、[Services top-level elements](https://docs.docker.com/reference/compose-file/services/) ページにある volume 属性の Long syntax セクションを読んだ時に、docker-entrypoint-initdb.d にまつわる問題の解消方法をついに発見するに至りました。
 
 ### tmpfs のマウント
 
@@ -106,14 +106,18 @@ tmpfs の仕組み上、それをマウントしたコンテナを停止する�
 ### compose.yml を作ろう
 
 それでは、tmpfs を活用した compose.yml ファイルを作って行きましょう。
-前提として、MySQL の設定ファイルは ./build/docker/database/conf ディレクトリに、初期化時に投入する SQL ファイルなどは ./build/docker/database/init ディレクトリに、それぞれ配置されているものとします。
-それを踏まえて、2024年10月時点で最新版である Aurora MySQL 3.07.x 互換で、compose.yml ファイルを作成する（併せて、ファイル内で変数を使用するために、.env ファイルも作成しています）と、以下のようになります。
+前提として、MySQL の設定ファイルは `./build/docker/database/conf` ディレクトリに、初期化時に投入する SQL ファイルなどは `./build/docker/database/init` ディレクトリに、それぞれ配置されているものとします。
+それを踏まえて、2025年01月時点で最新版である「Amazon Aurora MySQL 3.08.0」互換で、compose.yml ファイルを作成すると、次のようになります。
+
+{% message color:info %}
+compose.yml ファイル内で変数を使用するために、.env ファイルも併せて作成しています。どちらも同じディレクトリ内に配置してください。
+{% endmessage %}
 
 ```yaml compose.yml
 services:
   database:
     container_name: test-database
-    image: mysql:8.0.36 # Aurora MySQL 3.07.x 互換
+    image: mysql:8.0.39 # Aurora MySQL 3.08.0 互換
     ports:
       - '3306:3306'
     healthcheck:
@@ -135,7 +139,7 @@ services:
         read_only: true
 ```
 
-```text ./.env
+```text .env
 MYSQL_PASSWORD=root
 MYSQL_DATABASE=test
 MYSQL_USER=user
@@ -160,8 +164,8 @@ volumes 属性の Long Syntax で記述できるフィールド（一部抜粋�
 
 ## おわりに
 
-この方法は、Docker compose コマンドや MySQL コンテナをメインにした検索ワードで中々ヒットせず、ググラビリティが低いネタのようでした。
-tmpfs の側面から検索すると、それっぽいのが見つかりますが、tmpfs を知っている場合は答えが分かっていることになるので、検索しませんよね、という話です。
+この方法は、Docker Compose のコマンドや MySQL コンテナをメインにした検索ワードで中々ヒットせず、ググラビリティが低いネタのようでした。
+tmpfs の側面から検索すると、答えが見つかりますが、それを既に知っている場合は答えが分かっていることになるので、検索しませんよね、という話です。
 ですから、この記事で、大したことではないけれども、ちょっと悩んでいる皆さんのエンジニアライフを豊かにする助けになれば、幸いです。
 
 ### 参考文献
@@ -176,3 +180,7 @@ tmpfs の側面から検索すると、それっぽいのが見つかります�
 
 - [mysql - Official Image | Docker Hub](https://hub.docker.com/_/mysql)
 - [docker-library/mysql: Docker Official Image packaging for MySQL Community Server](https://github.com/docker-library/mysql)
+
+#### Amazon Aurora
+
+- [Amazon Aurora MySQL バージョン 3 のデータベースエンジンの更新 - Amazon Aurora](https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraMySQLReleaseNotes/AuroraMySQL.Updates.30Updates.html)
