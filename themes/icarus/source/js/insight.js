@@ -4,13 +4,9 @@
  */
 // eslint-disable-next-line no-unused-vars
 function loadInsight(config, translation) {
-    const $main = $('.searchbox');
-    const $input = $main.find('.searchbox-input');
-    const $container = $main.find('.searchbox-body');
-
-    function section(title) {
-        return $('<section>').addClass('searchbox-result-section').append($('<header>').text(title));
-    }
+    const $main = document.querySelector('.searchbox');
+    const $input = $main.querySelector('.searchbox-input');
+    const $container = $main.querySelector('.searchbox-body');
 
     function merge(ranges) {
         let last;
@@ -82,70 +78,66 @@ function loadInsight(config, translation) {
     function searchItem(icon, title, slug, preview, url) {
         title = title != null && title !== '' ? title : translation.untitled;
 
-        let resultIcon = '';
+        const resultIcon = [];
         switch (icon) {
             case 'file':
-                resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
-                    <path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/>
-                </svg>`;
+                resultIcon.push('<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">',
+                    '<path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/>',
+                    '</svg>');
                 break;
             case 'folder':
-                resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
-                    <path d="M464 128H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48z"/>
-                </svg>`;
+                resultIcon.push('<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">',
+                    '<path d="M464 128H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V176c0-26.5-21.5-48-48-48z" />',
+                    '</svg>');
                 break;
             case 'tag':
-                resultIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
-                    <path d="M0 252.1V48C0 21.5 21.5 0 48 0h204.1a48 48 0 0 1 33.9 14.1l211.9 211.9c18.7 18.7 18.7 49.1 0 67.9L293.8 497.9c-18.7 18.7-49.1 18.7-67.9 0L14.1 286.1A48 48 0 0 1 0 252.1zM112 64c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/>
-                </svg>`;
+                resultIcon.push('<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">',
+                    '<path d="M0 252.1V48C0 21.5 21.5 0 48 0h204.1a48 48 0 0 1 33.9 14.1l211.9 211.9c18.7 18.7 18.7 49.1 0 67.9L293.8 497.9c-18.7 18.7-49.1 18.7-67.9 0L14.1 286.1A48 48 0 0 1 0 252.1zM112 64c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/>',
+                    '</svg>');
                 break;
         }
 
-        return `<a class="searchbox-result-item" href="${url}">
-            ${resultIcon ? '<span class="searchbox-result-icon">' + resultIcon + '</span>' : ''}
-            <span class="searchbox-result-content">
-                <span class="searchbox-result-title">${title}</span>
-                ${preview ? '<span class="searchbox-result-preview">' + preview + '</span>' : ''}
-            </span>
-        </a>`;
+        const resultItem = [
+            `<a class="searchbox-result-item" href="${url}">`,
+            `${resultIcon.length > 0 ? '<span class="searchbox-result-icon">' + resultIcon.join('') + '</span>' : ''}`,
+            '<span class="searchbox-result-content">',
+            `<span class="searchbox-result-title">${title}</span>`,
+            `${preview ? '<span class="searchbox-result-preview">' + preview + '</span>' : ''}`,
+            '</span>',
+            '</a>',
+        ];
+        return resultItem.join('');
     }
 
-    function sectionFactory(keywords, type, array) {
-        let $searchItems;
-        if (array.length === 0) return null;
-        const sectionTitle = translation[type.toLowerCase()];
+    function getSearchItems(keywords, type, array) {
+        if (array.length === 0) {
+            return null;
+        }
         switch (type) {
             case 'POSTS':
             case 'PAGES':
-                $searchItems = array.map(item => {
+                return array.map(item => {
                     const title = findAndHighlight(item.title, keywords);
                     const text = findAndHighlight(item.text, keywords, 100);
                     return searchItem('file', title, null, text, item.link);
                 });
-                break;
             case 'CATEGORIES':
             case 'TAGS':
-                $searchItems = array.map(item => {
+                return array.map(item => {
                     const name = findAndHighlight(item.name, keywords);
                     const slug = findAndHighlight(item.slug, keywords);
                     return searchItem(type === 'CATEGORIES' ? 'folder' : 'tag', name, slug, null, item.link);
                 });
-                break;
-            default:
-                return null;
         }
-        return section(sectionTitle).append($searchItems);
+        return null;
     }
 
     function parseKeywords(keywords) {
-        return keywords
-            .split(' ')
-            .filter(keyword => {
-                return !!keyword;
-            })
-            .map(keyword => {
-                return keyword.toLowerCase();
-            });
+        return keywords.split(' ').filter(keyword => {
+            return !!keyword;
+        }).map(keyword => {
+            return keyword.toLowerCase();
+        });
     }
 
     /**
@@ -235,131 +227,141 @@ function loadInsight(config, translation) {
         const tags = json.tags;
         const categories = json.categories;
         return {
-            posts: posts
-                .filter(filters.post)
-                .sort((a, b) => {
-                    return weights.post(b) - weights.post(a);
-                })
-                .slice(0, 5),
-            pages: pages
-                .filter(filters.page)
-                .sort((a, b) => {
-                    return weights.page(b) - weights.page(a);
-                })
-                .slice(0, 5),
-            categories: categories
-                .filter(filters.category)
-                .sort((a, b) => {
-                    return weights.category(b) - weights.category(a);
-                })
-                .slice(0, 5),
-            tags: tags
-                .filter(filters.tag)
-                .sort((a, b) => {
-                    return weights.tag(b) - weights.tag(a);
-                })
-                .slice(0, 5),
+            posts: posts.filter(filters.post).sort((a, b) => {
+                return weights.post(b) - weights.post(a);
+            }).slice(0, 5),
+            pages: pages.filter(filters.page).sort((a, b) => {
+                return weights.page(b) - weights.page(a);
+            }).slice(0, 5),
+            categories: categories.filter(filters.category).sort((a, b) => {
+                return weights.category(b) - weights.category(a);
+            }).slice(0, 5),
+            tags: tags.filter(filters.tag).sort((a, b) => {
+                return weights.tag(b) - weights.tag(a);
+            }).slice(0, 5),
         };
     }
 
     function searchResultToDOM(keywords, searchResult) {
-        $container.empty();
+        $container.innerHTML = '';
+        const parsedKeywords = parseKeywords(keywords);
         for (const key in searchResult) {
-            $container.append(
-                sectionFactory(parseKeywords(keywords), key.toUpperCase(), searchResult[key])
-            );
-        }
-    }
+            const type = key.toUpperCase();
+            const $searchItems = getSearchItems(parsedKeywords, type, searchResult[key]);
 
-    function scrollTo($item) {
-        if ($item.length === 0) return;
-        const wrapperHeight = $container[0].clientHeight;
-        const itemTop = $item.position().top - $container.scrollTop();
-        const itemBottom = $item[0].clientHeight + $item.position().top;
-        if (itemBottom > wrapperHeight + $container.scrollTop()) {
-            $container.scrollTop(itemBottom - $container[0].clientHeight);
-        }
-        if (itemTop < 0) {
-            $container.scrollTop($item.position().top);
+            if ($searchItems == null) {
+                continue;
+            }
+            const $section = document.createElement('section');
+            $section.classList.add('searchbox-result-section');
+            $section.innerHTML = `<header>${translation[type.toLowerCase()]}</header>${$searchItems.join('')}`;
+            $container.appendChild($section);
         }
     }
 
     function selectItemByDiff(value) {
-        const $items = $.makeArray($container.find('.searchbox-result-item'));
+        const $items = $container.querySelectorAll('.searchbox-result-item');
         let prevPosition = -1;
-        $items.forEach((item, index) => {
-            if ($(item).hasClass('active')) {
+        $items.forEach(($item, index) => {
+            if ($item.classList.contains('active')) {
                 prevPosition = index;
             }
         });
+        if (prevPosition > -1) {
+            $items.item(prevPosition).classList.remove('active');
+        }
         const nextPosition = ($items.length + prevPosition + value) % $items.length;
-        $($items[prevPosition]).removeClass('active');
-        $($items[nextPosition]).addClass('active');
-        scrollTo($($items[nextPosition]));
+        $items.item(nextPosition).classList.add('active');
+        $items.item(nextPosition).scrollIntoView(false);
     }
 
-    function gotoLink($item) {
-        if ($item && $item.length) {
-            location.href = $item.attr('href');
+    const getJson = new XMLHttpRequest();
+    getJson.onreadystatechange = () => {
+        if (getJson.readyState !== 4 || getJson.status !== 200) {
+            return;
         }
-    }
-
-    $.getJSON(config.contentUrl, json => {
         if (location.hash.trim() === '#insight-search') {
-            $main.addClass('show');
+            $main.classList.add('show');
         }
-        $input.on('input', function() {
-            const keywords = $(this).val();
-            searchResultToDOM(keywords, search(json, keywords));
+        const data = JSON.parse(getJson.responseText);
+        $input.addEventListener('input', event => {
+            const keywords = event.target.value;
+            searchResultToDOM(keywords, search(data, keywords));
         });
-        $input.trigger('input');
-    });
+        $input.dispatchEvent(new InputEvent('input'));
+    };
+    getJson.open('GET', config.contentUrl, true);
+    getJson.send(null);
 
     let touch = false;
-    $(document)
-        .on('click focus', '.navbar-main .search', () => {
-            $main.addClass('show');
-            $main.find('.searchbox-input').focus();
-        })
-        .on('click touchend', '.searchbox-result-item', function(e) {
-            if (e.type !== 'click' && !touch) {
-                return;
-            }
-            gotoLink($(this));
-            touch = false;
-        })
-        .on('click touchend', '.searchbox-close', e => {
-            if (e.type !== 'click' && !touch) {
-                return;
-            }
-            $('.navbar-main').css('pointer-events', 'none');
-            setTimeout(() => {
-                $('.navbar-main').css('pointer-events', 'auto');
-            }, 400);
-            $main.removeClass('show');
-            touch = false;
-        })
-        .on('keydown', e => {
-            if (!$main.hasClass('show')) return;
-            switch (e.keyCode) {
-                case 27: // ESC
-                    $main.removeClass('show');
-                    break;
-                case 38: // UP
-                    selectItemByDiff(-1);
-                    break;
-                case 40: // DOWN
-                    selectItemByDiff(1);
-                    break;
-                case 13: // ENTER
-                    gotoLink($container.find('.searchbox-result-item.active').eq(0));
-                    break;
-            }
-        })
-        .on('touchstart', e => {
-            touch = true;
-        })
-        .on('touchmove', e => {
+
+    document.querySelector('.navbar-main .search').addEventListener('click', () => {
+        $main.classList.add('show');
+        $main.querySelector('.searchbox-input').focus();
+    });
+    document.querySelectorAll('.searchbox-result-item').forEach($item => {
+        const gotoAction = $item => {
+            location.href = $item.getAttribute('href');
+        };
+        $item.addEventListener('click', () => {
+            gotoAction($item);
             touch = false;
         });
+        $item.addEventListener('touchend', () => {
+            if (!touch) {
+                return;
+            }
+            gotoAction($item);
+            touch = false;
+        });
+    });
+    document.querySelectorAll('.searchbox-close').forEach($close => {
+        const $navbarMain = document.querySelectorAll('.navbar-main');
+        const closeAction = () => {
+            $navbarMain.forEach($element => {
+                $element.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    $element.style.pointerEvents = 'auto';
+                }, 400);
+            });
+            $main.classList.remove('show');
+            touch = false;
+        };
+        $close.addEventListener('click', () => {
+            closeAction();
+        });
+        $close.addEventListener('touchend', () => {
+            if (!touch) {
+                return;
+            }
+            closeAction();
+        });
+    });
+    document.addEventListener('keydown', event => {
+        if (!$main.classList.contains('show')) {
+            return;
+        }
+        switch (event.code) {
+            case 'Escape':
+                $main.classList.remove('show');
+                break;
+            case 'ArrowUp':
+                selectItemByDiff(-1);
+                break;
+            case 'ArrowDown':
+                selectItemByDiff(1);
+                break;
+            case 'Enter':
+                $container.querySelectorAll('.searchbox-result-item.active').forEach($activated => {
+                    location.href = $activated.getAttribute('href');
+                });
+                break;
+        }
+    });
+    document.addEventListener('touchstart', () => {
+        touch = true;
+    });
+    document.addEventListener('touchmove', () => {
+        touch = false;
+    });
 }
