@@ -22,27 +22,10 @@
 
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();
+        const clipboardEnabled = typeof ClipboardJS !== 'undefined' && clipboard;
 
-        document.querySelectorAll('pre').forEach($element => {
-            $element.classList.add('highlight-body');
-            $element.outerHTML = '<div class="highlight hljs">' + $element.outerHTML + '</div>';
-        });
-
-        document.querySelectorAll('div.highlight').forEach($element => {
-            const left = document.createElement('div');
-            left.classList.add('level-left');
-            const right = document.createElement('div');
-            right.classList.add('level-right');
-            const $caption = $element.querySelector('.caption');
-            $caption.classList.add('level', 'is-mobile');
-            $caption.appendChild(left);
-            $caption.appendChild(right);
-            left.insertBefore($caption.querySelector('span'), left.firstElementChild);
-            $element.insertBefore($caption, $element.firstElementChild);
-        });
-
-        if (typeof ClipboardJS !== 'undefined' && clipboard) {
-            document.querySelectorAll('div.highlight div.caption').forEach($element => {
+        document.querySelectorAll('div.highlight div.caption').forEach($caption => {
+            if (clipboardEnabled) {
                 const copyIcon = document.createElement('i');
                 copyIcon.classList.add('svg-copy');
                 const button = document.createElement('button');
@@ -52,36 +35,22 @@
                 button.setAttribute('title', 'Copy');
                 button.setAttribute('data-clipboard-target', '#' + id + ' code');
                 button.appendChild(copyIcon);
-                $element.querySelector('div.level-right').appendChild(button);
-                $element.closest('div.highlight').setAttribute('id', id);
-            });
-            new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
-        }
+                $caption.querySelector('div.level-right').appendChild(button);
+                $caption.closest('div.highlight').setAttribute('id', id);
+                new ClipboardJS('.highlight .copy'); // eslint-disable-line no-new
+            }
 
-        if (fold) {
-            document.querySelectorAll('div.highlight').forEach($code => {
-                $code.classList.add('foldable');
-                const $caption = $code.querySelectorAll('div.caption span');
-                if ($caption.length > 0 && $caption[0].textContent.indexOf('>folded') > -1) {
-                    $caption[0].textContent = $caption[0].textContent.replace('>folded', '');
-                    $code.querySelectorAll('figcaption div.level-left').forEach($element => {
-                        $element.insertBefore(createFoldButton('folded'), $element.firstElementChild);
-                    });
-                    toggleFold($code, true);
-                    return;
-                }
-                $code.querySelectorAll('div.caption div.level-left').forEach($element => {
+            if (fold) {
+                $caption.parentElement.classList.add('foldable');
+                $caption.querySelectorAll('div.level-left').forEach($element => {
                     $element.insertBefore(createFoldButton(fold), $element.firstElementChild);
+                    $element.addEventListener('click', $event => {
+                        const $code = $event.target.closest('div.highlight');
+                        toggleFold($code, !$code.classList.contains('folded'));
+                    });
                 });
-                toggleFold($code, fold === 'folded');
-            });
-
-            document.querySelectorAll('div.highlight div.caption .level-left').forEach($element => {
-                $element.addEventListener('click', $event => {
-                    const $code = $event.target.closest('div.highlight');
-                    toggleFold($code, !$code.classList.contains('folded'));
-                });
-            });
-        }
+                toggleFold($caption, fold === 'folded');
+            }
+        });
     }
 }(window.ClipboardJS, window.IcarusThemeSettings));

@@ -50,15 +50,15 @@ markdown:
     - name: 'markdown-it-multimd-table'
       options:
         rowspan: true
+    - name: '../../../scripts/markdown-it-highlighter'
+syntax_highlighter: ''
 highlight:
-  enable: true
   line_number: false
   auto_detect: false
   tab_replace: ''
   wrap: false
   hljs: true
 prismjs:
-  enable: false
   preprocess: true
   line_number: true
   tab_replace: ''
