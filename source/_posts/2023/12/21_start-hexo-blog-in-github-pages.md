@@ -1,7 +1,7 @@
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-21 09:00:00
-updated: 2024-02-05 08:30:00
+updated: 2025-01-13 16:00:00
 tags:
   - ブログ作成
   - Hexo
@@ -36,11 +36,6 @@ cover:
 
 ## はじめに
 
-{% message color:info title:2024年02月05日更新 %}
-2024年02月05日に、この記事を「ブログ作成」シリーズとして前後編の二つに分割しました。この記事は、前編の記事となります。
-後半は、「{% post_link open-hexo-blog-up-to-the-public 'Hexo製ブログを公開してGoogle検索できるようにする' %}」の記事で読むことができます。
-{% endmessage %}
-
 ### この記事を書いている人
 
 KDDI の子会社である mediba でテックリードをしている雑食系雑用エンジニア。
@@ -63,48 +58,42 @@ KDDI の子会社である mediba でテックリードをしている雑食系�
 
 ### この記事が生まれたきっかけ
 
-書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}を投稿する場所と方法を探していたことがきっかけです。
-
-作中のスクショを張りたかったことと、R18 指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
-GitHub Pages で静的サイトホスティングができることは知っていたので、場所はすぐに決まりました。
-あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。
-紆余曲折あって、Hexo.js に辿り着き、これを使うことにしました。
-
-こうして、このブログが Hexo.js + GitHub Pages で爆誕し、さらにこの記事が生み出されることとなったのです。
-
-なお、Hexo と書かれていると、**ヘクソ**と読みがちですが、**ヘキソ**の読みが正しいようです。
-ぶっちゃけ、どっちでも伝わるとは思うので、どっちの呼び方でも良いと思います。
+書いた{% post_link riddle-joker-review '「RIDDLE JOKER」のレビュー' %}を投稿する場所と方法を探していたことがきっかけです。作中のスクショを張りたかったことと、R18 指定のゲームだったこともあり、Ameba や FC2 等のブログサービスを使用せず、ホスティングしようと考えました。
+場所は、GitHub Pages で静的サイトホスティングができることは知っていたので、すぐに決まりました。あとは、ブログに必要なウェブページ一式を生成するジェネレーターを探すだけでした。紆余曲折あって、Hexo.js に辿り着き、これを使うことにしました。
+こうして、このブログが Hexo.js + GitHub Pages で爆誕し、さらにこの記事が生み出されたのです。
+なお、Hexo と書かれていると、**ヘクソ**と読みがちですが、**ヘキソ**の読みが正しいようです。ぶっちゃけ、どっちでも伝わるとは思うので、どっちの呼び方でも良いと思います。
 
 ## 手元でブログを作ろう
 
-御託を並べる暇があったら、早く作成手順を見せろ、とそろそろ言われそうなので、構築編に移りましょう。
-まずは、手元でブログを作って、ローカル環境のパソコン内で動かしてみます。
+御託を並べる暇があったら、早く作成手順を見せろ、とそろそろ言われそうなので、構築編に移りましょう。まずは、手元でブログを作って、ローカル環境のパソコン内で動かしてみます。
 
 ### ローカル環境整備
 
 {% message color:info %}
 Node.js のバージョン管理ツールをインストールしておくと楽です。
-・Windows => nvm-windows をインストール。
-・Mac または Linux => お好きなツールをインストール。
+
+- Windows の場合、nvm-windows をインストール。
+- Mac または Linux の場合、お好きなツールをインストール。
 
 Git はインストール必須です。
-・Windows => [Git for Windowsを公式サイトからダウンロード](https://gitforwindows.org/)し、インストール。
-・Mac => HomeBrew 等でインストール。
-・Linux => apt-get や yum でインストール。
+
+- Windows の場合は、[Git for Windowsを公式サイトからダウンロード](https://gitforwindows.org/)し、インストール。
+- Mac の場合は、HomeBrew 等でインストール。
+- Linux の場合は、apt-get や yum でインストール。
 {% endmessage %}
 
 #### (1) Node.js 最新版インストール
 
-1. Node.js のバージョン管理ツールから最新版をインストールします。
-大抵のツールは、インストール後にバージョン切り替えをしないので、自分でインストールしたバージョンに変更するコマンドを実行してください。
-その後、`node -v`コマンドで、最新バージョンに切り替わっていることを確認してください。
+1. Node.js のバージョン管理ツールから最新版をインストールします。 
+    - 大抵のツールは、インストール後にバージョン切り替えをしないので、自分でインストールしたバージョンに変更するコマンドを実行してください。
+    - その後、`node -v` コマンドで、最新バージョンに切り替わっていることを確認してください。
 2. npm を最新バージョンに更新します。
 
-#### (2) hexo-cli インストール
+#### (2) hexo-cli コマンドのインストール
 
-npm 経由で、hexo-cli をインストールします。
+npm 経由で、`hexo-cli` コマンドをインストールします。
 
-```shell terminal
+```shell
 npm install -g hexo-cli
 ```
 
@@ -112,19 +101,21 @@ npm install -g hexo-cli
 
 #### (1) ブログ一式を作成
 
-以下のコマンドで、"blog"ディレクトリ配下にブログ一式を作成します。
-"blog"は、任意の名前に変えても大丈夫です。
+以下のコマンドで、blog ディレクトリ配下にブログ一式を作成します。ディレクトリの名前は、任意のものに変えても大丈夫です。
 
-```shell terminal
+```shell
 hexo init blog
 ```
 
 #### (2) npm install
 
-"blog"ディレクトリ(※)に移動し、`npm install`コマンドを実行します。
-(※) 任意の名前で作成した場合、"blog"を読み替えてください。
+作成したディレクトリに移動し、`npm install` コマンドを実行します。
 
-```shell terminal
+{% message color:info %}
+手順 (1) で、ディレクトリを違う名前で作成した場合は、blog をその名前に読み替えてください。
+{% endmessage %}
+
+```shell
 cd ./blog
 npm install
 ```
@@ -136,11 +127,11 @@ npm install
 では、下記のコマンドを実行してセットアップしたブログを表示してみましょう！
 
 {% message color:warning %}
-Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必要です。
+Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。
 それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
-```shell terminal
+```shell
 npm run clean && npm run server
 ```
 
@@ -152,24 +143,24 @@ npm run clean && npm run server
 最低限のことはできるのですが、見た通りデザインがイケてません。オシャレ感が足りません。
 そんな人のために、[Hexo公式から有志が作成したテーマを検索](https://hexo.io/themes/)できるようになっています。
 
+#### おすすめのテーマは？
+
 検索してみるとたくさんあって悩みますが、私の一番のおすすめは Icarus テーマです。
 Icarus テーマの[公式ドキュメントにインストール手順がある](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)ので、導入してみてください。
 
 {% message color:warning %}
-`npm install`で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
-`git clone`する方法、または、GitHub から Download zip する方法で導入することを推奨します。
-{% endmessage %}
-{% message color:info %}
-Icarus テーマの最新版 v5.x は、Hexo v6.x ベースで作成されています。
-そのため、ブログ側の Hexo を最新版の v7.x ではなく v6.x にすると、互換性に関わる問題が発生しにくいでしょう。
-私は念のため、Hexo v7.x を`npm uninstall`した後に、Hexo v6.x を`npm install`しました。
+`npm install` で導入した場合は、フォントを変更できません（不可能ではないが非推奨）。
+`git clone` する方法、または、GitHub から Download zip する方法で導入することを推奨します。
 {% endmessage %}
 
 ### ブログ設定を整える
 
 手元で確認した時に「ブログのタイトルを変えてぇなぁ」等、思った方はいらっしゃると思います。
-"blog"ディレクトリ(※)直下に、ブログの設定ファイルがあるので、その中身を良い感じに書き換えていきましょう。
-(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、"blog"をそれに読み替えてください。
+blog ディレクトリの直下に、ブログの設定ファイルがあるので、その中身を良い感じに書き換えていきましょう。
+
+{% message color:info %}
+セクション「ブログセットアップ」の手順 (1) で、ディレクトリを違う名前で作成した場合は、blog をその名前に読み替えてください。
+{% endmessage %}
 
 ```yaml _config.yml
 # Site
@@ -205,16 +196,16 @@ Hexo で記事を作成するには、以下のコマンドを実行します。
 記事名（コマンド中の article-name 部分）は、自由に入力してかまいません。
 {% endmessage %}
 
-```shell terminal
+```shell
 hexo new post "article-name"
 ```
 
 #### (2) 記事のメタ情報を書く
 
-記事は、"source/_posts"ディレクトリ直下に、MarkDown 形式のファイル（コマンド通りに実行した時は、"2023_12_22_article-name.md"）が生成されます。
+記事は、`source/_posts` ディレクトリ直下に、Markdown 形式のファイル（コマンド通りに実行した時は、`2023_12_22_article-name.md`）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
 
-```markdown source/_posts/2023_12_22_article-name.md
+```markdown
 ---
 title: article-name
 date: 2024-12-22 09:00:00
@@ -222,16 +213,13 @@ tags:
 ---
 ```
 
-`---`で囲まれた部分を"Front Matter"と呼び、Hexo では記事のメタ情報を記載する場所です。
-"title"は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。
-他にも、テーマによってはカスタムフィールドがあります（例：Icarus テーマなら、"thumbnail"や"cover"等）ので、お好みで設定してください。
+`---` で囲まれた部分を「Front Matter」と呼び、Hexo では記事のメタ情報を記載する場所です。
+title は、記事タイトルに使われるので、ここを任意の日本語に変えちゃいましょう。他にも、テーマによってはカスタムフィールドがあります（例：Icarus テーマなら、thumbnail や cover 等）ので、お好みで設定してください。
 
 #### (3) 記事の本文を書く
 
-そして、ブログの本文は、"Front Matter"の後に記述します。
-
-実際の記事の執筆は、下記のように"Front Matter"に色々と設定したり、本文を書いたりします。
-なお、本文中に`<!-- more -->`を入れると、その位置に「続きを読む」ボタンを差し込めます。
+そして、ブログの本文は、「Front Matter」の後に記述します。
+実際の記事の執筆は、下記のように「Front Matter」に色々と設定したり、本文を書いたりします。なお、本文中に `<!-- more -->` を入れると、その位置に「続きを読む」ボタンを差し込めます。
 
 ```markdown source/_posts/2023_12_22_article-name.md
 ---
@@ -257,20 +245,19 @@ category: Technology
 
 ### その他カスタマイズする
 
-ここまでの手順で、ブログとしてはほぼ完成しています。
+ここまでの手順で、ブログとしてはほぼ完成しています。あとは、テーマのデザインを弄ったり、プラグインを入れたりなど、皆様のお好みでどうぞ。
+
+#### Icarus テーマのカスタマイズ
 
 Icarus テーマを導入した方は、日本語の表示時フォントが"Microsoft YaHei"になっています。
 見慣れているフォントに変えたいなら、フォント設定に関する処理を書き換えると変更できます（※前項「カスタムテーマ導入」の注意事項を読んでください）。
 やり方については、[「Hexoのicarusテーマのフォントの変え方」](https://omathin.com/icarus-theme-change/)や[「HEXO の表示フォントを変更」](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)をまねてみると良いでしょう。
 
-あとは、テーマのデザインを弄ったり、プラグインを入れたりなど、皆様のお好みでどうぞ。
-リンクプレビュー機能を導入したい方は、私がプラグインを作ってみたので、以下の記事も併せて読んでみてください。
+#### リンクプレビュー機能のプラグイン
+
+リンクプレビュー機能を導入したい方は、私が自作プラグインを作ってみたので、以下の記事も併せて読んでみてください。
 
 {% link_preview https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/ %}hexo-tag-ogp-link-previewプラグインの公開秘話{% endlink_preview %}
-
-## 後編へ続く
-
-続きは、「{% post_link open-hexo-blog-up-to-the-public 'Hexo製ブログを公開してGoogle検索できるようにする' %}」をご覧ください。
 
 ## おわりに
 
@@ -278,4 +265,30 @@ Icarus テーマを導入した方は、日本語の表示時フォントが"Mic
 私は、十数年前の学生時代に、さくらインターネット + WordPress でブログを作っていましたが、このようになるとは露程も思っていませんでした。
 イマどきホスティングでブログを作ろうなんて酔狂な人は少ないかもしれませんが、機会があれば是非参考にしてみてください。
 
-あぁ、早く仕事片付かないかなぁ。千恋万花プレイしたいなぁ。
+### 関連記事
+
+#### ブログ作成
+
+- {% post_link open-hexo-blog-up-to-the-public '後編「Hexo製ブログを公開してGoogle検索できるようにする」' %}
+
+#### 自作Hexoプラグイン
+
+- {% post_link hexo-link-preview-npm-publish '「hexo-tag-ogp-link-preview v1.0」のリリース解説' %}
+- {% post_link update-hexo-link-preview-plugin-v1-1-0 '「hexo-tag-ogp-link-preview v1.1」のリリース解説' %}
+
+### 参考文献
+
+#### ローカル環境整備
+
+- [Git for Windows](https://gitforwindows.org/)
+
+#### Hexo 公式
+
+- [設定 | Hexo](https://hexo.io/ja/docs/configuration)
+- [Themes | Hexo](https://hexo.io/themes/)
+
+#### icarus テーマ
+
+- [Getting Started with Icarus - Icarus](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)
+- [Hexoのicarusテーマのフォントの変え方 - omathin blog](https://omathin.com/icarus-theme-change/)
+- [HEXO の表示フォントを変更 - FENNOTE](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)
