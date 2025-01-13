@@ -66,7 +66,6 @@
                         location.hash = anchor;
                     }
                 });
-                $heading.style.scrollMargin = '1em';
             }
         }
     }
