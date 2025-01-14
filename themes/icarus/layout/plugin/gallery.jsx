@@ -3,7 +3,7 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Gallery extends Component {
     render() {
-        const { head, lightGallery } = this.props;
+        const { head, jQuery, lightGallery } = this.props;
 
         if (head) {
             return <Fragment>
@@ -11,6 +11,7 @@ class Gallery extends Component {
                 <noscript>
                     <link rel="stylesheet" href={lightGallery.cssUrl} />
                 </noscript>
+                <script src={jQuery.jsUrl} defer></script>
                 <script src={lightGallery.jsUrl} defer />
             </Fragment>;
         }
@@ -29,6 +30,9 @@ Gallery.Cacheable = cacheComponent(Gallery, 'plugin.gallery', props => {
 
     return {
         head: head,
+        jQuery: {
+            jsUrl: helper.cdn('jquery', '3.7.1', 'dist/jquery.min.js'),
+        },
         lightGallery: {
             jsUrl: helper.cdn('lightgallery', '1.10.0', 'dist/js/lightgallery.min.js'),
             cssUrl: helper.cdn('lightgallery', '1.10.0', 'dist/css/lightgallery.min.css'),

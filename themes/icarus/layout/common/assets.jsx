@@ -69,7 +69,6 @@ function getScriptUrl(helper, config) {
 
     return {
         main: url_for('/js/main.js'),
-        jQuery: cdn('jquery', '3.7.1', 'dist/jquery.min.js'),
         moment: cdn('moment', '2.30.1', 'min/moment-with-locales.min.js'),
         relativeDateTime: url_for('/js/relative_datetime.js'),
         searchJs: url_for(`/js/${search.type}.js`),
@@ -173,12 +172,11 @@ module.exports = class extends Component {
         const cssFlags = { hasIcon, hasCode, hasGallery };
         const jsFlags = { momentEnabled, searchEnabled, tocEnabled, hasCode, hasClipboard, hasGallery };
         const { main: mainCssUrl, ...cssUrls } = getCssUrl(helper, config, type);
-        const { jQuery: jQueryScriptUrl, ...jsUrls } = getScriptUrl(helper, config);
+        const jsUrls = getScriptUrl(helper, config);
 
         return <Fragment>
             <link rel="stylesheet" href={mainCssUrl} />
             {this.renderPreloadCss(cssFlags, cssUrls)}
-            <script src={jQueryScriptUrl} defer></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
             {this.renderDeferScript(jsFlags, jsUrls)}
         </Fragment>;
