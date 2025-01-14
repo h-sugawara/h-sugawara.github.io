@@ -10,9 +10,9 @@ class BackToTop extends Component {
             return <script src={jsUrl} defer></script>;
         }
 
-        return <a id="back-to-top" title={title} href="javascript:;">
+        return <button id="back-to-top" type="button" title={title} className="button">
             <FontAwesomeIcon type="fa-chevron-up" />
-        </a>;
+        </button>;
     }
 }
 
