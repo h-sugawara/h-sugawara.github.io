@@ -89,24 +89,23 @@ module.exports = class extends Component {
 
             /*
              * smartphone layout:
-             *   ~552px=small, 553px-624px=medium, 625px-696px=large, 697px-768px=default
+             *   ~468px=small, 469px-596px=medium, 597px-724px=large, 725px-768px=default
              * tablet layout:
-             *   769px-875px=small, 876px-981px=medium, 982px-1087px=large
+             *   769px-905px=medium, 906px-1087px=large
              * desktop layout:
              *   1088px-1471px=large, 1472px~=default
              */
             const sourceMap = {
                 small: [
-                    '(max-width:552px)',
-                    '(min-width:769px) and (max-width:875px)',
+                    '(max-width:468px)',
                 ],
                 medium: [
-                    '(min-width:553px) and (max-width:624px)',
-                    '(min-width:876px) and (max-width:981px)',
+                    '(min-width:469px) and (max-width:596px)',
+                    '(min-width:769px) and (max-width:905px)',
                 ],
                 large: [
-                    '(min-width:625px) and (max-width:696px)',
-                    '(min-width:982px) and (max-width:1471px)',
+                    '(min-width:597px) and (max-width:724px)',
+                    '(min-width:906px) and (max-width:1471px)',
                 ],
             };
             Object.keys(sources).forEach(name => {
