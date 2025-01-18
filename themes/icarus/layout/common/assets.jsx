@@ -13,18 +13,20 @@ function getHighlightThemeName(highlight, article) {
 
 function getHighlightConfig(article) {
     let fold = 'unfolded';
-    let clipboard = true;
+    let hasFold = false;
+    let hasClipboard = true;
     if (article && article.highlight) {
         if (typeof article.highlight.clipboard !== 'undefined') {
-            clipboard = !!article.highlight.clipboard;
+            hasClipboard = !!article.highlight.clipboard;
         }
         if (typeof article.highlight.fold === 'string') {
             fold = article.highlight.fold;
+            hasFold = fold !== '';
         }
     }
-    const embeddedConfig = `var IcarusThemeSettings={article:{highlight:{clipboard:${clipboard},fold:'${fold}'}}};`;
+    const embeddedConfig = `var IcarusThemeSettings={article:{highlight:{clipboard:${hasClipboard},fold:'${fold}'}}};`;
 
-    return { clipboard, embeddedConfig };
+    return { hasClipboard, hasFold, embeddedConfig };
 }
 
 function getMainCssUrl(url_for, type, variant) {
@@ -117,7 +119,7 @@ module.exports = class extends Component {
     }
 
     renderDeferScript(flags, urls) {
-        const { momentEnabled, searchEnabled, tocEnabled, hasCode, hasClipboard, hasGallery } = flags;
+        const { momentEnabled, searchEnabled, tocEnabled, hasCode, hasFold, hasClipboard, hasGallery } = flags;
         const {
             main: mainJsUrl,
             moment: momentJsUrl,
@@ -140,7 +142,7 @@ module.exports = class extends Component {
                 <script src={tocJsUrl} defer></script>
                 <script src={toggleTocJsUrl} defer></script>
             </Fragment> : null}
-            {hasCode ? <Fragment>
+            {hasCode && (hasFold || hasClipboard) ? <Fragment>
                 {hasClipboard && <script src={clipboardJsUrl} defer></script>}
                 <script src={codeBlockJsUrl} defer></script>
             </Fragment> : null}
@@ -151,7 +153,7 @@ module.exports = class extends Component {
 
     render() {
         const { site, config, page, helper, head, type } = this.props;
-        const { clipboard: hasClipboard, embeddedConfig } = getHighlightConfig(config.article);
+        const { hasClipboard, hasFold, embeddedConfig } = getHighlightConfig(config.article);
         const language = page.lang || page.language || config.language;
 
         const hasIcon = page.has_icon || config.has_icon;
@@ -163,14 +165,14 @@ module.exports = class extends Component {
 
         if (!head) {
             return <Fragment>
-                {hasCode && <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>}
+                {hasCode && (hasFold || hasClipboard) ? <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script> : null}
                 {momentEnabled && <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>}
                 <Plugins site={site} config={config} helper={helper} page={page} head={false} />
             </Fragment>;
         }
 
         const cssFlags = { hasIcon, hasCode, hasGallery };
-        const jsFlags = { momentEnabled, searchEnabled, tocEnabled, hasCode, hasClipboard, hasGallery };
+        const jsFlags = { momentEnabled, searchEnabled, tocEnabled, hasCode, hasFold, hasClipboard, hasGallery };
         const { main: mainCssUrl, ...cssUrls } = getCssUrl(helper, config, type);
         const jsUrls = getScriptUrl(helper, config);
 
