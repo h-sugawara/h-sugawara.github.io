@@ -7,7 +7,7 @@
  * --------------------------------- */
 $link-preview-card-border ?= 1px solid #cbd0d3
 $link-preview-card-radius ?= 8px
-$link-preview-card-margin ?= 1rem 0
+$link-preview-card-margin ?= 1rem auto
 $link-preview-card-bg-color ?= #f2f3f5
 $link-preview-card-og-description-color ?= #525252
 
@@ -85,6 +85,7 @@ $link-preview-card-og-description-color ?= #525252
         .link-preview
             display: block
             overflow: hidden
+            max-width: 480px
             border: $link-preview-card-border
             border-radius: $link-preview-card-radius
             margin: $link-preview-card-margin
@@ -93,8 +94,11 @@ $link-preview-card-og-description-color ?= #525252
             background-color: $link-preview-card-bg-color
 
             .og-image
+                display: flex
+                justify-content: center
+                max-width: 100%
+
                 img
-                    display: block
                     object-fit: cover
                     object-position: center
                     aspect-ratio: 40 / 21
@@ -102,7 +106,7 @@ $link-preview-card-og-description-color ?= #525252
                     height: auto
 
             .descriptions
-                padding: 0.5rem 1rem
+                padding: 0.5rem 0.75rem
 
                 .og-title
                     font-size: $size-4
@@ -111,6 +115,14 @@ $link-preview-card-og-description-color ?= #525252
 
                 .og-description
                     color: $link-preview-card-og-description-color
+
+        +from($desktop)
+            .link-preview
+                display: flex
+                max-width: 100%
+
+                .og-image
+                    max-width: 180px
 
 // Overflow table
 .table-overflow
