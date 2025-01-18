@@ -3,7 +3,8 @@
  * @author PPOffice { @link https://github.com/ppoffice }
  */
 // eslint-disable-next-line no-unused-vars
-function loadInsight(config, translation) {
+(function(settings) {
+    const { config, translation } = settings;
     const $main = document.querySelector('.searchbox');
     const $input = $main.querySelector('.searchbox-input');
     const $container = $main.querySelector('.searchbox-body');
@@ -364,4 +365,4 @@ function loadInsight(config, translation) {
     document.addEventListener('touchmove', () => {
         touch = false;
     });
-}
+}(window.InsightSettings));

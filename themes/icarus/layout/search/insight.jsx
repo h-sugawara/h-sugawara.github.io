@@ -1,27 +1,29 @@
-const { Component } = require('inferno');
+const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Insight extends Component {
     render() {
         const { translation, contentUrl } = this.props;
 
-        const js = 'document.addEventListener(\'DOMContentLoaded\', function () {loadInsight('
-            .concat(JSON.stringify({ contentUrl: contentUrl }), ', ')
-            .concat(JSON.stringify(translation), ');});');
+        const js = 'var InsightSettings={config:'
+            .concat(JSON.stringify({ contentUrl: contentUrl }), ', translation:')
+            .concat(JSON.stringify(translation), '};');
 
-        return <div className="searchbox">
-            <div className="searchbox-container">
-                <div className="searchbox-header">
-                    <div className="searchbox-header-container">
-                        <label className="searchbox-label" htmlFor="search">{translation.title}</label>
-                        <button className="searchbox-close" type="button">&#xD7;</button>
+        return <Fragment>
+            <div className="searchbox">
+                <div className="searchbox-container">
+                    <div className="searchbox-header">
+                        <div className="searchbox-header-container">
+                            <label className="searchbox-label" htmlFor="search">{translation.title}</label>
+                            <button className="searchbox-close" type="button">&#xD7;</button>
+                        </div>
+                        <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
                     </div>
-                    <input className="searchbox-input" type="text" id="search" placeholder={translation.hint} />
+                    <div className="searchbox-body"></div>
                 </div>
-                <div className="searchbox-body"></div>
-                <script dangerouslySetInnerHTML={{ __html: js }}></script>
             </div>
-        </div>;
+            <script dangerouslySetInnerHTML={{ __html: js }}></script>
+        </Fragment>;
     }
 }
 
