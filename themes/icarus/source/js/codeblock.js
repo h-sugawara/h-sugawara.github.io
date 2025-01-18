@@ -2,9 +2,9 @@
 (function(ClipboardJS, config) {
     function toggleFold($codeBlock, isFolded) {
         const $toggle = $codeBlock.querySelector('.fold i');
-        !isFolded ? $codeBlock.classList.remove('folded') : $codeBlock.classList.add('folded');
-        $toggle.classList.remove(!isFolded ? 'svg-angle-right' : 'svg-angle-down');
-        $toggle.classList.add(!isFolded ? 'svg-angle-down' : 'svg-angle-right');
+        isFolded ? $codeBlock.classList.add('folded') : $codeBlock.classList.remove('folded');
+        $toggle.classList.remove(isFolded ? 'svg-angle-down' : 'svg-angle-right');
+        $toggle.classList.add(isFolded ? 'svg-angle-right' : 'svg-angle-down');
     }
 
     function createFoldButton(fold) {
@@ -49,7 +49,7 @@
                         toggleFold($code, !$code.classList.contains('folded'));
                     });
                 });
-                toggleFold($caption, fold === 'folded');
+                toggleFold($caption.parentElement, fold === 'folded');
             }
         });
     }
