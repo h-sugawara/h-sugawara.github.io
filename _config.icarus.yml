@@ -145,7 +145,7 @@ article:
         # https://github.com/highlightjs/highlight.js/tree/master/src/styles
         theme: vs2015
         # Show copy code button
-        clipboard: true
+        clipboard: false
         # Default folding status of the code blocks. Can be "", "folded", "unfolded"
         fold: ''
     # Whether to show estimated article reading time
