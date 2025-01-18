@@ -205,7 +205,7 @@ hexo new post "article-name"
 記事は、`source/_posts` ディレクトリ直下に、Markdown 形式のファイル（コマンド通りに実行した時は、`2023_12_22_article-name.md`）が生成されます。
 このファイルを開いてみると、中身はこんな感じになっています。
 
-```markdown
+```yaml
 ---
 title: article-name
 date: 2024-12-22 09:00:00
@@ -221,7 +221,7 @@ title は、記事タイトルに使われるので、ここを任意の日本�
 そして、ブログの本文は、「Front Matter」の後に記述します。
 実際の記事の執筆は、下記のように「Front Matter」に色々と設定したり、本文を書いたりします。なお、本文中に `<!-- more -->` を入れると、その位置に「続きを読む」ボタンを差し込めます。
 
-```markdown source/_posts/2023_12_22_article-name.md
+```yaml source/_posts/2023_12_22_article-name.md
 ---
 title: Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう
 date: 2023-12-22 09:00:00
