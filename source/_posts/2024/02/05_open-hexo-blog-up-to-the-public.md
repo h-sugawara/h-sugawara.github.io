@@ -1,7 +1,7 @@
 ---
 title: Hexo製ブログを公開してGoogle検索できるようにする
 date: 2024-02-05 08:30:00
-updated: 2024-02-05 08:30:00
+updated: 2025-01-19 14:00:00
 tags:
   - ブログ作成
   - Hexo
@@ -25,64 +25,46 @@ cover:
     large: /images/technology/blog/cover_large.webp
 ---
 
-手元で作成したHexo.js製ブログを、GitHub Pagesで公開して、Google検索できるようにするまでの手順を、この記事にまとめました。
-GitHub Pagesでサイトを公開しようと考えている方の参考になれば幸いです。
+手元で作成した Hexo.js 製ブログを、GitHub Pages で公開して、Google 検索できるようにする手順をご紹介します。
 
 <!-- more -->
 
 ## はじめに
 
-{% message color:info %}
-この記事は、「ブログ作成」シリーズの後編です。
-前編の記事である「{% post_link start-hexo-blog-in-github-pages 'Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう' %}」を未読の方は、この記事を読む前にそちらから拝読ください。
-{% endmessage %}
-
-### 前後編に分割した理由
-
-下記の二つの理由を持って、記事を前後編の二つの記事に分割することにしました。
-
-1. PageSpeed Insights で、ページ内の DOM 要素数が 800 を超えていると、警告を受けたから。
-   - テンプレートやスタイルのリファクタを頑張ったが、800 を下回れなかった。
-2. 技術的な内容にも関わらず、長すぎて可読性が落ちていると思ったから。
-   - いくつか記事を書いた結果、読了時間が 10 分程度だとバランスが良いという結論になった。
-
 ### この記事の存在意義
 
-読者様が、ブログ作成シリーズの記事をひと通り読んだ後に Hexo.js + GitHub Pages のブログを作成できるようになっていること。
-もしくは、これらの記事を読みながらブログを作成できること。
+ブログ作成シリーズの記事をひと通り読んだ後に Hexo.js + GitHub Pages のブログを作成できるようになっていること。もしくは、これらの記事を読みながらブログを作成できること。
 
 ## ブログをお外に公開しよう
 
-さて、手元で表示しているブログが満足する出来になって、そろそろお外に公開したくなってきた頃かと思います。
-このまま、後編（公開編）の手順に進みましょう。
-
 ### レポジトリ作成
 
-{% message color:info %}
-GitHub のアカウントはあらかじめ作成してください。
-{% endmessage %}
 {% message color:warning %}
-無料で使いたい場合は、パブリックレポジトリにする必要があります。
+GitHub のアカウントはあらかじめ作成してください。
 {% endmessage %}
 
 #### (1) レポジトリ作成
 
-自分のアカウントを使って、GitHub Pages 用のレポジトリを作成します。
-画像付きの作成手順が[GitHub公式ドキュメントにまとめられています](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)ので、ご確認ください。
+自分のアカウントを使って、GitHub Pages 用のレポジトリを作成します。画像付きの作成手順が、[GitHub 公式ドキュメント](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)にまとめられていますので、ご確認ください。
+
+{% message color:info %}
+無料で使いたい場合は、パブリックレポジトリを作成する必要があります。
+{% endmessage %}
 
 #### (2) 手元にチェックアウト
 
-作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。
-それから、構築実践編で作成した"blog"ディレクトリ(※)の中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーしましょう。
-(※) `hexo init`コマンド実行時に、任意の名前で作成した場合、"blog"をそれに読み替えてください。
+レポジトリ作成後に、Git コマンド等のツールを使用して、そのレポジトリを手元にチェックアウトします。それから、前編記事で作成した blog ディレクトリの中身を丸ごと、チェックアウトした公開用レポジトリのディレクトリ直下にコピーします。
+なお、先にこの手順を行ってから、前編の構築手順を行うこともできます。
 
-ちなみに、この手順を行ってから、構築手順を行うこともできます。
+{% message color:info %}
+前編の構築手順（`hexo init` コマンド）で、ディレクトリを違う名前で作成した場合は、blog をその名前に読み替えてください。
+{% endmessage %}
 
 ### デプロイ設定
 
 #### (1) デプロイ設定を変更
 
-ブログの設定ファイル"_config.yml"にあるデプロイの設定を、下記のように書き換えましょう。
+ブログの設定ファイル `_config.yml` にあるデプロイの設定を、下記のように書き換えます。
 
 ```yaml _config.yml
 # Include / Exclude file(s)
@@ -102,9 +84,9 @@ deploy:
 
 #### (2) .nojekyll ファイルを作成
 
-チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリに移動し、".nojekyll"ファイルを作成しましょう。
+チェックアウトした公開レポジトリのルートディレクトリ配下の source ディレクトリに移動してから、`.nojekyll` ファイルを作成します。
 
-```shell terminal
+```shell
 cd ./source
 touch .nojekyll
 ```
@@ -113,48 +95,49 @@ touch .nojekyll
 
 ### 下書き記事を使いこなす
 
-`hexo new post`コマンドで作った記事は、公開状態の投稿記事になります。
-ということは、ブログをお外に公開すると、今後は「書きかけの記事が投稿されちゃった」事故が起こりえます。
-非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防げます。
-このセクションでは、下書き記事の作成方法と、Hexo サーバーでの表示方法、下書き記事の公開方法を紹介します。
+`hexo new post` コマンドで作った記事は、公開状態の投稿記事になります。ということは、ブログをお外に公開すると、今後は「書きかけの記事が投稿された」事故が起こりえます。非公開状態の下書き記事として作成するコマンドもありますので、それを使えば事故を防げます。
+このセクションでは、下書き記事の作成方法と Hexo サーバーでの表示方法、そして下書き記事の公開方法を紹介します。
 
 #### (1) 下書き記事を作成
 
 次のコマンドで、下書き記事を作成します。
 
-```shell terminal
+{% message color:info %}
+コマンド中の `article-name` 部分は、記事名ですので、自由に入力してかまいません。
+{% endmessage %}
+
+```shell
 hexo new draft "article-name"
 ```
 
 #### (2) Hexo サーバーの設定を変更
 
-下書き記事は、手元の Hexo サーバーを起動しても、ブログの記事として表示されません。
-"package.json"にある scripts の"server"コマンドに手を加えて、表示する記事として認識させる必要があります。
+下書き記事は、手元の Hexo サーバーを起動しても、ブログの記事として表示されないため、設定変更が必要です。package.json にある `scripts` フィールドの `server` コマンドに `drafts` オプションを追加して、表示する記事として認識させます。
 
-```text package.json（※コピーせず、ご自身の手で修正してください）
+```json package.json（※注：scripts フィールドのみ抜粋）
+{
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server --drafts" // 「 --drafts」を後ろに追加
-  },
+    "server": "hexo server --drafts"
+  }
+}
 ```
 
 #### (3) Hexo サーバーの起動
 
-このあとは、通常通り Hexo サーバーを起動させるだけです。
+通常通り Hexo サーバーを起動させます。
 
-```shell terminal
+```shell
 npm run clean && npm run server
 ```
 
 #### (4) 下書き記事を投稿記事に変換
 
-さて、上記の手順は、あくまで手元で表示できるようにしただけであって、お外では依然として下書き記事が非公開状態として扱われます。
-前述の通り、投稿記事は公開状態として扱われるので、下書き記事を投稿記事に変換しましょう。
-下記のコマンドを実行することで実現できます。
+さて、今までの手順は、あくまで手元で表示できるようにしただけであり、お外では依然として下書き記事が非公開状態として扱われます。前述の通り、投稿記事は公開状態として扱われるので、下書き記事を投稿記事に変換しなければいけません。それは、次のコマンドを実行することで実現できます。
 
-```shell terminal
+```shell
 hexo publish "article-name"
 ```
 
@@ -164,22 +147,17 @@ hexo publish "article-name"
 デプロイは下記のコマンドを実行するだけで終わります。
 
 {% message color:warning %}
-Windows で下記のコマンドを実行するには、"PowerShell 7.x"が必要です。
-それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
+Windows で下記のコマンドを実行するには、PowerShell 7.x が必要です。それ以下のバージョンしか使えないなど制約がある場合は、二つのコマンドを順番に実行してください。
 {% endmessage %}
 
-```shell terminal
+```shell
 npm run clean && npm run deploy
 ```
 
 ### カスタムドメイン登録
 
-GitHub Pages のデフォルトドメインは、`アカウントID.github.io`となるため、嫌な人もいるでしょう。
-もちろん、カスタムドメインを無料で登録することもできます。
-詳細については、[GitHub公式ドキュメントの説明](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)にお任せします。
-
-ただし、カスタムドメインの取得自体はご自身でやる必要がありますので、ドメインを取得できるサービスをご利用ください。
-ドメインだけ取りたいなら、[お名前ドットコム](https://www.onamae.com/)がオススメです。
+GitHub Pages のデフォルトドメインは、`アカウントID.github.io` となるため、嫌な人もいるでしょう。もちろん、カスタムドメインを無料で登録することもできます。詳細については、[GitHub 公式ドキュメントの説明](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)をご覧ください。
+ただし、カスタムドメインの取得自体はご自身でやる必要がありますので、ドメインを取得できるサービスをご利用ください。ドメインだけ取りたいなら、[お名前ドットコム](https://www.onamae.com/)がオススメです。
 
 ## 検索できるようにしよう
 
@@ -191,11 +169,8 @@ GitHub Pages のデフォルトドメインは、`アカウントID.github.io`�
 所有者確認のみしたい場合は、この手順はスキップしても問題ありません。
 {% endmessage %}
 
-お外に公開したブログのアクセス解析と、"Google Search Console"（以下、GSC）の所有者確認のために、"Google Analytics"（以下、GA）にアカウントを作成します。
-
-アカウント作成は、[GoogleのAnalyticsページ](http://www.google.com/analytics)から行ってください。
-単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。
-Google 検索すると、[詳しく説明してくれている方たち](https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2)がいますので、彼らのページを見ることをオススメします。
+お外に公開したブログのアクセス解析と、「Google Search Console（以降、GSC と略）」の所有者確認のために、「Google Analytics（以降、GA と略）」にアカウントを作成します。
+アカウント作成は、[Google の Analytics ページ](http://www.google.com/analytics)から行ってください。単語がよくわからなかったり、手順は面倒だったりしますが、作業自体はそれほど難しくはないので、ここでの説明は省きます。Google 検索で「Google Analytics 登録」で調べると、[詳しく説明してくれている方たち](https://www.google.com/search?client=firefox-b-d&q=Google+Analytics+%E7%99%BB%E9%8C%B2)がいますので、彼らのページを見ることをオススメします。
 
 ### サイトマップ作成
 
@@ -203,15 +178,15 @@ Google 検索すると、[詳しく説明してくれている方たち](https:/
 
 #### (1) プラグインのインストール
 
-もちろんサイトマップは、手作業で作る必要はなく、Hexo 公式が`hexo-generator-sitemap`プラグインを用意しているので、それをインストールしましょう。
+サイトマップを手作業で作る必要はなく、Hexo 公式が hexo-generator-sitemap プラグインを用意しているので、それをインストールします。
 
-```shell terminal
+```shell
 npm install hexo-generator-sitemap
 ```
 
 #### (2) サイトマップ作成設定の追加
 
-インストールが終わったら、ブログの設定ファイル"_config.yml"を開いて、サイトマップ作成用の設定を追加します。
+ブログの設定ファイル `_config.yml` に、サイトマップ作成用の設定を追加します。
 
 ```yaml _config.yml
 # Sitemap
@@ -222,27 +197,68 @@ sitemap:
   categories: false
 ```
 
-設定はこれだけでOKです。デプロイコマンドを実行する度に、Hexo がブログのサイトマップを作って、GitHub Pages にデプロイしてくれるようになります。
+設定はこれだけで完了です。以降は、デプロイコマンドを実行する度に、Hexo がブログのサイトマップを作って、GitHub Pages にデプロイしてくれます。
 
 ### Google Search Console 登録
 
-GSCに[ブログの登録（または、プロパティ追加）](https://search.google.com/search-console/about?hl=ja)を行います。
-プロパティ追加を行うことで、Google 検索結果にインデックスを作成できます。
+GSC で、[ブログの登録（または、プロパティ追加）](https://search.google.com/search-console/about?hl=ja)を行います。プロパティ追加を行うことで、Google 検索結果のインデックスを作成できます。
 
-#### (1) 所有者確認
+#### (1) 所有権の確認
 
-GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの5つの中から確認方法を選んでください。
-前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML タグか、ドメインのどちらかで確認を行うのがオススメです。
-なお、HTML ファイルでの確認方法は、Hexo が自動でテンプレートを適用して表示してしまい、Google が確認できないため、使用不可能です。
+GA・HTML ファイル・HTML タグ・Google タグマネージャー・ドメインの五つの中から確認方法を選びます。前述の手順で GA 登録を行っている方は、GA を選ぶと良いでしょう。それ以外の方は、HTML ファイル、または、HTML タグのどちらかで確認を行うのがオススメです。
+
+##### HTML ファイルで確認する
+
+まずは、GSC サイト内の「設定」の「所有権の確認」から、HTML ファイルをダウンロードします。次に、ダウンロードしたファイルをコピーして、ブログの source ディレクトリ直下に貼り付けます。
+それから、ブログの設定ファイル `_config.yml` の `skip_render` に、ダウンロードした HTML ファイルの名前を、以下のように設定します。
+
+```yaml _config.yml
+skip_render:
+  # ファイル名は、人によって異なりますので、コピペはしないでください
+  - 'google0000000000000000.html'
+```
+
+##### HTML タグで確認する
+
+{% message color:warning %}
+Icarus テーマをご利用の場合の設定方法になります。
+{% endmessage %}
+
+まずは、GSC サイト内の「設定」の「所有権の確認」から、HTML のメタタグをコピーします。次に、Icarus のテーマ設定ファイル `_config.icarus.yml` を開き、以下のように設定します。
+
+```yaml _config.icarus.yml
+head:
+  # 途中省略
+  meta:
+    # <meta name="theme-google-site-verification" content="abcdefghijklmnopqrstuvwxyz_01234567890_ABCD"> の場合、
+    # 'name="google-site-verification";content="meta タグの content 属性の値"' に置き換えます。
+    # meta タグの content 属性の値は、人によって異なりますので、コピペはしないでください
+    - 'name="google-site-verification";content="abcdefghijklmnopqrstuvwxyz_01234567890_ABCD"'
+```
 
 #### (2) サイトマップ登録
 
-所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません（※私はされなかった）。
-ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見られますので、一つずつインデックス登録してあげましょう。
+所有者確認が済んだ後に、作成したサイトマップの登録を行います。数日後にクロールしてくれるかもしれません。ちなみに、後日「検出 - インデックス未登録」とされた場合は、未登録ページの一覧が見られますので、一つずつインデックス登録してあげましょう。
 
 ## おわりに
 
-後編の記事で紹介した GitHub Pages や、Google Search Console は、ブログでなくても活用できる機会は結構ありそうなので、ご覧になった方の何かしらの一助となれば嬉しいです。
+GitHub Pages や、Google Search Console は、ブログでなくても活用できる機会は結構ありそうなので、ご覧になった方の何かしらの一助となれば嬉しいです。
 
-仕事が忙しくて、千恋万花をプレイし始めたにも関わらず、ほとんど出来てない今日この頃。
-記事を分割した本当の理由はお察しください。
+### 関連記事
+
+#### ブログ作成
+
+- {% post_link start-hexo-blog-in-github-pages '前編「Hexo.js+GitHub Pagesで高機能ブログを手軽に作ろう」' %}
+
+### 参考文献
+
+#### GitHub 公式
+
+- [GitHub Pages サイトを作成する - GitHub Docs](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)
+- [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+
+#### 各種サービス
+
+- [ドメイン取得は最安値0円～｜ドメイン取るならお名前.com](https://www.onamae.com/)
+- [お客様のビジネスに適した分析ツールとソリューション - Google アナリティクス](https://marketingplatform.google.com/about/analytics/)
+- [Google Search Console](https://search.google.com/search-console/about?hl=ja)
