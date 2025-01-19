@@ -33,7 +33,7 @@ cover:
 
 ### 何のためのプラグインか
 
-`hexo-tag-ogp-link-preview` は、OpenGraph プロトコル対応のページから取得したデータを用いてリンクプレビューを生成し、Hexo のブログ記事に埋め込むためのプラグインです。
+hexo-tag-ogp-link-preview は、OpenGraph プロトコル対応のページから取得したデータを用いてリンクプレビューを生成し、Hexo のブログ記事に埋め込むためのプラグインです。
 
 {% link_preview https://www.npmjs.com/package/hexo-tag-ogp-link-preview %}
 hexo-tag-ogp-link-preview@npm
@@ -54,7 +54,7 @@ FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示される
 
 #### (2) 既存のリンクプレビュープラグイン導入
 
-Hexo と Icarus には、リンクプレビュー機能がバンドルされていません。そのため、まずは実現方法についてググりました。すると、「[Hexo+Icarus リンクカードを設定する](https://circleken.net/2020/10/post32/)」という、まさに正鵠を射る記事を発見。そこに書かれていた `hexo-tag-link-preview` を `npm install` して使うことにしました。
+Hexo と Icarus には、リンクプレビュー機能がバンドルされていません。そのため、まずは実現方法についてググりました。すると、「[Hexo+Icarus リンクカードを設定する](https://circleken.net/2020/10/post32/)」という、まさに正鵠を射る記事を発見。そこに書かれていた hexo-tag-link-preview を `npm install` して使うことにしました。
 しかし、レビュー記事をプレビュー表示してみると、生成したページに問題が発生しています。なんと、Fanza Games 版のリンクが、「undefined」ではありませんか。
 
 #### (3) 長期間メンテナンスされていない
@@ -63,7 +63,7 @@ Hexo と Icarus には、リンクプレビュー機能がバンドルされて�
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
 {% message color:info title:2025年01月16日追記 %}
-長期間メンテナンスされていなかった `hexo-tag-link-preview` ですが、2024年7月についにアーカイブされました。また、作者のブログ記事が削除されているため、リンクを解除しました。
+長期間メンテナンスされていなかった hexo-tag-link-preview ですが、2024年7月についにアーカイブされました。また、作者のブログ記事が削除されているため、リンクを解除しました。
 {% endmessage %}
 
 #### (4) 自作プラグイン開発＆公開へ
@@ -74,15 +74,15 @@ Hexo と Icarus には、リンクプレビュー機能がバンドルされて�
 
 #### (1) 命名規則が異なる
 
-Hexo.js は、snake_case がデファクトスタンダードのようです。そのため、`hexo-tag-link-preview` が lowerCamelCase だったところを、`hexo-tag-ogp-link-preview` では snake_case に変えています。これは、タグ名と設定項目の両方に適用されます（例えば、タグ名は `linkPreview` から `link_preview` に、設定項目は、`className` が `class_name` に変わっています）。
+Hexo.js は、snake_case がデファクトスタンダードのようです。そのため、hexo-tag-link-preview が lowerCamelCase だったところを、hexo-tag-ogp-link-preview では snake_case に変えています。これは、タグ名と設定項目の両方に適用されます（例えば、タグ名は `linkPreview` から `link_preview` に、設定項目は、`className` が `class_name` に変わっています）。
 この違いさえ忘れずに、正しく修正すれば、プラグインそのものを差し替えても、そのまま動作する仕様となっています。
 
 #### (2) パラメータの順番を問わない
 
-`hexo-tag-ogp-link-preview` は、`hexo-tag-link-preview` と異なり、タグのパラメータの記載順を入れ替えても正しく認識します。
+hexo-tag-ogp-link-preview は、hexo-tag-link-preview と異なり、タグのパラメータの記載順を入れ替えても正しく認識します。
 
 {% message color:info title:2025年01月16日追記 %}
-`hexo-tag-ogp-link-preview` は、バージョン 1.1.0 から、名前付きパラメータ機能がサポートされ、必要なパラメータだけを任意に設定できるように機能強化されました。
+hexo-tag-ogp-link-preview は、バージョン 1.1.0 から、名前付きパラメータがサポートされ、必要なパラメータだけを任意に設定できるように機能強化されました。
 {% endmessage %}
 
 ## デザイン設定例
@@ -141,7 +141,7 @@ article
 
 #### (2) Hexo設定
 
-続いて、Hexo 設定ファイルで、`hexo-tag-ogp-link-preview` の設定調整を行います。
+続いて、Hexo 設定ファイルで、hexo-tag-ogp-link-preview の設定調整を行います。
 ただし、デフォルト設定のままでは、FaceBook 風デザインの再現を阻む不都合が二つ起こります。一つはリンクの文字色が目立つということ、もう一つは画像がギャラリーにアイテムとして追加されてしまうということです。
 これらの不都合に対しては、`class_name.anchor_link` に `link-muted link-preview` を設定することでリンクの文字色が目立たないようにでき、`class_name.image` に `not-gallery-item` を設定することでギャラリーへのアイテム追加を阻止できます。
 設定ファイルは、以下のように記載してください。
