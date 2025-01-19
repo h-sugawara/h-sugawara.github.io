@@ -100,7 +100,7 @@ module.exports = class extends Component {
             <link rel="preload" href={subCssUrl} as="style" onLoad={onLoadForPreloadCss} />
             {hasIcon && <link rel="preload" href={iconCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
             {hasCode ? <Fragment>
-                <link rel="preload" href={codeFontCssUrl} as="style" onLoad={onLoadForPreloadCss} />
+                {codeFontCssUrl && <link rel="preload" href={codeFontCssUrl} as="style" onLoad={onLoadForPreloadCss} />}
                 <link rel="preload" href={hlThemeCssUrl} as="style" onLoad={onLoadForPreloadCss} />
                 <link rel="preload" href={codeBlockCssUrl} as="style" onLoad={onLoadForPreloadCss} />
             </Fragment> : null}
@@ -109,7 +109,7 @@ module.exports = class extends Component {
                 <link rel="stylesheet" href={subCssUrl} />
                 {hasIcon && <link rel="stylesheet" href={iconCssUrl} />}
                 {hasCode ? <Fragment>
-                    <link rel="stylesheet" href={codeFontCssUrl} />
+                    {codeFontCssUrl && <link rel="stylesheet" href={codeFontCssUrl} />}
                     <link rel="stylesheet" href={hlThemeCssUrl} />
                     <link rel="stylesheet" href={codeBlockCssUrl} />
                 </Fragment> : null}
