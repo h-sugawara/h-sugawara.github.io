@@ -25,7 +25,7 @@ cover:
     large: /images/technology/infrastructure/cover_large.webp
 ---
 
-Docker Compose で MySQL コンテナを取り扱っている時に、compose.yml ファイルにひと手間を加えて、Restart コマンドで初期化させる方法をご紹介します。
+compose.yml ファイルにひと手間を加えて、Restart コマンドで MySQL コンテナに初期化処理させる方法をご紹介します。
 
 <!-- more -->
 

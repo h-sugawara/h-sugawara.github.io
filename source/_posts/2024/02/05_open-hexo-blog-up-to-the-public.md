@@ -25,7 +25,7 @@ cover:
     large: /images/technology/blog/cover_large.webp
 ---
 
-手元で作成した Hexo.js 製ブログを、GitHub Pages で公開して、Google 検索できるようにする手順をご紹介します。
+手元で作成した Hexo.js 製ブログを GitHub Pages で公開して、Google 検索できるようにする手順をご紹介します。
 
 <!-- more -->
 

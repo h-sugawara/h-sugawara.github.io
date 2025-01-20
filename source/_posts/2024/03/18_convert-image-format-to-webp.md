@@ -1,5 +1,5 @@
 ---
-title: PNGやJPEGをWebPに変換してサイトを高速化しよう
+title: WebP形式の画像に統一してウェブサイトを高速化しよう
 date: 2024-03-18 08:30:00
 updated: 2025-01-14 22:00:00
 tags:
@@ -24,7 +24,7 @@ cover:
     large: /images/technology/sitespeed/cover_large.webp
 ---
 
-JPEG 形式や PNG 形式の画像から、ウェブサイトの高速化が期待できる優秀な次世代フォーマット「WebP」へ変換する方法をご紹介します。
+ウェブサイトで使っている JPEG 形式や PNG 形式の画像から、優秀な次世代フォーマットである WebP に変換する方法をご紹介します。
 
 <!-- more -->
 
