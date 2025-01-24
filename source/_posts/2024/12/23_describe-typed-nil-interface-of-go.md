@@ -1,7 +1,7 @@
 ---
 title: Goのinterfaceをnilとして取り扱う時に注意すべきこと
 date: 2024-12-23 09:00:00
-updated: 2024-12-23 09:00:00
+updated: 2025-01-24 09:00:00
 tags:
   - 技術解説
   - 解説
@@ -25,7 +25,7 @@ cover:
     large: /images/technology/programming/cover_large.webp
 ---
 
-Go の interface は取り扱い方によって、nil 判定の結果が想定通りにならないことがあります。その問題についての解説と対処方法をご紹介します。
+Go の interface は取り扱い方によって、nil 判定の結果が想定通りになりません。その問題についての解説と対処方法をご紹介します。
 
 <!-- more -->
 
@@ -41,18 +41,18 @@ Go の interface は取り扱い方によって、nil 判定の結果が想定�
 
 #### 問1「interface の戻り値」
 
-以下のコードでは、error インターフェイス型の戻り値を持つ関数 Action1 で、MyError 構造体ポインタ型の nil を値として返却しています。
+以下のコードでは、`error` インターフェイス型の戻り値を持つ関数 `Action1` で、`MyError` 構造体ポインタ型の nil を値として返却しています。
 
-```go struct を interface として返した場合
+```go
 type MyError struct {
 	error
 }
 
 func main() {
 	if err := Action1(false); err != nil {
-		fmt.Printf("Action1 return value is not nil, err is %#v.\n", err)
+		fmt.Printf("err is %#v.\n", err)
 	} else {
-		fmt.Println("Action1 return value is nil.")
+		fmt.Println("err is nil.")
 	}
 }
 
@@ -65,17 +65,17 @@ func Action1(hasError bool) error {
 }
 ```
 
-このとき、main 関数を実行して表示出力される内容は、以下のうちどれでしょうか？（複数選択不可）
+このとき、`main` 関数を実行して表示出力される内容は、以下のうちどれでしょうか？（複数選択不可）
 
-1. `Action1 return value is not nil, err is &main.MyError{error:error(nil)}.`
-2. `Action1 return value is not nil, err is (*main.MyError)(nil).`
-3. `Action1 return value is nil.`
+1. 「err is &main.MyError{error:error(nil)}.」
+2. 「err is (*main.MyError)(nil).」
+3. 「err is nil.」
 
 #### 問2「interface への代入」
 
-以下のコードでは、関数 Action2 で MyError 構造体ポインタ型の nil を返し、それを main 関数で宣言した error インターフェイス型の変数 err に代入します。
+以下のコードでは、関数 `Action2` で `MyError` 構造体ポインタ型の nil を返し、それを `main` 関数で宣言した `error` インターフェイス型の変数 `err` に代入します。
 
-```go interface に struct を代入する場合
+```go
 type MyError struct {
 	error
 }
@@ -83,9 +83,9 @@ type MyError struct {
 func main() {
 	var err error
 	if err = Action2(false); err != nil {
-		fmt.Printf("Action2 return value is not nil, err is %#v.\n", err)
+		fmt.Printf("err is %#v.\n", err)
 	} else {
-		fmt.Println("Action2 return value is nil.")
+		fmt.Println("err is nil.")
 	}
 }
 
@@ -97,17 +97,17 @@ func Action2(hasError bool) *MyError {
 }
 ```
 
-このとき、main 関数を実行して表示出力される内容は、以下のうちどれでしょうか？（複数選択不可）
+このとき、`main` 関数を実行して表示出力される内容は、以下のうちどれでしょうか？（複数選択不可）
 
-1. `Action2 return value is not nil, err is &main.MyError{error:error(nil)}.`
-2. `Action2 return value is not nil, err is (*main.MyError)(nil).`
-3. `Action2 return value is nil.`
+1. 「err is &main.MyError{error:error(nil)}.」
+2. 「err is (*main.MyError)(nil).」
+3. 「err is nil.」
 
 #### 問3「interface の引数」
 
-以下のコードでは、問1と問2で登場した関数 Action1 及び Action2 と、error インターフェイス型の引数を持つ Action3 関数があります。
+以下のコードでは、問1と問2で登場した関数 `Action1` 及び `Action2` と、`error` インターフェイス型の引数を持つ `Action3` 関数があります。
 
-```go 引数を interface として受け取る場合
+```go
 type MyError struct {
 	error
 }
@@ -141,13 +141,13 @@ func Action3(err error) {
 }
 ```
 
-この Action3 関数を実行して表示出力される内容は、次のうちどれかになります。
+この `Action3` 関数を実行して表示出力される内容は、次のうちどれかになります。
 
-A. `err is &main.MyError{error:error(nil)}.`
-B. `err is (*main.MyError)(nil).`
-C. `err is nil.`
+A. 「err is &main.MyError{error:error(nil)}.」
+B. 「err is (*main.MyError)(nil).」
+C. 「err is nil.」
 
-以上より、関数 Action1 及び Action2 の戻り値を、関数 Action3 の引数にそれぞれ渡した時、表示出力される内容の組み合わせとして正しいものはどれでしょうか？（組み合わせの順番は前後可）
+以上より、関数 `Action1` 及び `Action2` の戻り値を、関数 `Action3` の引数にそれぞれ渡した時、表示出力される内容の組み合わせとして正しいものはどれでしょうか？（組み合わせの順番は前後可）
 
 1. AとA
 2. AとB
@@ -168,22 +168,22 @@ Go は、このようなインターフェイスの取り扱い方をすると�
 
 ### interface の実装
 
-まずは、[interface 実装（リンク先は Go 1.23.3）](https://github.com/golang/go/blob/go1.23.3/src/runtime/runtime2.go#L205)です。
+まずは、interface 実装です。Go 1.23.3 では、以下の通り、`iface` という名前の構造体になります。
 
-```go インターフェイスを表す構造体
+```go
 type iface struct {
 	tab  *itab
 	data unsafe.Pointer
 }
 ```
 
-インターフェイスの実装は、tab と data の2つのフィールドを持つ iface 構造体です。それぞれのフィールドでは、tab に型情報を、data に値を保持します。ここからインターフェイスは、「型情報と値のペアでデータを保持する」仕様であることが読み取れます。よって、インターフェイスへ構造体ポインタのゼロ値を代入すれば、型情報を持ち値が「nil」の状態を作り出せる、ということも分かります。
+この構造体は、`tab` フィールドに型情報を、`data` フィールドに実際の値を、それぞれ代入させるという使い方がされています。したがって、インターフェイスは、「型情報と値のペアでデータを保持する」仕様であることが読み取れます。よって、インターフェイスへ構造体ポインタのゼロ値を代入すれば、型情報を持ち値が「nil」の状態を作り出せる、ということも分かりますでしょうか。
 
 ### interface の比較処理
 
-次に、実装を前提として、[interface の比較処理（リンク先は Go 1.23.3）](https://github.com/golang/go/blob/go1.23.3/src/runtime/alg.go#L380)を見ていきます。
+次に、実装を前提として、Go 1.23.3 における interface の比較処理を見ていきます。
 
-```go インターフェイスの比較処理
+```go
 func interequal(p, q unsafe.Pointer) bool {
 	x := *(*iface)(p)
 	y := *(*iface)(q)
@@ -206,10 +206,9 @@ func ifaceeq(tab *itab, x, y unsafe.Pointer) bool {
 }
 ```
 
-比較処理は、2ステップで行われます。まずは、interequal 関数で型情報の一致を確認します。次に、ifaceeq 関数で値の一致を確認します。
-ではここで、構造体ポインタのゼロ値を代入した error インターフェイスと、「nil」の比較について考えてみましょう。「nil」は、見方を変えると、型情報と値のどちらも「nil」であるインターフェイスです。一方の error インターフェイスの方は、型情報を持ち値が「nil」の状態です。
-ゆえに、1ステップ目にこれらの型情報を比較した時点で、「不一致（false）」が確定します。そのため、理解度確認の全ての問における`err != nil`の判定は、必ず true です。
-したがって、前述の実装とこの比較処理によって、不都合な問題が発生しています。
+比較処理は、二段階で行われます。まずは、`interequal` 関数で型情報の一致を確認します。次に、`ifaceeq` 関数で値の一致を確認します。
+ではここで、構造体ポインタのゼロ値を代入した `error` インターフェイスと、「nil」の比較について考えてみましょう。「nil」は、見方を変えると、型情報と値のどちらも「nil」であるインターフェイスです。一方で、 `error` インターフェイスは、型情報を持ち値が「nil」の状態です。
+ゆえに、一段階目にこれらの型情報を比較した時点で、「不一致（false）」が確定します。そのため、理解度確認の全ての問における `err != nil` の判定は、必ず「true」です。したがって、実装と比較処理の仕様によって、不都合な問題が発生しています。
 
 ## 問題回避のための処方箋
 
@@ -217,9 +216,9 @@ func ifaceeq(tab *itab, x, y unsafe.Pointer) bool {
 
 ### 関数の戻り値の場合
 
-インターフェイスを関数の戻り値にする時は、「nil」の場合と「nil」ではない場合のそれぞれに分岐させて return する必要があります。
+問1 のようにインターフェイスを関数の戻り値にする時は、「nil」とそうではない場合のそれぞれに分岐させてから、値を返す必要があります。
 
-```go 問1は「Action1」関数を改修すると想定通りに動作する
+```go
 func Action1(hasError bool) error {
 	if hasError {
 		return new(MyError)
@@ -231,32 +230,31 @@ func Action1(hasError bool) error {
 
 ### 変数代入の場合
 
-変数の場合、代入元と代入先は同じ型に揃えましょう。そう覚えておくとミスを減らせます。
+問2 のように変数に代入している場合、代入元と代入先の型は、同じにしましょう。そう覚えておくとミスを減らせます。
 
-```go 問2は「main」関数を改修すると想定通りに動作する
+```go
 func main() {
 	// 変数 err の型を、error インターフェイスではなく、MyError 構造体ポインタに変える
 	var err *MyError
 	if err = Action2(false); err != nil {
-		fmt.Printf("Action2 return value is not nil, err is %#v.\n", err)
+		fmt.Printf("err is %#v.\n", err)
 	} else {
-		fmt.Println("Action2 return value is nil.")
+		fmt.Println("err is nil.")
 	}
 }
 ```
 
-なお、if ステートメントのスコープで限定的に変数を使えるのであれば、変数 err 宣言を削除して、`if err := Action2(false); err != nil {`に書き換えることでも正しく動作します。
+なお、`if` ステートメントのスコープ変数を限定的に使えるのであれば、変数 `err` 宣言を削除して、`if err := Action2(false); err != nil {` に書き換えることでも正しく動作します。
 
 ### 関数の引数の場合
 
-関数の引数でインターフェイスを使いたい場合、問題の発生を回避するためには、型アサーション・リフレクション・Typed-nil 判定のうちいずれか1つと、nil 判定を組み合わせます。
+問3 のように関数の引数でインターフェイスを使う場合、「型アサーション」「リフレクション」「Typed-nil 判定」のうちいずれか一つと nil 判定を組み合わせて、問題の発生を回避します。
 
 #### (1) 型アサーション
 
-A Tour of Go にも載っている「[型アサーション](https://go-tour-jp.appspot.com/methods/15)」と組み合わせる正統派な方法です。
-ただし、引数になる全ての構造体を知っている必要があります。また、場合により別パッケージとの依存関係を作るデメリットもあります。
+A Tour of Go にも載っている「型アサーション」と組み合わせる正統派な方法です。ただし、引数になりうる全ての構造体を知っている必要があります。また、場合によっては別パッケージとの依存関係を作るデメリットもあります。
 
-```go 問3の「Action3」を改修する
+```go
 func Action3(err error) {
 	// err を MyError 構造体ポインタであるとアサーションしてから nil 判定する
 	myErr, isMyError := err.(*MyError)
@@ -268,10 +266,9 @@ func Action3(err error) {
 }
 ```
 
-なお、型アサーションの一種である「[Type switches](https://go-tour-jp.appspot.com/methods/16)」を使いたい場合は、次のようにします。
-ただし、これは型の判定しかしないので、case ステートメントのスコープごとに、値の nil 判定処理を追加する必要があります。コーディングにかかるコストを考えると、前述の if ステートメントで判定する方法を用いるべきでしょう。
+ちなみに、型アサーションの一種である「Type switches」を使いたい場合は、次のようにします。ただし、これは型判定のみのため、`case` ステートメント毎に、値の nil 判定処理をしなければいけません。コーディングコストを考えると、前述の `if` ステートメントで判定する方法を用いるべきでしょう。
 
-```go 問3の「Action3」を改修する（「Type switches」版）
+```go
 func Action3(err error) {
 	switch myErr := err.(type) {
 	case *MyError:
@@ -289,7 +286,7 @@ func Action3(err error) {
 
 リフレクションと組み合わせる万能な方法です。シンプルで、reflect パッケージ以外の依存関係も増やしません。しかし、リフレクションを使いたくない人には、デメリットでしょう。
 
-```go 問3の「Action3」を改修する
+```go
 func Action3(err error) {
 	// err が、完全な nil ではない、かつ、Typed-nil ではないことを条件にする
 	if err != nil && !reflect.ValueOf(err).IsNil() {
@@ -302,9 +299,9 @@ func Action3(err error) {
 
 #### (3) Typed-nil 判定
 
-インターフェイスの比較処理を逆手に取った非推奨な方法です。これは、型アサーションの完全下位互換となるアプローチです。前述の方法と比較して、未知の構造体で正しく判定できないデメリットがあるため、利用は控えましょう。
+インターフェイスの比較処理を逆手に取った非推奨な方法です。これは、型アサーションの完全下位互換となるアプローチになります。前述の方法と比較して、未知の構造体で正しく判定できないデメリットがあるため、利用は控えた方がよいでしょう。
 
-```go 問3の「Action3」を改修する
+```go
 func Action3(err error) {
 	// err が、完全な nil ではない、かつ、MyError 構造体ポインタの nil と一致しないことを条件とする
 	if err != nil && err != (*MyError)(nil) {
@@ -317,8 +314,7 @@ func Action3(err error) {
 
 ## おわりに
 
-インターフェイスの nil 判定に関する仕様は、デベロッパーフレンドリーとは言えません。
-これを知った方の中には、型や値の詳細確認はリフレクションの役割で、nil 判定は型は無視して値が nil であれば true で良いのでは？と、考えた人も少なからずいるかと思います。
+インターフェイスの nil 判定に関する仕様は、デベロッパーフレンドリーとは言えません。これを知った方の中には、型や値の詳細確認はリフレクションの役割で、nil 判定は型を無視して値が nil であれば true で良いのでは？と、考えた人も少なからずいるかと思います。
 とはいえ、言語の根本仕様の変更は今更しないでしょうから（Go が v2 になる時は一縷の望みに縋っても良さそうですが）、そういうものだと覚えるしかなさそうです。
 
 ### 参考文献
