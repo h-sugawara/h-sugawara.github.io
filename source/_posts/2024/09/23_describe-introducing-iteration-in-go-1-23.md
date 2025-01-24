@@ -138,7 +138,7 @@ func (b *Buffer) ReadLines() iter.Seq[string] {
 {% endmessage %}
 
 ```go
--- main.go --
+// -- main.go --
 func main() {
 	titles := []string{
 		"天色＊アイルノーツ",
@@ -156,7 +156,7 @@ func main() {
 	}
 }
 
--- bytes/buffer.go --
+// -- bytes/buffer.go --
 func (b *Buffer) ReadLines() iter.Seq2[string, error] {
 	return func(yield func(string, error) bool) {
 		for {
