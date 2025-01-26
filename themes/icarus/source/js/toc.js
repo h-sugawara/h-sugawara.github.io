@@ -59,12 +59,6 @@
                     if (typeof $heading.scrollIntoView === 'function') {
                         $heading.scrollIntoView({ behavior: 'smooth' });
                     }
-                    const anchor = $menu.getAttribute('href');
-                    if (history.pushState) {
-                        history.pushState(null, null, anchor);
-                    } else {
-                        location.hash = anchor;
-                    }
                 });
             }
         }
