@@ -48,6 +48,10 @@ $navbar-item-margin-h ?= 0
             width: $body-size
             height: $body-size * $body-line-height
 
+        +tablet()
+            &.catalogue
+                display: none !important
+
     +until($navbar-breakpoint)
         .navbar-menu
             justify-content: center
@@ -58,11 +62,6 @@ $navbar-item-margin-h ?= 0
 
         .navbar-end
             margin-left: 0
-
-    +tablet()
-        .navbar-item
-            &.catalogue
-                display: none !important
 
 .navbar-brand
     justify-content: center

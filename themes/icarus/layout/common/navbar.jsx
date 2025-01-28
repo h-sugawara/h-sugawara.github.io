@@ -74,10 +74,11 @@ class Navbar extends Component {
 module.exports = cacheComponent(Navbar, 'common.navbar', props => {
     const { config, helper, page } = props;
     const { url_for, _p, __ } = helper;
-    const { logo, title, navbar, widgets, search } = config;
+    const { logo, title, navbar, widgets, search, plugins } = config;
+    const { back_to_top = false } = plugins;
 
     const hasTocWidget = Array.isArray(widgets) && widgets.find(widget => widget.type === 'toc');
-    const showToc = (config.toc === true || page.toc) && hasTocWidget && ['page', 'post'].includes(page.layout);
+    const showToc = (config.toc === true || page.toc) && hasTocWidget && !back_to_top && ['page', 'post'].includes(page.layout);
 
     const menu = {};
     if (navbar && navbar.menu) {
