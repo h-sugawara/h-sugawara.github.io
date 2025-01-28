@@ -57,10 +57,13 @@ function getColumnVisibilityClass(columnCount, position) {
     return columnCount === 3 && position === 'right' ? 'is-hidden-touch is-hidden-desktop-only' : '';
 }
 
-function isColumnSticky(config, position) {
+function isColumnSticky(config, page, position, widgets) {
     const { sidebar } = config;
-
-    return typeof sidebar === 'object' && position in sidebar && sidebar[position].sticky === true;
+    if (typeof sidebar === 'object' && position in sidebar && sidebar[position].sticky === true) {
+        return true;
+    }
+    const hasTocWidget = Array.isArray(widgets) && widgets.find(widget => widget.type === 'toc');
+    return (config.toc === true || page.toc) && hasTocWidget && ['page', 'post'].includes(page.layout);
 }
 
 class Widgets extends Component {
@@ -88,7 +91,7 @@ class Widgets extends Component {
             ['column-' + position]: true,
             [columnSize]: columnSize !== '',
             [columnVisibility]: columnVisibility !== '',
-            'is-sticky': isColumnSticky(config, position),
+            'is-sticky': isColumnSticky(config, page, position, widgets),
         })}>
             {widgets.map(widget => {
                 // widget type is not defined
@@ -110,7 +113,7 @@ class Widgets extends Component {
             {position === 'left' && hasColumn(config.widgets, 'right', config, page) ? <div className={classname({
                 'column-right-shadow': true,
                 'is-hidden-widescreen': true,
-                'is-sticky': isColumnSticky(config, 'right'),
+                'is-sticky': isColumnSticky(config, page, 'right', widgets),
             })}></div> : null}
         </div>;
     }
