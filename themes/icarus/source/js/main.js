@@ -13,7 +13,7 @@
 
     function adjustNavbar() {
         const navbarWidth = $navbarStart.offsetWidth + $navbarEnd.offsetWidth;
-        if (document.offsetWidth < navbarWidth) {
+        if (window.innerWidth < navbarWidth) {
             navbarMenu.classList.add('justify-content-start');
         } else {
             navbarMenu.classList.remove('justify-content-start');
