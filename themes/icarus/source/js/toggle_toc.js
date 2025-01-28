@@ -9,12 +9,14 @@
     $mask.setAttribute('id', 'toc-mask');
     document.body.appendChild($mask);
 
-    function toggleToc() { // eslint-disable-line no-inner-declarations
+    function toggleToc(event) { // eslint-disable-line no-inner-declarations
+        event.preventDefault();
         $toc.classList.toggle('is-active');
         $mask.classList.toggle('is-active');
     }
 
     $toc.addEventListener('click', toggleToc);
     $mask.addEventListener('click', toggleToc);
-    document.querySelector('.navbar-main .catalogue').addEventListener('click', toggleToc);
+
+    document.querySelector('.catalogue').addEventListener('click', toggleToc);
 }());

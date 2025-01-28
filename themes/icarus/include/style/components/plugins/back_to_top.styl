@@ -3,12 +3,15 @@
  * --------------------------------- */
 #back-to-top
     position: fixed
-    width: 48px
+    display: flex
+    justify-content: flex-end
+    align-items: center
     height: 48px
     right: 24px
     bottom: 24px
+    border-radius: $card-radius
     box-shadow: $card-shadow
-    border-radius: 50%
+    overflow: hidden
     z-index: 99
     opacity: 0
     visibility: hidden
@@ -18,7 +21,24 @@
         opacity: 1
         visibility: visible
 
-    svg
-        vertical-align: middle
-        width: $body-size
-        height: 24px
+    .button
+        width: 48px
+        height: 48px
+        border-radius: $card-radius
+
+        svg
+            width: $body-size
+            height: 24px
+
+        &:not(:last-child)
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+
+        +until($tablet)
+            & + .button
+                border-top-left-radius: 0
+                border-bottom-left-radius: 0
+
+    +tablet()
+        .catalogue
+            display: none !important
