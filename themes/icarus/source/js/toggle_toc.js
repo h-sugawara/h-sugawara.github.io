@@ -15,8 +15,7 @@
         $mask.classList.toggle('is-active');
     }
 
-    $toc.addEventListener('click', toggleToc);
     $mask.addEventListener('click', toggleToc);
-
+    document.querySelector('#toc-menu').addEventListener('click', toggleToc);
     document.querySelector('.catalogue').addEventListener('click', toggleToc);
 }());

@@ -45,7 +45,7 @@ function getToc(content, maxDepth) {
 }
 
 class Toc extends Component {
-    renderToc(toc, collapsed, showIndex = true) {
+    renderToc(toc, collapsed, showIndex = true, id = null) {
         const keys = Object.keys(toc)
             .filter(key => !['id', 'index', 'text'].includes(key))
             .map(key => parseInt(key, 10))
@@ -53,7 +53,7 @@ class Toc extends Component {
         let result;
 
         if (keys.length > 0) {
-            result = <ul className="menu-list">{keys.map(i => this.renderToc(toc[i], collapsed, showIndex))}</ul>;
+            result = <ul id={id} className="menu-list">{keys.map(i => this.renderToc(toc[i], collapsed, showIndex))}</ul>;
         }
 
         if ('id' in toc && 'index' in toc && 'text' in toc) {
@@ -81,7 +81,7 @@ class Toc extends Component {
 
         return <section id="toc" className="card widget card-content menu" datatype="toc">
             <h3 className="menu-label">{title}</h3>
-            {this.renderToc(toc, collapsed, showIndex)}
+            {this.renderToc(toc, collapsed, showIndex, 'toc-menu')}
         </section>;
     }
 }
