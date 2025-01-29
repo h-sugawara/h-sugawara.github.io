@@ -2,6 +2,7 @@ const { Component, Fragment } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const classname = require('hexo-component-inferno/lib/util/classname');
 const FontAwesomeIcon = require('../misc/font_awesome_icon');
+const { tocObj: getTocObj } = require('hexo-util');
 
 function isSameLink(a, b) {
     function santize(url) {
@@ -74,11 +75,12 @@ class Navbar extends Component {
 module.exports = cacheComponent(Navbar, 'common.navbar', props => {
     const { config, helper, page } = props;
     const { url_for, _p, __ } = helper;
-    const { logo, title, navbar, widgets, search, plugins } = config;
+    const { logo, title, navbar, widgets, search, plugins, toc: useToc = false } = config;
+    const { tocEnabled = false, layout = '', content = '' } = page;
     const { back_to_top = false } = plugins;
 
     const hasTocWidget = Array.isArray(widgets) && widgets.find(widget => widget.type === 'toc');
-    const showToc = (config.toc === true || page.toc) && hasTocWidget && !back_to_top && ['page', 'post'].includes(page.layout);
+    const showToc = (useToc === true || tocEnabled) && hasTocWidget && !back_to_top && ['page', 'post'].includes(layout) && getTocObj(content).length > 0;
 
     const menu = {};
     if (navbar && navbar.menu) {

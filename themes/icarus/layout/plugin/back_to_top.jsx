@@ -1,6 +1,7 @@
 const { Component } = require('inferno');
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 const FontAwesomeIcon = require('../misc/font_awesome_icon');
+const { tocObj: getTocObj } = require('hexo-util');
 
 class BackToTop extends Component {
     render() {
@@ -23,10 +24,11 @@ class BackToTop extends Component {
 
 BackToTop.Cacheable = cacheComponent(BackToTop, 'plugin.backtotop', props => {
     const { config, helper, head, page } = props;
-    const { widgets } = config;
+    const { widgets, toc: useToc = false } = config;
+    const { tocEnabled = false, layout = '', content = '' } = page;
 
     const hasTocWidget = Array.isArray(widgets) && widgets.find(widget => widget.type === 'toc');
-    const showToc = (config.toc === true || page.toc) && hasTocWidget && ['page', 'post'].includes(page.layout);
+    const showToc = (useToc === true || tocEnabled) && hasTocWidget && ['page', 'post'].includes(layout) && getTocObj(content).length > 0;
 
     return {
         head,
