@@ -5,9 +5,8 @@ updated: 2025-01-20 09:00:00
 tags:
   - 書籍要約
   - グロービスMBA
+  - GMAP-BF
   - マーケティング
-  - ブランド
-  - 製品ライフライクル
 category: Business
 toc: true
 has_gallery: true

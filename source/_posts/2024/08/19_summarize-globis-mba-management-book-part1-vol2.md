@@ -5,9 +5,8 @@ updated: 2024-08-19 09:00:00
 tags:
   - 書籍要約
   - グロービスMBA
-  - 事業戦略
-  - バリューチェーン
-  - 競争上の地位
+  - GMAP-BF
+  - 経営戦略
 category: Business
 toc: true
 has_gallery: true

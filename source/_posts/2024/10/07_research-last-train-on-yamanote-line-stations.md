@@ -6,8 +6,7 @@ tags:
   - 小ネタ
   - 机上調査
   - 鉄道
-  - 終電
-  - 深夜チェックイン
+  - ランキング
 category: Miscellany
 toc: true
 has_gallery: true

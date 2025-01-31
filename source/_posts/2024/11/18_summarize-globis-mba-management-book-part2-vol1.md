@@ -5,9 +5,8 @@ updated: 2024-11-18 09:00:00
 tags:
   - 書籍要約
   - グロービスMBA
+  - GMAP-BF
   - マーケティング
-  - 環境分析
-  - 市場戦略
 category: Business
 toc: true
 has_gallery: true

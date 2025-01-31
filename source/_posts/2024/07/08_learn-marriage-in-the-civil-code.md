@@ -5,9 +5,8 @@ updated: 2024-07-08 09:00:00
 tags:
   - 小ネタ
   - 解説
+  - 法律
   - 民法
-  - 親族法
-  - 結婚
 category: Miscellany
 toc: true
 has_gallery: true

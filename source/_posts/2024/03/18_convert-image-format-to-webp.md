@@ -4,9 +4,9 @@ date: 2024-03-18 08:30:00
 updated: 2025-01-14 22:00:00
 tags:
   - ブログ改良
-  - サイトスピード改善
+  - 速度改善
   - PageSpeed Insights
-  - WebP
+  - 解説
 categories:
   - Technology
   - Frontend

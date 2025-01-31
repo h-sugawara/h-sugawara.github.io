@@ -7,7 +7,7 @@ tags:
   - 歴史
   - 解説
   - 公害
-  - 鉱毒
+  - 鉱業
 category: Miscellany
 toc: true
 has_gallery: true

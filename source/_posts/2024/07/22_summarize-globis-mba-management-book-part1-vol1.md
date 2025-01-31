@@ -5,9 +5,8 @@ updated: 2024-07-22 09:00:00
 tags:
   - 書籍要約
   - グロービスMBA
+  - GMAP-BF
   - 経営戦略
-  - 全社戦略
-  - 事業ポートフォリオ
 category: Business
 toc: true
 has_gallery: true
