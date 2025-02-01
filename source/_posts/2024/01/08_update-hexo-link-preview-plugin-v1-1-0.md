@@ -3,11 +3,11 @@ title: Hexo製ブログ用リンクプレビュープラグインv1.1 解説
 date: 2024-01-08 08:30:00
 updated: 2025-01-25 14:00:00
 tags:
-  - 自作Hexoプラグイン
+  - 自作プラグイン
+  - 解説
+  - npm
   - Hexo
   - PageSpeed Insights
-  - JavaScript
-  - npm
 categories:
   - Technology
   - Frontend

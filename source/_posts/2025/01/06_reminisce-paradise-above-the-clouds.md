@@ -4,9 +4,9 @@ date: 2025-01-06 09:00:00
 updated: 2025-01-06 09:00:00
 tags:
   - 小ネタ
+  - 調査
+  - 机上調査
   - 歴史
-  - 解説
-  - 公害
   - 鉱業
 category: Miscellany
 toc: true

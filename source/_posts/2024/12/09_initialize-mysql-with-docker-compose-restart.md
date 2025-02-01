@@ -3,11 +3,11 @@ title: Docker Compose RestartでMySQLを初期化する方法
 date: 2024-12-09 09:00:00
 updated: 2025-01-12 20:00:00
 tags:
-  - 技術解説
   - 解説
+  - 技術解説
+  - Advent Calendar
   - Docker
   - MySQL
-  - Advent Calendar
 categories:
   - Technology
   - Infrastructure

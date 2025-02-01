@@ -3,11 +3,11 @@ title: Goのinterfaceをnilとして取り扱う時に注意すべきこと
 date: 2024-12-23 09:00:00
 updated: 2025-01-24 09:00:00
 tags:
-  - 技術解説
   - 解説
+  - 技術解説
+  - Advent Calendar
   - プログラミング
   - Go言語
-  - Advent Calendar
 categories:
   - Technology
   - Backend

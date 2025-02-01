@@ -3,11 +3,11 @@ title: hexo-tag-ogp-link-previewプラグインを公開しました
 date: 2023-11-20 21:00:00
 updated: 2025-01-16 17:00:00
 tags:
-  - 自作Hexoプラグイン
+  - 自作プラグイン
+  - 解説
+  - npm
   - Hexo
   - Icarus
-  - JavaScript
-  - npm
 categories:
   - Technology
   - Frontend

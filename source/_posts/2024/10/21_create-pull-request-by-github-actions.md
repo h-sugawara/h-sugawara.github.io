@@ -3,8 +3,8 @@ title: GitHub Actionsでプルリクエスト作成を自動化する方法
 date: 2024-10-21 09:00:00
 updated: 2025-01-23 22:00:00
 tags:
-  - 技術解説
   - 解説
+  - 技術解説
   - CI/CD
   - GitHub
   - GitHub Actions

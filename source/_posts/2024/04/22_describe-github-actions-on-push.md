@@ -3,8 +3,8 @@ title: 癖が強すぎるGitHub Actionsのon.pushの解説
 date: 2024-04-22 08:30:00
 updated: 2025-01-18 14:00:00
 tags:
-  - 技術解説
   - 解説
+  - 技術解説
   - CI/CD
   - GitHub
   - GitHub Actions

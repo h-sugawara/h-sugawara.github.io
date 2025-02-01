@@ -4,9 +4,9 @@ date: 2024-03-04 08:30:00
 updated: 2024-03-04 08:30:00
 tags:
   - 小ネタ
-  - 災害
+  - 解説
+  - 地理
   - 防災
-  - 机上調査
 category: Miscellany
 toc: true
 has_gallery: true
