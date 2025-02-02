@@ -3,7 +3,7 @@ title: GitHub PagesのHexo製ブログの記事URLを差し替える
 date: 2024-06-17 09:00:00
 updated: 2025-01-21 18:00:00
 tags:
-  - ブログ改良
+  - ブログ作成・改良
   - Hexo
   - GitHub
   - GitHub Pages

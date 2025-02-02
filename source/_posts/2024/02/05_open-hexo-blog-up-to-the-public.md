@@ -3,7 +3,7 @@ title: Hexo製ブログを公開してGoogle検索できるようにする
 date: 2024-02-05 08:30:00
 updated: 2025-01-19 14:00:00
 tags:
-  - ブログ作成
+  - ブログ作成・改良
   - Hexo
   - GitHub
   - GitHub Pages
