@@ -31,6 +31,7 @@ Hexo.js をジェネレータとして、テーマやプラグインを使って
 
 {% message color:info %}
 この記事は、[mediba Advent Calendar 2023](https://qiita.com/advent-calendar/2023/mediba) の22日目にエントリーしています。
+Hexo.js でブログを公開する手順については、ブログ作成シリーズの{% post_link open-hexo-blog-up-to-the-public '後編記事「Hexo製ブログをGitHub Pagesで公開して検索可能にする」' %}をご覧ください。
 {% endmessage %}
 
 ## はじめに
