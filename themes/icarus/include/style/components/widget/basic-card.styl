@@ -36,8 +36,13 @@
         font-size: 1rem
 
     .menu-list
-        .level
-            margin-bottom: 0
+        .level, li
+            &:not(:last-child)
+                margin-bottom: 0.25rem
+
+        div, ul
+            margin: 0.375rem 0 0.375rem 0.75rem
+            padding-left: 0.5rem
 
     .tags
         .tag
