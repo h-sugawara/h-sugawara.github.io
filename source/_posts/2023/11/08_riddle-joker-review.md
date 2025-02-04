@@ -23,7 +23,6 @@ cover:
     small: /images/game/riddle-joker/cover_small.webp
     medium: /images/game/riddle-joker/cover_medium.webp
     large: /images/game/riddle-joker/cover_large.webp
-alias: 2023/11/08/riddle-joker-review/index.html
 ---
 
 みなさん、ちゃろー☆
