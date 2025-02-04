@@ -113,6 +113,8 @@ exclude:
 ignore:
   - '**/themes/icarus/source/css/default-backup.styl'
   - '**/themes/icarus/source/css/cyberpunk.styl'
+  - '**/themes/icarus/source/img/razor-bottom-black.svg'
+  - '**/themes/icarus/source/img/razor-top-black.svg'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
