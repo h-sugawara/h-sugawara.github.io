@@ -187,7 +187,6 @@ module.exports = class extends Component {
 
     renderTags(tags, url_for) {
         return <div className="article-tags">
-            <span>#</span>
             {tags.sort('name').map(({ path, name }) => <a className="link-muted" rel="tag" href={url_for(path)}>{name}</a>)}
         </div>;
     }
