@@ -25,7 +25,7 @@ cover:
     large: /images/technology/programming/cover_large.webp
 ---
 
-2023年11月19日（日）、Hexo.js 製ブログでリンクプレビューを表示するためのタグプラグインを npm に公開しました。開発に至った経緯や Icarus テーマでの設定例等を中心に書き綴ります。
+2023年11月19日に npm で初公開の Hexo.js 製ブログ用リンクプレビュープラグインについて、開発経緯やデザイン設定例等を解説します。
 
 <!-- more -->
 

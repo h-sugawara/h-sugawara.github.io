@@ -25,7 +25,7 @@ cover:
     large: /images/technology/infrastructure/cover_large.webp
 ---
 
-compose.yml ファイルにひと手間を加えて、Restart コマンドで MySQL コンテナに初期化処理させる方法をご紹介します。
+compose.yml にひと手間を加えて、Restart コマンドで MySQL コンテナに docker-entrypoint-initdb.d を処理させる方法をご紹介します。
 
 <!-- more -->
 
