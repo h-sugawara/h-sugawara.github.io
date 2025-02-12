@@ -70,7 +70,7 @@ module.exports = class extends Component {
         </Fragment>;
 
         if (index) {
-            return <a href={pageUrl} className="header link-muted">{header}</a>;
+            return <a href={pageUrl} className="header">{header}</a>;
         }
         return header;
     }
@@ -180,7 +180,7 @@ module.exports = class extends Component {
         const hasExcerpt = excerpt !== '';
 
         if (index) {
-            return <a className="content link-muted" href={pageUrl} dangerouslySetInnerHTML={{ __html: hasExcerpt ? excerpt : content }}></a>;
+            return <a className="content" href={pageUrl} dangerouslySetInnerHTML={{ __html: hasExcerpt ? excerpt : content }}></a>;
         }
         return <div className="content" dangerouslySetInnerHTML={{ __html: hasExcerpt ? excerpt + more : content }}></div>;
     }
