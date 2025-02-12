@@ -4,32 +4,36 @@
 $post-navigation-fg ?= #545454
 
 .post-navigation
-    @extend .level.is-mobile
-    color: $post-navigation-fg
+    @extend .card
+    display: flex
     flex-wrap: wrap
     justify-content: space-between
     margin-top: 1.5rem
+    padding: 1.5rem
 
-    .level-start, .level-end
+    .article-nav-prev, .article-nav-next
         display: flex
-        flex-basis: auto
-        max-width: 50%
+        align-items: center
+        column-gap: 0.25rem
+        width: 50%
+        min-height: 3rem
+        padding: 0.25rem 0.375rem
+        color: inherit
 
-        .article-nav-prev, .article-nav-next
-            @extend .level-item, .link-muted
-            flex-grow: 1
-            flex-shrink: 1
+        &:hover
+            background-color: $background
+            color: $text-strong
 
-            .nav-arrow-icon
-                flex-shrink: 0
-                margin: 0 0.25rem 0.125rem
-                width: 1rem
-                height: 1rem
+        .nav-arrow-icon
+            min-width: 1rem
+            min-height: 1rem
 
-        .article-nav-prev
-            justify-content: start
-            text-align: left
+        .nav-title
+            text-align: center
+            flex: 1 1 auto
 
-        .article-nav-next
-            justify-content: end
-            text-align: right
+    .article-nav-prev
+        justify-content: start
+
+    .article-nav-next
+        justify-content: end
