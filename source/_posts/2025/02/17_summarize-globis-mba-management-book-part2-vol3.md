@@ -151,7 +151,7 @@ cover:
 
 顧客維持型のマーケティング手法としては、「ワン・トゥ・ワン・マーケティング」「データベース・マーケティング」等がある。
 
-{% gallery summarize-globis-mba-management-book-part2-vol3 customer_retention_marketing.svg '顧客維持型マーケティング' 342x352 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part2-vol3 customer_retention_marketing.svg '顧客維持型マーケティング' 362x342 %}{% endgallery %}
 
 ### BtoBマーケティング
 
@@ -194,3 +194,7 @@ cover:
 
 - {% post_link summarize-globis-mba-management-book-part2-vol1 '第二部「マーケティング」要約 前編' %}
 - {% post_link summarize-globis-mba-management-book-part2-vol2 '第二部「マーケティング」要約 中編' %}
+
+#### 次の部
+
+- {% post_link summarize-globis-mba-management-book-part3-vol1 '第三部「アカウンティング」要約 前編' %}

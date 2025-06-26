@@ -174,3 +174,9 @@ cover:
 #### 今の部
 
 - {% post_link summarize-globis-mba-management-book-part2-vol1 '第二部「マーケティング」要約 前編' %}
+- {% post_link summarize-globis-mba-management-book-part2-vol3 '第二部「マーケティング」要約 後編' %}
+
+#### 次の部
+
+- {% post_link summarize-globis-mba-management-book-part3-vol1 '第三部「アカウンティング」要約 前編' %}
+

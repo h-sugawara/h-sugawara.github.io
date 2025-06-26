@@ -28,14 +28,14 @@ cover:
 
 {% message color:info %}
 こちらは、グロービスMBAマネジメント・ブックの書籍要約シリーズの記事です。
-{% post_link summarize-globis-mba-management-book-part1-vol1 '前編となる第一部要約記事' %}や、[この書籍に関する他の記事](/tags/グロービスMBA/)もありますので、是非ご覧ください。
+[この書籍に関する他の記事](/tags/グロービスMBA/)もありますので、是非ご覧ください。
 {% endmessage %}
 
 ## 戦略策定プロセス
 
 基本的な戦略策定プロセスは、通常の以下のような流れを辿る。必ずしも一方向の流れではなく、仮説・検証を繰り返しながら進んでいく。また、一度策定した戦略がある時点で成功したからといって、それで戦略策定が終わるのではない。経営環境が同じ状態に留まることはないから、環境変化に応じて戦略を見直し、再定義しなくてはならない。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_formulation_process.svg '戦略策定プロセス' 569x557 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_formulation_process.svg '戦略策定プロセス' 492x632 %}{% endgallery %}
 
 ### 戦略策定に要求される条件
 
@@ -49,7 +49,7 @@ cover:
 事業戦略や競争戦略の策定では、他社に対していかに競争優位を築くかが焦点となる。
 ポーター教授は、競争優位の構築には、「コスト・リーダーシップ戦略」、「差別化戦略」、「集中戦略」の３つの基本的な戦略パターンがあるとしている。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 competitive_strategies.svg '競争戦略フレームワーク' 537x316 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 competitive_strategies.svg '競争戦略フレームワーク' 542x472 %}{% endgallery %}
 
 ## 様々な角度から分析する
 
@@ -81,13 +81,13 @@ cover:
 
 マクロ環境よりもさらに個別具体的な分析を行う時のフレームワークとして「3C分析」がある。これは、外部分析に相当する「市場（顧客）（Customer）」と「競合（Competitor）」、内部分析に相当する「自社（Company）」の頭文字を取ったものである。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 3cs_model.svg '3C分析' 601x380 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 3cs_model.svg '3C分析' 502x432 %}{% endgallery %}
 
 #### (3) SWOT分析
 
 外部環境を分析する目的は、市場における「機会（Opportunities）」を探り、自社にとっての「脅威（Threats）」を見つけ出すことにあり、内部環境では自社の「強み（Strengths）」と「弱み（Weaknesses）」を把握することに主眼が置かれる。これら４つの要素を組み合わせたものが「SWOT分析」である。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 swot_analysis.svg 'SWOT分析' 461x261 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 swot_analysis.svg 'SWOT分析' 472x332 %}{% endgallery %}
 
 ### 業界
 
@@ -97,14 +97,14 @@ cover:
 このような観点から、業界構造を分析するときに役立つフレームワークが、ポーターの「『５つの力』分析（Five Forces Analysis）」である。５つの力とは、「新規参入の脅威」、「代替品の脅威」、「買い手の交渉力」、「売り手の交渉力」、「業界内の競合他社」を指す。
 これらのうちどれが構造を決める重要な要因になるかは、業界によって異なり、分析することによって、業界の収益構造や競争の鍵を発見したり、将来の競争の変化を予測できる。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 five_forces_analysis.svg '「５つの力」分析' 651x301 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 five_forces_analysis.svg '「５つの力」分析' 561x252 %}{% endgallery %}
 
 #### アドバンテージ・マトリクス
 
 業界の競争要因（戦略変数）の多寡という観点と、それらの競争要因が優位性構築につながる可能性の大小という観点で、事業を４タイプに分けて考える手法が、BCGが考案した「アドバンテージ・マトリクス」である。
 競争要因が少ないということは、その手段が少ないことを意味し、勝ち負けが単純に決まるということであり、優位性構築の可能性が大きいということは、その競争要因によって他社に対して明らかな競争優位を獲得できることを意味する。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 advantage_matrix.svg 'アドバンテージ・マトリクス' 501x295 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 advantage_matrix.svg 'アドバンテージ・マトリクス' 542x392 %}{% endgallery %}
 
 ### 内部
 
@@ -113,7 +113,7 @@ cover:
 内部分析の目的は、競合と比較したときの自社の強みと弱みを把握することにあり、それによって自社の優位性を生かす方向や克服すべき課題が見えてくる。
 その分析に役立つのが、ポーターの「バリューチェーン（価値連鎖）」という考え方で、事業活動を機能ごとに分解し、どの機能で付加価値が生み出されているかを分析することで、事業戦略の構築や改善に役立てようというものである。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 value_chain.svg 'バリューチェーン' 719x293 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 value_chain.svg 'バリューチェーン' 462x542 %}{% endgallery %}
 
 この分析では、諸活動を厳密に分類することが目的ではなく、それぞれの活動の役割、コスト、及び全体としての事業戦略への貢献度を明確にすることがポイントである。
 
@@ -122,7 +122,7 @@ cover:
 戦略策定には、経済性の裏付けは欠かせず、最適なものにするには、下記のコスト・ドライバーがどのように自社のバリューチェーンに影響を与えるかを定量的に把握することが大切である。
 ただし、全ての要素が大きな影響を与えるとは限らないため、状況や分析ニーズに合わせて重要な要素だけに絞り込んで分析するとよい。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 cost_driver.svg 'コスト・ドライバー' 572x364 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 cost_driver.svg 'コスト・ドライバー' 492x332 %}{% endgallery %}
 
 ## 戦略を考える上での制約
 
@@ -130,14 +130,14 @@ cover:
 
 同じ業界に属していても、企業が取りうる戦略は競争上の地位によって制約を受ける。コトラー教授は、企業をその地位に応じて、「リーダー」、「チャレンジャー」、「フォロワー」、「ニッチャー」に分類し、それぞれに応じた戦略を取ることが望ましいとしている。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 competitive_positions.svg '競争上の地位' 481x272 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 competitive_positions.svg '競争上の地位' 542x432 %}{% endgallery %}
 
 ### 事業ライフサイクル
 
 成熟期から衰退期にかけては、競争が激化して収益性が低下し、市場構成は新規需要から代替需要へと移り、商品知識を身につけた消費者は価格や製品比較に厳しくなることが多い。
 技術革新も停滞し、新製品や新用途が現れにくくなり、競争要因がコストやサービスに移る傾向がある。このような状況になったら、企業は環境変化に即して戦略を転換させ、優位性を失った事業からの撤退や新たな事業創造を検討しなくてはならない。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_for_business_life_cycle.svg '成長期・衰退期の戦略' 550x310 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_for_business_life_cycle.svg '成長期・衰退期の戦略' 562x372 %}{% endgallery %}
 
 ## 経営戦略トピックス
 
@@ -160,3 +160,17 @@ cover:
 また、バリューチェーンの再構築は、新しく競争優位を築くチャンスとしてとらえることも可能である。BCGは、新しいビジネスの創出パターンを以下の４つに分類している。
 
 {% gallery summarize-globis-mba-management-book-part1-vol2 deconstruction.svg 'バリューチェーンの再構築' 711x481 %}{% endgallery %}
+
+## 関連記事
+
+### マネジメント・ブック要約
+
+#### 今の部
+
+- {% post_link summarize-globis-mba-management-book-part1-vol1 '第一部「経営戦略」要約 前編' %}
+
+#### 次の部
+
+- {% post_link summarize-globis-mba-management-book-part2-vol1 '第二部「マーケティング」要約 前編' %}
+- {% post_link summarize-globis-mba-management-book-part2-vol2 '第二部「マーケティング」要約 中編' %}
+- {% post_link summarize-globis-mba-management-book-part2-vol3 '第二部「マーケティング」要約 後編' %}
