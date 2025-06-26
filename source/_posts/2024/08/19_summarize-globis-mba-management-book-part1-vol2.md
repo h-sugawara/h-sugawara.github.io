@@ -35,7 +35,7 @@ cover:
 
 基本的な戦略策定プロセスは、通常の以下のような流れを辿る。必ずしも一方向の流れではなく、仮説・検証を繰り返しながら進んでいく。また、一度策定した戦略がある時点で成功したからといって、それで戦略策定が終わるのではない。経営環境が同じ状態に留まることはないから、環境変化に応じて戦略を見直し、再定義しなくてはならない。
 
-{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_formulation_process.svg '戦略策定プロセス' 492x632 %}{% endgallery %}
+{% gallery summarize-globis-mba-management-book-part1-vol2 strategy_formulation_process.svg '戦略策定プロセス' 492x662 %}{% endgallery %}
 
 ### 戦略策定に要求される条件
 
