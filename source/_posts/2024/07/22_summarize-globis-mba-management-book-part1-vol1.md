@@ -7,7 +7,9 @@ tags:
   - グロービスMBA
   - GMAP-BF
   - 経営戦略
-category: Business
+categories:
+  - Knowledge
+  - Business
 toc: true
 has_gallery: true
 has_code: false

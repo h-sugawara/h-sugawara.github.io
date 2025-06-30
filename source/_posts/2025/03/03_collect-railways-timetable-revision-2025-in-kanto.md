@@ -8,7 +8,9 @@ tags:
   - 机上調査
   - 鉄道
   - ダイヤ改正
-category: Miscellany
+categories:
+  - Knowledge
+  - Research
 toc: true
 has_gallery: false
 has_code: false

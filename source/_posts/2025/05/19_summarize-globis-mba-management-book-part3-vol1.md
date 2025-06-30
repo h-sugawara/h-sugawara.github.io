@@ -8,7 +8,9 @@ tags:
   - GMAP-BF
   - アカウンティング
   - 企業会計
-category: Business
+categories:
+  - Knowledge
+  - Business
 toc: true
 has_gallery: true
 has_code: false

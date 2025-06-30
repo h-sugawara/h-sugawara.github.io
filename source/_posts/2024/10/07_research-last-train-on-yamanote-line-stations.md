@@ -8,7 +8,9 @@ tags:
   - 机上調査
   - 鉄道
   - ランキング
-category: Miscellany
+categories:
+   - Knowledge
+   - Research
 toc: true
 has_gallery: true
 has_code: false
