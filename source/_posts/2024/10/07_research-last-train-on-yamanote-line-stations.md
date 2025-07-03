@@ -3,14 +3,13 @@ title: 山手線駅の乗換路線で終点まで長距離の終電は何駅発�
 date: 2024-10-07 09:00:00
 updated: 2024-10-07 09:00:00
 tags:
-  - 小ネタ
-  - 調査
-  - 机上調査
-  - 鉄道
   - ランキング
+  - 机上調査
+  - 交通機関
+  - 鉄道
 categories:
-   - Knowledge
-   - Research
+  - Knowledge
+  - Research
 toc: true
 has_gallery: true
 has_code: false

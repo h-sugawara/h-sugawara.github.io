@@ -3,14 +3,11 @@ title: 2025年春に関東圏鉄道各社が実施するダイヤ改正まとめ
 date: 2025-03-03 09:00:00
 updated: 2025-03-03 09:00:00
 tags:
-  - 小ネタ
-  - 調査
-  - 机上調査
-  - 鉄道
+  - 情報整理
   - ダイヤ改正
-categories:
-  - Knowledge
-  - Research
+  - 交通機関
+  - 鉄道
+category: Miscellany
 toc: true
 has_gallery: false
 has_code: false

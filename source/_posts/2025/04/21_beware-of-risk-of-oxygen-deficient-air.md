@@ -3,10 +3,10 @@ title: 呼吸すると命を奪われる「酸欠空気」に気を付けよう
 date: 2025-04-21 09:00:00
 updated: 2025-04-21 09:00:00
 tags:
-  - 小ネタ
   - 解説
   - 衛生
   - 生物
+  - 化学
 category: Miscellany
 toc: true
 has_gallery: true
