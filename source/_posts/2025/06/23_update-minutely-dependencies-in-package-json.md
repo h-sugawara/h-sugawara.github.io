@@ -24,7 +24,7 @@ cover:
     large: /images/technology/programming/cover_large.webp
 ---
 
-package.json の依存関係パッケージのバージョン更新を細かく上手に管理できる、便利で優秀な ncu コマンドの導入方法や活用事例をご紹介します。
+package.json の依存関係パッケージのバージョン更新を細かく上手に管理できる npm-check-updates コマンドの導入方法や活用事例をご紹介します。
 
 <!-- more -->
 
