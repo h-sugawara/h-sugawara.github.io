@@ -118,7 +118,7 @@ module.exports = class extends Component {
             coverImage = url_for(cover);
         }
 
-        let Image = <img className="fill" src={coverImage} alt={title || coverImage} />;
+        let Image = <img className="fill" src={coverImage} alt={title || coverImage} fetchPriority="high" />;
         if (coverSources) {
             Image = <picture>{coverSources}{Image}</picture>;
         }

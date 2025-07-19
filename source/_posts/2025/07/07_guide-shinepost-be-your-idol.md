@@ -12,7 +12,7 @@ categories:
   - Game
   - Guide
 toc: true
-has_gallery: true
+has_gallery: false
 has_code: false
 has_icon: false
 og_image: /images/game/shinepost-be-your-idol/title.webp
