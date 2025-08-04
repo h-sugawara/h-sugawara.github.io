@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/introduce-tama-intercity-monorail-extension-plan/</loc>
+        <lastmod>2025-08-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/summarize-globis-mba-management-book-part3-vol2/</loc>
         <lastmod>2025-07-21</lastmod>
         <changefreq>monthly</changefreq>
@@ -260,7 +266,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2025-07-21</lastmod>
+        <lastmod>2025-08-04</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
