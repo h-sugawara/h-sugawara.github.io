@@ -81,7 +81,7 @@ cover:
 
 山々に囲まれる立地で、新鮮な魚介類を食べるのが難しかった京都において、北海道から輸送された身欠きニシンは、そこに住まう人々がタンパク質を摂取するための貴重な保存食でした。その甘露煮とそばを組み合わせた料理が、にしんそばです。にしんそばは、ニシンの産地だった北海道でも昔から食べられていて、京都と共に郷土料理です。
 
-{% gallery introduce-enriched-history-brought-by-herring nishinsoba.webp 'にしんそば' 719x404 %}{% endgallery %}
+{% gallery introduce-enriched-history-brought-by-herring nishin_soba.webp 'にしんそば' 719x404 %}{% endgallery %}
 
 #### 鰊漬け
 

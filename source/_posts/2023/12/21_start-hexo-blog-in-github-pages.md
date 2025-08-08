@@ -273,6 +273,6 @@ Icarus テーマを導入した方は、日本語の表示時フォントが `Mi
 
 #### icarus テーマ
 
-- [Getting Started with Icarus - Icarus](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)
-- [Hexoのicarusテーマのフォントの変え方 - omathin blog](https://omathin.com/icarus-theme-change/)
-- [HEXO の表示フォントを変更 - FENNOTE](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)
+- [Getting Started with Icarus](https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/)
+- [Hexoのicarusテーマのフォントの変え方](https://omathin.com/icarus-theme-change/)
+- [HEXO の表示フォントを変更](https://fennote.fareastnoise.com/2022/03/07/hexo-change-fonts/)

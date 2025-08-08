@@ -326,10 +326,10 @@ func Action3(err error) {
 
 #### interface の実装と判定処理
 
-- [go/src/runtime/runtime2.go at go1.23.3 · golang/go](https://github.com/golang/go/blob/go1.23.3/src/runtime/runtime2.go)
-- [go/src/runtime/alg.go at go1.23.3 · golang/go](https://github.com/golang/go/blob/go1.23.3/src/runtime/alg.go)
+- [go/src/runtime/runtime2.go](https://github.com/golang/go/blob/go1.23.3/src/runtime/runtime2.go)
+- [go/src/runtime/alg.go](https://github.com/golang/go/blob/go1.23.3/src/runtime/alg.go)
 
 #### interface の仕様説明
 
 - [Chapter II: Interfaces](https://github.com/teh-cmc/go-internals/blob/master/chapter2_interfaces/README.md)
-- [GoのInterfaceについて #Go - Qiita](https://qiita.com/Akatsuki_py/items/e53a4c15513711570469)
+- [GoのInterfaceについて](https://qiita.com/Akatsuki_py/items/e53a4c15513711570469)

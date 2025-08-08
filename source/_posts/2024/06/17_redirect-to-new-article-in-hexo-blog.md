@@ -174,13 +174,13 @@ Google Search Console で、インデックスから古い URL を削除した�
 
 ### 参考文献
 
+#### プラグイン
+
+- [hexo-generator-alias](https://github.com/hexojs/hexo-generator-alias)
+
 #### リダイレクト
 
-- [hexojs/hexo-generator-alias](https://github.com/hexojs/hexo-generator-alias)
 - [リダイレクトと Google 検索](https://developers.google.com/search/docs/crawling-indexing/301-redirects?hl=ja)
-
-#### HTTP レスポンスステータスコード
-
 - [HTTP 301 Moved Permanently](https://developer.mozilla.org/ja/docs/Web/HTTP/Status/301)
 - [HTTP 308 Permanent Redirect](https://developer.mozilla.org/ja/docs/Web/HTTP/Status/308)
 

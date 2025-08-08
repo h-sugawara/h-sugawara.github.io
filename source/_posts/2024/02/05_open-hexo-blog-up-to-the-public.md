@@ -266,13 +266,13 @@ GitHub Pages や Google Search Console は、ブログ以外のウェブサイ�
 
 ### 参考文献
 
-#### GitHub 公式
+#### GitHub 公式 ドキュメント
 
-- [GitHub Pages サイトを作成する - GitHub Docs](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)
-- [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+- [GitHub Pages サイトを作成する](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-a-repository-for-your-site)
+- [GitHub Pages サイトのカスタムドメインを管理する](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 
 #### 各種サービス
 
-- [ドメイン取得は最安値0円～｜ドメイン取るならお名前.com](https://www.onamae.com/)
-- [お客様のビジネスに適した分析ツールとソリューション - Google アナリティクス](https://marketingplatform.google.com/about/analytics/)
+- [お名前.com](https://www.onamae.com/)
+- [Google アナリティクス](https://marketingplatform.google.com/about/analytics/)
 - [Google Search Console](https://search.google.com/search-console/about?hl=ja)

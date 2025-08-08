@@ -32,16 +32,12 @@ Go 1.21 までは For ループのスコープ変数に問題がありました�
 ## どのような問題か
 
 For ループ内で、別スコープで実行する処理（無名関数や Goroutine）中に、ループスコープ変数を直接取り扱う処理を行うと、意図しない実行結果になる問題です。
-意図しない実行結果は、どの無名関数や Goroutine でも、ループスコープ変数の値がすべて同じ値になる、という仕様によって引き起こされます。この仕様がどうして問題かというと、**書いた通りに動かない**からです。同じ処理がループの外と内で異なる実行結果になるのは、プログラマにとって仕様ではなく不具合と言って差支えないでしょう。
+意図しない実行結果は、いかなる無名関数や Goroutine においても、ループスコープ変数の値がすべて同じ値になる、という仕様によって引き起こされます。この仕様がどうして問題かというと、**書いた通りに動かない**からです。同じ処理がループの外と内で異なる実行結果になるのは、プログラマにとって仕様ではなく不具合と言って差支えないでしょう。
 
 ### 身近な実例
 
 チャネルや WaitGroup を使う機会は意外と少ないため、書く頻度が高そうなコードで説明します。
 以下のサンプルは、ゆずソフトのいくつかのゲームリストから、2016年5月20 日以前に発売されたタイトルを、別のリストに抽出する処理です。このコードを実行すると、1.22 では期待する結果になりますが、1.21 ではそうなりません。
-
-{% message color:info %}
-サンプルコードの完全版は、「[The Go Playground](https://go.dev/play/p/JZQxIs3hdzF)」にあります。
-{% endmessage %}
 
 ```go
 func main() {
@@ -58,10 +54,11 @@ func main() {
 	}
 	invokers := make([]func(time.Time) *GameTitle, 0)
 	for _, v := range titles {
+		fmt.Printf("LoopScope: %+v.\n", v)
 		invokers = append(
 			invokers,
 			func(compare time.Time) *GameTitle {
-			  fmt.Printf("Game title is '%s'.\n", v.name)
+				fmt.Printf("FunctionScope: %+v.\n", v)
 				if published, _ := time.Parse("2006-01-02", v.published_at); published.Before(compare) {
 					return &v
 				}
@@ -89,10 +86,10 @@ LoopScope: {name:天色＊アイルノーツ brand:ゆずソフト published_at:
 LoopScope: {name:サノバウィッチ brand:ゆずソフト published_at:2015-02-24}.
 LoopScope: {name:千恋＊万花 brand:ゆずソフト published_at:2016-07-29}.
 LoopScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
-FuncionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
-FuncionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
-FuncionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
-FuncionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
+FunctionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
+FunctionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
+FunctionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
+FunctionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
 Results is [].
 ```
 
@@ -106,10 +103,10 @@ LoopScope: {name:天色＊アイルノーツ brand:ゆずソフト published_at:
 LoopScope: {name:サノバウィッチ brand:ゆずソフト published_at:2015-02-24}.
 LoopScope: {name:千恋＊万花 brand:ゆずソフト published_at:2016-07-29}.
 LoopScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
-FuncionScope: {name:天色＊アイルノーツ brand:ゆずソフト published_at:2013-07-26}.
-FuncionScope: {name:サノバウィッチ brand:ゆずソフト published_at:2015-02-24}.
-FuncionScope: {name:千恋＊万花 brand:ゆずソフト published_at:2016-07-29}.
-FuncionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
+FunctionScope: {name:天色＊アイルノーツ brand:ゆずソフト published_at:2013-07-26}.
+FunctionScope: {name:サノバウィッチ brand:ゆずソフト published_at:2015-02-24}.
+FunctionScope: {name:千恋＊万花 brand:ゆずソフト published_at:2016-07-29}.
+FunctionScope: {name:RIDDLE JOKER brand:ゆずソフト published_at:2018-03-30}.
 Results is [{name:天色＊アイルノーツ brand:ゆずソフト published_at:2013-07-26} {name:サノバウィッチ brand:ゆずソフト published_at:2015-02-24}].
 ```
 

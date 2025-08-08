@@ -41,7 +41,7 @@ Go 1.24 のアップデートから、Generic Type Aliases を始め、いくつ
 #### Generic Type Aliases 導入
 
 Go 1.23 で実験的導入だった Generic Type Aliases が、Go 1.24 で正式に導入されました。
-この機能は、名前の通り、ジェネリクス型のエイリアスを定義するための機能です。これまでのエイリアスは、左辺で型パラメータを使うことができず、ジェネリクス型にできませんでした（※注：右辺をジェネリクス型にする場合、その型パラメータに具象型を代入すれば利用可能でした）。
+この機能は、名前の通り、ジェネリクス型のエイリアスを定義するための機能です。これまでのエイリアスは左辺で型パラメータを使えず、ジェネリクス型にできませんでした（※注：右辺をジェネリクス型にする場合、その型パラメータに具象型を代入すれば利用可能でした）。
 これを活用することで、次のようにジェネリクスの型パラメータを引き継げるようになります。なお、埋め込みとは異なりエイリアスのため、レシーバーの追加等の拡張はできません。
 
 ```go
@@ -247,7 +247,7 @@ bytes パッケージ及び strings パッケージで、Go 1.23 で正式に導
 
 #### TextAppender と BinaryAppender の追加
 
-encoding パッケージに、`BinaryAppender` と `TextAppender` の2つのインターフェイスが追加されました。これらのインターフェイスが持つ関数は、既存のバイト列に対して、文字列またはバイナリデータを直接追加することができます。
+encoding パッケージに、`BinaryAppender` と `TextAppender` の2つのインターフェイスが追加されました。これらのインターフェイスが持つ関数は、既存のバイト列に対して、文字列またはバイナリデータを直接追加できます。
 下記のパッケージで、定義された構造体、または、関数の戻り値となる構造体において、それぞれのインターフェイスが実装されました。
 
 ##### encoding.BinaryAppender を実装したパッケージ
@@ -273,10 +273,15 @@ Go 1.24 では、Generic Type Alias の正式導入を始め、go.mod への `to
 
 ### 参考文献
 
-- [Go 1.24 Release Notes - The Go Programming Language](https://tip.golang.org/doc/go1.24)
-- [The Go Programming Language Specification - The Go Programming Language](https://tip.golang.org/ref/spec#Alias_declarations)
-- [What's in an (Alias) Name? - The Go Programming Language](https://go.dev/blog/alias-names)
-- [Managing dependencies - The Go Programming Language](https://tip.golang.org/doc/modules/managing-dependencies#tools)
-- [cmd/go: track tool dependencies in go.mod · Issue #48429 · golang/go](https://github.com/golang/go/issues/48429)
-- [cmd/go: cache link output binaries in the build cache · Issue #69290 · golang/go](https://github.com/golang/go/issues/69290)
-- [weak: new package providing weak pointers · Issue #67552 · golang/go](https://github.com/golang/go/issues/67552)
+#### Documents
+
+- [Go 1.24 Release Notes](https://tip.golang.org/doc/go1.24)
+- [The Go Programming Language Specification](https://tip.golang.org/ref/spec#Alias_declarations)
+- [What's in an (Alias) Name?](https://go.dev/blog/alias-names)
+- [Managing dependencies](https://tip.golang.org/doc/modules/managing-dependencies#tools)
+
+#### GitHub Issues
+
+- [cmd/go: track tool dependencies in go.mod](https://github.com/golang/go/issues/48429)
+- [cmd/go: cache link output binaries in the build cache](https://github.com/golang/go/issues/69290)
+- [weak: new package providing weak pointers](https://github.com/golang/go/issues/67552)
