@@ -169,8 +169,13 @@ gif2webp -q 100 -o animation_image.webp image.gif
 
 ### 参考文献
 
+#### 次世代画像フォーマット
+
 - [WebP 公式ホームページ](https://developers.google.com/speed/webp?hl=ja)
-- [Windowsの環境パスを通す(path)](https://realize.jounin.jp/path.html)
-- [南カリフォルニア大学 信号画像処理研究所 画像データベース](https://sipi.usc.edu/database/database.php)
 - [WebP 画像フォーマットの Web ブラウザ対応状況](https://caniuse.com/webp)
 - [AVIF 画像フォーマットの Web ブラウザ対応状況](https://caniuse.com/avif)
+
+#### その他
+
+- [Windowsの環境パスを通す(path)](https://realize.jounin.jp/path.html)
+- [南カリフォルニア大学 信号画像処理研究所 画像データベース](https://sipi.usc.edu/database/database.php)

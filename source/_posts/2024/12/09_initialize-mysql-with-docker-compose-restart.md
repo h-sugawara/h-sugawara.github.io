@@ -172,15 +172,15 @@ tmpfs の側面から検索すると、答えが見つかりますが、それ�
 
 #### Docker
 
-- [Compose file reference | Docker Docs](https://docs.docker.com/reference/compose-file/)
-- [Services top-level elements | Docker Docs](https://docs.docker.com/reference/compose-file/services/)
-- [tmpfs mounts | Docker Docs](https://docs.docker.com/engine/storage/tmpfs/)
+- [Compose file reference](https://docs.docker.com/reference/compose-file/)
+- [Services top-level elements](https://docs.docker.com/reference/compose-file/services/)
+- [tmpfs mounts](https://docs.docker.com/engine/storage/tmpfs/)
 
 #### MySQL
 
-- [mysql - Official Image | Docker Hub](https://hub.docker.com/_/mysql)
-- [docker-library/mysql: Docker Official Image packaging for MySQL Community Server](https://github.com/docker-library/mysql)
+- [Docker Hub](https://hub.docker.com/_/mysql)
+- [GitHub](https://github.com/docker-library/mysql)
 
 #### Amazon Aurora
 
-- [Amazon Aurora MySQL バージョン 3 のデータベースエンジンの更新 - Amazon Aurora](https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraMySQLReleaseNotes/AuroraMySQL.Updates.30Updates.html)
+- [MySQL バージョン 3 のデータベースエンジンの更新](https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraMySQLReleaseNotes/AuroraMySQL.Updates.30Updates.html)

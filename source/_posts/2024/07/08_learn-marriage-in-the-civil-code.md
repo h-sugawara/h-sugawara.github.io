@@ -124,14 +124,17 @@ cover:
 
 ### 参考文献
 
-#### 法律
+#### Wikipedia
 
 - [親族](https://ja.wikipedia.org/wiki/%E8%A6%AA%E6%97%8F)
 - [続柄](https://ja.wikipedia.org/wiki/%E7%B6%9A%E6%9F%84)
+
+#### 法律
+
 - [民法（明治二十九年法律第八十九号）](https://elaws.e-gov.go.jp/document?lawid=129AC0000000089_20240401_504AC0000000102)
 - [親戚（ひ孫から先）の名称・呼び方を知りたい](https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000251771)
 
-#### 美少女ゲーム関連
+#### 美少女ゲーム
 
 - [天色＊アイルノーツ](http://www.yuzu-soft.com/ja/amairo.html)
 - [千恋＊万花](https://www.yuzu-soft.com/products/senren/index.html)

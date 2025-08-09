@@ -139,8 +139,18 @@ cover:
 
 ### 参考文献
 
-- [ニシン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B7%E3%83%B3)
-- [ニシンとハンザ同盟とオランダ－中世後期のヨーロッパの食（３） - 食の歴史 by 新谷隆史ー人類史を作った食の革命](https://blog.goo.ne.jp/t-shintani/e/c7f0af6e989153e877cc97fc96366d5b)
-- [第266回 英国の歴史とニシンの回遊 - 英国ニュース、求人、イベント、コラム、レストラン、ロンドン・イギリス情報誌 - 英国ニュースダイジェスト](http://www.news-digest.co.uk/news/columns/city/25333-1651.html)
+#### ニシン
+
+- [Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B7%E3%83%B3)
+
+#### 歴史
+
+##### ヨーロッパ
+
+- [ニシンとハンザ同盟とオランダ－中世後期のヨーロッパの食（３）](https://blog.goo.ne.jp/t-shintani/e/c7f0af6e989153e877cc97fc96366d5b)
+- [英国の歴史とニシンの回遊](http://www.news-digest.co.uk/news/columns/city/25333-1651.html)
+
+##### 日本
+
 - [ニシン漁の歴史](http://rumoi-suisan.sakura.ne.jp/harunisin.html)
-- [ニシンは西洋の経済を動かしたスゴイ魚なのです！ - 株式会社 松浦水産](https://matsuura-okhotsk.com/nisin/)
+- [ニシンは西洋の経済を動かしたスゴイ魚なのです！](https://matsuura-okhotsk.com/nisin/)

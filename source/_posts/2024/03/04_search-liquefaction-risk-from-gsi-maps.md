@@ -157,14 +157,14 @@ cover:
 
 #### 液状化
 
-- [防災基礎講座　基礎知識編：4. 地盤液状化 - 防災科学技術研究所](https://dil.bosai.go.jp/workshop/01kouza_kiso/04ekijouka.html)
-- [盛土・宅地防災：液状化現象について - 国土交通省](https://www.mlit.go.jp/toshi/toshi_fr1_000010.html)
+- [防災基礎講座　基礎知識編：4. 地盤液状化](https://dil.bosai.go.jp/workshop/01kouza_kiso/04ekijouka.html)
+- [盛土・宅地防災：液状化現象について](https://www.mlit.go.jp/toshi/toshi_fr1_000010.html)
 - [東京都建物における液状化対策ポータルサイト](https://kenchiku-ekijoka.metro.tokyo.lg.jp/index.html)
 
 #### 地理院地図
 
-- [土地の成り立ちから災害リスクを知る｜地理院地図の使い方 - 国土地理院](https://maps.gsi.go.jp/help/intro/school/naritachi.html)
+- [土地の成り立ちから災害リスクを知る](https://maps.gsi.go.jp/help/intro/school/naritachi.html)
 
 #### 住みたい街ランキング
 
-- [「＜首都圏版＞ 2024年 LIFULL HOME'S みんなが探した！住みたい街ランキング」](https://lifull.com/news/30808/)
+- [＜首都圏版＞ 2024年 LIFULL HOME'S みんなが探した！住みたい街ランキング](https://lifull.com/news/30808/)

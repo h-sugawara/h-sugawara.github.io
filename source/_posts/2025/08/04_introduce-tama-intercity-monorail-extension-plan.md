@@ -121,7 +121,7 @@ cover:
 
 #### 共通
 
-- [多摩都市モノレール線 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%A4%9A%E6%91%A9%E9%83%BD%E5%B8%82%E3%83%A2%E3%83%8E%E3%83%AC%E3%83%BC%E3%83%AB%E7%B7%9A)
+- [多摩都市モノレール線](https://ja.wikipedia.org/wiki/%E5%A4%9A%E6%91%A9%E9%83%BD%E5%B8%82%E3%83%A2%E3%83%8E%E3%83%AC%E3%83%BC%E3%83%AB%E7%B7%9A)
 - [東京圏における今後の都市鉄道のあり方について](https://www.mlit.go.jp/policy/shingikai/tetsudo01_sg_000261.html)
 
 #### 箱根ヶ崎方面

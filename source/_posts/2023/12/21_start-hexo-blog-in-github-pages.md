@@ -268,8 +268,8 @@ Icarus テーマを導入した方は、日本語の表示時フォントが `Mi
 
 #### Hexo 公式
 
-- [設定 | Hexo](https://hexo.io/ja/docs/configuration)
-- [Themes | Hexo](https://hexo.io/themes/)
+- [設定](https://hexo.io/ja/docs/configuration)
+- [Themes](https://hexo.io/themes/)
 
 #### icarus テーマ
 

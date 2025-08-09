@@ -137,10 +137,10 @@ cover:
 
 #### 乗換路線の時刻表
 
-- [時刻表 - ジョルダン](https://www.jorudan.co.jp/time/)
-- [終電検索 - 駅探](https://ekitan.com/transit/last)
+- [ジョルダン](https://www.jorudan.co.jp/time/)
+- [駅探](https://ekitan.com/transit/last)
 
 #### 深夜チェックインのホテル検索
 
-- [【楽天トラベル】24時からの予約](https://search.travel.rakuten.co.jp/ds/midnight/condition/?scid=af_pc_etc&sc2id=af_103_1_10000645)
-- [今夜の宿-じゃらんnet](https://www.jalan.net/uw/uwp1200/uww1200.do?vos=afjlnpvczzzzx00002010&caadsess=12180_vxennwsjjsg8vBy&caadterm=3600)
+- [楽天トラベル](https://search.travel.rakuten.co.jp/ds/midnight/condition/?scid=af_pc_etc&sc2id=af_103_1_10000645)
+- [じゃらんnet](https://www.jalan.net/uw/uwp1200/uww1200.do?vos=afjlnpvczzzzx00002010&caadsess=12180_vxennwsjjsg8vBy&caadterm=3600)

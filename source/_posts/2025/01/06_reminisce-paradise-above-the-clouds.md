@@ -135,7 +135,15 @@ cover:
 
 ### 参考文献
 
-- [広報はちまんたい - 八幡平市ホームページ](https://www.city.hachimantai.lg.jp/site/koho/)
-- [【日本のエネルギー、150年の歴史③】エネルギー革命の時代。主役は石炭から石油へ交代し、原子力発電やLPガスも｜エネこれ｜資源エネルギー庁](https://www.enecho.meti.go.jp/about/special/johoteikyo/history3shouwa.html)
-- [旧松尾鉱山新中和処理施設の運営管理 : 鉱害防止支援 | 独立行政法人エネルギー・金属鉱物資源機構［JOGMEC］](https://www.jogmec.go.jp/mp_control/matsuo_mine_001.html)
-- [北上川の歴史｜岩手河川国道事務所](https://www.thr.mlit.go.jp/iwate/siryou/kitakami_lib/history/history.html)
+#### 松尾鉱山
+
+- [広報はちまんたい](https://www.city.hachimantai.lg.jp/site/koho/)
+
+#### エネルギーシフト
+
+- [エネルギー革命の時代。主役は石炭から石油へ交代し、原子力発電やLPガスも](https://www.enecho.meti.go.jp/about/special/johoteikyo/history3shouwa.html)
+
+#### 環境汚染
+
+- [旧松尾鉱山新中和処理施設の運営管理](https://www.jogmec.go.jp/mp_control/matsuo_mine_001.html)
+- [北上川の歴史](https://www.thr.mlit.go.jp/iwate/siryou/kitakami_lib/history/history.html)

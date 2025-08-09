@@ -197,7 +197,5 @@ Range over function によってデータ反復処理が標準化され、ライ
 
 ### 参考文献
 
-#### Go 言語公式サイト
-
-- [Go 1.23 Release Notes - The Go Programming Language](https://tip.golang.org/doc/go1.23)
-- [Range Over Function Types - The Go Programming Language](https://go.dev/blog/range-functions)
+- [Go 1.23 Release Notes](https://tip.golang.org/doc/go1.23)
+- [Range Over Function Types](https://go.dev/blog/range-functions)

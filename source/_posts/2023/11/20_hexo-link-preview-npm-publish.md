@@ -169,4 +169,4 @@ link_preview:
 ### 参考文献
 
 - [hexo-tag-ogp-link-preview - npm](https://www.npmjs.com/package/hexo-tag-ogp-link-preview)
-- [Hexo + Icarus リンクカードを設定する - Circle KEN](https://circleken.net/2020/10/post32/)
+- [Hexo + Icarus リンクカードを設定する](https://circleken.net/2020/10/post32/)

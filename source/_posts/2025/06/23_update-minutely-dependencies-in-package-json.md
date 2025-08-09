@@ -312,12 +312,12 @@ dependabot や Renovate 等のツールを利用するのは、とても楽で�
 #### npm-check-updates
 
 - [npm-check-updates - npm](https://www.npmjs.com/package/npm-check-updates)
-- [npm パッケージをアップデートしたい - かもメモ](https://chaika.hatenablog.com/entry/2022/12/19/083000)
-- [npm-check-updatesを使ってサクッとライブラリをアップデートする - その辺にいるWebエンジニアの備忘録](https://kossy-web-engineer.hatenablog.com/entry/2021/01/11/005854)
+- [npm パッケージをアップデートしたい](https://chaika.hatenablog.com/entry/2022/12/19/083000)
+- [npm-check-updatesを使ってサクッとライブラリをアップデートする](https://kossy-web-engineer.hatenablog.com/entry/2021/01/11/005854)
 
-#### npm
+#### Documents
 
-- [npm-update | npm Docs](https://docs.npmjs.com/cli/v11/commands/npm-update)
-- [npm-outdated | npm Docs](https://docs.npmjs.com/cli/v11/commands/npm-outdated)
-- [npm-install | npm Docs](https://docs.npmjs.com/cli/v11/commands/npm-install)
-- [npm-uninstall | npm Docs](https://docs.npmjs.com/cli/v11/commands/npm-uninstall)
+- [npm-update](https://docs.npmjs.com/cli/v11/commands/npm-update)
+- [npm-outdated](https://docs.npmjs.com/cli/v11/commands/npm-outdated)
+- [npm-install](https://docs.npmjs.com/cli/v11/commands/npm-install)
+- [npm-uninstall](https://docs.npmjs.com/cli/v11/commands/npm-uninstall)

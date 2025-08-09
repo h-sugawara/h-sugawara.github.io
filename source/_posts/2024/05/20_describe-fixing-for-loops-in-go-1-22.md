@@ -228,7 +228,5 @@ For ループのイテレーションごとにスコープ変数を新しく割�
 
 ### 参考文献
 
-#### Go 言語公式サイト
-
-- [Go 1.22 Release Notes - The Go Programming Language](https://tip.golang.org/doc/go1.22)
-- [Fixing For Loops in Go 1.22 - The Go Programming Language](https://go.dev/blog/loopvar-preview)
+- [Go 1.22 Release Notes](https://tip.golang.org/doc/go1.22)
+- [Fixing For Loops in Go 1.22](https://go.dev/blog/loopvar-preview)

@@ -208,9 +208,9 @@ GitHub Actions で、プルリクエストの作成を自動化する方法を�
 
 #### GitHub Marketplace
 
-- [GitHub Script · Actions · GitHub Marketplace](https://github.com/marketplace/actions/github-script)
-- [Create Pull Request · Actions · GitHub Marketplace](https://github.com/marketplace/actions/create-pull-request)
-- [Checkout · Actions · GitHub Marketplace](https://github.com/marketplace/actions/checkout)
+- [GitHub Script](https://github.com/marketplace/actions/github-script)
+- [Create Pull Request](https://github.com/marketplace/actions/create-pull-request)
+- [Checkout](https://github.com/marketplace/actions/checkout)
 
 #### GitHub
 
