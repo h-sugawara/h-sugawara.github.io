@@ -131,5 +131,5 @@ Nintendo Switch 2
 
 ### 参考文献
 
-- [Nintendo Switch | 任天堂](https://www.nintendo.com/jp/hardware/detail/switch/index.html)
-- [機能・仕様｜Nintendo Switch 2｜任天堂](https://www.nintendo.com/jp/hardware/switch2/specs/index.html)
+- [Nintendo Switch](https://www.nintendo.com/jp/hardware/detail/switch/index.html)
+- [Nintendo Switch 2 の機能・仕様](https://www.nintendo.com/jp/hardware/switch2/specs/index.html)

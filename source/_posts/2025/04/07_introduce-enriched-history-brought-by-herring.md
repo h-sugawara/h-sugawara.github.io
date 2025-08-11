@@ -125,8 +125,6 @@ cover:
 
 御節料理は、節会や節句に作られる、日本の料理です。地方によって構成は異なりますが、関東や関西では祝い肴3種の中に数の子が含まれます。
 
-{% gallery introduce-enriched-history-brought-by-herring osechi_ryouri.webp '御節料理' 719x404 %}{% endgallery %}
-
 #### 松前漬け
 
 松前漬けは、数の子、スルメ、昆布を醤油で漬け込んだ保存食で、松前藩を発祥とする郷土料理です。
