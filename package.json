@@ -27,7 +27,7 @@
     "hexo-renderer-markdown-it": "^7.1.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-tag-ogp-link-preview": "^1.1.1",
+    "hexo-tag-ogp-link-preview": "^1.2.0",
     "hexo-theme-icarus": "file:./themes/icarus",
     "hexo-uglify": "^2.0.0",
     "markdown-it-multimd-table": "^4.2.3"
