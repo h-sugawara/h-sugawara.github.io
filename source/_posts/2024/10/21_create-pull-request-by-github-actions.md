@@ -16,7 +16,7 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology/devops/title.webp
-thumbnail: /images/thumbnails/github_thumbnail.webp
+thumbnail: /images/thumbnails/technology/github_thumbnail.webp
 cover:
   image: /images/technology/devops/cover.webp
   sources:

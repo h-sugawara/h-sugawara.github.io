@@ -16,7 +16,7 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology/programming/title.webp
-thumbnail: /images/thumbnails/golang_thumbnail.webp
+thumbnail: /images/thumbnails/technology/golang_thumbnail.webp
 cover:
   image: /images/technology/programming/cover.webp
   sources:

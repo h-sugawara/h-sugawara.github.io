@@ -16,7 +16,7 @@ has_gallery: true
 has_code: false
 has_icon: false
 og_image: /images/game/cafe-stella-and-the-reapers-butterflies/title.webp
-thumbnail: /images/thumbnails/cafe_stella_and_the_reapers_butterflies_thumbnail.webp
+thumbnail: /images/thumbnails/game/cafe_stella_and_the_reapers_butterflies_thumbnail.webp
 cover:
   image: /images/game/cafe-stella-and-the-reapers-butterflies/cover.webp
   sources:

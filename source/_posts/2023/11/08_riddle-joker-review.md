@@ -16,7 +16,7 @@ has_gallery: true
 has_code: false
 has_icon: false
 og_image: /images/game/riddle-joker/title.webp
-thumbnail: /images/thumbnails/riddle_joker_thumbnail.webp
+thumbnail: /images/thumbnails/game/riddle_joker_thumbnail.webp
 cover:
   image: /images/game/riddle-joker/cover.webp
   sources:

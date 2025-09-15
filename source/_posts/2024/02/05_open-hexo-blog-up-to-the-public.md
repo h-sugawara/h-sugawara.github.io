@@ -15,8 +15,8 @@ toc: true
 has_gallery: false
 has_code: true
 has_icon: false
-og_image: /images/technology/blog_title.webp
-thumbnail: /images/thumbnails/hexo_thumbnail.webp
+og_image: /images/technology/blog/title.webp
+thumbnail: /images/thumbnails/technology/hexo_thumbnail.webp
 cover:
   image: /images/technology/blog/cover.webp
   sources:

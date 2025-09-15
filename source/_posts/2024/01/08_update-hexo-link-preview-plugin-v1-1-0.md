@@ -15,8 +15,8 @@ toc: true
 has_gallery: false
 has_code: true
 has_icon: false
-og_image: /images/technology/programming_title.webp
-thumbnail: /images/thumbnails/npm_thumbnail.webp
+og_image: /images/technology/programming/title.webp
+thumbnail: /images/thumbnails/technology/npm_thumbnail.webp
 cover:
   image: /images/technology/programming/cover.webp
   sources:
@@ -71,7 +71,7 @@ hexo-link-preview-npm-publish の記事
 ```html
 <a href="https://blog.chaotic-notes.com/articles/hexo-link-preview-npm-publish/" target="_blank" rel="noreferrer" class="link-preview">
     <div class="og-image">
-        <img src="https://blog.chaotic-notes.com/images/technology_programming_title.webp" alt="hexo-tag-ogp-link-previewの公開に纏わる閑話" loading="eager">
+        <img src="https://blog.chaotic-notes.com/images/technology/programming/title.webp" alt="hexo-tag-ogp-link-previewの公開に纏わる閑話" loading="eager">
     </div>
     <div class="descriptions">
         <div class="og-title">hexo-tag-ogp-link-previewの公開に纏わる閑話</div>

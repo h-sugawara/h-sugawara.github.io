@@ -15,7 +15,7 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology/programming/title.webp
-thumbnail: /images/thumbnails/npm_thumbnail.webp
+thumbnail: /images/thumbnails/technology/npm_thumbnail.webp
 cover:
   image: /images/technology/programming/cover.webp
   sources:

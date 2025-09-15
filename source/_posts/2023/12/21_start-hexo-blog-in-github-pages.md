@@ -16,7 +16,7 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology/blog/title.webp
-thumbnail: /images/thumbnails/hexo_thumbnail.webp
+thumbnail: /images/thumbnails/technology/hexo_thumbnail.webp
 cover:
   image: /images/technology/blog/cover.webp
   sources:

@@ -16,7 +16,7 @@ has_gallery: true
 has_code: false
 has_icon: false
 og_image: /images/game/senren-banka/title.webp
-thumbnail: /images/thumbnails/senren_banka_thumbnail.webp
+thumbnail: /images/thumbnails/game/senren_banka_thumbnail.webp
 cover:
   image: /images/game/senren-banka/cover.webp
   sources:

@@ -16,7 +16,7 @@ has_gallery: false
 has_code: true
 has_icon: false
 og_image: /images/technology/infrastructure/title.webp
-thumbnail: /images/thumbnails/docker_thumbnail.webp
+thumbnail: /images/thumbnails/technology/docker_thumbnail.webp
 cover:
   image: /images/technology/infrastructure/cover.webp
   sources:

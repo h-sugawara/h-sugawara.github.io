@@ -15,7 +15,7 @@ has_gallery: true
 has_code: true
 has_icon: false
 og_image: /images/technology/sitespeed/title.webp
-thumbnail: /images/thumbnails/webp_thumbnail.webp
+thumbnail: /images/thumbnails/technology/webp_thumbnail.webp
 cover:
   image: /images/technology/sitespeed/cover.webp
   sources:

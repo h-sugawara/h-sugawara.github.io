@@ -16,7 +16,7 @@ has_gallery: true
 has_code: false
 has_icon: false
 og_image: /images/game/amairo-islenauts/title.webp
-thumbnail: /images/thumbnails/amairo_islenauts_thumbnail.webp
+thumbnail: /images/thumbnails/game/amairo_islenauts_thumbnail.webp
 cover:
   image: /images/game/amairo-islenauts/cover.webp
   sources:

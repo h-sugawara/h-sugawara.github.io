@@ -16,7 +16,7 @@ has_gallery: true
 has_code: false
 has_icon: false
 og_image: /images/game/sabbat-of-the-witch/title.webp
-thumbnail: /images/thumbnails/sabbat_of_the_witch_thumbnail.webp
+thumbnail: /images/thumbnails/game/sabbat_of_the_witch_thumbnail.webp
 cover:
   image: /images/game/sabbat-of-the-witch/cover.webp
   sources:
