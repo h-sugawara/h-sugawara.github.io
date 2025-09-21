@@ -35,17 +35,27 @@ cover:
 
 hexo-tag-ogp-link-preview は、OpenGraph プロトコル対応のページから取得したデータを用いてリンクプレビューを生成し、Hexo のブログ記事に埋め込むためのプラグインです。
 
-{% link_preview https://www.npmjs.com/package/hexo-tag-ogp-link-preview %}
-hexo-tag-ogp-link-preview@npm
+{% link_preview https://blog.chaotic-notes.com/ %}
+Chaotic Notes
 {% endlink_preview %}
 
 FaceBook を始め X(Twitter) 等の SNS でリンク共有時に表示されるようなカードを、Hexo でも上記のような感じで再現できます。
 
-## プラグインについて
+### インストール方法
 
-このセクションでは、プラグインの開発に至るまでの経緯と、参考にしたプラグインとの差異について、説明します。
+次のコマンドで、hexo-tag-ogp-link-preview パッケージの最新版をインストールできます。
 
-### 開発に至った経緯
+```shell
+npm install hexo-tag-ogp-link-preview
+```
+
+基本的な使い方については、npm の [hexo-tag-ogp-link-preview](https://www.npmjs.com/package/hexo-tag-ogp-link-preview) のページをご覧ください。
+
+## プラグインの開発経緯
+
+このセクションでは、開発したプラグインの公開に至るまでのいきさつと、参考にしたプラグインとの違いについて、説明します。
+
+### 公開に至るまで
 
 #### (1) Hexo.js でブログ作成
 
@@ -62,7 +72,7 @@ Hexo と Icarus には、リンクプレビュー機能がバンドルされて�
 該当のプラグインは OSS なので、Bug issue を立てて修正していただく考えに至りました。とはいえ、プラグインの最終更新日は、今から2年以上前で止まっています。加えて、作者のブログ記事の「hexo-tag-link-previewをnpmで公開しました。」で、現在は Hexo を使用していない、との記述を発見。
 ゆえに、このプラグインがメンテナンスされることは今後ないだろうと判断し、参考にしてゼロから作り直すことを決意しました。
 
-{% message color:info title:2025年01月16日追記 %}
+{% message color:info %}
 長期間メンテナンスされていなかった hexo-tag-link-preview ですが、2024年7月についにアーカイブされました。また、作者のブログ記事が削除されているため、リンクを解除しました。
 {% endmessage %}
 
@@ -70,7 +80,7 @@ Hexo と Icarus には、リンクプレビュー機能がバンドルされて�
 
 それから、数日で自作プラグインが完成し、無事にレビュー記事にも反映。作り始めた頃は公開しようとは思っていなかったのですが、もしかして同じ問題にぶち当たってリンクプレビューを諦めた人がいるのではないかと思いました。なので、しっかりとコードリファクタしたうえで、テストも整備して、プラグインを公開させていただきました。皆様に使っていただければ幸いです。
 
-### 参考プラグインとの違い
+### 参考プラグインとの差異
 
 #### (1) 命名規則が異なる
 
@@ -81,7 +91,7 @@ Hexo.js は、snake_case がデファクトスタンダードのようです。�
 
 hexo-tag-ogp-link-preview は、hexo-tag-link-preview と異なり、タグのパラメータの記載順を入れ替えても正しく認識します。
 
-{% message color:info title:2025年01月16日追記 %}
+{% message color:info %}
 hexo-tag-ogp-link-preview は、バージョン 1.1.0 から、名前付きパラメータがサポートされ、必要なパラメータだけを任意に設定できるように機能強化されました。
 {% endmessage %}
 
