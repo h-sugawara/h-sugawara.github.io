@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/pick-up-update-contents-of-go-1-25/</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/review-is-this-seat-taken/</loc>
         <lastmod>2025-09-08</lastmod>
         <changefreq>monthly</changefreq>
@@ -278,7 +284,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2025-09-15</lastmod>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
