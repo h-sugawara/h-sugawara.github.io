@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://blog.chaotic-notes.com/articles/describe-sophisticated-implement-http-client-in-go/</loc>
+        <lastmod>2025-12-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://blog.chaotic-notes.com/articles/introduce-connecting-to-other-vpc-via-privatelink/</loc>
         <lastmod>2025-12-08</lastmod>
         <changefreq>monthly</changefreq>
@@ -314,7 +320,7 @@
     </url>
     <url>
         <loc>https://blog.chaotic-notes.com/</loc>
-        <lastmod>2025-12-08</lastmod>
+        <lastmod>2025-12-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
