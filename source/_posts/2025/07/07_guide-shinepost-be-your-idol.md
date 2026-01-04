@@ -16,7 +16,7 @@ has_gallery: false
 has_code: false
 has_icon: false
 og_image: /images/game/shinepost-be-your-idol/title.webp
-thumbnail: /images/thumbnails/game_thumbnail.webp
+thumbnail: /images/thumbnails/game/shinepost_be_your_idol_thumbnail.webp
 cover:
   image: /images/game/shinepost-be-your-idol/cover.webp
   sources:
@@ -31,6 +31,10 @@ KONAMI より Nintendo Switch 2 のローンチタイトルとして発売され
 
 {% message color:warning %}
 グッドエンド到達再現性が高い攻略チャートを紹介しています。しかし、運要素により臨機応変な対応が求められるため、プレイヤーの慣れも必要です。２年目の目標を達成出来なかった場合は、最初からやり直した方が良いでしょう。
+{% endmessage %}
+
+{% message color:info %}
+本記事の攻略チャートに沿ってプレイした{% post_link review-shinepost-be-your-idol 'スクリーンショットありのレビュー記事' %}を投稿していますので、興味があればそちらも是非ご覧ください。
 {% endmessage %}
 
 ## １年目の攻略チャート
