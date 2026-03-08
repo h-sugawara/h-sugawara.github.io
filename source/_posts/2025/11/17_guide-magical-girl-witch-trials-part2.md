@@ -593,4 +593,4 @@ cover:
 
 ### レビュー
 
-2026年05月上旬に投稿予定です。
+- {% post_link review-magical-girl-witch-trials '作品紹介とプレイレビュー' %}
