@@ -6,7 +6,9 @@ tags:
   - 解説
   - 法律
   - 民法
-category: Miscellany
+categories:
+  - Knowledge
+  - Learning
 toc: true
 has_gallery: true
 has_code: false

@@ -6,7 +6,9 @@ tags:
   - 解説
   - 地理
   - 防災
-category: Miscellany
+categories:
+  - Knowledge
+  - Research
 toc: true
 has_gallery: true
 has_code: false

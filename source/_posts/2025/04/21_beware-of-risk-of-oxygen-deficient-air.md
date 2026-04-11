@@ -7,7 +7,9 @@ tags:
   - 衛生
   - 生物
   - 化学
-category: Miscellany
+categories:
+  - Knowledge
+  - Learning
 toc: true
 has_gallery: true
 has_code: false

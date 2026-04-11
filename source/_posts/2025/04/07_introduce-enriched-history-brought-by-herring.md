@@ -7,7 +7,9 @@ tags:
   - 歴史
   - 食文化
   - 生物
-category: Miscellany
+categories:
+  - Knowledge
+  - Learning
 toc: true
 has_gallery: true
 has_code: false
